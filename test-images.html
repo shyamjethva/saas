@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #1e293b; color: white; }
+        .image-container { margin: 20px 0; }
+        img { max-width: 400px; border: 2px solid #22c55e; border-radius: 8px; }
+        .error { color: #ef4444; }
+        .success { color: #22c55e; }
+    </style>
+</head>
+<body>
+    <h1>AI Conversation Images Test</h1>
+    
+    <div class="image-container">
+        <h2>Image 1: AI Conversation Agent</h2>
+        <img id="img1" src="/images/ai-conversation/aiconversationagent1.jpeg" alt="AI Conversation Agent" onerror="handleError('img1')" onload="handleSuccess('img1')">
+        <div id="status1"></div>
+    </div>
+    
+    <div class="image-container">
+        <h2>Image 2: Script Builder</h2>
+        <img id="img2" src="/images/ai-conversation/scriptbuilder2.jpeg" alt="Script Builder" onerror="handleError('img2')" onload="handleSuccess('img2')">
+        <div id="status2"></div>
+    </div>
+    
+    <div class="image-container">
+        <h2>Image 3: Call Analysis</h2>
+        <img id="img3" src="/images/ai-conversation/callanalysis3.jpeg" alt="Call Analysis" onerror="handleError('img3')" onload="handleSuccess('img3')">
+        <div id="status3"></div>
+    </div>
+    
+    <div class="image-container">
+        <h2>Image 4: Smart Retry</h2>
+        <img id="img4" src="/images/ai-conversation/smartretry4.jpeg" alt="Smart Retry" onerror="handleError('img4')" onload="handleSuccess('img4')">
+        <div id="status4"></div>
+    </div>
+
+    <script>
+        function handleError(imgId) {
+            const status = document.getElementById('status' + imgId.replace('img', ''));
+            status.innerHTML = '<span class="error">❌ Image failed to load</span>';
+            console.log('Failed to load:', imgId);
+        }
+        
+        function handleSuccess(imgId) {
+            const status = document.getElementById('status' + imgId.replace('img', ''));
+            status.innerHTML = '<span class="success">✅ Image loaded successfully</span>';
+            console.log('Successfully loaded:', imgId);
+        }
+        
+        // Test all images
+        window.onload = function() {
+            console.log('Testing image paths...');
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                console.log('Testing:', img.src);
+            });
+        };
+    </script>
+</body>
+</html>

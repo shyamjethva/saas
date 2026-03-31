@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Blog Functionality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .instructions {
+            margin-bottom: 30px;
+        }
+        .step {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #4ade80;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Blog Functionality Test</h1>
+        
+        <div class="instructions">
+            <h2>Steps to Test Blog "Read More" Functionality:</h2>
+            
+            <div class="step">
+                <strong>Step 1:</strong> Open your browser and go to: 
+                <a href="http://localhost:3002" class="btn" target="_blank">http://localhost:3002</a>
+            </div>
+            
+            <div class="step">
+                <strong>Step 2:</strong> Navigate to the Blog section by clicking on "Blog" in the navigation menu
+            </div>
+            
+            <div class="step">
+                <strong>Step 3:</strong> Look for blog cards with "Read Detailed Article" button
+            </div>
+            
+            <div class="step">
+                <strong>Step 4:</strong> Click on the "Read Detailed Article" button
+            </div>
+            
+            <div class="step">
+                <strong>Step 5:</strong> A modal should open with detailed article content
+            </div>
+        </div>
+
+        <div class="status">
+            <h3>✅ Expected Result:</h3>
+            <p>When you click "Read Detailed Article", a professional modal should open containing:</p>
+            <ul>
+                <li>Detailed article content with headings and subheadings</li>
+                <li>Bullet-point lists and structured content</li>
+                <li>Author information and bio</li>
+                <li>Related posts section</li>
+                <li>Comment section</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="http://localhost:3002/blog" class="btn" target="_blank">Go to Blog Page</a>
+            <a href="http://localhost:3002" class="btn" target="_blank">Go to Home Page</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import EnterpriseFooter from './components/EnterpriseFooter';
+
+// Original Pages
+import Homepage from './pages/Homepage';
+import ServicesPackages from './pages/ServicesPackages';
+import ClientsProjects from './pages/ClientsProjects';
+import AIControlCenter from './pages/AIControlCenter';
+import MarketingHub from './pages/MarketingHub';
+import ContactPage from './pages/ContactPage';
+
+// New Enterprise Pages
+import EnterpriseHomepage from './pages/EnterpriseHomepage';
+import EnterpriseServices from './pages/EnterpriseServices';
+import EnterprisePortfolio from './pages/EnterprisePortfolio';
+import EnterpriseContact from './pages/EnterpriseContact';
+import EnterpriseAbout from './pages/EnterpriseAbout';
+import EnterpriseCareers from './pages/EnterpriseCareers';
+import EnterpriseBlog from './pages/EnterpriseBlog';
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <Navbar />
+        <Routes>
+          {/* Original Routes */}
+          <Route path="/" element={<Homepage />} />
+          <Route path="/services-packages" element={<ServicesPackages />} />
+          <Route path="/clients-projects" element={<ClientsProjects />} />
+          <Route path="/ai-control-center" element={<AIControlCenter />} />
+          <Route path="/marketing-hub" element={<MarketingHub />} />
+          <Route path="/contact" element={<ContactPage />} />
+          
+          {/* New Enterprise Routes */}
+          <Route path="/enterprise" element={<EnterpriseHomepage />} />
+          <Route path="/enterprise/services" element={<EnterpriseServices />} />
+          <Route path="/enterprise/portfolio" element={<EnterprisePortfolio />} />
+          <Route path="/enterprise/contact" element={<EnterpriseContact />} />
+          <Route path="/enterprise/about" element={<EnterpriseAbout />} />
+          <Route path="/enterprise/careers" element={<EnterpriseCareers />} />
+          <Route path="/enterprise/blog" element={<EnterpriseBlog />} />
+        </Routes>
+        <EnterpriseFooter />
+      </div>
+    </Router>
+  );
+}
+
+export default App;

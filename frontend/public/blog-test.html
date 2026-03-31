@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Test Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .blog-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: #22c55e;
+        }
+        .category {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .blog-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #22c55e;
+        }
+        .excerpt {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .read-more-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #22c55e, #3b82f6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .read-more-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .modal-header h2 {
+            font-size: 2rem;
+            color: #22c55e;
+            margin: 0;
+        }
+        .close-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .modal-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+        .modal-content h3 {
+            color: #22c55e;
+            margin: 20px 0 10px 0;
+        }
+        .modal-content h4 {
+            color: #3b82f6;
+            margin: 15px 0 10px 0;
+        }
+        .modal-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .modal-content li {
+            margin: 8px 0;
+            color: #e2e8f0;
+        }
+        .modal-content p {
+            color: #e2e8f0;
+            line-height: 1.7;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Our Blog</h1>
+            <p style="font-size: 1.2rem; color: #94a3b8;">Industry insights and technology trends</p>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <span class="category">Technology</span>
+                <h3>Digital Transformation in Manufacturing</h3>
+                <p class="excerpt">How IoT and AI are revolutionizing manufacturing processes with 40% productivity gains.</p>
+                <div class="meta">
+                    <span>By Rahul Sharma</span>
+                    <span>5 min read</span>
+                </div>
+                <button class="read-more-btn" onclick="showBlog(1)">
+                    Read Detailed Article
+                </button>
+            </div>
+
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <span class="category">E-commerce</span>
+                <h3>Building Scalable E-commerce Platforms</h3>
+                <p class="excerpt">Essential strategies for e-commerce growth and handling 1000% traffic increases.</p>
+                <div class="meta">
+                    <span>By Sneha Gupta</span>
+                    <span>7 min read</span>
+                </div>
+                <button class="read-more-btn" onclick="showBlog(2)">
+                    Read Detailed Article
+                </button>
+            </div>
+
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <span class="category">AI/ML</span>
+                <h3>AI-Powered Customer Relationship Management</h3>
+                <p class="excerpt">Transforming CRM with artificial intelligence for 35% better conversion rates.</p>
+                <div class="meta">
+                    <span>By Deepak Malhotra</span>
+                    <span>6 min read</span>
+                </div>
+                <button class="read-more-btn" onclick="showBlog(3)">
+                    Read Detailed Article
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Blog Title</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-meta">
+                <span id="modalAuthor">Author</span>
+                <span id="modalDate">Date</span>
+                <span id="modalReadTime">Read Time</span>
+            </div>
+            <div id="modalContent">
+                Blog content will appear here
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const blogs = {
+            1: {
+                title: "Digital Transformation in Manufacturing",
+                author: "Rahul Sharma",
+                date: "March 15, 2024",
+                readTime: "5 min read",
+                content: `
+                    <h3>The Future of Manufacturing</h3>
+                    <p>Manufacturing is experiencing a digital revolution like never before. IoT sensors, artificial intelligence, and automation are transforming factory floors across the globe.</p>
+                    
+                    <h4>Key Technologies Driving Change</h4>
+                    <ul>
+                        <li>IoT sensors for real-time monitoring of equipment health and production metrics</li>
+                        <li>AI-powered quality control systems that detect defects with 99% accuracy</li>
+                        <li>Automated predictive maintenance that reduces downtime by 40%</li>
+                        <li>Digital twin technology for virtual simulation and optimization</li>
+                    </ul>
+                    
+                    <p>Companies implementing these technologies are seeing productivity increases of 30-40% while reducing operational costs significantly. The integration of these systems creates smart factories where machines communicate with each other, optimizing production schedules automatically.</p>
+                `
+            },
+            2: {
+                title: "Building Scalable E-commerce Platforms",
+                author: "Sneha Gupta",
+                date: "April 2, 2024",
+                readTime: "7 min read",
+                content: `
+                    <h3>E-commerce Scalability Guide</h3>
+                    <p>Building e-commerce platforms that can grow with your business requires careful planning and the right technology stack. As traffic and transaction volumes increase, your platform must maintain performance and reliability.</p>
+                    
+                    <h4>Architecture Best Practices</h4>
+                    <ul>
+                        <li>Microservices architecture for independent scaling of different components</li>
+                        <li>Cloud-native deployment strategies using containerization and orchestration</li>
+                        <li>Database optimization techniques including indexing and query optimization</li>
+                        <li>Performance monitoring systems with real-time analytics and alerting</li>
+                    </ul>
+                    
+                    <p>Proper implementation can handle traffic increases of 1000% without performance degradation. Load balancing, caching strategies, and CDN integration are essential for maintaining fast page loads during peak periods.</p>
+                `
+            },
+            3: {
+                title: "AI-Powered Customer Relationship Management",
+                author: "Deepak Malhotra",
+                date: "February 28, 2024",
+                readTime: "6 min read",
+                content: `
+                    <h3>AI Revolution in CRM</h3>
+                    <p>Artificial intelligence is fundamentally changing how businesses manage customer relationships and drive sales growth. Modern CRM systems powered by AI can predict customer behavior, personalize interactions, and automate routine tasks.</p>
+                    
+                    <h4>AI Capabilities in Modern CRM</h4>
+                    <ul>
+                        <li>Predictive analytics for customer lifetime value and churn prediction</li>
+                        <li>Automated lead scoring and qualification based on engagement patterns</li>
+                        <li>Personalized recommendation engines for cross-selling opportunities</li>
+                        <li>Natural language processing for analyzing customer communications</li>
+                    </ul>
+                    
+                    <p>Organizations using AI-powered CRM see 25-35% improvement in sales conversion rates. The automation of routine tasks allows sales teams to focus on high-value relationship building activities.</p>
+                `
+            }
+        };
+
+        function showBlog(blogId) {
+            console.log('Showing blog:', blogId);
+            const blog = blogs[blogId];
+            
+            if (blog) {
+                document.getElementById('modalTitle').textContent = blog.title;
+                document.getElementById('modalAuthor').textContent = 'By ' + blog.author;
+                document.getElementById('modalDate').textContent = blog.date;
+                document.getElementById('modalReadTime').textContent = blog.readTime;
+                document.getElementById('modalContent').innerHTML = blog.content;
+                
+                document.getElementById('blogModal').style.display = 'flex';
+                console.log('Modal opened successfully');
+            } else {
+                console.error('Blog not found:', blogId);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('blogModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('blogModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        console.log('Blog page loaded successfully');
+        console.log('Available blogs:', Object.keys(blogs));
+    </script>
+</body>
+</html>

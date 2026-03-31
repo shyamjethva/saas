@@ -1,0 +1,157 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Homepage = () => {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Hero Section */}
+      <div className="px-6 py-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="mb-8">
+            <span className="inline-block px-4 py-2 bg-blue-600 text-sm font-semibold rounded-full">
+              Enterprise Digital Solutions
+            </span>
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Architecting Scalable Digital Growth
+            <br />
+            <span className="text-blue-400">for Modern Businesses</span>
+          </h1>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+            We design, develop, and optimize intelligent digital ecosystems — from CRM systems to AI automation 
+            and performance marketing that drive measurable business transformation.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <Link 
+              to="/contact" 
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-lg transition-colors"
+            >
+              Get Free Consultation
+            </Link>
+            <Link 
+              to="/contact" 
+              className="bg-gray-800 hover:bg-gray-700 text-white font-bold px-8 py-4 rounded-lg transition-colors border border-gray-600"
+            >
+              Talk to a Real Expert
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* About Section */}
+      <div className="px-6 pb-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-gray-800 rounded-2xl p-12 mb-16">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-6">About Error Infotech</h2>
+                <p className="text-gray-300 text-lg mb-4">
+                  Error Infotech is a technology-driven company delivering custom software solutions, 
+                  AI automation systems, CRM platforms, and performance-focused digital marketing services.
+                </p>
+                <p className="text-gray-300 text-lg">
+                  We help businesses streamline operations, increase revenue, and build scalable digital infrastructure.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-gray-700 p-6 rounded-xl text-center">
+                  <div className="text-2xl font-bold text-blue-400 mb-2">99.9%</div>
+                  <div className="text-gray-300">System Uptime</div>
+                </div>
+                <div className="bg-gray-700 p-6 rounded-xl text-center">
+                  <div className="text-2xl font-bold text-blue-400 mb-2">98%</div>
+                  <div className="text-gray-300">On-Time Delivery</div>
+                </div>
+                <div className="bg-gray-700 p-6 rounded-xl text-center">
+                  <div className="text-2xl font-bold text-blue-400 mb-2">24/7</div>
+                  <div className="text-gray-300">Human Support</div>
+                </div>
+                <div className="bg-gray-700 p-6 rounded-xl text-center">
+                  <div className="text-2xl font-bold text-blue-400 mb-2">100%</div>
+                  <div className="text-gray-300">Secure Architecture</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Core Strengths */}
+          <h2 className="text-4xl font-bold text-center mb-16">Core Strengths</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-gray-800 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">account_tree</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Custom CRM Development</h3>
+              <p className="text-gray-300">Scalable systems tailored to your workflow</p>
+            </div>
+            <div className="bg-gray-800 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">auto_mode</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">AI Automation Systems</h3>
+              <p className="text-gray-300">Intelligent workflows that multiply productivity</p>
+            </div>
+            <div className="bg-gray-800 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">trending_up</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Digital Marketing</h3>
+              <p className="text-gray-300">B2B & B2C performance-focused campaigns</p>
+            </div>
+            <div className="bg-gray-800 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-amber-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">school</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Educational Software</h3>
+              <p className="text-gray-300">School & learning management solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Services Preview */}
+      <div className="px-6 py-20 bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Our Service Areas</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-700 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">campaign</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Digital Marketing</h3>
+              <p className="text-gray-300 mb-6">Performance-focused campaigns</p>
+              <Link to="/services-packages" className="text-blue-400 hover:text-blue-300 font-semibold">
+                Explore Services →
+              </Link>
+            </div>
+            <div className="bg-gray-700 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">code</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Software Development</h3>
+              <p className="text-gray-300 mb-6">Custom CRM & applications</p>
+              <Link to="/services-packages" className="text-blue-400 hover:text-blue-300 font-semibold">
+                Explore Services →
+              </Link>
+            </div>
+            <div className="bg-gray-700 p-8 rounded-xl text-center">
+              <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="material-symbols-outlined text-white text-2xl">auto_mode</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">AI & Automation</h3>
+              <p className="text-gray-300 mb-6">Intelligent workflow systems</p>
+              <Link to="/services-packages" className="text-blue-400 hover:text-blue-300 font-semibold">
+                Explore Services →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Homepage;
