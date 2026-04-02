@@ -29,7 +29,7 @@ export const PROJECTS = [
         category: 'Institutional',
         clientName: 'Schools, Colleges & Academy',
         description: 'Specialized in Admission Leads, Branding, and custom CRM for Schools, Colleges, IELTS, and Study Abroad programs.',
-        image: 'https://images.unsplash.com/photo-1523050335392-9bef867a0011?auto=format&fit=crop&q=80&w=800',
+        image: '/images/insights-blog/edutend.jpeg',
         tags: ['Admission Leads', 'Branding', 'CRM']
     },
     {
@@ -38,7 +38,7 @@ export const PROJECTS = [
         category: 'Healthcare',
         clientName: 'Hospitals, Clinics & Labs',
         description: 'Patient Acquisition systems, Appointment Booking platforms, and Branding for Hospitals and Diagnostics Labs.',
-        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+        image: '/images/insights-blog/healthcare.png',
         tags: ['Patient Leads', 'Appointments']
     },
     {
@@ -47,7 +47,7 @@ export const PROJECTS = [
         category: 'Retail',
         clientName: 'Showrooms & Local Stores',
         description: 'Scale B2C and D2C brands via high-conversion Sales Campaigns and automated WhatsApp Marketing systems.',
-        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800',
         tags: ['Sales Campaigns', 'WhatsApp Marketing']
     },
     {
@@ -56,7 +56,7 @@ export const PROJECTS = [
         category: 'B2B',
         clientName: 'Production Units & Factories',
         description: 'Industrial Lead Generation, Professional Websites, and Digital Catalogues for B2B manufacturers.',
-        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&q=80&w=800',
         tags: ['B2B Leads', 'Website', 'Catalogue']
     },
     {
@@ -65,7 +65,7 @@ export const PROJECTS = [
         category: 'Professional',
         clientName: 'CA, Lawyers & Consultants',
         description: 'High-intent Lead Funnels and Personal Branding strategies to establish authority in professional services.',
-        image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
         tags: ['Lead Funnel', 'Personal Brand']
     },
     {
@@ -83,7 +83,7 @@ export const PROJECTS = [
         category: 'Tech',
         clientName: 'SaaS & Tech Companies',
         description: 'End-to-end Product Marketing, UX/UI architectural design, and complex CRM optimizations.',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+        image: '/images/insights-blog/web-development.png',
         tags: ['UI/UX', 'Product Marketing']
     },
     {
@@ -110,7 +110,7 @@ export const PROJECTS = [
         category: 'B2B',
         clientName: 'Solar Installers',
         description: 'High-ticket B2B Lead Generation and branding for sustainable energy providers.',
-        image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=800',
         tags: ['Solar Leads', 'High-ticket']
     },
     {
@@ -119,7 +119,7 @@ export const PROJECTS = [
         category: 'B2B',
         clientName: 'Transport & Warehousing',
         description: 'B2B Client Acquisition and digitized supply chain marketing solutions.',
-        image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
         tags: ['B2B Acquisition', 'Transport']
     },
     {
@@ -128,7 +128,7 @@ export const PROJECTS = [
         category: 'B2B',
         clientName: 'Exporters & Traders',
         description: 'Generation of International Leads and global trade network acquisition.',
-        image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbca?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800',
         tags: ['Export Leads', 'Global Trade']
     },
     {
@@ -137,7 +137,7 @@ export const PROJECTS = [
         category: 'B2B',
         clientName: 'Builders & Contractors',
         description: 'High-value Project Leads and corporate firm branding for construction engineering.',
-        image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800',
         tags: ['Project Leads', 'Engineering']
     },
     {
@@ -146,7 +146,7 @@ export const PROJECTS = [
         category: 'Professional',
         clientName: 'Financial & Legal Advisory',
         description: 'Authority Building and strategic Lead Generation for high-level advisors.',
-        image: 'https://images.unsplash.com/photo-1450175804616-7899a101ce48?auto=format&fit=crop&q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800',
         tags: ['Authority', 'Legal Funnels']
     }
 ];
@@ -181,42 +181,42 @@ export const CLIENT_SECTORS = [
 export const ACHIEVEMENTS = [
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.24 (1).jpeg',
-        label: 'GOAL MET • #01',
-        title: 'Innovation in SaaS Development'
+        label: 'CERTIFICATION • #01',
+        title: 'Global Engineering Standards'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.24.jpeg',
         label: 'GOAL MET • #02',
-        title: 'Recognized Excellence & Engineering Mastery'
+        title: 'Industry Leadership Excellence'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.25 (1).jpeg',
-        label: 'GOAL MET • #03',
-        title: 'Digital Transformation Achievement'
+        label: 'CERTIFICATION • #03',
+        title: 'Technical Implementation Mastery'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.25.jpeg',
-        label: 'CORE METRIC • #04',
-        title: 'Best IT Service Provider Excellence'
+        label: 'MILESTONE • #04',
+        title: 'Digital Transformation Success'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.26 (1).jpeg',
-        label: 'GOAL MET • #05',
-        title: 'Client Satisfaction Excellence Award'
+        label: 'CERTIFICATION • #05',
+        title: 'Verified Quality Assurance'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.26.jpeg',
         label: 'GOAL MET • #06',
-        title: 'Business Continuity Strategy'
+        title: 'Business Innovation Achievement'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.27.jpeg',
-        label: 'MILESTONE • #07',
-        title: 'Technical Implementation Mastery'
+        label: 'CERTIFICATION • #07',
+        title: 'Strategic Growth Performance'
     },
     {
         image: '/images/portfolio/achievements/WhatsApp Image 2026-03-30 at 12.27.28.jpeg',
-        label: 'GOAL MET • #08',
-        title: 'Strategic Partnership Excellence'
+        label: 'CORE METRIC • #08',
+        title: 'Excellence in Service Delivery'
     }
 ];

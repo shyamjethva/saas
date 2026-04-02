@@ -25,7 +25,7 @@ const app = express();
 ======================= */
 app.use(helmet());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -38,6 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 ======================= */
 app.use('/api/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/applications', contactRoutes);
 app.use('/api/clients', clientRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/client-portal', clientPortalRoutes);

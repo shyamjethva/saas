@@ -136,7 +136,7 @@ const ContactPage = () => {
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl -mr-32 -mt-32"></div>
               <div className="relative z-10">
-                <h2 className="text-3xl font-black mb-4 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Start Your Success Story</h2>
+                <h2 className="text-3xl font-black mb-4 tracking-tight"> Start Your Success Story</h2>
                 <p className="text-slate-600 mb-8 font-medium">
                   Expert-led strategies for your business growth.
                 </p>
@@ -257,9 +257,9 @@ const ContactPage = () => {
                 className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl text-lg shadow-2xl shadow-blue-500/25 flex items-center justify-center gap-3 transition-all disabled:opacity-50"
               >
                 {isSubmitting ? (
-                  <><span className="material-symbols-outlined animate-spin">sync</span>Processing...</>
+                  <><span className="material-symbols-outlined animate-spin flex-shrink-0">sync</span>Processing...</>
                 ) : (
-                  <><span className="material-symbols-outlined">send</span>Schedule Consultation</>
+                  <><span className="material-symbols-outlined flex-shrink-0">send</span>Schedule Consultation</>
                 )}
               </motion.button>
             </form>

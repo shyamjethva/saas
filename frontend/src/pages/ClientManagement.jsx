@@ -22,7 +22,7 @@ const ClientManagement = () => {
     try {
       const response = await clientAPI.getAllClients();
       const clientData = response.data || [];
-      
+
       // Transform data to match component structure
       const transformedClients = clientData.map(client => ({
         id: client._id || client.id,
@@ -37,7 +37,7 @@ const ClientManagement = () => {
         industry: client.industry || 'Technology',
         healthScore: client.healthScore || 80
       }));
-      
+
       setClients(transformedClients);
     } catch (error) {
       console.error('Error fetching clients:', error);
@@ -122,104 +122,134 @@ const ClientManagement = () => {
   });
 
   return (
-    <div className="pt-24 pb-12 px-6">
-      {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
-        <div className="flex justify-between items-start mb-4">
-          <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Client Management</h1>
-            <p className="text-slate-400">CRM for client relationships and lead management</p>
-            {loading && (
-              <div className="flex items-center gap-2 mt-2 text-sm text-blue-400">
-                <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
-                Loading clients from MongoDB...
-              </div>
-            )}
-          </div>
-          <div className="flex gap-3">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={fetchClients}
-              disabled={loading}
-              className="px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 rounded-lg border border-blue-500/30 transition-all flex items-center gap-2 disabled:opacity-50"
-            >
-              <span className="material-symbols-outlined text-lg">refresh</span>
-              {loading ? 'Loading...' : 'Refresh'}
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                // Add new client logic would go here
-                alert('Add new client functionality will be implemented');
-              }}
-              className="px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg border border-green-500/30 transition-all flex items-center gap-2"
-            >
-              <span className="material-symbols-outlined text-lg">add</span>
-              Add Client
-            </motion.button>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Tabs */}
-      <div className="flex gap-2 mb-8">
-        {[
-          { id: 'clients', label: 'Clients', icon: 'business' },
-          { id: 'leads', label: 'Leads Pipeline', icon: 'trending_up' },
-          { id: 'segments', label: 'Segments', icon: 'category' }
-        ].map(tab => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
-              activeTab === tab.id
-                ? 'bg-primary text-white'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
-            }`}
+    <div className="min-h-screen premium-bg pt-20">
+      {/* Header Section */}
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="material-symbols-outlined">{tab.icon}</span>
-            {tab.label}
-          </button>
-        ))}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
+                  <span className="material-symbols-outlined text-blue-600 text-sm font-black">groups</span>
+                  <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">CLIENT RELATIONS</span>
+                </div>
+
+                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                  Strategic Client
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+                    Portfolio Management
+                  </span>
+                </h1>
+
+                <p className="text-xl text-slate-500 max-w-3xl leading-relaxed font-medium">
+                  Comprehensive CRM for maintaining high-value client relationships and monitoring lead conversion pipelines.
+                </p>
+
+                {loading && (
+                  <div className="flex items-center gap-3 mt-8 px-5 py-3 bg-blue-50 rounded-2xl border border-blue-100 w-fit">
+                    <div className="w-5 h-5 border-[3px] border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-blue-600 text-[10px] font-black uppercase tracking-widest">Synchronizing Enterprise Data...</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-wrap gap-4 h-fit">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={fetchClients}
+                  disabled={loading}
+                  className="px-8 py-4 bg-white text-slate-900 rounded-2xl border border-slate-200 font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 shadow-xl hover:border-slate-900 disabled:opacity-50"
+                >
+                  <span className="material-symbols-outlined text-sm font-black">refresh</span>
+                  Sync Data
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 shadow-2xl shadow-blue-500/25 hover:bg-blue-700"
+                >
+                  <span className="material-symbols-outlined text-sm font-black">person_add</span>
+                  Register Client
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="px-6 py-8">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-4">
+          {[
+            { id: 'clients', label: 'Client Directory', icon: 'business' },
+            { id: 'leads', label: 'Opportunity Pipeline', icon: 'trending_up' },
+            { id: 'segments', label: 'Market Segments', icon: 'category' }
+          ].map(tab => (
+            <motion.button
+              key={tab.id}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 relative ${activeTab === tab.id
+                ? 'bg-slate-900 text-white shadow-2xl'
+                : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-800'
+                }`}
+            >
+              <span className="material-symbols-outlined text-sm font-black">{tab.icon}</span>
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="client-tab-underline"
+                  className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-blue-600 rounded-full"
+                />
+              )}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        {activeTab === 'clients' ? (
-          <>
-            <StatCard title="Total Clients" value={getClientStats().total} icon="groups" color="blue" />
-            <StatCard title="Active Clients" value={getClientStats().active} icon="check_circle" color="green" />
-            <StatCard title="Prospects" value={getClientStats().prospects} icon="hourglass_empty" color="yellow" />
-            <StatCard title="Total Revenue" value={`₹${getClientStats().totalRevenue.toLocaleString()}`} icon="payments" color="purple" />
-          </>
-        ) : (
-          <>
-            <StatCard title="Total Leads" value={getLeadStats().total} icon="trending_up" color="blue" />
-            <StatCard title="Qualified Leads" value={getLeadStats().qualified} icon="verified" color="green" />
-            <StatCard title="Avg Score" value={`${getLeadStats().avgScore}%`} icon="auto_graph" color="yellow" />
-            <StatCard title="Conversion Rate" value="68%" icon="percent" color="purple" />
-          </>
-        )}
+      <div className="px-6 py-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activeTab === 'clients' ? (
+            <>
+              <StatCard title="Total Registered" value={getClientStats().total} icon="groups" color="blue" />
+              <StatCard title="Active Contracts" value={getClientStats().active} icon="verified" color="indigo" />
+              <StatCard title="Strategic Prospects" value={getClientStats().prospects} icon="radar" color="purple" />
+              <StatCard title="Lifetime Revenue" value={`₹${(getClientStats().totalRevenue / 100000).toFixed(1)}M`} icon="payments" color="blue" />
+            </>
+          ) : (
+            <>
+              <StatCard title="Total Opportunities" value={getLeadStats().total} icon="trending_up" color="blue" />
+              <StatCard title="Qualified Leads" value={getLeadStats().qualified} icon="check_circle" color="indigo" />
+              <StatCard title="Average Intent" value={`${getLeadStats().avgScore}%`} icon="auto_graph" color="purple" />
+              <StatCard title="Conversion Rate" value="68%" icon="percent" color="blue" />
+            </>
+          )}
+        </div>
       </div>
 
-      {/* Main Content */}
-      {activeTab === 'clients' && (
-        <ClientList clients={clients} setClients={setClients} />
-      )}
+      {/* Main Content Area */}
+      <div className="px-6 py-12 pb-32">
+        <div className="max-w-7xl mx-auto">
+          {activeTab === 'clients' && (
+            <ClientList clients={clients} setClients={setClients} />
+          )}
 
-      {activeTab === 'leads' && (
-        <LeadPipeline leads={leads} setLeads={setLeads} leadStages={leadStages} />
-      )}
+          {activeTab === 'leads' && (
+            <LeadPipeline leads={leads} setLeads={setLeads} leadStages={leadStages} />
+          )}
 
-      {activeTab === 'segments' && (
-        <ClientSegments />
-      )}
+          {activeTab === 'segments' && (
+            <ClientSegments />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
@@ -227,16 +257,17 @@ const ClientManagement = () => {
 const StatCard = ({ title, value, icon, color }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10"
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className="bg-white rounded-[2.5rem] p-8 border border-slate-200 shadow-xl hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-all group"
   >
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-slate-400 text-sm">{title}</p>
-        <p className={`text-3xl font-bold mt-2 text-${color}-400`}>{value}</p>
+        <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{title}</p>
+        <p className="text-4xl font-black text-slate-900 tracking-tight">{value}</p>
       </div>
-      <div className={`p-3 rounded-xl bg-${color}-500/20`}>
-        <span className={`material-symbols-outlined text-${color}-400 text-2xl`}>{icon}</span>
+      <div className={`w-14 h-14 rounded-2xl bg-${color}-50 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+        <span className={`material-symbols-outlined text-${color}-600 text-2xl font-black`}>{icon}</span>
       </div>
     </div>
   </motion.div>
@@ -244,70 +275,74 @@ const StatCard = ({ title, value, icon, color }) => (
 
 const ClientList = ({ clients, setClients }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    className="bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 overflow-hidden"
+    className="bg-white rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden"
   >
-    <div className="p-6 border-b border-white/10 flex justify-between items-center">
-      <h2 className="text-xl font-bold text-white">Client Directory</h2>
-      <button className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 rounded-lg flex items-center gap-2">
-        <span className="material-symbols-outlined">add</span>
-        Add Client
-      </button>
+    <div className="p-10 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+      <h2 className="text-3xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black">Enterprise Client Registry</h2>
     </div>
-    
+
     <div className="overflow-x-auto">
       <table className="w-full">
-        <thead className="bg-white/5">
+        <thead className="bg-slate-900">
           <tr>
-            <th className="text-left p-4 text-slate-300 font-semibold">Company</th>
-            <th className="text-left p-4 text-slate-300 font-semibold">Contact</th>
-            <th className="text-left p-4 text-slate-300 font-semibold">Status</th>
-            <th className="text-left p-4 text-slate-300 font-semibold">Projects</th>
-            <th className="text-left p-4 text-slate-300 font-semibold">Revenue</th>
-            <th className="text-left p-4 text-slate-300 font-semibold">Last Contact</th>
-            <th className="text-left p-4 text-slate-300 font-semibold">Actions</th>
+            <th className="text-left px-10 py-6 text-white text-[10px] font-black uppercase tracking-widest">Enterprise Profile</th>
+            <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Engagement Status</th>
+            <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Active Scale</th>
+            <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Financial Yield</th>
+            <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Last Synced</th>
+            <th className="text-right px-10 py-6 text-white text-[10px] font-black uppercase tracking-widest">Operations</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-slate-100">
           {clients.map((client, index) => (
             <motion.tr
               key={client.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="border-b border-white/5 hover:bg-white/5 transition-colors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: index * 0.05 }}
+              className="hover:bg-slate-50 transition-colors group"
             >
-              <td className="p-4">
-                <div>
-                  <p className="text-white font-medium">{client.company}</p>
-                  <p className="text-slate-400 text-sm">{client.email}</p>
+              <td className="px-10 py-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 font-black">
+                    {client.company.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-slate-900 font-black tracking-tight">{client.company}</p>
+                    <p className="text-slate-400 text-[10px] font-black uppercase m-0 p-0 leading-none mt-1">{client.contactPerson}</p>
+                  </div>
                 </div>
               </td>
-              <td className="p-4 text-slate-300">{client.contactPerson}</td>
-              <td className="p-4">
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  client.status === 'Active' 
-                    ? 'bg-green-500/20 text-green-400' 
-                    : 'bg-yellow-500/20 text-yellow-400'
-                }`}>
+              <td className="px-8 py-8">
+                <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest ${client.status === 'Active'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                    : 'bg-slate-100 text-slate-400'
+                  }`}>
                   {client.status}
                 </span>
               </td>
-              <td className="p-4 text-slate-300">{client.projects}</td>
-              <td className="p-4 text-slate-300">₹{client.revenue.toLocaleString()}</td>
-              <td className="p-4 text-slate-300">{client.lastContact}</td>
-              <td className="p-4">
-                <div className="flex gap-2">
-                  <button className="p-2 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 text-blue-400">
-                    <span className="material-symbols-outlined">visibility</span>
-                  </button>
-                  <button className="p-2 rounded-lg bg-green-500/20 hover:bg-green-500/30 text-green-400">
-                    <span className="material-symbols-outlined">edit</span>
-                  </button>
-                  <button className="p-2 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-400">
-                    <span className="material-symbols-outlined">chat</span>
-                  </button>
+              <td className="px-8 py-8">
+                <div className="flex flex-col">
+                  <span className="text-slate-900 font-black text-sm">{client.projects} active</span>
+                  <div className="w-24 h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                    <div className="bg-blue-600 h-full rounded-full" style={{ width: `${(client.projects / 5) * 100}%` }}></div>
+                  </div>
+                </div>
+              </td>
+              <td className="px-8 py-8">
+                <span className="text-slate-900 font-black">₹{client.revenue.toLocaleString()}</span>
+              </td>
+              <td className="px-8 py-8 text-slate-400 text-xs font-medium">{client.lastContact}</td>
+              <td className="px-10 py-8 text-right">
+                <div className="flex gap-2 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                  <motion.button whileHover={{ scale: 1.1 }} className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-900 shadow-sm hover:border-slate-900">
+                    <span className="material-symbols-outlined text-sm font-black">visibility</span>
+                  </motion.button>
+                  <motion.button whileHover={{ scale: 1.1 }} className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-900 shadow-sm hover:border-slate-900">
+                    <span className="material-symbols-outlined text-sm font-black">edit</span>
+                  </motion.button>
                 </div>
               </td>
             </motion.tr>
@@ -319,45 +354,42 @@ const ClientList = ({ clients, setClients }) => (
 );
 
 const LeadPipeline = ({ leads, setLeads, leadStages }) => (
-  <div className="space-y-6">
-    {/* Kanban Board */}
-    <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+  <div className="space-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
       {leadStages.map(stage => {
         const stageLeads = leads.filter(lead => lead.stage === stage);
         return (
           <motion.div
             key={stage}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white/5 backdrop-blur-lg rounded-xl p-4 border border-white/10"
+            className="bg-white rounded-[2rem] p-6 border border-slate-200 shadow-xl min-h-[400px]"
           >
-            <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">drag_indicator</span>
-              {stage}
-              <span className="ml-auto bg-white/10 px-2 py-1 rounded-full text-xs">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-widest">{stage}</h3>
+              <span className="bg-slate-100 text-slate-900 px-3 py-1 rounded-full text-[9px] font-black">
                 {stageLeads.length}
               </span>
-            </h3>
-            
-            <div className="space-y-3">
+            </div>
+
+            <div className="space-y-4">
               {stageLeads.map(lead => (
                 <motion.div
                   key={lead.id}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/10 rounded-lg p-3 cursor-move"
+                  whileHover={{ y: -4 }}
+                  className="bg-slate-50 rounded-[1.25rem] p-5 border border-slate-100 hover:border-slate-900 transition-all cursor-pointer group"
                 >
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-white font-medium text-sm">{lead.company}</h4>
-                    <span className={`text-xs px-2 py-1 rounded ${
-                      lead.score >= 80 ? 'bg-green-500/20 text-green-400' :
-                      lead.score >= 60 ? 'bg-yellow-500/20 text-yellow-400' :
-                      'bg-red-500/20 text-red-400'
-                    }`}>
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="text-slate-900 font-black text-xs leading-none">{lead.company}</h4>
+                    <span className={`text-[8px] font-black px-2 py-1 rounded-full ${lead.score >= 80 ? 'bg-blue-600 text-white' :
+                        lead.score >= 60 ? 'bg-indigo-600 text-white' :
+                          'bg-slate-400 text-white'
+                      }`}>
                       {lead.score}%
                     </span>
                   </div>
-                  <p className="text-slate-300 text-xs mb-2">{lead.contact}</p>
-                  <p className="text-primary text-xs font-medium">₹{lead.value.toLocaleString()}</p>
+                  <p className="text-slate-400 text-[10px] font-black uppercase mb-4">{lead.contact}</p>
+                  <p className="text-blue-600 text-xs font-black">₹{lead.value.toLocaleString()}</p>
                 </motion.div>
               ))}
             </div>
@@ -370,25 +402,32 @@ const LeadPipeline = ({ leads, setLeads, leadStages }) => (
 
 const ClientSegments = () => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    className="grid grid-cols-1 md:grid-cols-3 gap-6"
+    className="grid grid-cols-1 md:grid-cols-3 gap-12"
   >
     {[
-      { name: 'Enterprise', count: 12, revenue: '₹2.4M', color: 'blue' },
-      { name: 'Mid-Market', count: 28, revenue: '₹1.1M', color: 'green' },
-      { name: 'SMB', count: 45, revenue: '₹420K', color: 'yellow' }
+      { name: 'Strategic Enterprise', count: 12, revenue: '₹2.4M', color: 'blue' },
+      { name: 'Emerging Market', count: 28, revenue: '₹1.1M', color: 'indigo' },
+      { name: 'Velocity Accounts', count: 45, revenue: '₹420K', color: 'purple' }
     ].map(segment => (
-      <div key={segment.name} className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-white">{segment.name}</h3>
-          <div className={`p-2 rounded-lg bg-${segment.color}-500/20`}>
-            <span className={`material-symbols-outlined text-${segment.color}-400`}>business</span>
+      <div key={segment.name} className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-blue-50 transition-colors"></div>
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-10">
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">{segment.name}</h3>
+            <div className={`w-14 h-14 rounded-2xl bg-${segment.color}-50 flex items-center justify-center text-${segment.color}-600`}>
+              <span className="material-symbols-outlined text-2xl font-black">hub</span>
+            </div>
           </div>
-        </div>
-        <div className="space-y-2">
-          <p className="text-slate-300"><span className="text-white font-medium">{segment.count}</span> clients</p>
-          <p className="text-slate-300"><span className="text-white font-medium">{segment.revenue}</span> revenue</p>
+          <div className="space-y-4">
+            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+              <span className="text-slate-900 text-lg leading-none">{segment.count}</span> Identified Partners
+            </p>
+            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+              <span className="text-slate-900 text-lg leading-none">{segment.revenue}</span> Asset Valuation
+            </p>
+          </div>
         </div>
       </div>
     ))}

@@ -2,6 +2,8 @@ const express = require('express');
 const Consultation = require('../models/Consultation');
 const { protect, authorize } = require('../middleware/auth');
 
+const { sendConsultationEmail, sendClientConfirmation } = require('../services/emailService');
+
 const router = express.Router();
 
 // Create new consultation
@@ -40,6 +42,15 @@ router.post('/', async (req, res) => {
 
     // Save to database
     const savedConsultation = await consultation.save();
+
+    // Send emails
+    try {
+      await sendConsultationEmail(req.body);
+      await sendClientConfirmation(email, name);
+      console.log('✅ Consultation emails sent successfully');
+    } catch (emailError) {
+      console.error('❌ Error sending consultation emails:', emailError);
+    }
 
     console.log('New consultation scheduled:', {
       id: savedConsultation._id,
@@ -82,7 +93,9 @@ router.post('/', async (req, res) => {
 
     res.status(500).json({
       success: false,
-      error: 'Internal server error. Please try again later.'
+      error: 'Internal server error. Please try again later.',
+      message: error.message,
+      ...(process.env.NODE_ENV === 'development' && { stack: error.stack })
     });
   }
 });

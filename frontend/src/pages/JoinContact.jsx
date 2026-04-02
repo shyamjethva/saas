@@ -151,9 +151,9 @@ const JoinContact = () => {
     tagline: 'Engineering Structured Digital Growth',
     description: 'We design intelligent digital ecosystems that help businesses scale faster and smarter through cutting-edge technology solutions.',
     founded: '2019',
-    employees: '50+',
-    clients: '200+',
-    locations: ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad'],
+    employees: '19',
+    clients: '65+',
+    locations: ['Rajkot'],
     services: [
       'Enterprise Software Development',
       'AI & Automation Solutions',
@@ -167,26 +167,27 @@ const JoinContact = () => {
   return (
     <div className="min-h-screen premium-bg pt-20">
       {/* Header Section */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-400">group_add</span>
-              <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">JOIN & CONTACT</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-blue-600 text-sm font-black">group_add</span>
+              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">JOIN & CONTACT</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 font-black tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
               Connect With
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 pb-2">
                 Error Infotech
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
+            <p className="text-lg text-slate-500 max-w-3xl leading-relaxed font-medium mx-auto">
               {companyInfo.description}
             </p>
           </motion.div>
@@ -194,40 +195,40 @@ const JoinContact = () => {
       </div>
 
       {/* Tab Navigation */}
-      <div className="px-6 py-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+      <div className="px-6 pt-8 pb-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => setActiveTab('contact')}
-              className={`px-8 py-4 rounded-full font-bold transition-all flex items-center gap-3 ${activeTab === 'contact'
-                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25'
-                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+              className={`px-10 py-5 rounded-2xl font-black transition-all flex items-center gap-3 text-sm tracking-widest uppercase ${activeTab === 'contact'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-2xl shadow-blue-500/25'
+                : 'bg-white border border-slate-200 text-slate-500 hover:border-blue-200 hover:text-blue-600 shadow-xl'
                 }`}
             >
-              <span className="material-symbols-outlined">mail</span>
+              <span className="material-symbols-outlined text-lg font-black">mail</span>
               Contact Us
             </motion.button>
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => setActiveTab('career')}
-              className={`px-8 py-4 rounded-full font-bold transition-all flex items-center gap-3 ${activeTab === 'career'
-                ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/25'
-                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+              className={`px-10 py-5 rounded-2xl font-black transition-all flex items-center gap-3 text-sm tracking-widest uppercase ${activeTab === 'career'
+                ? 'bg-gradient-to-r from-slate-900 to-slate-800 text-white shadow-2xl shadow-slate-900/10'
+                : 'bg-white border border-slate-200 text-slate-500 hover:border-slate-300 hover:text-slate-900 shadow-xl'
                 }`}
             >
-              <span className="material-symbols-outlined">work</span>
+              <span className="material-symbols-outlined text-lg font-black">work</span>
               Join Our Team
             </motion.button>
           </div>
         </div>
       </div>
 
-      <div className="px-6 py-8">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+      <div className="px-6 pb-24">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
           {/* Left Side - Forms */}
           <div>
             {activeTab === 'contact' ? (
@@ -235,9 +236,9 @@ const JoinContact = () => {
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="glass-card rounded-2xl p-8 border border-slate-100 shadow-xl bg-white/90 backdrop-blur-md"
+                className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
               >
-                <h2 className="text-3xl font-black text-slate-900 mb-6">Send Us a Message</h2>
+                <h2 className="text-4xl font-black text-slate-900 mb-8 tracking-tighter">Send Us a Message</h2>
                 <form onSubmit={handleContactSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -277,25 +278,25 @@ const JoinContact = () => {
                       <p className="text-slate-400 text-[10px] mt-1 font-bold">Format: +919876543210 (no spaces)</p>
                     </div>
                     <div>
-                      <label className="block text-slate-600 font-bold text-sm mb-2">Company</label>
+                      <label className="block text-slate-400 font-black text-[10px] uppercase tracking-widest mb-2 pl-1">Company</label>
                       <input
                         type="text"
                         value={contactForm.company}
                         onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none transition-all"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:bg-white focus:outline-none transition-all font-medium"
                         placeholder="Your company name"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 mb-2">Service Interest</label>
+                    <label className="block text-slate-400 font-black text-[10px] uppercase tracking-widest mb-2 pl-1">Service Interest</label>
                     <select
                       value={contactForm.service}
                       onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:bg-white focus:outline-none transition-all"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 focus:border-blue-600 focus:bg-white focus:outline-none transition-all font-medium cursor-pointer"
                     >
-                      <option value="">Select a service</option>
+                      <option value="">Select a service focus</option>
                       {services.map(service => (
                         <option key={service} value={service} className="bg-white text-slate-900">{service}</option>
                       ))}
@@ -303,14 +304,14 @@ const JoinContact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-slate-600 font-bold text-sm mb-2">Message *</label>
+                    <label className="block text-slate-400 font-black text-[10px] uppercase tracking-widest mb-2 pl-1">Message *</label>
                     <textarea
                       required
                       rows="5"
                       value={contactForm.message}
                       onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none transition-all resize-none"
-                      placeholder="Tell us about your project or inquiry..."
+                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:bg-white focus:outline-none transition-all resize-none font-medium"
+                      placeholder="Tell us about your objectives..."
                     ></textarea>
                   </div>
 
@@ -325,19 +326,19 @@ const JoinContact = () => {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 ${isSubmitting
-                      ? 'bg-gray-600 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white'
+                    className={`w-full font-black py-5 rounded-2xl transition-all shadow-2xl flex items-center justify-center gap-3 text-lg ${isSubmitting
+                      ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-blue-500/25'
                       }`}
                   >
                     {isSubmitting ? (
                       <>
-                        <span className="material-symbols-outlined animate-spin">sync</span>
-                        Sending Message...
+                        <span className="material-symbols-outlined animate-spin font-black flex-shrink-0">sync</span>
+                        Processing...
                       </>
                     ) : (
                       <>
-                        <span className="material-symbols-outlined">send</span>
+                        <span className="material-symbols-outlined font-black flex-shrink-0">send</span>
                         Send Message
                       </>
                     )}
@@ -349,9 +350,9 @@ const JoinContact = () => {
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="glass-card rounded-2xl p-8 border border-slate-100 shadow-xl bg-white/90 backdrop-blur-md"
+                className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
               >
-                <h2 className="text-3xl font-black text-slate-900 mb-6">Join Our Team</h2>
+                <h2 className="text-4xl font-black text-slate-900 mb-8 tracking-tighter">Join Our Team</h2>
                 <form onSubmit={handleCareerSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -464,12 +465,12 @@ const JoinContact = () => {
                   >
                     {isSubmitting ? (
                       <>
-                        <span className="material-symbols-outlined animate-spin">sync</span>
+                        <span className="material-symbols-outlined animate-spin flex-shrink-0">sync</span>
                         Submitting Application...
                       </>
                     ) : (
                       <>
-                        <span className="material-symbols-outlined">work</span>
+                        <span className="material-symbols-outlined flex-shrink-0">work</span>
                         Submit Application
                       </>
                     )}
@@ -483,9 +484,9 @@ const JoinContact = () => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="glass-card rounded-2xl p-8 border border-slate-100 shadow-xl bg-white/90 backdrop-blur-md"
+            className="bg-slate-50 rounded-[3rem] p-10 border border-slate-200 shadow-xl"
           >
-            <h2 className="text-3xl font-black text-slate-900 mb-6">About Error Infotech</h2>
+            <h2 className="text-4xl font-black text-slate-900 mb-8 tracking-tighter">About Error Infotech</h2>
 
             <div className="space-y-6">
               {/* Company Overview */}
@@ -493,21 +494,21 @@ const JoinContact = () => {
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Company Overview</h3>
                 <p className="text-slate-600 mb-4">{companyInfo.description}</p>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-6">
                   {[
-                    { value: companyInfo.founded, label: 'Founded', color: 'from-blue-600 to-cyan-600' },
-                    { value: companyInfo.employees, label: 'Employees', color: 'from-emerald-600 to-teal-600' },
-                    { value: companyInfo.clients, label: 'Clients', color: 'from-purple-600 to-pink-600' },
-                    { value: companyInfo.locations.length, label: 'Locations', color: 'from-orange-600 to-red-600' }
+                    { value: companyInfo.founded, label: 'Founded', color: 'from-blue-600 to-indigo-600' },
+                    { value: companyInfo.employees, label: 'Employees', color: 'from-slate-900 to-slate-700' },
+                    { value: companyInfo.clients, label: 'Clients', color: 'from-blue-600 to-slate-900' },
+                    { value: companyInfo.locations.length, label: 'Global Presence', color: 'from-indigo-600 to-blue-500' }
                   ].map((stat, i) => (
                     <motion.div
                       key={i}
-                      whileHover={{ y: -5, borderColor: 'rgba(37,99,235,0.4)' }}
-                      className="text-center p-4 bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-500 relative overflow-hidden group"
+                      whileHover={{ y: -5, borderColor: 'rgba(37,99,235,0.2)' }}
+                      className="text-center p-6 bg-white rounded-2xl border border-slate-200 shadow-sm transition-all duration-500 relative overflow-hidden group"
                     >
                       <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                      <div className={`text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>{stat.value}</div>
-                      <div className="text-slate-500 text-xs font-bold uppercase tracking-wider">{stat.label}</div>
+                      <div className={`text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r ${stat.color} mb-1`}>{stat.value}</div>
+                      <div className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">{stat.label}</div>
                     </motion.div>
                   ))}
                 </div>
@@ -539,20 +540,35 @@ const JoinContact = () => {
               </div>
 
               {/* Contact Info */}
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Contact Information</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-blue-600">email</span>
-                    <span className="text-slate-600 font-medium">info@errorinfotech.com</span>
+              <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg">
+                <h3 className="text-xl font-black text-slate-900 mb-6 uppercase tracking-tighter">Connect Directly</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 border border-blue-100">
+                      <span className="material-symbols-outlined text-xl font-black">email</span>
+                    </div>
+                    <div>
+                      <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest leading-none mb-1">Email us at</div>
+                      <span className="text-slate-900 font-bold text-lg">errorinfotech404@gmail.com</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-blue-600">phone</span>
-                    <span className="text-slate-600 font-medium">+91 98765 43210</span>
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100">
+                      <span className="material-symbols-outlined text-xl font-black">phone</span>
+                    </div>
+                    <div>
+                      <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest leading-none mb-1">Call our office</div>
+                      <span className="text-slate-900 font-bold text-lg">+91 81287 04400</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-blue-600">location_on</span>
-                    <span className="text-slate-600 font-medium">Mumbai, India (HQ)</span>
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-900 border border-slate-200">
+                      <span className="material-symbols-outlined text-xl font-black">location_on</span>
+                    </div>
+                    <div>
+                      <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest leading-none mb-1">Visit our HQ</div>
+                      <span className="text-slate-900 font-bold text-lg">Rajkot, India</span>
+                    </div>
                   </div>
                 </div>
               </div>

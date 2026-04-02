@@ -817,7 +817,7 @@ const Careers = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="grid lg:grid-cols-6 gap-8 relative">
+            <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 relative">
               {hiringProcess.map((process, index) => (
                 <motion.div
                   key={index}

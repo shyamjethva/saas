@@ -223,12 +223,12 @@ const ConsultationPage = () => {
                       onClick={() => setFormData(prev => ({ ...prev, consultationType: type.value }))}
                     >
                       <div className="flex items-start gap-4">
-                        <div className={`mt-1.5 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${formData.consultationType === type.value
+                        <div className={`mt-1.5 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0 ${formData.consultationType === type.value
                           ? 'border-green-600'
                           : 'border-slate-300'
                           }`}>
                           {formData.consultationType === type.value && (
-                            <div className="w-2.5 h-2.5 rounded-full bg-green-600"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-green-600 flex-shrink-0"></div>
                           )}
                         </div>
                         <div>
@@ -477,12 +477,12 @@ const ConsultationPage = () => {
                 >
                   {isSubmitting ? (
                     <>
-                      <span className="material-symbols-outlined animate-spin">progress_activity</span>
+                      <span className="material-symbols-outlined animate-spin flex-shrink-0">progress_activity</span>
                       Processing...
                     </>
                   ) : (
                     <>
-                      <span className="material-symbols-outlined">send</span>
+                      <span className="material-symbols-outlined flex-shrink-0">send</span>
                       Schedule Free Consultation
                     </>
                   )}

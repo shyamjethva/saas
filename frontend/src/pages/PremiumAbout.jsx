@@ -85,8 +85,8 @@ const About = () => {
   ];
 
   const stats = [
-    { value: '500+', label: 'Global Clients', color: 'from-blue-600 to-cyan-500' },
-    { value: '1000+', label: 'Projects Delivered', color: 'from-purple-600 to-pink-600' },
+    { value: '65+', label: 'Global Clients', color: 'from-blue-600 to-cyan-500' },
+    { value: '15+', label: 'Projects Delivered', color: 'from-purple-600 to-pink-600' },
     { value: '40+', label: 'Countries Served', color: 'from-emerald-600 to-teal-600' },
     { value: '98%', label: 'Client Retention', color: 'from-orange-600 to-red-600' }
   ];
@@ -153,7 +153,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-black text-slate-800 mb-10 tracking-tight uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h2 className="text-4xl md:text-6xl font-black text-slate-800 mb-10 tracking-tight uppercase">
                 Our Vision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-400">for the Future</span>
               </h2>
               <div className="space-y-8 text-lg text-slate-600 leading-relaxed font-medium">
@@ -237,7 +237,7 @@ const About = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-32 h-32 rounded-full object-contain bg-slate-50 p-2 border-4 border-slate-100 shadow-lg transition-transform duration-500 group-hover:rotate-6"
+                    className="w-32 h-32 rounded-full object-cover border-4 border-slate-100 shadow-lg transition-transform duration-500 group-hover:rotate-6"
                   />
                 </div>
                 <h3 className="text-2xl font-black text-slate-800 mb-2">{member.name}</h3>
@@ -258,10 +258,15 @@ const About = () => {
             <motion.div
               whileHover={{ y: -10 }}
               onClick={() => setShowFullTeam(true)}
-              className="bg-white rounded-[2.5rem] p-8 shadow-2xl text-center flex flex-col items-center justify-center cursor-pointer group transition-all duration-500 border border-slate-200"
+              className="bg-white rounded-[2.5rem] p-8 shadow-2xl text-center flex flex-col items-center justify-center cursor-pointer group transition-all duration-500 border border-slate-200 hover:border-blue-500/50 relative overflow-hidden"
             >
-              <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-white text-4xl">groups</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none"></div>
+              <div className="w-24 h-24 rounded-full mb-6 group-hover:scale-110 transition-transform relative z-10 overflow-hidden border-2 border-slate-100 shadow-lg">
+                <img
+                  src="/images/team/FullTeam.jpg"
+                  alt="Full Team"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">Our Full Team</h3>
               <p className="text-slate-600 text-sm font-bold mb-8">Meet all our talented engineers and specialists</p>
@@ -344,7 +349,7 @@ const About = () => {
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 {fullTeam.map((m, i) => (
                   <div key={i} className="p-6 bg-slate-50 border border-slate-100 rounded-3xl text-center">
-                    <img src={m.image} alt={m.name} className="w-20 h-20 rounded-full mx-auto mb-4 bg-white p-1 border-2 border-slate-200" />
+                    <img src={m.image} alt={m.name} className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-slate-200 shadow-sm" />
                     <h4 className="font-black text-slate-800 mb-1">{m.name}</h4>
                     <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[8px]">{m.role}</p>
                   </div>

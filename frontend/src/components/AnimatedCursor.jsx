@@ -5,8 +5,20 @@ const AnimatedCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isMoving, setIsMoving] = useState(false);
   const [cursorVariant, setCursorVariant] = useState('default');
+  const [isMobile, setIsMobile] = useState(false);
   const timeoutRef = useRef(null);
   const cursorRef = useRef(null);
+
+  // Check for mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      setIsMobile(window.innerWidth < 1024 || isTouchDevice);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Mouse movement tracking
   useEffect(() => {
@@ -32,7 +44,6 @@ const AnimatedCursor = () => {
       setIsMoving(false);
     };
 
-    // Interactive element detection
     const handleMouseOver = (e) => {
       const target = e.target;
       if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.classList.contains('interactive')) {
@@ -44,9 +55,11 @@ const AnimatedCursor = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('mouseover', handleMouseOver);
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseleave', handleMouseLeave);
+      window.addEventListener('mouseover', handleMouseOver);
+    }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -56,7 +69,7 @@ const AnimatedCursor = () => {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   // Cursor variants
   const cursorVariants = {
@@ -98,6 +111,8 @@ const AnimatedCursor = () => {
     }
   }, [position, isMoving]);
 
+  if (isMobile) return null;
+
   return (
     <>
       {/* Cursor Trail */}
@@ -115,8 +130,8 @@ const AnimatedCursor = () => {
             zIndex: 40 + index
           }}
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: 1, 
+          animate={{
+            scale: 1,
             opacity: 0.3 - index * 0.03,
             x: [0, (Math.random() - 0.5) * 20],
             y: [0, (Math.random() - 0.5) * 20]
@@ -146,7 +161,7 @@ const AnimatedCursor = () => {
       >
         {/* Inner glow */}
         <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
-        
+
         {/* Animated ring */}
         {isMoving && (
           <motion.div
@@ -165,7 +180,7 @@ const AnimatedCursor = () => {
       </motion.div>
 
       {/* Magnetic Effect Area */}
-      <div 
+      <div
         className="fixed pointer-events-none z-45"
         style={{
           left: position.x - 50,

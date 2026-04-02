@@ -31,8 +31,9 @@ export default {
         "error": "#ef4444"
       },
       fontFamily: {
-        "display": ["Outfit", "sans-serif"],
+        "display": ["Sora", "sans-serif"],
         "body": ["Inter", "sans-serif"],
+        "sora": ["Sora", "sans-serif"],
         "outfit": ["Outfit", "sans-serif"],
         "inter": ["Inter", "sans-serif"]
       },

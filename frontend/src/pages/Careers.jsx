@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import api from '../services/api';
 
 const Careers = () => {
   const [selectedPosition, setSelectedPosition] = useState(null);
@@ -121,12 +122,13 @@ const Careers = () => {
       formData.append('positionId', selectedPosition.id);
       formData.append('positionTitle', selectedPosition.title);
 
-      const response = await fetch('http://localhost:5000/api/applications', {
-        method: 'POST',
-        body: formData
+      const response = await api.post('/applications', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
 
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         alert('Application submitted successfully! Our HR team will review your application and contact you soon.');
         closeApplicationModal();
       } else {

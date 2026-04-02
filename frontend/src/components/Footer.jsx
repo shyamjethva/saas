@@ -147,7 +147,7 @@ const Footer = () => {
                       {cat.icon}
                     </span>
                   </div>
-                  <span className="text-[12px] font-semibold">{cat.title}</span>
+                  <span className="text-[12px] font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 uppercase tracking-tight">{cat.title}</span>
                 </div>
                 <span
                   className={`text-[14px] transition-all duration-300 ${activeTab === cat.id ? 'text-[#00d4ff] rotate-90' : 'text-[#334155]'}`}
@@ -197,7 +197,7 @@ const Footer = () => {
 
         {/* SECTION 3 — BOTTOM COPYRIGHT BAR */}
         <div className="flex flex-col md:flex-row justify-between items-center py-3 px-[2px] mt-2 border-t border-white/[0.05]">
-          <p className="text-[10px] text-[#1e293b] uppercase">
+          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">
             © 2024 ERROR INFOTECH PVT. LTD. ALL RIGHTS RESERVED.
           </p>
 

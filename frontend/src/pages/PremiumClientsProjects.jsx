@@ -470,7 +470,7 @@ const ClientsProjects = () => {
           {/* Trust Badges - More Compact */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { label: 'Partners', value: '500+', icon: 'handshake', bgColor: 'bg-blue-500/20', textColor: 'text-blue-400' },
+              { label: 'Partners', value: '65+', icon: 'handshake', bgColor: 'bg-blue-500/20', textColor: 'text-blue-400' },
               { label: 'Retention', value: '98%', icon: 'verified_user', bgColor: 'bg-emerald-500/20', textColor: 'text-emerald-400' },
               { label: 'Live Support', value: '24/7', icon: 'public', bgColor: 'bg-purple-500/20', textColor: 'text-purple-400' }
             ].map((stat, i) => (

@@ -32,174 +32,163 @@ const TermsManagement = () => {
     const interval = setInterval(fetchTerms, 30000);
     return () => clearInterval(interval);
   }, []);
+
   const contractFeatures = [
     {
-      title: 'Pre-Built Contract Templates',
-      description: 'Ready-to-use templates for various business agreements',
+      title: 'Blueprint Templates',
+      description: 'Institutional-grade contract frameworks for rapid deployment.',
       icon: 'description',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-600 to-indigo-600'
     },
     {
-      title: 'Digital Approval System',
-      description: 'Streamlined approval workflows with electronic signatures',
+      title: 'Digital Validation',
+      description: 'High-precision approval workflows with multi-entity verification.',
       icon: 'done_all',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-indigo-600 to-purple-600'
     },
     {
-      title: 'E-Signature Integration',
-      description: 'Secure electronic signature capabilities for legal documents',
+      title: 'Neural Signatures',
+      description: 'State-of-the-art electronic verification for legal finality.',
       icon: 'draw',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-600 to-pink-600'
     },
     {
-      title: 'Agreement Tracking Dashboard',
-      description: 'Centralized view of all contracts and their statuses',
-      icon: 'dashboard',
-      color: 'from-orange-500 to-red-500'
+      title: 'Agreement Matrix',
+      description: 'Centralized visualization of institutional legal infrastructure.',
+      icon: 'grid_view',
+      color: 'from-pink-600 to-rose-600'
     },
     {
-      title: 'Auto Renewal Reminders',
-      description: 'Automated notifications for contract renewals and expirations',
+      title: 'Maturity Alerts',
+      description: 'Autonomous notifications for contract lifecycle transitions.',
       icon: 'notifications_active',
-      color: 'from-teal-500 to-cyan-500'
+      color: 'from-rose-600 to-orange-600'
     },
     {
-      title: 'Version Control System',
-      description: 'Track changes and maintain document version history',
+      title: 'Version Lineage',
+      description: 'Complete immutable history of document architectural changes.',
       icon: 'history',
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      title: 'Legal Document Storage',
-      description: 'Secure cloud storage for all legal agreements and contracts',
-      icon: 'cloud_upload',
-      color: 'from-yellow-500 to-orange-500'
+      color: 'from-orange-600 to-amber-600'
     }
   ];
 
-  // Calculate contract types from terms data
   const contractTypes = [
     {
       name: 'Service Agreements',
       count: terms.filter(term => term.contractType === 'Service Agreement').length,
-      status: terms.some(term => term.contractType === 'Service Agreement') ? 'active' : 'inactive',
-      color: 'from-blue-500 to-cyan-500'
+      status: 'VERIFIED',
+      color: 'blue'
     },
     {
-      name: 'NDAs',
+      name: 'Non-Disclosure Protocols',
       count: terms.filter(term => term.contractType === 'NDA').length,
-      status: terms.some(term => term.contractType === 'NDA') ? 'pending' : 'inactive',
-      color: 'from-purple-500 to-pink-500'
+      status: 'ACTIVE',
+      color: 'indigo'
     },
     {
-      name: 'Employment Contracts',
+      name: 'Operational Contracts',
       count: terms.filter(term => term.contractType === 'Employment Contract').length,
-      status: terms.some(term => term.contractType === 'Employment Contract') ? 'completed' : 'inactive',
-      color: 'from-green-500 to-emerald-500'
+      status: 'VERIFIED',
+      color: 'purple'
     },
     {
-      name: 'Vendor Agreements',
-      count: terms.filter(term => term.contractType === 'Vendor Agreement').length,
-      status: terms.some(term => term.contractType === 'Vendor Agreement') ? 'draft' : 'inactive',
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      name: 'Partnership Deeds',
+      name: 'Entity Deeds',
       count: terms.filter(term => term.contractType === 'Partnership Deed').length,
-      status: terms.some(term => term.contractType === 'Partnership Deed') ? 'active' : 'inactive',
-      color: 'from-teal-500 to-cyan-500'
+      status: 'ACTIVE',
+      color: 'pink'
     },
     {
-      name: 'Client Contracts',
+      name: 'Client Infrastructure',
       count: terms.filter(term => term.contractType === 'Client Contract').length,
-      status: terms.some(term => term.contractType === 'Client Contract') ? 'active' : 'inactive',
-      color: 'from-indigo-500 to-purple-500'
+      status: 'ACTIVE',
+      color: 'rose'
     }
   ];
 
-  // Use actual recent activities from terms data
   const recentActivities = terms.slice(0, 4).map((term, index) => ({
-    action: `${term.contractType} - ${term.status}`,
-    client: term.parties.length > 0 ? term.parties[0].name : 'Unknown',
-    time: term.createdAt ? new Date(term.createdAt).toLocaleDateString() : 'Unknown',
-    status: term.status.toLowerCase()
+    action: `${term.contractType}`,
+    client: term.parties.length > 0 ? term.parties[0].name : 'External Entity',
+    time: term.createdAt ? new Date(term.createdAt).toLocaleDateString() : 'Active Cycle',
+    status: term.status.toUpperCase()
   }));
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-20 selection:bg-purple-500/10">
       {/* Header Section */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-purple-400">gavel</span>
-              <span className="text-purple-400 font-bold tracking-wider uppercase text-sm">TERMS MANAGEMENT</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-purple-50 border border-purple-100 mb-8 shadow-sm mx-auto">
+              <span className="material-symbols-outlined text-purple-600 text-sm font-black">gavel</span>
+              <span className="text-purple-600 font-black tracking-widest uppercase text-[10px]">LEGAL INFRASTRUCTURE GOVERNANCE</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 font-space-grotesk">
-              Contract & Agreement
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-red-600">
-                Management
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
+              Contractual
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 py-4">
+                & Legal Matrix
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-              Digitally manage all your business agreements with secure approval workflows.
+            <p className="text-lg text-slate-500 max-w-3xl leading-relaxed font-medium mx-auto mb-12">
+              Orchestrate your entire business legal framework with automated agreement lifecycles, high-precision validation protocols, and secure digital finality.
             </p>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 shadow-2xl hover:bg-black"
+            >
+              <span className="material-symbols-outlined text-sm font-black">add_circle</span>
+              Engineer Agreement
+            </motion.button>
           </motion.div>
         </div>
       </div>
 
       {/* Contract Dashboard */}
-      <div className="px-6 py-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+      <div className="px-6 pb-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-12 mb-20">
             {/* Contract Types */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-2 bg-white/80 rounded-2xl p-8 border border-slate-200 backdrop-blur-sm shadow-xl shadow-slate-200/50"
+              className="lg:col-span-2 bg-white rounded-[3.5rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group"
             >
-              <h2 className="text-2xl font-black text-slate-900 mb-6">Contract Categories</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-purple-50 rounded-full blur-[80px] -mr-24 -mt-24 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <h2 className="text-xl font-black text-slate-900 mb-12 tracking-widest uppercase text-xs italic">Agreement Categories</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {contractTypes.map((contract, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ y: -5 }}
-                    className={`bg-white/5 rounded-xl p-4 border border-white/10 transition-all duration-300 relative overflow-hidden group ${contract.color.includes('blue') ? 'hover:border-blue-500/50' :
-                        contract.color.includes('purple') ? 'hover:border-purple-500/50' :
-                          contract.color.includes('green') ? 'hover:border-emerald-500/50' :
-                            contract.color.includes('orange') ? 'hover:border-orange-500/50' :
-                              contract.color.includes('teal') ? 'hover:border-teal-500/50' :
-                                contract.color.includes('indigo') ? 'hover:border-indigo-500/50' :
-                                  'hover:border-blue-500/50'
-                      }`}
+                    whileHover={{ y: -8 }}
+                    className="bg-slate-50 rounded-[2.5rem] p-8 border border-slate-100 transition-all hover:bg-white hover:border-slate-900 group/card text-center"
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${contract.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${contract.color} flex items-center justify-center mb-3 mx-auto shadow-lg`}>
-                      <span className="text-white font-black">{contract.count}</span>
+                    <div className={`w-14 h-14 rounded-2xl bg-${contract.color}-50 flex items-center justify-center mb-6 mx-auto shadow-inner group-hover/card:scale-110 transition-transform`}>
+                      <span className={`text-${contract.color}-600 font-black text-xl italic`}>{contract.count}</span>
                     </div>
-                    <h3 className="text-slate-900 font-bold text-center text-sm mb-1">{contract.name}</h3>
-                    <div className="text-center">
-                      <span className={`px-2 py-1 rounded-full text-xs font-bold ${contract.status === 'active' ? 'bg-green-500/20 text-green-400' :
-                        contract.status === 'pending' ? 'bg-yellow-500/20 text-yellow-400' :
-                          contract.status === 'completed' ? 'bg-blue-500/20 text-blue-400' :
-                            'bg-gray-500/20 text-gray-400'
-                        }`}>
-                        {contract.status}
-                      </span>
-                    </div>
+                    <h3 className="text-slate-900 font-black text-[10px] uppercase tracking-tight mb-2 italic">"{contract.name}"</h3>
+                    <span className={`text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full ${contract.status === 'VERIFIED' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' : 'bg-slate-200 text-slate-400'
+                      }`}>
+                      {contract.status}
+                    </span>
                   </motion.div>
                 ))}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-purple-600 rounded-[2.5rem] p-8 border border-purple-500 shadow-xl flex flex-col items-center justify-center text-center cursor-pointer group/add overflow-hidden relative"
+                >
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover/add:opacity-10 transition-opacity"></div>
+                  <span className="material-symbols-outlined text-white text-3xl font-black mb-3">add_circle</span>
+                  <span className="text-white font-black text-[10px] uppercase tracking-widest">Provision New Tier</span>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -208,10 +197,11 @@ const TermsManagement = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white/80 rounded-2xl p-8 border border-slate-200 backdrop-blur-sm shadow-xl shadow-slate-200/50"
+              className="bg-white rounded-[3.5rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden"
             >
-              <h2 className="text-2xl font-black text-slate-900 mb-6">Recent Activity</h2>
-              <div className="space-y-4">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full blur-3xl -mr-16 -mt-16"></div>
+              <h2 className="text-xl font-black text-slate-900 mb-12 tracking-widest uppercase text-xs italic scale-x-[-1] inline-block w-full text-right" style={{ transform: 'scaleX(-1)' }}>Institutional Pulse</h2>
+              <div className="space-y-6 relative z-10">
                 {recentActivities.map((activity, index) => (
                   <motion.div
                     key={index}
@@ -219,38 +209,35 @@ const TermsManagement = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100"
+                    className="flex items-start gap-4 p-6 bg-slate-50 rounded-[2rem] border border-slate-100 hover:bg-white hover:border-slate-900 transition-all group/item"
                   >
-                    <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${activity.status === 'completed' ? 'bg-green-500' :
-                      activity.status === 'pending' ? 'bg-yellow-500' : 'bg-red-500'
-                      }`}></div>
+                    <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-purple-600 shadow-lg shadow-purple-500/50 group-hover/item:scale-150 transition-transform"></div>
                     <div className="flex-1">
-                      <div className="text-slate-900 font-bold text-sm tracking-tight">{activity.action}</div>
-                      <div className="text-slate-600 text-xs font-medium">{activity.client}</div>
-                      <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mt-1">{activity.time}</div>
+                      <div className="text-slate-900 font-black text-[10px] uppercase tracking-tight italic group-hover/item:text-purple-600 transition-colors">{activity.action}</div>
+                      <div className="text-slate-500 text-[10px] font-bold mt-1">"{activity.client}"</div>
+                      <div className="flex justify-between items-center mt-3 pt-3 border-t border-slate-100">
+                        <span className="text-slate-400 text-[8px] font-black uppercase tracking-widest italic">{activity.time}</span>
+                        <span className="text-purple-600 text-[8px] font-black uppercase tracking-widest">{activity.status}</span>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
-        </div>
-      </div>
 
-      {/* Features Grid */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+          {/* Infrastructure Grid */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4 font-space-grotesk">Complete Contract Management</h2>
-            <p className="text-xl text-slate-600 font-medium">Professional tools for managing all your business agreements</p>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">Agreement Infrastructure</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Enterprise-grade architectural nodes for global legal finality and verification.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {contractFeatures.map((feature, index) => (
               <motion.div
                 key={index}
@@ -258,23 +245,15 @@ const TermsManagement = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className={`bg-white rounded-xl p-6 border border-slate-200 transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden ${feature.color.includes('blue') ? 'hover:border-blue-500/50' :
-                    feature.color.includes('green') ? 'hover:border-emerald-500/50' :
-                      feature.color.includes('purple') ? 'hover:border-purple-500/50' :
-                        feature.color.includes('orange') ? 'hover:border-orange-500/50' :
-                          feature.color.includes('teal') ? 'hover:border-teal-500/50' :
-                            feature.color.includes('indigo') ? 'hover:border-indigo-500/50' :
-                              feature.color.includes('yellow') ? 'hover:border-yellow-500/50' :
-                                'hover:border-purple-500/50'
-                  }`}
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-[3rem] p-10 border border-slate-200 transition-all duration-500 shadow-2xl hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] relative overflow-hidden group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 shadow-lg`}>
-                  <span className="material-symbols-outlined text-white">{feature.icon}</span>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-10 shadow-lg group-hover:scale-110 transition-transform shadow-purple-500/10`}>
+                  <span className="material-symbols-outlined text-white text-2xl font-black">{feature.icon}</span>
                 </div>
-                <h3 className="text-lg font-black text-slate-900 mb-2">{feature.title}</h3>
-                <p className="text-slate-600 text-sm font-medium">{feature.description}</p>
+                <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tighter uppercase italic">{feature.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed font-bold italic opacity-80 group-hover:opacity-100 transition-opacity">"{feature.description}"</p>
               </motion.div>
             ))}
           </div>
@@ -282,34 +261,33 @@ const TermsManagement = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="px-6 py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-purple-600/10 to-transparent"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group"
+            className="p-16"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-50 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-purple-100 transition-colors"></div>
-
-            <h2 className="relative z-10 text-4xl font-black text-slate-900 mb-6 font-space-grotesk">
-              Ready to
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-red-600">
-                Manage My Agreements?
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tighter italic leading-[1.3] py-4 overflow-visible">
+              Scale Your
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 py-4">
+                Institutional Trust.
               </span>
             </h2>
 
-            <p className="relative z-10 text-xl text-slate-600 mb-10 font-medium">
-              Streamline your contract management with digital workflows
+            <p className="text-xl text-slate-400 mb-16 font-bold italic max-w-2xl mx-auto">
+              Transform your business legal workflows with our high-precision digital agreement management engine.
             </p>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-10 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-black px-10 py-5 rounded-3xl transition-all shadow-2xl shadow-purple-500/25 flex items-center gap-3 text-lg mx-auto"
+              className="bg-white text-slate-900 font-black px-12 py-6 rounded-[2rem] transition-all shadow-2xl flex items-center gap-4 text-xl mx-auto uppercase tracking-widest hover:bg-slate-100"
             >
-              <span className="material-symbols-outlined font-black">gavel</span>
-              Manage My Agreements
+              <span className="material-symbols-outlined text-2xl font-black">lock_open</span>
+              Initialize Governance
             </motion.button>
           </motion.div>
         </div>

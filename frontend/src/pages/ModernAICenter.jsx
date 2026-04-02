@@ -188,26 +188,26 @@ const ModernAICenter = () => {
 
       <main className="relative z-10 pt-24 pb-20">
         {/* Hero Section */}
-        <section className="py-20 px-6">
+        <section className="py-12 px-6">
           <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-16"
+              className="mb-12"
             >
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-slate-100 border border-slate-200 mb-8 backdrop-blur-sm shadow-sm">
-                <span className="material-symbols-outlined text-slate-900 animate-pulse">auto_awesome</span>
-                <span className="text-slate-900 font-bold uppercase tracking-wider text-sm">AI Innovation Center</span>
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-8 backdrop-blur-sm shadow-sm transition-all hover:bg-white">
+                <span className="material-symbols-outlined text-blue-600 animate-pulse">auto_awesome</span>
+                <span className="text-blue-600 font-black uppercase tracking-wider text-[11px]">AI Innovation Center</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-bold mb-8 text-slate-900 leading-tight">
+              <h1 className="text-6xl md:text-8xl font-black mb-8 text-slate-800 leading-tight pb-8 tracking-tighter">
                 Intelligent
-                <span className="block text-4xl md:text-6xl mt-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500">
+                <span className="block text-5xl md:text-7xl mt-2 text-blue-600 pb-4">
                   Automation Agents
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
                 Revolutionary AI agents that transform your business operations with intelligent automation,
                 seamless integration, and unprecedented efficiency.
               </p>
@@ -217,7 +217,7 @@ const ModernAICenter = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-wrap justify-center gap-4 mb-20 px-4"
+              className="flex flex-wrap justify-center gap-4 mb-12 px-4"
             >
               {categories.map((category) => (
                 <button
@@ -287,7 +287,7 @@ const ModernAICenter = () => {
 
                       {/* Info Content */}
                       <div className="flex-1 relative z-10">
-                        <h3 className="text-xl font-bold tracking-tight mb-3 text-slate-900 transition-colors duration-300 leading-snug">
+                        <h3 className="text-2xl font-black tracking-tight mb-3 text-slate-800 transition-colors duration-300 leading-snug pb-4 group-hover:text-blue-600">
                           {agent.title}
                         </h3>
 
@@ -311,10 +311,10 @@ const ModernAICenter = () => {
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-slate-900 tracking-widest uppercase">Explore Details</span>
                           <motion.div
-                            className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shadow-md border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500"
+                            className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shadow-md border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500 flex-shrink-0"
                             whileHover={{ x: 5 }}
                           >
-                            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                            <span className="material-symbols-outlined text-sm flex-shrink-0">arrow_forward</span>
                           </motion.div>
                         </div>
                       </div>
@@ -327,19 +327,19 @@ const ModernAICenter = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+        <section className="py-20 px-6 bg-slate-50 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-5"></div>
           <div className="max-w-6xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+              <h2 className="text-4xl md:text-6xl font-black mb-6 text-slate-800 pb-8 tracking-tighter">
                 AI-Powered Transformation
               </h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                 Real impact metrics from our intelligent automation solutions globally.
               </p>
             </motion.div>
@@ -370,8 +370,8 @@ const ModernAICenter = () => {
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500`}>
                       <span className="material-symbols-outlined text-white text-2xl font-black">{stat.icon}</span>
                     </div>
-                    <div className={`text-5xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>{stat.value}</div>
-                    <div className="text-slate-900 font-black tracking-widest text-[11px] uppercase">{stat.label}</div>
+                    <div className={`text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r ${stat.color} pb-1`}>{stat.value}</div>
+                    <div className="text-slate-800 font-black tracking-widest text-[11px] uppercase">{stat.label}</div>
                   </div>
                 </motion.div>
               ))}
@@ -393,9 +393,9 @@ const ModernAICenter = () => {
               <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] -ml-64 -mb-64"></div>
 
               <div className="relative z-10">
-                <h3 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-none">
+                <h3 className="text-5xl md:text-7xl font-black text-slate-800 mb-8 tracking-tighter leading-none pb-8">
                   Ready to Transform <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">with AI?</span>
+                  <span className="text-blue-600 pb-4">with AI?</span>
                 </h3>
                 <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed font-bold">
                   Experience the future of business automation with our intelligent AI agents.
@@ -405,14 +405,14 @@ const ModernAICenter = () => {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <Link to="/contact">
                     <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black h-16 px-12 rounded-full shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto uppercase tracking-widest text-sm">
-                      <span className="material-symbols-outlined text-2xl">auto_awesome</span>
+                      <span className="material-symbols-outlined text-2xl flex-shrink-0">auto_awesome</span>
                       Start AI Integration
                     </button>
                   </Link>
 
                   <Link to="/join-contact">
                     <button className="bg-white hover:bg-slate-50 text-slate-900 font-black h-16 px-12 rounded-full border-2 border-slate-900 transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto uppercase tracking-widest text-sm shadow-xl">
-                      <span className="material-symbols-outlined text-2xl">calendar_today</span>
+                      <span className="material-symbols-outlined text-2xl flex-shrink-0">calendar_today</span>
                       Schedule Demo
                     </button>
                   </Link>

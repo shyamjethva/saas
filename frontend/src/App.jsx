@@ -64,7 +64,7 @@ function AnchorLinkHandler() {
 // Complete Error Infotech Pages
 import Homepage from './pages/PremiumHomepage';
 import Services from './pages/PremiumServices';
-import ServicesPage from './pages/Services';
+import ServicesPage from './pages/ServicesPage';
 import CRMPricing from './pages/CRMPricing';
 import PremiumPricingPage from './pages/PremiumPricingPage';
 import PackagesPage from './pages/PackagesPage';

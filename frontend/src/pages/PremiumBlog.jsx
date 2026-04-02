@@ -258,9 +258,9 @@ const Blog = () => {
                   <img
                     src={blogPosts[0].image}
                     alt={blogPosts[0].title}
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                    className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-125 group-hover:scale-110 transition-all duration-1000 ease-in-out"
                   />
-                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors duration-700"></div>
                   <div className="absolute top-8 right-8">
                     <span className="px-6 py-2 bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-2xl">
                       Featured Report
@@ -330,9 +330,9 @@ const Blog = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
                 className={`group relative rounded-[2.5rem] overflow-hidden border border-slate-200 bg-white transition-all duration-700 shadow-xl hover:shadow-2xl ${index % 4 === 0 ? 'hover:border-blue-500/50' :
-                    index % 4 === 1 ? 'hover:border-purple-500/50' :
-                      index % 4 === 2 ? 'hover:border-emerald-500/50' :
-                        'hover:border-pink-500/50'
+                  index % 4 === 1 ? 'hover:border-purple-500/50' :
+                    index % 4 === 2 ? 'hover:border-emerald-500/50' :
+                      'hover:border-pink-500/50'
                   }`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none"></div>
@@ -341,9 +341,9 @@ const Blog = () => {
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                    className="w-full h-full object-cover saturate-[0.7] group-hover:saturate-150 group-hover:scale-110 transition-all duration-1000 ease-out"
                   />
-                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors duration-700"></div>
                   <div className="absolute bottom-6 left-6">
                     <span className="px-4 py-1.5 bg-blue-600 text-white font-black uppercase tracking-widest text-[9px] rounded-full shadow-lg">
                       {post.category}

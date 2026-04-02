@@ -200,7 +200,7 @@ const ServicesPackage = () => {
 
   // Service Benefits
   const serviceBenefits = [
-    { title: 'Proven Track Record', description: '500+ successful projects delivered across diverse industries', icon: 'workspace_premium', color: 'from-blue-600 to-cyan-500' },
+    { title: 'Proven Track Record', description: '15+ successful projects delivered across diverse industries', icon: 'workspace_premium', color: 'from-blue-600 to-cyan-500' },
     { title: 'Expert Team', description: 'Certified professionals with deep domain expertise', icon: 'groups', color: 'from-purple-600 to-pink-600' },
     { title: 'Cutting-Edge Tech', description: 'Latest technologies and methodologies', icon: 'auto_mode', color: 'from-emerald-600 to-teal-600' },
     { title: '24/7 Support', description: 'Round-the-clock assistance and maintenance', icon: 'support_agent', color: 'from-orange-600 to-red-600' }
@@ -369,7 +369,7 @@ const ServicesPackage = () => {
           >
             <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-5"></div>
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">
                 Scale Your Business Today
               </h2>
               <p className="text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">

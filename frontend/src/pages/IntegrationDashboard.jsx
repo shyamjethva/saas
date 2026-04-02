@@ -54,350 +54,275 @@ const IntegrationDashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const StatCard = ({ title, count, icon, color, subtitle }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={`bg-white/5 rounded-xl p-6 border border-white/10 ${color}`}
-    >
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-3xl font-bold text-white">{count}</h3>
-          <p className="text-slate-300 mt-1">{title}</p>
-          {subtitle && <p className="text-slate-400 text-sm mt-1">{subtitle}</p>}
-        </div>
-        <div className="text-4xl opacity-20">
-          <span className="material-symbols-outlined">{icon}</span>
-        </div>
-      </div>
-    </motion.div>
-  );
-
-  const RecentItem = ({ item, type }) => {
-    const getTitle = () => {
-      switch (type) {
-        case 'contact': return item.name || 'Anonymous';
-        case 'client': return item.companyName || 'Unnamed Client';
-        case 'project': return item.projectName || 'Unnamed Project';
-        case 'consultation': return item.name || 'Anonymous';
-        default: return 'Unknown';
-      }
-    };
-
-    const getSubtitle = () => {
-      switch (type) {
-        case 'contact': return item.email || item.service;
-        case 'client': return item.industry || item.email;
-        case 'project': return item.clientName || item.status;
-        case 'consultation': return item.company || item.service;
-        default: return '';
-      }
-    };
-
-    return (
-      <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
-        <div className="flex-1">
-          <h4 className="text-white font-medium">{getTitle()}</h4>
-          <p className="text-slate-400 text-sm">{getSubtitle()}</p>
-        </div>
-        <div className="text-slate-400 text-xs">
-          {new Date(item.createdAt).toLocaleDateString()}
-        </div>
-      </div>
-    );
-  };
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-20 flex items-center justify-center">
+      <div className="min-h-screen premium-bg flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-slate-300">Loading dashboard...</p>
+          <div className="w-16 h-16 border-[4px] border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-6 shadow-2xl shadow-blue-500/20"></div>
+          <p className="text-slate-900 font-black uppercase tracking-widest text-[10px]">Synchronizing Integration Nodes...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-20">
-      <div className="px-6 py-8">
+    <div className="min-h-screen premium-bg pt-20">
+      {/* Header Section */}
+      <div className="px-6 py-16">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Integration Dashboard
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm mx-auto">
+              <span className="material-symbols-outlined text-blue-600 text-sm font-black">hub</span>
+              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">REAL-TIME DATA SYNCHRONIZATION</span>
+            </div>
+
+            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+              Integration
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+                Command Center
+              </span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Monitor your fully connected frontend-backend-MongoDB data flow in real-time
+
+            <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
+              Monitor your full-stack architecture's throughput, visualize real-time data flow between frontend nodes, backend APIs, and distributed MongoDB clusters.
             </p>
           </motion.div>
+        </div>
+      </div>
 
-          {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <StatCard
-              title="Contact Inquiries"
-              count={dashboardData.contacts.count}
-              icon="mail"
-              color="from-blue-500/20 to-cyan-500/20 border-blue-500/30"
-              subtitle="Form submissions"
-            />
-            <StatCard
-              title="Active Clients"
-              count={dashboardData.clients.count}
-              icon="corporate_fare"
-              color="from-green-500/20 to-emerald-500/20 border-green-500/30"
-              subtitle="Business relationships"
-            />
-            <StatCard
-              title="Projects"
-              count={dashboardData.projects.count}
-              icon="work"
-              color="from-purple-500/20 to-pink-500/20 border-purple-500/30"
-              subtitle="Active initiatives"
-            />
-            <StatCard
-              title="Consultations"
-              count={dashboardData.consultations.count}
-              icon="calendar_today"
-              color="from-orange-500/20 to-red-500/20 border-orange-500/30"
-              subtitle="Scheduled meetings"
-            />
-          </div>
+      {/* Stats Overview */}
+      <div className="px-6 py-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StatCard
+            title="Inquiry Throughput"
+            count={dashboardData.contacts.count}
+            icon="mail"
+            color="blue"
+            subtitle="Contact Form Clusters"
+          />
+          <StatCard
+            title="Partner Population"
+            count={dashboardData.clients.count}
+            icon="corporate_fare"
+            color="indigo"
+            subtitle="Active Business Nodes"
+          />
+          <StatCard
+            title="Operational Load"
+            count={dashboardData.projects.count}
+            icon="work"
+            color="purple"
+            subtitle="Active Initiative Threads"
+          />
+          <StatCard
+            title="Consultation Matrix"
+            count={dashboardData.consultations.count}
+            icon="calendar_today"
+            color="blue"
+            subtitle="Scheduled Synced Events"
+          />
+        </div>
+      </div>
 
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {[
-              { id: 'overview', label: 'Overview', icon: 'dashboard' },
-              { id: 'contacts', label: 'Contacts', icon: 'mail' },
-              { id: 'clients', label: 'Clients', icon: 'corporate_fare' },
-              { id: 'projects', label: 'Projects', icon: 'work' },
-              { id: 'consultations', label: 'Consultations', icon: 'calendar_today' }
-            ].map((tab) => (
-              <motion.button
-                key={tab.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2 ${
-                  activeTab === tab.id
-                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
-                    : 'bg-white/10 text-slate-300 hover:bg-white/20'
+      {/* Tab Navigation */}
+      <div className="px-6 py-12">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4">
+          {[
+            { id: 'overview', label: 'Architecture Overview', icon: 'dashboard' },
+            { id: 'contacts', label: 'Contact Inquiries', icon: 'mail' },
+            { id: 'clients', label: 'Client Nodes', icon: 'corporate_fare' },
+            { id: 'projects', label: 'Project Threads', icon: 'work' },
+            { id: 'consultations', label: 'Sync Events', icon: 'calendar_today' }
+          ].map((tab) => (
+            <motion.button
+              key={tab.id}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 relative ${activeTab === tab.id
+                ? 'bg-slate-900 text-white shadow-2xl'
+                : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-800'
                 }`}
-              >
-                <span className="material-symbols-outlined text-sm">{tab.icon}</span>
-                {tab.label}
-              </motion.button>
-            ))}
-          </div>
+            >
+              <span className="material-symbols-outlined text-sm font-black">{tab.icon}</span>
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="tab-underline"
+                  className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-blue-600 rounded-full"
+                />
+              )}
+            </motion.button>
+          ))}
+        </div>
+      </div>
 
-          {/* Content Area */}
+      {/* Content Area */}
+      <div className="px-6 py-12 pb-40">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="glass-card rounded-2xl p-8 border border-white/10 backdrop-blur-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group"
           >
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 opacity-20"></div>
+
             {activeTab === 'overview' && (
-              <div className="space-y-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Recent Activity</h2>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-blue-400">mail</span>
-                      Recent Contacts
-                    </h3>
-                    <div className="space-y-3">
-                      {dashboardData.contacts.recent.map((contact, index) => (
-                        <RecentItem key={index} item={contact} type="contact" />
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-green-400">corporate_fare</span>
-                      Recent Clients
-                    </h3>
-                    <div className="space-y-3">
-                      {dashboardData.clients.recent.map((client, index) => (
-                        <RecentItem key={index} item={client} type="client" />
-                      ))}
-                    </div>
+              <div className="space-y-16">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Recent System Pulses</h2>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+                    <span className="text-blue-600 text-[10px] font-black uppercase tracking-[0.2em]">Live Monitoring</span>
                   </div>
                 </div>
-                
-                <div className="grid md:grid-cols-2 gap-8 mt-8">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-purple-400">work</span>
-                      Recent Projects
-                    </h3>
-                    <div className="space-y-3">
-                      {dashboardData.projects.recent.map((project, index) => (
-                        <RecentItem key={index} item={project} type="project" />
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-orange-400">calendar_today</span>
-                      Recent Consultations
-                    </h3>
-                    <div className="space-y-3">
-                      {dashboardData.consultations.recent.map((consultation, index) => (
-                        <RecentItem key={index} item={consultation} type="consultation" />
-                      ))}
-                    </div>
-                  </div>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                  <ActivitySection
+                    title="Communication Sync"
+                    icon="mail"
+                    iconColor="text-blue-600"
+                    bgColor="bg-blue-50"
+                  >
+                    {dashboardData.contacts.recent.map((contact, index) => (
+                      <RecentItem key={index} item={contact} type="contact" />
+                    ))}
+                  </ActivitySection>
+
+                  <ActivitySection
+                    title="Client Propagation"
+                    icon="corporate_fare"
+                    iconColor="text-indigo-600"
+                    bgColor="bg-indigo-50"
+                  >
+                    {dashboardData.clients.recent.map((client, index) => (
+                      <RecentItem key={index} item={client} type="client" />
+                    ))}
+                  </ActivitySection>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                  <ActivitySection
+                    title="Initiative Cycles"
+                    icon="work"
+                    iconColor="text-purple-600"
+                    bgColor="bg-purple-50"
+                  >
+                    {dashboardData.projects.recent.map((project, index) => (
+                      <RecentItem key={index} item={project} type="project" />
+                    ))}
+                  </ActivitySection>
+
+                  <ActivitySection
+                    title="Consultation Protocol"
+                    icon="calendar_today"
+                    iconColor="text-blue-600"
+                    bgColor="bg-blue-50"
+                  >
+                    {dashboardData.consultations.recent.map((consultation, index) => (
+                      <RecentItem key={index} item={consultation} type="consultation" />
+                    ))}
+                  </ActivitySection>
                 </div>
               </div>
             )}
 
             {activeTab === 'contacts' && (
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-6">All Contact Inquiries</h2>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
+              <div className="space-y-12">
+                <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Distributed Contact Ledger</h2>
+                <div className="grid grid-cols-1 gap-6 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
                   {(dashboardData.contacts.recent || []).map((contact, index) => (
-                    <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-white font-medium">{contact.name}</h3>
-                          <p className="text-slate-300">{contact.email}</p>
-                          <p className="text-slate-400 text-sm mt-1">{contact.service}</p>
-                        </div>
-                        <span className="text-slate-400 text-sm">
-                          {new Date(contact.createdAt).toLocaleDateString()}
-                        </span>
-                      </div>
-                      <p className="text-slate-300 mt-3 text-sm">{contact.message}</p>
-                    </div>
+                    <DetailCard key={index} title={contact.name} subtitle={contact.email} info={contact.service} date={contact.createdAt} content={contact.message} />
                   ))}
                 </div>
               </div>
             )}
 
             {activeTab === 'clients' && (
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-6">All Clients</h2>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
+              <div className="space-y-12">
+                <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Provisioned Client Nodes</h2>
+                <div className="grid grid-cols-1 gap-6 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
                   {(dashboardData.clients.recent || []).map((client, index) => (
-                    <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-white font-medium">{client.companyName}</h3>
-                          <p className="text-slate-300">{client.contactPerson}</p>
-                          <p className="text-slate-400 text-sm mt-1">{client.industry} • {client.companySize}</p>
-                        </div>
-                        <div className="text-right">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            client.status === 'Active' 
-                              ? 'bg-green-500/20 text-green-400' 
-                              : 'bg-gray-500/20 text-gray-400'
-                          }`}>
-                            {client.status}
-                          </span>
-                          <p className="text-slate-400 text-sm mt-2">
-                            Health: {client.healthScore}/100
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    <DetailCard
+                      key={index}
+                      title={client.companyName}
+                      subtitle={client.contactPerson}
+                      info={`${client.industry} • ${client.companySize}`}
+                      status={client.status}
+                      meta={`Health Index: ${client.healthScore}%`}
+                    />
                   ))}
                 </div>
               </div>
             )}
 
             {activeTab === 'projects' && (
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-6">All Projects</h2>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
+              <div className="space-y-12">
+                <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Active Initiative Threads</h2>
+                <div className="grid grid-cols-1 gap-6 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
                   {(dashboardData.projects.recent || []).map((project, index) => (
-                    <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-white font-medium">{project.projectName}</h3>
-                          <p className="text-slate-300">Client: {project.clientName}</p>
-                          <p className="text-slate-400 text-sm mt-1">
-                            {project.status} • {project.priority} Priority
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-slate-400 text-sm">
-                            Budget: ${project.budget?.toLocaleString() || 'N/A'}
-                          </p>
-                          <p className="text-slate-400 text-sm mt-1">
-                            Team: {project.teamSize || 'N/A'} members
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-slate-300 mt-3 text-sm">{project.description}</p>
-                    </div>
+                    <DetailCard
+                      key={index}
+                      title={project.projectName}
+                      subtitle={`Target Entity: ${project.clientName}`}
+                      info={`${project.status} • ${project.priority} Priority`}
+                      content={project.description}
+                      meta={`Capital Load: $${project.budget?.toLocaleString() || 'N/A'}`}
+                    />
                   ))}
                 </div>
               </div>
             )}
 
             {activeTab === 'consultations' && (
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-6">All Consultations</h2>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
+              <div className="space-y-12">
+                <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Synchronized Consultation Matrix</h2>
+                <div className="grid grid-cols-1 gap-6 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
                   {(dashboardData.consultations.recent || []).map((consultation, index) => (
-                    <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-white font-medium">{consultation.name}</h3>
-                          <p className="text-slate-300">{consultation.company}</p>
-                          <p className="text-slate-400 text-sm mt-1">{consultation.email}</p>
-                        </div>
-                        <div className="text-right">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            consultation.status === 'Scheduled' 
-                              ? 'bg-blue-500/20 text-blue-400' 
-                              : consultation.status === 'Completed'
-                              ? 'bg-green-500/20 text-green-400'
-                              : 'bg-gray-500/20 text-gray-400'
-                          }`}>
-                            {consultation.status}
-                          </span>
-                          <p className="text-slate-400 text-sm mt-2">
-                            {consultation.preferredDate 
-                              ? new Date(consultation.preferredDate).toLocaleDateString()
-                              : 'No date set'
-                            }
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-slate-300 mt-3 text-sm">{consultation.message}</p>
-                    </div>
+                    <DetailCard
+                      key={index}
+                      title={consultation.name}
+                      subtitle={consultation.company}
+                      info={consultation.email}
+                      status={consultation.status}
+                      date={consultation.preferredDate}
+                      content={consultation.message}
+                    />
                   ))}
                 </div>
               </div>
             )}
           </motion.div>
 
-          {/* Connection Status */}
+          {/* Connection Status Perimeter */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-12 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/30 rounded-xl p-6 text-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="mt-16 bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden"
           >
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <span className="material-symbols-outlined text-green-400 text-2xl">check_circle</span>
-              <h3 className="text-xl font-bold text-green-400">All Systems Operational</h3>
-            </div>
-            <p className="text-slate-300">
-              Frontend ↔ Backend API ↔ MongoDB database connection is fully synchronized
-            </p>
-            <div className="flex justify-center gap-8 mt-4 text-sm text-slate-400">
-              <span>✓ Real-time data sync</span>
-              <span>✓ Auto-refresh every 30s</span>
-              <span>✓ Full CRUD operations</span>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-50 rounded-full blur-[80px] -mr-24 -mt-24"></div>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+              <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                <div className="w-24 h-24 bg-blue-600 rounded-[2rem] flex items-center justify-center shadow-2xl shadow-blue-500/40 transform rotate-12">
+                  <span className="material-symbols-outlined text-white text-4xl font-black">verified</span>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black text-slate-900 tracking-tighter mb-2 italic">Infrastructure Verification</h3>
+                  <p className="text-slate-500 font-medium max-w-xl">
+                    Frontend Node ↔ Backend Service Layer ↔ MongoDB Cluster connection is optimized and fully synchronized at peak performance.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap justify-center gap-6">
+                <StatusPill label="Real-time Flow" />
+                <StatusPill label="Auto-Sync: 30s" />
+                <StatusPill label="Full CRUD Matrix" />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -405,5 +330,114 @@ const IntegrationDashboard = () => {
     </div>
   );
 };
+
+const StatCard = ({ title, count, icon, color, subtitle }) => (
+  <motion.div
+    whileHover={{ y: -10 }}
+    className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-xl relative overflow-hidden group"
+  >
+    <div className={`absolute top-0 right-0 w-24 h-24 bg-${color}-50 rounded-full blur-2xl -mr-12 -mt-12 group-hover:bg-${color}-100 transition-colors`}></div>
+    <div className="relative z-10">
+      <div className={`w-12 h-12 bg-${color}-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
+        <span className={`material-symbols-outlined text-${color}-600 font-black`}>{icon}</span>
+      </div>
+      <h3 className="text-6xl font-black text-slate-900 tracking-tighter mb-2 italic">{count}</h3>
+      <p className="text-slate-900 font-black text-[10px] uppercase tracking-widest">{title}</p>
+      <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-2 opacity-60">{subtitle}</p>
+    </div>
+  </motion.div>
+);
+
+const ActivitySection = ({ title, icon, iconColor, bgColor, children }) => (
+  <div className="space-y-8">
+    <div className="flex items-center gap-4 border-b border-slate-50 pb-6">
+      <div className={`w-10 h-10 ${bgColor} rounded-xl flex items-center justify-center`}>
+        <span className={`material-symbols-outlined ${iconColor} text-sm font-black`}>{icon}</span>
+      </div>
+      <h3 className="text-slate-900 font-black tracking-widest uppercase text-xs">{title}</h3>
+    </div>
+    <div className="space-y-4">
+      {children}
+    </div>
+  </div>
+);
+
+const RecentItem = ({ item, type }) => {
+  const getTitle = () => {
+    switch (type) {
+      case 'contact': return item.name || 'Anonymous Node';
+      case 'client': return item.companyName || 'Unnamed Entity';
+      case 'project': return item.projectName || 'Unidentified Initiative';
+      case 'consultation': return item.name || 'Anonymous Requester';
+      default: return 'Encryption Lost';
+    }
+  };
+
+  const getSubtitle = () => {
+    switch (type) {
+      case 'contact': return item.email || item.service;
+      case 'client': return item.industry || item.email;
+      case 'project': return item.clientName || item.status;
+      case 'consultation': return item.company || item.service;
+      default: return 'Data Corrupted';
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-between p-6 bg-slate-50 rounded-[2rem] border border-slate-100 hover:bg-white hover:border-slate-900 transition-all group/item">
+      <div className="flex-1">
+        <h4 className="text-slate-900 font-black tracking-tight text-xs group-hover/item:text-blue-600 transition-colors uppercase">{getTitle()}</h4>
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-1 opacity-70 italic">{getSubtitle()}</p>
+      </div>
+      <div className="text-slate-900 font-black text-[9px] uppercase tracking-widest italic opacity-50">
+        {new Date(item.createdAt).toLocaleDateString()}
+      </div>
+    </div>
+  );
+};
+
+const DetailCard = ({ title, subtitle, info, date, content, status, meta }) => (
+  <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 hover:bg-white hover:border-slate-900 transition-all group/card">
+    <div className="flex justify-between items-start mb-8">
+      <div>
+        <h3 className="text-2xl font-black text-slate-900 tracking-tighter group-hover/card:text-blue-600 transition-colors uppercase italic">{title}</h3>
+        <p className="text-slate-500 font-black text-[10px] uppercase tracking-widest mt-2">{subtitle}</p>
+        <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1 opacity-60 italic">{info}</p>
+      </div>
+      <div className="text-right flex flex-col items-end gap-3">
+        {status && (
+          <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest ${status === 'Active' || status === 'Completed' || status === 'Scheduled'
+              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+              : 'bg-slate-200 text-slate-500'
+            }`}>
+            {status}
+          </span>
+        )}
+        {date && (
+          <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest italic">
+            DATE SECURED: {new Date(date).toLocaleDateString()}
+          </span>
+        )}
+        {meta && (
+          <span className="text-slate-900 font-black text-[10px] uppercase tracking-widest bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-sm">
+            {meta}
+          </span>
+        )}
+      </div>
+    </div>
+    {content && (
+      <div className="bg-white p-8 rounded-[2rem] border border-slate-100 italic text-slate-500 text-sm leading-relaxed border-l-[6px] border-l-blue-600">
+        "{content}"
+      </div>
+    )}
+  </div>
+);
+
+const StatusPill = ({ label }) => (
+  <div className="px-6 py-2.5 bg-blue-50 border border-blue-100 rounded-full flex items-center gap-3">
+    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-ping"></div>
+    <span className="text-blue-600 text-[10px] font-black uppercase tracking-widest">{label}</span>
+  </div>
+);
 
 export default IntegrationDashboard;

@@ -111,35 +111,36 @@ const SystemSettings = () => {
   return (
     <div className="min-h-screen premium-bg pt-20">
       {/* Header Section */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-400">settings</span>
-              <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">SYSTEM SETTINGS</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-blue-600 text-sm font-black">settings</span>
+              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">PLATFORM GOVERNANCE</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
               Advanced System
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
-                Configuration
+                Orchestration
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
-              Control every aspect of your business operations with structured administrative settings.
+            <p className="text-lg text-slate-500 max-w-3xl leading-relaxed font-medium mx-auto">
+              Control every dimension of your enterprise operations with professional-grade administrative configuration tools.
             </p>
           </motion.div>
         </div>
       </div>
 
       {/* Settings Accordion */}
-      <div className="px-6 py-8">
-        <div className="max-w-4xl mx-auto space-y-4">
+      <div className="px-6 py-12 pb-24">
+        <div className="max-w-5xl mx-auto space-y-6">
           {settingsSections.map((section, index) => (
             <motion.div
               key={section.id}
@@ -147,35 +148,30 @@ const SystemSettings = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-white rounded-xl border border-slate-200 shadow-lg hover:shadow-xl relative overflow-hidden transition-all duration-300 ${section.color.includes('blue') ? 'hover:border-blue-500/50' :
-                  section.color.includes('purple') ? 'hover:border-purple-500/50' :
-                    section.color.includes('green') ? 'hover:border-emerald-500/50' :
-                      section.color.includes('orange') ? 'hover:border-orange-500/50' :
-                        section.color.includes('teal') ? 'hover:border-teal-500/50' :
-                          section.color.includes('indigo') ? 'hover:border-indigo-500/50' :
-                            section.color.includes('yellow') ? 'hover:border-yellow-500/50' :
-                              section.color.includes('red') ? 'hover:border-red-500/50' :
-                                'hover:border-blue-500/50'
+              className={`bg-white rounded-[2.5rem] border transition-all duration-500 shadow-xl relative overflow-hidden group ${expandedSections[section.id]
+                ? 'border-blue-200 shadow-[0_32px_64px_-16px_rgba(37,99,235,0.1)]'
+                : 'border-slate-200 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]'
                 }`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${section.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
               <button
                 onClick={() => toggleSection(section.id)}
-                className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-all duration-300"
+                className="w-full p-10 text-left flex items-center justify-between transition-all duration-300"
               >
-                <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${section.color} flex items-center justify-center`}>
-                    <span className="material-symbols-outlined text-white text-xl">{section.icon}</span>
+                <div className="flex items-center gap-8">
+                  <div className={`w-20 h-20 rounded-[1.5rem] bg-gradient-to-br ${section.color} flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500`}>
+                    <span className="material-symbols-outlined text-white text-3xl font-black">{section.icon}</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-black text-slate-900">{section.title}</h3>
-                    <p className="text-slate-500 text-sm font-medium">{section.description}</p>
+                    <h3 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">{section.title}</h3>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{section.description}</p>
                   </div>
                 </div>
-                <span className={`material-symbols-outlined text-slate-400 transition-transform duration-300 ${expandedSections[section.id] ? 'rotate-180' : ''
-                  }`}>
-                  expand_more
-                </span>
+                <div className={`w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center transition-all duration-500 ${expandedSections[section.id] ? 'bg-slate-900 border-slate-900 rotate-180' : 'bg-slate-50'}`}>
+                  <span className={`material-symbols-outlined text-sm font-black ${expandedSections[section.id] ? 'text-white' : 'text-slate-400'}`}>
+                    expand_more
+                  </span>
+                </div>
               </button>
 
               {expandedSections[section.id] && (
@@ -183,13 +179,13 @@ const SystemSettings = () => {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  className="px-6 pb-6"
+                  className="px-10 pb-10"
                 >
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {section.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-green-500 text-sm font-black">check_circle</span>
-                        <span className="text-slate-600 text-sm font-medium">{feature}</span>
+                      <div key={idx} className="flex items-center gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:bg-white transition-colors group/item">
+                        <span className="material-symbols-outlined text-blue-600 text-sm font-black">verified</span>
+                        <span className="text-slate-600 text-[11px] font-black uppercase tracking-tight">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -201,32 +197,34 @@ const SystemSettings = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-24">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-2xl p-12 border border-white/10 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm"
+            className="bg-white rounded-[4rem] p-16 border border-slate-200 shadow-2xl relative overflow-hidden group"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-6 font-space-grotesk">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-blue-100 transition-colors"></div>
+
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter">
               Ready to
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
-                Customize Your Workflow?
+                Optimize Your Workflow?
               </span>
             </h2>
 
-            <p className="text-xl text-slate-600 mb-8 font-medium">
-              Configure your system exactly how your business works
+            <p className="relative z-10 text-xl text-slate-500 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+              Tailor the platform specifically to your business requirements with granular controls.
             </p>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-8 py-4 rounded-full transition-all shadow-2xl shadow-blue-500/25 flex items-center gap-3 text-lg mx-auto"
+              className="relative z-10 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-blue-500/25 flex items-center gap-4 text-xl mx-auto"
             >
-              <span className="material-symbols-outlined font-black">tune</span>
-              Customize Your Workflow
+              <span className="material-symbols-outlined text-2xl font-black">tune</span>
+              Configure My Platform
             </motion.button>
           </motion.div>
         </div>

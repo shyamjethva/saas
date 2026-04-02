@@ -164,42 +164,43 @@ const LeadsSales = () => {
   return (
     <div className="min-h-screen premium-bg pt-20">
       {/* Header Section */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-green-400">trending_up</span>
-              <span className="text-green-400 font-bold tracking-wider uppercase text-sm">LEADS & SALES</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-green-50 border border-green-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-green-600 text-sm font-black">trending_up</span>
+              <span className="text-green-600 font-black tracking-widest uppercase text-[10px]">LEADS & SALES</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 font-space-grotesk">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
               Intelligent Lead &
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 py-4">
                 Sales Management
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-              Convert more leads with structured pipeline tracking and automation.
+            <p className="text-lg text-slate-500 max-w-3xl leading-relaxed font-medium mx-auto">
+              Convert more leads with structured pipeline tracking and automated sales intelligence.
             </p>
           </motion.div>
         </div>
       </div>
 
       {/* Pipeline Visualization */}
-      <div className="px-6 py-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 pb-20">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white/80 rounded-2xl p-8 border border-slate-200 backdrop-blur-sm mb-16 shadow-xl shadow-slate-200/50"
+            className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] mb-16"
           >
-            <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">Sales Pipeline Visualization</h2>
+            <h2 className="text-3xl font-black text-slate-900 mb-12 text-center tracking-tighter uppercase tracking-widest text-xs font-black">Sales Pipeline Visualization</h2>
 
             {/* Pipeline Flow */}
             <div className="relative">
@@ -227,12 +228,12 @@ const LeadsSales = () => {
             </div>
 
             {/* Conversion Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
               {conversionMetrics.map((metric, index) => (
-                <div key={index} className="bg-slate-50 rounded-xl p-4 border border-slate-200 text-center">
-                  <div className="text-slate-500 text-sm mb-1 font-bold">{metric.label}</div>
-                  <div className="text-2xl font-black text-slate-900">{metric.value}</div>
-                  <div className={`text-sm font-black ${metric.color === 'text-green-400' ? 'text-green-600' : metric.color === 'text-blue-400' ? 'text-blue-600' : 'text-purple-600'}`}>{metric.change}</div>
+                <div key={index} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 text-center group hover:border-green-200 transition-all">
+                  <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{metric.label}</div>
+                  <div className="text-3xl font-black text-slate-900 mb-1 tracking-tight">{metric.value}</div>
+                  <div className={`text-xs font-black uppercase tracking-tighter ${metric.color === 'text-green-400' ? 'text-green-600' : metric.color === 'text-blue-400' ? 'text-blue-600' : 'text-purple-600'}`}>{metric.change}</div>
                 </div>
               ))}
             </div>
@@ -241,19 +242,19 @@ const LeadsSales = () => {
       </div>
 
       {/* Features Grid */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4 font-space-grotesk">Complete Sales Management Suite</h2>
-            <p className="text-xl text-slate-600 font-medium">Everything needed to boost your sales performance</p>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.3] py-4 overflow-visible">Sales Management Suite</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Everything needed to optimize your conversion pipeline and boost performance.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {leadFeatures.map((feature, index) => (
               <motion.div
                 key={index}
@@ -261,24 +262,15 @@ const LeadsSales = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className={`bg-white rounded-xl p-6 border border-slate-200 transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden ${feature.color.includes('blue') ? 'hover:border-blue-500/50' :
-                    feature.color.includes('green') ? 'hover:border-emerald-500/50' :
-                      feature.color.includes('purple') ? 'hover:border-purple-500/50' :
-                        feature.color.includes('orange') ? 'hover:border-orange-500/50' :
-                          feature.color.includes('teal') ? 'hover:border-teal-500/50' :
-                            feature.color.includes('indigo') ? 'hover:border-indigo-500/50' :
-                              feature.color.includes('yellow') ? 'hover:border-yellow-500/50' :
-                                feature.color.includes('red') ? 'hover:border-red-500/50' :
-                                  'hover:border-green-500/50'
-                  }`}
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-3xl p-8 border border-slate-200 transition-all duration-500 shadow-xl hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] relative overflow-hidden group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 shadow-lg`}>
-                  <span className="material-symbols-outlined text-white">{feature.icon}</span>
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform`}>
+                  <span className="material-symbols-outlined text-white text-2xl font-black">{feature.icon}</span>
                 </div>
-                <h3 className="text-lg font-black text-slate-900 mb-2">{feature.title}</h3>
-                <p className="text-slate-600 text-sm font-medium">{feature.description}</p>
+                <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight">{feature.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed font-medium">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -286,34 +278,34 @@ const LeadsSales = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-24">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group"
+            className="bg-white rounded-[4rem] p-16 border border-slate-200 shadow-2xl relative overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-green-50 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-green-100 transition-colors"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-green-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-green-100 transition-colors"></div>
 
-            <h2 className="relative z-10 text-4xl font-black text-slate-900 mb-6 font-space-grotesk">
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
               Ready to
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600">
-                Boost My Sales System?
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 py-2">
+                Optimize My Sales?
               </span>
             </h2>
 
-            <p className="relative z-10 text-xl text-slate-600 mb-10 font-medium">
-              Transform your lead management and close more deals
+            <p className="relative z-10 text-xl text-slate-500 mb-12 font-medium max-w-2xl mx-auto">
+              Transform your lead management and close more deals with our integrated sales engine.
             </p>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-10 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-black px-10 py-5 rounded-3xl transition-all shadow-2xl shadow-green-500/25 flex items-center gap-3 text-lg mx-auto"
+              className="relative z-10 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-green-500/25 flex items-center gap-4 text-xl mx-auto"
             >
-              <span className="material-symbols-outlined font-black">rocket_launch</span>
-              Boost My Sales System
+              <span className="material-symbols-outlined text-2xl font-black">rocket_launch</span>
+              Boost My Sales Performance
             </motion.button>
           </motion.div>
         </div>

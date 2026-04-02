@@ -5,7 +5,7 @@ import { PROJECTS } from '../../data/portfolioData';
 
 const Work = () => {
     const [activeCategory, setActiveCategory] = useState('Sectors');
-    const categories = ['Sectors', 'B2B', 'Retail', 'Healthcare', 'Tech', 'Institutional'];
+    const categories = ['Sectors', 'B2B', 'Retail', 'Healthcare', 'Tech', 'Institutional', 'Professional'];
 
     const filteredProjects = activeCategory === 'Sectors'
         ? PROJECTS
@@ -21,8 +21,8 @@ const Work = () => {
                         viewport={{ once: true }}
                         className="max-w-2xl"
                     >
-                        <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tighter leading-none text-black" style={{ fontFamily: "'Product Sans', 'Google Sans', sans-serif" }}>
-                            Case <span className="text-gradient">Archives.</span>
+                        <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tighter leading-none text-premium-gradient pb-2" style={{ fontFamily: "'Product Sans', 'Google Sans', sans-serif" }}>
+                            Case <span className="text-blue-gradient">Archives.</span>
                         </h2>
                         <p className="text-gray-700 text-lg font-light leading-relaxed">A selection of technical milestones where high-fidelity design meets strategic engineering across key industrial verticals.</p>
                     </motion.div>
@@ -38,8 +38,8 @@ const Work = () => {
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.1em] transition-all duration-300 ${activeCategory === cat
-                                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
-                                    : 'border border-gray-200 text-gray-500 hover:border-emerald-300 hover:text-emerald-600 bg-white'
+                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                                    : 'border border-gray-100 text-gray-500 hover:border-blue-300 hover:text-blue-600 bg-white'
                                     }`}
                             >
                                 {cat}

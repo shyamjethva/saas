@@ -70,7 +70,7 @@ const CRMPricing = () => {
               <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">CRM PRICING</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tighter">
               Monthly
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600">
                 CRM Subscription

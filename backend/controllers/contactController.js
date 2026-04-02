@@ -18,7 +18,7 @@ exports.submitContact = async (req, res) => {
     }
 
     // Check if service is valid
-    const validServices = ['Cloud Migration', 'AI/ML Integration', 'Custom Software Development', 'Cybersecurity Audit', 'Free Consultation', 'CRM Demo', 'CRM Demo Booking', 'Business Transformation', 'General Inquiry', 'Digital Marketing', 'SEO Optimization', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising'];
+    const validServices = ['Cloud Migration', 'AI/ML Integration', 'Custom Software Development', 'Cybersecurity Audit', 'Free Consultation', 'CRM Demo', 'CRM Demo Booking', 'Business Transformation', 'General Inquiry', 'Digital Marketing', 'SEO Optimization', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising', 'Graphical Development', 'Collaboration & Project Management'];
 
     if (!validServices.includes(service)) {
       console.log('Invalid service type attempted:', service);
@@ -69,16 +69,14 @@ exports.submitContact = async (req, res) => {
       // Don't fail the contact submission if Lead creation fails
     }
 
-    // Send emails for consultation requests
-    if (service === 'Free Consultation') {
-      try {
-        await sendConsultationEmail(req.body);
-        await sendClientConfirmation(email, name);
-        console.log('✅ Consultation emails sent successfully');
-      } catch (emailError) {
-        console.error('❌ Error sending consultation emails:', emailError);
-        // Don't fail the request if email sending fails
-      }
+    // Send emails for all submissions
+    try {
+      await sendConsultationEmail(req.body);
+      await sendClientConfirmation(email, name);
+      console.log('✅ Notification emails sent successfully');
+    } catch (emailError) {
+      console.error('❌ Error sending notification emails:', emailError);
+      // Don't fail the request if email sending fails
     }
 
     // Return success response
@@ -123,7 +121,9 @@ exports.submitContact = async (req, res) => {
     // Handle general errors
     res.status(500).json({
       success: false,
-      error: 'Internal server error'
+      error: 'Internal server error',
+      message: error.message,
+      ...(process.env.NODE_ENV === 'development' && { stack: error.stack })
     });
   }
 };

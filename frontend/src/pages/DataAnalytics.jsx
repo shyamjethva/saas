@@ -145,33 +145,34 @@ const DataAnalytics = () => {
   return (
     <div className="min-h-screen premium-bg pt-20">
       {/* Header Section */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500/20 to-cyan-500/20 border border-teal-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-teal-400">analytics</span>
-              <span className="text-teal-400 font-bold tracking-wider uppercase text-sm">DATA ANALYTICS</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-teal-50 border border-teal-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-teal-600 text-sm font-black">analytics</span>
+              <span className="text-teal-600 font-black tracking-widest uppercase text-[10px]">DATA ANALYTICS</span>
               {loading && (
-                <div className="ml-3 flex items-center gap-2 text-sm text-cyan-400">
-                  <div className="w-3 h-3 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
-                  Loading analytics from MongoDB...
+                <div className="ml-3 flex items-center gap-2 text-xs text-teal-600 font-black uppercase tracking-wider">
+                  <div className="w-2.5 h-2.5 border-2 border-teal-600 border-t-transparent rounded-full animate-spin"></div>
+                  Syncing MongoDB...
                 </div>
               )}
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 font-space-grotesk">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
               Real-Time Business
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600">
-                Intelligence
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 py-4">
+                Intelligence Engine
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-              Make smarter decisions using AI-powered analytics.
+            <p className="text-lg text-slate-500 max-w-3xl leading-relaxed font-medium mx-auto">
+              Harness the power of AI-driven business intelligence for strategic decision-making.
             </p>
           </motion.div>
         </div>
@@ -180,8 +181,7 @@ const DataAnalytics = () => {
       {/* Analytics Dashboard */}
       <div className="px-6 py-8">
         <div className="max-w-6xl mx-auto">
-          {/* KPI Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
             {kpiData.map((kpi, index) => (
               <motion.div
                 key={index}
@@ -189,35 +189,24 @@ const DataAnalytics = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className={`bg-white rounded-xl p-6 border border-slate-200 shadow-lg hover:shadow-xl relative overflow-hidden transition-all duration-300 text-center ${kpi.color === 'text-green-400' ? 'hover:border-emerald-500/50' :
-                  kpi.color === 'text-blue-400' ? 'hover:border-blue-500/50' :
-                    kpi.color === 'text-purple-400' ? 'hover:border-purple-500/50' :
-                      'hover:border-teal-500/50'
-                  }`}
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-xl hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 text-center relative overflow-hidden group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${kpi.color === 'text-green-400' ? 'from-green-500/10 to-emerald-500/10' :
                   kpi.color === 'text-blue-400' ? 'from-blue-500/10 to-cyan-500/10' :
                     kpi.color === 'text-purple-400' ? 'from-purple-500/10 to-pink-500/10' :
                       'from-teal-500/10 to-cyan-500/10'
-                  } opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className="text-slate-500 text-sm mb-2 font-bold uppercase tracking-widest">{kpi.label}</div>
-                <motion.div
-                  initial={{ scale: 0.8 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  className="text-3xl font-black text-slate-900 mb-2"
-                >
-                  {kpi.value}
-                </motion.div>
-                <div className={`flex items-center justify-center gap-1 font-black ${kpi.color === 'text-green-400' ? 'text-green-600' :
+                  } opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none`}></div>
+                <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">{kpi.label}</div>
+                <div className="text-4xl font-black text-slate-900 mb-2 tracking-tight">{kpi.value}</div>
+                <div className={`flex items-center justify-center gap-2 font-black text-[11px] ${kpi.color === 'text-green-400' ? 'text-green-600' :
                   kpi.color === 'text-blue-400' ? 'text-blue-600' :
                     kpi.color === 'text-purple-400' ? 'text-purple-600' : 'text-teal-600'
                   }`}>
                   <span className="material-symbols-outlined text-sm font-black">
                     {kpi.trend === 'up' ? 'trending_up' : 'trending_down'}
                   </span>
-                  <span className="text-sm">{kpi.change}</span>
+                  {kpi.change}
                 </div>
               </motion.div>
             ))}
@@ -225,31 +214,33 @@ const DataAnalytics = () => {
 
           {/* Revenue Chart */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white/80 rounded-2xl p-8 border border-slate-200 backdrop-blur-sm mb-8 shadow-xl shadow-slate-200/50"
+            className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-2xl mb-12"
           >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-black text-slate-900">Revenue Growth Trend</h2>
-              <div className="flex gap-2">
-                <span className="px-3 py-1 bg-green-500 text-white rounded-full text-xs font-black shadow-lg shadow-green-500/20">Monthly</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-500 rounded-full text-xs font-bold">Yearly</span>
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-xl font-black text-slate-900 uppercase tracking-widest text-[11px]">Revenue Growth Trajectory</h2>
+              <div className="flex gap-3">
+                <span className="px-5 py-2 bg-teal-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-teal-500/20">Monthly View</span>
+                <span className="px-5 py-2 bg-slate-50 border border-slate-200 text-slate-400 rounded-full text-[10px] font-black uppercase tracking-widest">Historical</span>
               </div>
             </div>
 
-            <div className="h-64 flex items-end justify-between px-4">
+            <div className="h-64 flex items-end justify-between gap-3 px-4">
               {monthlyGrowth.map((value, index) => (
                 <motion.div
                   key={index}
                   initial={{ height: 0 }}
                   whileInView={{ height: `${value}%` }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                  className="w-8 bg-gradient-to-t from-teal-600 to-cyan-600 rounded-t-lg hover:from-teal-500 hover:to-cyan-500 transition-all cursor-pointer shadow-lg shadow-teal-500/20"
+                  transition={{ duration: 1, delay: index * 0.05 }}
+                  className="flex-1 max-w-[45px] bg-gradient-to-t from-teal-600 to-cyan-500 rounded-t-xl hover:from-teal-500 hover:to-cyan-400 transition-all cursor-pointer shadow-lg shadow-teal-500/10 relative group"
                   style={{ height: `${value}%` }}
                 >
-                  <div className="text-white text-[10px] text-center pt-2 font-black">{value}%</div>
+                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    {value}%
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -332,16 +323,16 @@ const DataAnalytics = () => {
       </div>
 
       {/* Features Grid */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl font-black text-slate-900 mb-4 font-space-grotesk tracking-tight">Advanced Analytics Suite</h2>
-            <p className="text-xl text-slate-600 font-medium">Comprehensive business intelligence tools</p>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.3] py-4 overflow-visible">Advanced Analytics Engine</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Comprehensive business intelligence across every department.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -377,7 +368,7 @@ const DataAnalytics = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-24">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -387,24 +378,24 @@ const DataAnalytics = () => {
           >
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[100px] -mr-64 -mt-64 group-hover:bg-teal-100/50 transition-colors"></div>
 
-            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 font-space-grotesk tracking-tighter">
-              Ready to View
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600">
-                Business Insights?
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
+              Ready for
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 py-4">
+                Strategic Insights?
               </span>
             </h2>
 
-            <p className="relative z-10 text-xl text-slate-600 mb-12 font-medium max-w-2xl mx-auto">
-              Unlock the power of data-driven decision making with our real-time analytics engine.
+            <p className="relative z-10 text-xl text-slate-500 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+              Unlock the power of data-driven decision making with our real-time business intelligence suite.
             </p>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-10 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-black px-12 py-6 rounded-[2rem] transition-all shadow-2xl shadow-teal-500/25 flex items-center gap-4 text-xl mx-auto"
+              className="relative z-10 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-teal-500/25 flex items-center gap-4 text-xl mx-auto"
             >
               <span className="material-symbols-outlined text-2xl font-black">insights</span>
-              View Business Insights
+              Scale My Operations
             </motion.button>
           </motion.div>
         </div>

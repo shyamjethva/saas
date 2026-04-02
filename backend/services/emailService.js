@@ -2,24 +2,39 @@ const nodemailer = require('nodemailer');
 
 // Create transporter
 const createTransporter = () => {
-  return nodemailer.createTransporter({
-    service: 'gmail',
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // Use SSL
     auth: {
       user: process.env.EMAIL_USER || 'errorinfotech404@gmail.com',
       pass: process.env.EMAIL_PASS || 'your-app-password-here'
+    },
+    debug: true, // Enable debug logging
+    logger: true // Log to console
+  });
+
+  // Verify connection
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error('❌ SMTP Connection Error:', error);
+    } else {
+      console.log('✅ SMTP Server is ready to take messages');
     }
   });
+
+  return transporter;
 };
 
 // Send email to HR and BDE
 const sendConsultationEmail = async (consultationData) => {
   try {
     const transporter = createTransporter();
-    
-    const { 
-      name, email, phone, company, industry, companySize, 
+
+    const {
+      name, email, phone, company, industry, companySize,
       website, projectType, budget, timeline, goals, challenges,
-      consultationType, preferredContact 
+      consultationType, preferredContact
     } = consultationData;
 
     // Email content
@@ -161,7 +176,7 @@ const sendConsultationEmail = async (consultationData) => {
 const sendClientConfirmation = async (clientEmail, clientName) => {
   try {
     const transporter = createTransporter();
-    
+
     const confirmationContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, #00c853, #2979ff); color: white; border-radius: 10px;">

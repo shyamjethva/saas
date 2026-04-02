@@ -18,7 +18,7 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Service type is required'],
     enum: {
-      values: ['Cloud Migration', 'AI/ML Integration', 'Custom Software Development', 'Cybersecurity Audit', 'Free Consultation', 'CRM Demo', 'CRM Demo Booking', 'Business Transformation', 'General Inquiry', 'Digital Marketing', 'SEO Optimization', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising'],
+      values: ['Cloud Migration', 'AI/ML Integration', 'Custom Software Development', 'Cybersecurity Audit', 'Free Consultation', 'CRM Demo', 'CRM Demo Booking', 'Business Transformation', 'General Inquiry', 'Digital Marketing', 'SEO Optimization', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising', 'Graphical Development', 'Collaboration & Project Management'],
       message: '{VALUE} is not a valid service type'
     }
   },

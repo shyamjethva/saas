@@ -4,16 +4,10 @@ import { Link } from 'react-router-dom';
 
 const LeadGenerationDetail = () => {
   return (
-    <div className="min-h-screen premium-bg text-slate-900">
+    <div className="min-h-screen premium-bg text-slate-900 pt-20">
       {/* Header */}
-      <div className="relative overflow-hidden bg-white border-b border-slate-100 uppercase">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]"></div>
-        </div>
-
-        <div className="relative z-10 px-6 py-24">
+      <div className="relative overflow-hidden bg-slate-50/50">
+        <div className="relative z-10 px-6 py-12">
           <div className="max-w-6xl mx-auto">
             <Link
               to="/ai-center"
@@ -46,8 +40,8 @@ const LeadGenerationDetail = () => {
             className="space-y-12"
           >
             {/* Hero Image Section */}
-            <div className="rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl bg-white p-4">
-              <div className="relative aspect-video bg-slate-50 rounded-2xl overflow-hidden">
+            <div className="rounded-[3rem] overflow-hidden shadow-2xl p-0 bg-slate-900">
+              <div className="relative aspect-video bg-slate-900 rounded-2xl overflow-hidden">
                 <img
                   src="/images/ai-conversation/leadgenerate.jpeg"
                   alt="Master Lead Generation Automation Agent Workflow"

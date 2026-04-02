@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ERPPackagesPage = () => {
-  const [activeDepartment, setActiveDepartment] = useState('sales'); // 'main', 'sales', 'marketing', 'support'
+  const [activeDepartment, setActiveDepartment] = useState('sales');
   const [openFaq, setOpenFaq] = useState({});
   const [pricingType, setPricingType] = useState('yearly');
 
@@ -15,421 +15,282 @@ const ERPPackagesPage = () => {
 
   const departments = {
     sales: {
-      name: 'Sales Department',
-      price: '₹35,000',
+      name: 'Sales Transformation',
+      price: pricingType === 'monthly' ? '₹3,500' : '₹35,000',
       period: pricingType === 'monthly' ? '/mo' : '/yr',
-      audience: 'Sales teams and managers',
+      audience: 'Advanced Sales Engineers & Decision Makers',
       features: [
-        'Lead Management',
-        'Manual Lead Entry',
-        'Website Lead Capture',
-        'Lead Status Tracking',
-        'Lead Assignment',
-        'Follow-up Scheduling',
-        'Sales Pipeline Management',
-        'Visual Stage-wise Deal Tracking',
-        'Deal Progress Monitoring',
-        'Conversion Analysis',
-        'Sales Reports',
-        'Performance Analytics',
-        'Agent-wise Sales Report',
-        'Task Management',
-        'Daily Task Allocation',
-        'Deadline Tracking',
-        'Reminder Notifications',
-        'Role & Permission Control',
-        'Sales Team Access',
-        'Sales Manager Access',
-        'Sales Executive Restrictions'
+        'Institutional Lead Capture',
+        'Neural Lead Entry Points',
+        'Website Perimeter Integration',
+        'Status Lifecycle Tracking',
+        'Intelligent Lead Flow',
+        'Follow-up Synchronization',
+        'Sales Pipeline Architecture',
+        'Visual Deal Trajectories',
+        'Conversion Acceleration',
+        'Real-time Sales Insights',
+        'Agent Performance KPIs',
+        'Automated Task Synthesis',
+        'Deadline Precision Tracking',
+        'Role-Based Governance Control'
       ],
-      discount: '15% on annual commitment',
-      cta: 'Contact Sales',
+      discount: '15% Efficiency Gain (Annual)',
+      cta: 'Provision Unit',
       highlight: true,
-      badge: 'MOST POPULAR'
+      badge: 'HIGH DEMAND'
     },
     marketing: {
-      name: 'Marketing Department',
-      price: pricingType === 'monthly' ? '₹25,000' : '₹275,000',
+      name: 'Intelligence Marketing',
+      price: pricingType === 'monthly' ? '₹2,500' : '₹25,000',
       period: pricingType === 'monthly' ? '/mo' : '/yr',
-      audience: 'Marketing teams and specialists',
+      audience: 'Growth Strategists & Marketing Architects',
       features: [
-        'Lead Management',
-        'Website Lead Capture',
-        'Lead Status Tracking',
-        'Lead Categorization',
-        'Campaign Management',
-        'Lead Scoring',
-        'Follow-up Reminder System',
-        'Automated Reminders',
-        'Email & Notification Alerts',
-        'Pending Follow-up Tracking',
-        'Marketing Reports',
-        'Campaign Performance Analytics',
-        'Lead Source Tracking',
-        'Marketing Funnel Analysis',
-        'Social Media Integration',
-        'Email Marketing Tools',
-        'Role & Permission Control',
-        'Marketing Team Access',
-        'Marketing Manager Access',
-        'Content Creator Restrictions'
+        'Marketing Data Perimeter',
+        'Omni-channel Lead Capture',
+        'Lead Scoring Algorithms',
+        'Campaign Lifecycle Engine',
+        'Automated Nurture Flows',
+        'Email Consensus Tools',
+        'Pending Conversion Tracking',
+        'Marketing Funnel Analytics',
+        'Lead Source Attribution',
+        'Social Matrix Integration',
+        'Architectural Governance'
       ],
-      discount: '10% on annual commitment',
-      cta: 'Get Started',
+      discount: '10% Efficiency Gain (Annual)',
+      cta: 'Deploy Node',
       highlight: false
     },
     support: {
-      name: 'Customer Support',
-      price: pricingType === 'monthly' ? '₹20,000' : '₹225,000',
+      name: 'Experience Support',
+      price: pricingType === 'monthly' ? '₹2,000' : '₹20,000',
       period: pricingType === 'monthly' ? '/mo' : '/yr',
-      audience: 'Customer service teams',
+      audience: 'Customer Success Hubs',
       features: [
-        'Customer Database Management',
-        'Contact Information',
-        'Company Details',
-        'Communication History',
-        'Notes & Attachments',
-        'Ticket Management System',
-        'Issue Tracking',
-        'Customer Interaction Logs',
-        'Support Queue Management',
-        'Response Time Tracking',
-        'Customer Satisfaction Surveys',
-        'Support Reports',
-        'Performance Analytics',
-        'Follow-up Reminder System',
-        'Automated Ticket Assignment',
-        'Knowledge Base Integration',
-        'Role & Permission Control',
-        'Support Agent Access',
-        'Team Lead Access',
-        'Supervisor Permissions'
+        'Entity Database Management',
+        'Communication Chronology',
+        'Interaction Persistence',
+        'Ticket Lifecycle Matrix',
+        'Response Latency Tracking',
+        'Satisfaction Indexing',
+        'Support Intelligence Reports',
+        'Automated Ticket Routing',
+        'Knowledge Infrastructure',
+        'SLA Governance Perimeter'
       ],
-      discount: '10% on annual commitment',
-      cta: 'Get Started',
+      discount: '10% Efficiency Gain (Annual)',
+      cta: 'Activate Portal',
       highlight: false
     }
   };
 
   const addons = [
-    { name: "Extra User", price: "₹1,000 / Year" },
-    { name: "Mobile App", price: "₹20,000 / Year" },
-    { name: "WhatsApp API Integration", price: "₹5,000 / Year" },
-    { name: "Custom Branding", price: "₹5,000" },
-    { name: "Dedicated Account Manager", price: "₹25,000 / Year" },
-    { name: "Advanced Automation Setup", price: "₹15,000" },
-    { name: "Custom Module Development", price: "₹20,000+" },
-    { name: "Dedicated Cloud Server", price: "₹15,000 / Year" }
-  ];
-
-  const discountOptions = [
-    { plan: "Basic Plan", discount: "Max 10%" },
-    { plan: "Standard Plan", discount: "Max 15%" },
-    { plan: "Premium Plan", discount: "Max 20%" },
-    { plan: "Combo Offer", discount: "Max 20% Total" }
+    { name: "Extra Cognitive Node (User)", price: "₹1,000 / Year", icon: "person_add" },
+    { name: "Mobile Ecosystem", price: "₹20,000 / Year", icon: "smartphone" },
+    { name: "WhatsApp Neural API", price: "₹5,000 / Year", icon: "chat" },
+    { name: "Identity Branding", price: "₹5,000", icon: "brush" },
+    { name: "Institutional Manager", price: "₹25,000 / Year", icon: "badge" },
+    { name: "Automation Protocol", price: "₹15,000", icon: "settings_suggest" },
+    { name: "Architectural Module", price: "₹20,000+", icon: "extension" },
+    { name: "Dedicated Core Server", price: "₹15,000 / Year", icon: "dns" }
   ];
 
   const faqs = [
     {
-      question: "What payment methods do you accept?",
-      answer: "We accept bank transfers, credit cards, and UPI payments. For enterprise clients, we also offer invoice-based billing."
+      question: "Institutional Validation Protocols?",
+      answer: "We support high-security transfers, encryption-verified credit nodes, and institutional invoice-based governance for enterprise entities."
     },
     {
-      question: "Can I upgrade or downgrade my package?",
-      answer: "Yes, you can upgrade or downgrade your package at any time. We'll prorate the charges based on your usage."
+      question: "Scalability Transitions?",
+      answer: "Agreement tiers can be dynamically scaled. Our engine prorates institutional nodes based on active cycle usage."
     },
     {
-      question: "Do you offer custom solutions?",
-      answer: "Absolutely! We can customize any package to meet your specific requirements. Contact our sales team for more information."
-    },
-    {
-      question: "What is included in the ERP integration?",
-      answer: "Our ERP integration includes automatic lead capture, lead status tracking, follow-up reminders, and performance analytics."
-    },
-    {
-      question: "How long does implementation take?",
-      answer: "Implementation timelines vary by service: ERP (immediate to 30 days depending on configuration)."
+      question: "Architectural Customization?",
+      answer: "Our core framework supports extensive custom module synthesis to align with complex organizational taxonomies."
     }
   ];
 
-  if (activeDepartment !== 'main' && departments[activeDepartment]) {
-    const pkg = departments[activeDepartment];
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-blue-900">
-        {/* Header Section */}
-        <div className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-8"
-            >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  {pkg.name} Package
-                </span>
-              </h1>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                ERP Solution for {pkg.name.toLowerCase()}
-              </p>
-            </motion.div>
-            
-            <div className="text-center mb-8">
-              <button
-                onClick={() => setActiveDepartment('main')}
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+  return (
+    <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10">
+      {/* Header Section */}
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-12">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
+                  <span className="material-symbols-outlined text-blue-600 text-sm font-black">inventory_2</span>
+                  <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">ERP INFRASTRUCTURE TIERS</span>
+                </div>
+
+                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible">
+                  Unit
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 py-4">
+                    Provisions
+                  </span>
+                </h1>
+
+                <p className="text-xl text-slate-500 max-w-3xl leading-relaxed font-medium">
+                  Select your institutional department node to deploy high-precision ERP architecture tailored for modern organizational governance.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center bg-white p-2 rounded-3xl border border-slate-200 shadow-xl h-fit">
+                <div className="flex gap-2 p-1">
+                  <button
+                    onClick={() => setPricingType('monthly')}
+                    className={`px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${pricingType === 'monthly' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-400 hover:text-slate-900'}`}
+                  >
+                    Monthly
+                  </button>
+                  <button
+                    onClick={() => setPricingType('yearly')}
+                    className={`px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${pricingType === 'yearly' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-400 hover:text-slate-900'}`}
+                  >
+                    Annual
+                  </button>
+                </div>
+                {pricingType === 'yearly' && (
+                  <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest py-2">10% Architectural Rebate</span>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="px-6 pb-40">
+        <div className="max-w-7xl mx-auto">
+          {/* Department Selection Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
+            {Object.entries(departments).map(([key, dept], index) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className={`flex flex-col bg-white rounded-[3.5rem] p-12 border transition-all duration-500 group relative overflow-hidden ${dept.highlight ? 'border-blue-600 shadow-2xl scale-[1.02] z-10' : 'border-slate-200 shadow-xl hover:border-slate-900'
+                  }`}
               >
-                ← Back to Departments
-              </button>
+                {dept.badge && (
+                  <div className="absolute top-0 right-0 p-8">
+                    <span className="px-5 py-2 bg-blue-600 text-white rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-lg shadow-blue-500/20">
+                      {dept.badge}
+                    </span>
+                  </div>
+                )}
+
+                <div className="mb-12">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform ${dept.highlight ? 'bg-blue-600 text-white shadow-blue-500/20' : 'bg-slate-50 text-slate-400'
+                    }`}>
+                    <span className="material-symbols-outlined text-2xl font-black">
+                      {key === 'sales' ? 'trending_up' : key === 'marketing' ? 'hub' : 'support_agent'}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase italic mb-2">{dept.name}</h3>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className={`text-5xl font-black tracking-tighter py-2 overflow-visible ${dept.highlight ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600' : 'text-slate-900'}`}>
+                      {dept.price}
+                    </span>
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-widest">{dept.period}</span>
+                  </div>
+                  <p className="text-slate-500 text-xs font-bold italic opacity-70">"{dept.audience}"</p>
+                </div>
+
+                <div className="flex-1 mb-12">
+                  <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-6 border-l-2 border-blue-600 pl-4">Node Capabilities</h4>
+                  <ul className="space-y-4">
+                    {dept.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-4 group/item">
+                        <span className="material-symbols-outlined text-blue-600 text-lg font-black shrink-0 mt-0.5 group-hover/item:scale-125 transition-transform">verified</span>
+                        <span className="text-slate-600 text-sm font-bold italic group-hover/item:text-slate-900 transition-colors">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <button className={`w-full py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest transition-all shadow-xl hover:shadow-2xl active:scale-95 ${dept.highlight ? 'bg-slate-900 text-white hover:bg-black' : 'bg-white text-slate-900 border border-slate-200 hover:border-slate-900'
+                  }`}>
+                  {dept.cta}
+                </button>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Add-ons Section */}
+          <div className="mb-24">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">Extension Nodes</h2>
+              <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Augment your core department provisions</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {addons.map((addon, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-xl text-center group hover:border-blue-600 transition-all"
+                >
+                  <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-inner group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <span className="material-symbols-outlined text-2xl font-black">{addon.icon}</span>
+                  </div>
+                  <h3 className="text-slate-900 font-black text-[10px] uppercase tracking-tight mb-2 italic">"{addon.name}"</h3>
+                  <p className="text-blue-600 font-black text-[10px] uppercase tracking-widest italic">{addon.price}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Department Package Card */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className={`relative bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10  transition-all duration-300 ${
-              pkg.highlight ? 'ring-2 ring-cyan-400/50 transform scale-105' : ''
-            }`}
-          >
-            {pkg.badge && (
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                  {pkg.badge}
-                </span>
-              </div>
-            )}
-            
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">{pkg.name} Package</h3>
-              <div className="flex items-baseline justify-center">
-                <span className={`text-4xl font-bold bg-gradient-to-r ${
-                  pkg.highlight ? 'from-cyan-400 to-blue-500' : 'from-blue-400 to-cyan-500'
-                } bg-clip-text text-transparent`}>
-                  {pkg.price}
-                </span>
-                <span className="text-slate-400 ml-2">{pkg.period}</span>
-              </div>
-              <p className="text-slate-400 text-sm mt-2">{pkg.audience}</p>
+          {/* FAQ Architecture */}
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl font-black text-slate-900 tracking-widest uppercase text-xs italic">Governance FAQ</h2>
             </div>
-
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Features:</h4>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {pkg.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start text-slate-300 text-sm">
-                    <span className="text-cyan-400 mr-2 mt-0.5">✓</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-6">
-              <p className="text-cyan-400 text-sm font-medium">{pkg.discount}</p>
-            </div>
-
-            <div className="text-center">
-              <button className={`w-full bg-gradient-to-r ${
-                pkg.highlight 
-                  ? 'from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600' 
-                  : 'from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600'
-              } text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105`}>
-                {pkg.cta}
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Add-On Services */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mt-16 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl rounded-2xl p-8 border border-white/10"
-          >
-            <h2 className="text-3xl font-bold text-white text-center mb-8">Add-On Services</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {addons.map((addon, index) => (
-                <div key={index} className="bg-white/5 rounded-xl p-6 border border-white/10  transition-all duration-300">
-                  <h3 className="text-lg font-semibold text-white mb-2">{addon.name}</h3>
-                  <p className="text-cyan-400 font-semibold">{addon.price}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Discount Policy */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-16 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl rounded-2xl p-8 border border-white/10"
-          >
-            <h2 className="text-3xl font-bold text-white text-center mb-8">Discount Policy</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {discountOptions.map((discount, index) => (
-                <div key={index} className="bg-white/5 rounded-xl p-6 border border-white/10 text-center">
-                  <h3 className="text-lg font-semibold text-cyan-400 mb-2">{discount.plan}</h3>
-                  <p className="text-2xl font-bold text-white">{discount.discount}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 text-center">
-              <p className="text-red-400 font-semibold">Note: Total discount cannot exceed 20% under any circumstances</p>
-            </div>
-          </motion.div>
-
-          {/* FAQ Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-16 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl rounded-2xl p-8 border border-white/10"
-          >
-            <h2 className="text-3xl font-bold text-white text-center mb-8">Frequently Asked Questions</h2>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="border border-white/10 rounded-xl overflow-hidden">
+                <motion.div
+                  key={index}
+                  className="bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden group"
+                >
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-6 py-4 text-left text-white bg-white/5 hover:bg-white/10 transition-colors duration-300 flex justify-between items-center"
+                    className="w-full p-10 text-left flex justify-between items-center group-hover:bg-slate-50 transition-colors"
                   >
-                    <span>{faq.question}</span>
-                    <span className={`transform transition-transform duration-300 ${openFaq[index] ? 'rotate-180' : ''}`}>
-                      ▼
-                    </span>
+                    <span className="text-slate-900 font-black text-xs uppercase tracking-tight italic">"{faq.question}"</span>
+                    <motion.span
+                      animate={{ rotate: openFaq[index] ? 180 : 0 }}
+                      className="material-symbols-outlined font-black text-slate-400"
+                    >
+                      expand_more
+                    </motion.span>
                   </button>
-                  <div className={`overflow-hidden transition-all duration-300 ${openFaq[index] ? 'max-h-96' : 'max-h-0'}`}>
-                    <div className="px-6 py-4 bg-white/5 text-slate-300">
-                      {faq.answer}
-                    </div>
-                  </div>
-                </div>
+                  <AnimatePresence>
+                    {openFaq[index] && (
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: 'auto' }}
+                        exit={{ height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-10 pb-10">
+                          <div className="pt-10 border-t border-slate-100">
+                            <p className="text-slate-500 text-sm font-bold italic leading-relaxed opacity-80">"{faq.answer}"</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
-        </div>
-      </div>
-    );
-  }
-
-  // Main department selection view
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-blue-900">
-      {/* Header Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                ERP Solutions
-              </span>
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Department-specific ERP Solutions for modern businesses
-            </p>
-            
-            {/* Pricing Toggle */}
-            <div className="mt-8 flex justify-center items-center">
-              <span className={`mr-4 text-slate-300 font-medium ${pricingType === 'monthly' ? 'text-cyan-400' : ''}`}>
-                Monthly
-              </span>
-              <button
-                onClick={() => setPricingType(pricingType === 'monthly' ? 'yearly' : 'monthly')}
-                className="relative inline-flex h-6 w-11 items-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors"
-              >
-                <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  pricingType === 'monthly' ? 'translate-x-1' : 'translate-x-6'
-                }`} />
-              </button>
-              <span className={`ml-4 text-slate-300 font-medium ${pricingType === 'yearly' ? 'text-cyan-400' : ''}`}>
-                Yearly <span className="text-green-400">(Save 10%)</span>
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Department Selection */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Choose Your Department</h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">Select a department to view its dedicated ERP package</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {Object.entries(departments).map(([key, dept], index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10  transition-all duration-300 cursor-pointer ${
-                dept.highlight ? 'ring-2 ring-cyan-400/50 transform scale-105' : ''
-              }`}
-              onClick={() => setActiveDepartment(key)}
-            >
-              {dept.badge && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    {dept.badge}
-                  </span>
-                </div>
-              )}
-              
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-white">
-                    {dept.name.charAt(0)}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">{dept.name}</h3>
-                <div className="flex items-baseline justify-center mb-2">
-                  <span className={`text-3xl font-bold bg-gradient-to-r ${
-                    dept.highlight ? 'from-cyan-400 to-blue-500' : 'from-blue-400 to-cyan-500'
-                  } bg-clip-text text-transparent`}>
-                    {dept.price}
-                  </span>
-                  <span className="text-slate-400 ml-2">{dept.period}</span>
-                </div>
-                <p className="text-slate-400 text-sm">{dept.audience}</p>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="text-md font-semibold text-white mb-2">Key Features:</h4>
-                <ul className="space-y-1">
-                  {dept.features.slice(0, 3).map((feature, idx) => (
-                    <li key={idx} className="flex items-start text-slate-300 text-xs">
-                      <span className="text-cyan-400 mr-1 mt-0.5">✓</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                  <li className="text-cyan-400 text-xs mt-2">+ {dept.features.length - 3} more features</li>
-                </ul>
-              </div>
-
-              <div className="text-center">
-                <button className={`w-full bg-gradient-to-r ${
-                  dept.highlight 
-                    ? 'from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600' 
-                    : 'from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600'
-                } text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300`}>
-                  View Package
-                </button>
-              </div>
-            </motion.div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

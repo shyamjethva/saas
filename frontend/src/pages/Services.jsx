@@ -1179,19 +1179,21 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-slate-100 border border-slate-200 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-slate-900">precision_manufacturing</span>
-              <span className="text-slate-900 font-bold tracking-wider uppercase text-sm">COMPREHENSIVE IT SOLUTIONS</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-slate-100/50 border border-slate-200 backdrop-blur-md mb-8">
+              <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">precision_manufacturing</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-900 font-bold tracking-wider uppercase text-sm">COMPREHENSIVE IT SOLUTIONS</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Professional
+            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900">
+                Professional
+              </span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600">
                 IT Services
               </span>
             </h1>
 
-            <p className="text-2xl text-slate-800 max-w-3xl mx-auto leading-relaxed mb-6 font-semibold">
+            <p className="text-2xl text-slate-800 max-w-3xl mx-auto leading-relaxed mb-6 font-bold tracking-tight">
               Comprehensive technology solutions for modern business growth
             </p>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium">
@@ -1261,7 +1263,7 @@ const Services = () => {
                         {benefit.stat}
                       </div>
 
-                      <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors uppercase tracking-tight leading-tight">{benefit.title}</h3>
+                      <h3 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 group-hover:from-blue-600 group-hover:to-blue-400 transition-all uppercase tracking-tight leading-tight">{benefit.title}</h3>
                       <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow font-medium">{benefit.description}</p>
                       <div className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-[10px] font-black tracking-widest uppercase mt-auto">
                         {benefit.statLabel}
@@ -1279,7 +1281,7 @@ const Services = () => {
                       <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
                       <span className="text-slate-600 text-xs tracking-[0.3em] uppercase font-bold">How We Work</span>
                     </div>
-                    <h3 className="text-5xl font-black text-slate-900 mb-4 tracking-tight">
+                    <h3 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-4 tracking-tight">
                       Our Development
                       <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600"> Process </span>
                     </h3>
@@ -1338,7 +1340,7 @@ const Services = () => {
                     <span className="material-symbols-outlined text-blue-600">{section.icon}</span>
                     <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">{section.subtitle}</span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{section.title}</h2>
+                  <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-6 leading-tight">{section.title}</h2>
                   <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
                     {section.description}
                   </p>
@@ -1361,8 +1363,8 @@ const Services = () => {
                           </div>
 
                           <div className="flex-1">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-3">
-                              <span className="material-symbols-outlined text-blue-600">check_circle</span>
+                            <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 mb-3 flex items-center gap-3">
+                              <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">check_circle</span>
                               {service.category}
                             </h3>
                             <p className="text-slate-600 mb-6 font-medium">{service.description}</p>
@@ -1370,7 +1372,7 @@ const Services = () => {
                             {/* Platforms List (for Social Media) */}
                             {service.platforms && (
                               <div className="mb-6">
-                                <h4 className="text-lg font-bold text-slate-900 mb-3">Platforms Managed:</h4>
+                                <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-3">Platforms Managed:</h4>
                                 <div className="flex flex-wrap gap-2">
                                   {service.platforms.map((platform, platformIndex) => (
                                     <span
@@ -1387,7 +1389,7 @@ const Services = () => {
                             {/* Activities List (for Social Media) */}
                             {service.activities && (
                               <div className="mb-6">
-                                <h4 className="text-lg font-bold text-slate-900 mb-3">Social Media Activities:</h4>
+                                <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-indigo-900 mb-3">Social Media Activities:</h4>
                                 <ul className="space-y-2">
                                   {service.activities.map((activity, activityIndex) => (
                                     <li key={activityIndex} className="flex items-center gap-3 text-slate-600 font-medium">
@@ -1404,8 +1406,8 @@ const Services = () => {
                               <div className="grid md:grid-cols-2 gap-6 mb-6">
                                 {service.subcategories.map((subcategory, subIndex) => (
                                   <div key={subIndex} className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                                    <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                      <span className="material-symbols-outlined text-blue-600">category</span>
+                                    <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 mb-4 flex items-center gap-2">
+                                      <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">category</span>
                                       {subcategory.title}
                                     </h4>
                                     <ul className="space-y-2">
@@ -1451,8 +1453,8 @@ const Services = () => {
                           </div>
 
                           <div className="flex-1">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-3">
-                              <span className="material-symbols-outlined text-blue-600">monitoring</span>
+                            <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 mb-3 flex items-center gap-3">
+                              <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">monitoring</span>
                               {section.reporting.title}
                             </h3>
                             <p className="text-slate-600 mb-6 font-medium">{section.reporting.description}</p>
@@ -1489,8 +1491,8 @@ const Services = () => {
                           </div>
 
                           <div className="flex-1">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-3">
-                              <span className="material-symbols-outlined text-blue-600">check_circle</span>
+                            <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 mb-3 flex items-center gap-3">
+                              <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">check_circle</span>
                               {service.category}
                             </h3>
                             <p className="text-slate-600 mb-6 font-medium">{service.description}</p>
@@ -1500,7 +1502,7 @@ const Services = () => {
                               <div className="space-y-6">
                                 {service.subcategories.map((subcategory, subIndex) => (
                                   <div key={subIndex}>
-                                    <h4 className="text-lg font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                                    <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 mb-3 flex items-center gap-2">
                                       <span className="material-symbols-outlined text-blue-600">chevron_right</span>
                                       {subcategory.title}
                                     </h4>
@@ -1550,8 +1552,8 @@ const Services = () => {
                           <span className="material-symbols-outlined text-white text-2xl">business</span>
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-3">
-                            <span className="material-symbols-outlined text-green-600">check_circle</span>
+                          <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-green-900 mb-3 flex items-center gap-3">
+                            <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 font-bold">check_circle</span>
                             🏢 B2B Software Solutions
                           </h3>
                           <p className="text-slate-600 mb-6 font-medium">Enterprise-grade software solutions designed for business automation, efficiency improvement, scalability and digital transformation</p>
@@ -1559,7 +1561,7 @@ const Services = () => {
                           <div className="grid md:grid-cols-2 gap-6">
                             {section.b2bServices.map((service, index) => (
                               <div key={index} className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                                <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-4 flex items-center gap-2">
                                   <span className={`material-symbols-outlined text-blue-600`}>{service.icon}</span>
                                   {service.name}
                                 </h4>
@@ -1591,8 +1593,8 @@ const Services = () => {
                           <span className="material-symbols-outlined text-white text-2xl">storefront</span>
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-3">
-                            <span className="material-symbols-outlined text-blue-600">check_circle</span>
+                          <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-3 flex items-center gap-3">
+                            <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">check_circle</span>
                             🛒 B2C Software Solutions
                           </h3>
                           <p className="text-slate-600 mb-6 font-medium">Customer-facing software platforms for e-commerce, payments, booking, delivery and customer engagement</p>
@@ -1600,7 +1602,7 @@ const Services = () => {
                           <div className="grid md:grid-cols-3 gap-6">
                             {section.b2cServices.map((service, index) => (
                               <div key={index} className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                                <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-4 flex items-center gap-2">
                                   <span className={`material-symbols-outlined text-blue-600`}>{service.icon}</span>
                                   {service.name}
                                 </h4>
@@ -1632,8 +1634,8 @@ const Services = () => {
                           <span className="material-symbols-outlined text-white text-2xl">rocket_launch</span>
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-3">
-                            <span className="material-symbols-outlined text-purple-600">check_circle</span>
+                          <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-purple-900 mb-3 flex items-center gap-3">
+                            <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-bold">check_circle</span>
                             Development Process & Stats
                           </h3>
                           <p className="text-slate-600 mb-6 font-medium">From initial concept to deployment, we build scalable, secure, and high-performance software solutions</p>
@@ -1641,7 +1643,7 @@ const Services = () => {
                           <div className="grid md:grid-cols-2 gap-6 mb-8">
                             {section.developmentProcess.map((step, index) => (
                               <div key={index} className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                                <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-purple-900 mb-2 flex items-center gap-2">
                                   <span className={`material-symbols-outlined text-purple-600`}>{step.icon}</span>
                                   Step {step.step}: {step.title}
                                 </h4>
@@ -1688,7 +1690,7 @@ const Services = () => {
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
                             <span className="material-symbols-outlined text-white">business</span>
                           </div>
-                          <h3 className="text-2xl font-bold text-slate-900">B2B Solutions</h3>
+                          <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900">B2B Solutions</h3>
                         </div>
                         {section.b2bServices.map((service, index) => (
                           <div key={index} className="mb-6">
@@ -1749,7 +1751,7 @@ const Services = () => {
                       </div>
                       <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 relative z-10">
                         Sector-Specific
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600">
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 pb-4 leading-tight">
                           Digital Solutions
                         </span>
                       </h2>
@@ -1799,7 +1801,7 @@ const Services = () => {
 
                                 {/* Solutions Grid */}
                                 <div className="mb-6 flex-grow">
-                                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                  <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-4 flex items-center gap-2">
                                     <span className={`material-symbols-outlined text-xl ${index === 0 ? 'text-blue-600' : 'text-orange-600'
                                       }`}>checklist</span>
                                     Core Solutions
@@ -1825,7 +1827,7 @@ const Services = () => {
 
                                 {/* Benefits */}
                                 <div className="mt-auto">
-                                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                  <h4 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-4 flex items-center gap-2">
                                     <span className={`material-symbols-outlined text-xl ${index === 0 ? 'text-purple-600' : 'text-blue-600'
                                       }`}>trending_up</span>
                                     Key Benefits

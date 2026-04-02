@@ -195,18 +195,21 @@ const BusinessHub = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8"
+          className="flex flex-col items-center text-center mb-16"
         >
-          <div>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 mb-6">
-              <span className="material-symbols-outlined text-slate-900 text-sm">hub</span>
-              <span className="text-slate-900 font-black uppercase tracking-widest text-[10px]">Management Panel</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-4 tracking-tighter">Business Hub</h1>
-            <p className="text-slate-500 text-lg max-w-2xl font-medium">Platform-wide analytics, client management, and performance tracking.</p>
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
+            <span className="material-symbols-outlined text-blue-600 text-sm font-black">hub</span>
+            <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">MANAGEMENT PANEL</span>
           </div>
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+            Business
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+              Hub Center
+            </span>
+          </h1>
+          <p className="text-lg text-slate-500 max-w-2xl font-medium leading-relaxed mx-auto mb-10">Platform-wide analytics, client management, and performance tracking.</p>
 
           <button
             onClick={fetchBusinessData}
@@ -217,22 +220,26 @@ const BusinessHub = () => {
           </button>
         </motion.div>
 
-        {/* Business Insights Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {businessInsights.map((insight, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-slate-300 transition-all group"
+              className="p-8 bg-white rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-slate-400 font-bold uppercase tracking-widest text-[9px]">{insight.title}</span>
-                <span className="material-symbols-outlined text-slate-900 text-sm group-hover:scale-110 transition-transform">{insight.icon}</span>
+              <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-[0.3] transition-opacity duration-700 pointer-events-none"></div>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-slate-400 font-black uppercase tracking-widest text-[9px]">{insight.title}</span>
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-900 border border-slate-100 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all">
+                    <span className="material-symbols-outlined text-sm">{insight.icon}</span>
+                  </div>
+                </div>
+                <div className="text-4xl font-black text-slate-900 mb-1 tracking-tighter">{insight.value}</div>
+                <div className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">{insight.desc}</div>
               </div>
-              <div className="text-3xl font-black text-slate-900 mb-1">{insight.value}</div>
-              <div className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">{insight.desc}</div>
             </motion.div>
           ))}
         </div>
@@ -248,18 +255,18 @@ const BusinessHub = () => {
         {/* Activity & Performance */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight">Recent Activity</h2>
-              <div className="h-px flex-1 mx-8 bg-slate-100"></div>
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Operational Timeline</h2>
+              <div className="h-px flex-1 mx-10 bg-slate-100"></div>
             </div>
             <div className="space-y-6">
               {recentActivity.map(activity => (
                 <ActivityItem key={activity.id} activity={activity} />
               ))}
               {recentActivity.length === 0 && !loading && (
-                <div className="text-center py-20 bg-slate-50 rounded-[3rem] border border-dashed border-slate-200">
-                  <span className="material-symbols-outlined text-slate-300 text-6xl mb-4">history</span>
-                  <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">No activity records found</p>
+                <div className="text-center py-24 bg-white rounded-[3rem] border-2 border-dashed border-slate-200">
+                  <span className="material-symbols-outlined text-slate-200 text-7xl mb-6 block">history</span>
+                  <p className="text-slate-400 font-black uppercase tracking-[0.3em] text-[10px]">No activity records found</p>
                 </div>
               )}
             </div>

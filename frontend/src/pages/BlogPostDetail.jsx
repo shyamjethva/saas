@@ -677,10 +677,10 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-24 pb-12 px-6">
+      <div className="min-h-screen premium-bg pt-24 pb-12 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Blog Post Not Found</h1>
-          <p className="text-slate-400 mb-8">The blog post you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-black text-slate-800 mb-4">Blog Post Not Found</h1>
+          <p className="text-slate-500 mb-8 font-medium">The blog post you're looking for doesn't exist.</p>
           <button
             onClick={() => navigate('/blog')}
             className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold px-6 py-3 rounded-full"
@@ -696,7 +696,7 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
   const paragraphs = post.content.split('\n\n');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20">
+    <div className="min-h-screen premium-bg">
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-6">
         <div className="max-w-4xl mx-auto">
@@ -705,10 +705,10 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate('/blog')}
-            className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors"
+            className="flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-8 transition-colors font-black uppercase tracking-widest text-[10px]"
           >
-            <span className="material-symbols-outlined">arrow_back</span>
-            Back to Blog
+            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            Back to Intelligence Hub
           </motion.button>
 
           {/* Post Header */}
@@ -717,44 +717,44 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="flex items-center gap-4 mb-4">
-              <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
                 {post.category}
               </span>
-              <span className="text-slate-400 text-sm">{post.readTime}</span>
+              <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{post.readTime}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-black text-slate-800 mb-8 tracking-tighter leading-tight font-space-grotesk">
               {post.title}
             </h1>
-            <div className="flex items-center gap-6 text-slate-400">
+            <div className="flex flex-wrap items-center gap-6 text-slate-500 font-bold text-xs">
               <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">person</span>
+                <span className="material-symbols-outlined text-sm text-blue-600">person</span>
                 {post.author}
               </span>
               <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">schedule</span>
+                <span className="material-symbols-outlined text-sm text-blue-600">schedule</span>
                 {post.date}
               </span>
               <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">visibility</span>
+                <span className="material-symbols-outlined text-sm text-blue-600">visibility</span>
                 {post.views} views
               </span>
             </div>
           </motion.div>
 
-          {/* Featured Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="w-full h-64 md:h-[450px] rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-2xl relative"
+            className="w-full h-64 md:h-[550px] rounded-[3rem] overflow-hidden mb-16 border border-slate-200 shadow-2xl relative group"
           >
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover saturate-[0.85] brightness-[1.05] group-hover:saturate-150 group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-all duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-700"></div>
           </motion.div>
 
 
@@ -763,14 +763,15 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card rounded-2xl p-8 border border-white/10"
+            className="bg-white rounded-[2.5rem] p-10 md:p-16 border border-slate-200 shadow-2xl relative overflow-hidden"
           >
-            <div className="prose prose-invert max-w-none">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -mr-32 -mt-32 opacity-50"></div>
+            <div className="prose prose-slate max-w-none relative z-10">
               {paragraphs.map((paragraph, index) => {
                 // Check if it's a heading (starts with certain patterns)
                 if (paragraph.startsWith('Our ') || paragraph.startsWith('Key ') || paragraph.startsWith('Success ') || paragraph.startsWith('Industry') || paragraph.startsWith('Benefits') || paragraph.startsWith('What ') || paragraph.startsWith('The ') || paragraph.startsWith('Progressive') || paragraph.startsWith('Frontend') || paragraph.startsWith('Backend') || paragraph.startsWith('WebAssembly') || paragraph.startsWith('AI Integration') || paragraph.startsWith('Native') || paragraph.startsWith('Cross-Platform') || paragraph.startsWith('When to') || paragraph.startsWith('Choosing')) {
                   return (
-                    <h2 key={index} className="text-2xl font-bold text-white mt-8 mb-4">
+                    <h2 key={index} className="text-3xl font-black text-slate-800 mt-12 mb-6 tracking-tight">
                       {paragraph}
                     </h2>
                   );
@@ -781,8 +782,8 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
                   return (
                     <ul key={index} className="space-y-2 ml-6 mb-6">
                       {items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start gap-2 text-slate-300">
-                          <span className="text-blue-400 mt-1">•</span>
+                        <li key={itemIndex} className="flex items-start gap-4 text-slate-600 font-medium py-1">
+                          <span className="w-2 h-2 rounded-full bg-blue-600 mt-2 shadow-lg shadow-blue-500/20 flex-shrink-0" />
                           <span>{item.replace('•', '').trim()}</span>
                         </li>
                       ))}
@@ -791,7 +792,7 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
                 }
                 // Regular paragraph
                 return (
-                  <p key={index} className="text-slate-300 leading-relaxed mb-4">
+                  <p key={index} className="text-slate-600 leading-relaxed mb-6 font-medium text-lg">
                     {paragraph}
                   </p>
                 );
@@ -799,11 +800,11 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 pt-8 mt-8 border-t border-white/10">
+            <div className="flex flex-wrap gap-2 pt-8 mt-8 border-t border-slate-100">
               {post.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30"
+                  className="px-4 py-1.5 bg-slate-50 text-slate-500 font-black uppercase tracking-widest text-[9px] rounded-full border border-slate-200/50"
                 >
                   #{tag}
                 </span>
@@ -811,13 +812,13 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
             </div>
 
             {/* Share Section */}
-            <div className="flex items-center gap-4 pt-6 mt-6 border-t border-white/10">
-              <span className="text-slate-400 font-medium">Share this article:</span>
+            <div className="flex items-center gap-4 pt-6 mt-6 border-t border-slate-100">
+              <span className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Share report:</span>
               <div className="flex gap-2">
                 {['share', 'favorite_border', 'bookmark'].map((icon, index) => (
                   <button
                     key={index}
-                    className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-slate-50 hover:bg-blue-50 text-slate-400 hover:text-blue-600 flex items-center justify-center transition-all border border-slate-100"
                   >
                     <span className="material-symbols-outlined text-sm">{icon}</span>
                   </button>
@@ -835,17 +836,17 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
           >
             {post.id > 1 && (
               <Link to={`/blog/post/${post.id - 1}`}>
-                <button className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-                  <span className="material-symbols-outlined">arrow_back</span>
-                  Previous Article
+                <button className="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-black uppercase tracking-widest text-[10px]">
+                  <span className="material-symbols-outlined text-sm">arrow_back</span>
+                  Previous Report
                 </button>
               </Link>
             )}
             {post.id < blogPosts.length && (
               <Link to={`/blog/post/${post.id + 1}`} className="ml-auto">
-                <button className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-                  Next Article
-                  <span className="material-symbols-outlined">arrow_forward</span>
+                <button className="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-black uppercase tracking-widest text-[10px]">
+                  Next Release
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </button>
               </Link>
             )}

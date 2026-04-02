@@ -5,7 +5,6 @@ import Hero from '../components/Portfolio/Hero';
 import Work from '../components/Portfolio/Work';
 import Achievements from '../components/Portfolio/Achievements';
 import Contact from '../components/Portfolio/Contact';
-import GeminiAssistant from '../components/Portfolio/GeminiAssistant';
 import { CLIENT_SECTORS, METHODOLOGY } from '../data/portfolioData';
 
 const PremiumPortfolio = () => {
@@ -19,12 +18,12 @@ const PremiumPortfolio = () => {
         <Hero />
 
         {/* Client Sector Data Section */}
-        <section id="demographic" className="py-24 px-6 relative border-y border-gray-100 bg-gray-50/30">
+        <section id="demographic" className="py-16 px-6 relative border-y border-gray-100 bg-gray-50/30">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-16 text-center">
-              <span className="text-[12px] font-black text-emerald-600 uppercase tracking-[0.4em] mb-4 block">Client Demographics</span>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-black" style={{ fontFamily: "'Product Sans', 'Google Sans', sans-serif" }}>
-                Total Client <span className="text-gradient">Data Ecosystem.</span>
+            <div className="mb-12 text-center">
+              <span className="text-[12px] font-black text-blue-600 uppercase tracking-[0.4em] mb-4 block">Client Demographics</span>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-premium-gradient pb-2">
+                Total Client <span className="text-blue-gradient">Data Ecosystem.</span>
               </h2>
               <p className="mt-4 text-slate-600 max-w-2xl mx-auto font-light text-base">Analyzing our global footprint across key industrial verticals and emerging sectors with absolute precision.</p>
             </div>
@@ -58,14 +57,14 @@ const PremiumPortfolio = () => {
         <Achievements />
 
         {/* The Methodology Section - The Protocol */}
-        <section id="about" className="py-32 px-6 bg-white border-t border-gray-100">
+        <section id="about" className="py-20 px-6 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
               <div className="lg:col-span-7">
-                <span className="text-[12px] font-black text-emerald-600 uppercase tracking-[0.4em] mb-4 block">Operational Excellence</span>
-                <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-[1.1] mb-8 text-black" style={{ fontFamily: "'Product Sans', 'Google Sans', sans-serif" }}>
+                <span className="text-[12px] font-black text-blue-600 uppercase tracking-[0.4em] mb-4 block">Operational Excellence</span>
+                <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-[1.1] mb-8 text-premium-gradient pb-2">
                   The Error Infotech <br />
-                  <span className="text-gradient">Protocol.</span>
+                  <span className="text-blue-gradient">Protocol.</span>
                 </h2>
                 <p className="text-lg text-slate-600 font-light leading-relaxed max-w-xl">
                   Our methodology is designed to minimize friction and maximize technical output. We don't just build software; we architect for global scalability.
@@ -73,11 +72,11 @@ const PremiumPortfolio = () => {
               </div>
               <div className="lg:col-span-5 flex items-center justify-center gap-16 lg:border-l lg:border-gray-100 lg:pl-12">
                 <div className="flex flex-col items-center">
-                  <div className="text-5xl font-black text-black mb-2 tracking-tighter" style={{ fontFamily: "'Product Sans', 'Google Sans', sans-serif" }}>94%</div>
+                  <div className="text-5xl font-black text-slate-800 mb-2 tracking-tighter">94%</div>
                   <p className="text-[11px] font-black text-gray-400 uppercase tracking-widest leading-tight text-center">Efficiency <br /> Gains</p>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-5xl font-black text-black mb-2 tracking-tighter" style={{ fontFamily: "'Product Sans', 'Google Sans', sans-serif" }}>0.1ms</div>
+                  <div className="text-5xl font-black text-slate-800 mb-2 tracking-tighter">0.1ms</div>
                   <p className="text-[11px] font-black text-gray-400 uppercase tracking-widest leading-tight text-center">Core <br /> Latency</p>
                 </div>
               </div>
@@ -103,7 +102,6 @@ const PremiumPortfolio = () => {
         </section>
 
         <Contact />
-        <GeminiAssistant />
       </main>
     </div>
   );

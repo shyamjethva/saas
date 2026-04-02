@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 const Navbar = ({ isDark = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
   const [isBusinessHubOpen, setIsBusinessHubOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Navbar = ({ isDark = false }) => {
   useEffect(() => {
     setIsOpen(false);
     setIsResourcesOpen(false);
+    setIsMobileResourcesOpen(false);
     setIsBusinessHubOpen(false);
   }, [location.pathname]);
 
@@ -34,9 +36,9 @@ const Navbar = ({ isDark = false }) => {
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/services', label: 'Services' },
-    { path: '/portfolio', label: 'Portfolio' },
-    { path: '/ai-center', label: 'AI Center' },
     { path: '/marketing', label: 'Packages' },
+    { path: '/ai-center', label: 'AI Center' },
+    { path: '/portfolio', label: 'Portfolio' },
   ];
 
   const resourceItems = [
@@ -60,12 +62,13 @@ const Navbar = ({ isDark = false }) => {
   const isBusinessHubActive = businessHubItems.some(item => location.pathname === item.path);
 
   // Auto-detect dark theme paths
-  const darkPaths = ['/lead-generation-agent'];
+  const darkPaths = [];
   const isDarkTheme = isDark || darkPaths.includes(location.pathname);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setIsResourcesOpen(false);
+    setIsMobileResourcesOpen(false);
     setIsBusinessHubOpen(false);
   };
 
@@ -78,19 +81,19 @@ const Navbar = ({ isDark = false }) => {
         <img
           src="/images/error_logo_horiz.png"
           alt="Error Infotech"
-          className="h-8 sm:h-10 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105"
+          className="h-8 sm:h-10 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105 mix-blend-multiply contrast-[1.1]"
         />
       </Link>
 
       <div className="flex-grow"></div>
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center gap-1 mr-4">
+      <div className="hidden lg:flex items-center gap-1 mr-4">
         {navItems.map((item) => (
           <Link
             key={item.path}
             to={item.path}
-            className={`px-3 sm:px-5 py-3 rounded-xl font-medium transition-all duration-300 relative group ${location.pathname === item.path
+            className={`px-3 sm:px-5 py-3 rounded-xl font-bold tracking-tight transition-all duration-300 relative group ${location.pathname === item.path
               ? (isDarkTheme ? 'text-white bg-white/10' : 'text-blue-600 bg-blue-50')
               : (isDarkTheme ? 'text-blue-100 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50')
               }`}
@@ -140,7 +143,7 @@ const Navbar = ({ isDark = false }) => {
                     <span className="material-symbols-outlined text-slate-600 text-[12px]">{item.icon}</span>
                   </div>
                   <div className="text-left">
-                    <div className="text-xs font-bold text-slate-800 leading-tight">{item.label}</div>
+                    <div className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 underline-offset-4 group-hover/item:underline leading-tight">{item.label}</div>
                     <div className="text-[9px] text-slate-400 mt-0.5">{item.desc}</div>
                   </div>
                 </Link>
@@ -193,7 +196,7 @@ const Navbar = ({ isDark = false }) => {
                     <span className="material-symbols-outlined text-slate-600 text-[12px]">{item.icon}</span>
                   </div>
                   <div className="text-left">
-                    <div className="text-xs font-bold text-slate-800 leading-tight">{item.label}</div>
+                    <div className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 underline-offset-4 group-hover/item:underline leading-tight">{item.label}</div>
                     <div className="text-[9px] text-slate-400 mt-0.5">{item.desc}</div>
                   </div>
                 </Link>
@@ -204,7 +207,7 @@ const Navbar = ({ isDark = false }) => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all"
+          className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all"
           onClick={toggleMenu}
         >
           <span className="material-symbols-outlined text-sm sm:text-base">
@@ -214,7 +217,7 @@ const Navbar = ({ isDark = false }) => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed top-16 left-0 right-0 bg-white/95 backdrop-blur-3xl z-40 shadow-2xl border-b border-slate-200 transition-all duration-300 md:hidden ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+      <div className={`fixed top-16 left-0 right-0 bg-white/95 backdrop-blur-3xl z-40 shadow-2xl border-b border-slate-200 transition-all duration-300 lg:hidden ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
         <div className="p-4 space-y-2">
           {navItems.map((item) => (
             <Link
@@ -230,20 +233,19 @@ const Navbar = ({ isDark = false }) => {
           {/* Mobile Resources Accordion */}
           <div className="pt-2 border-t border-slate-200">
             <button
-              className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${isResourceActive || isResourcesOpen ? 'text-slate-800 bg-slate-100' : 'text-slate-600 hover:bg-slate-50'}`}
+              className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${isResourceActive || isMobileResourcesOpen ? 'text-slate-800 bg-slate-100' : 'text-slate-600 hover:bg-slate-50'}`}
               onClick={() => {
-                setIsResourcesOpen(!isResourcesOpen);
-                setIsBusinessHubOpen(false);
+                setIsMobileResourcesOpen(!isMobileResourcesOpen);
               }}
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">menu_book</span>
                 Resources
               </span>
-              <span className={`material-symbols-outlined transition-transform duration-300 ${isResourcesOpen ? 'rotate-180' : ''}`}>expand_more</span>
+              <span className={`material-symbols-outlined transition-transform duration-300 ${isMobileResourcesOpen ? 'rotate-180' : ''}`}>expand_more</span>
             </button>
 
-            <div className={`overflow-hidden transition-all duration-300 ${isResourcesOpen ? 'max-h-96' : 'max-h-0'}`}>
+            <div className={`overflow-hidden transition-all duration-300 ${isMobileResourcesOpen ? 'max-h-96' : 'max-h-0'}`}>
               <div className="pl-8 pr-4 pb-2 space-y-1">
                 {resourceItems.map((item) => (
                   <Link
@@ -252,43 +254,7 @@ const Navbar = ({ isDark = false }) => {
                     className="block px-3 py-2 rounded-lg text-slate-600 hover:text-slate-800 transition-all text-sm flex items-center gap-2"
                     onClick={() => {
                       setIsOpen(false);
-                      setIsResourcesOpen(false);
-                    }}
-                  >
-                    <span className="material-symbols-outlined text-xs text-slate-400">{item.icon}</span>
-                    <span>{item.label}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Business Hub Accordion */}
-          <div className="pt-1">
-            <button
-              className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${isBusinessHubActive || isBusinessHubOpen ? 'text-slate-800 bg-slate-100' : 'text-slate-600 hover:bg-slate-50'}`}
-              onClick={() => {
-                setIsBusinessHubOpen(!isBusinessHubOpen);
-                setIsResourcesOpen(false);
-              }}
-            >
-              <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">apps</span>
-                Business Hub
-              </span>
-              <span className={`material-symbols-outlined transition-transform duration-300 ${isBusinessHubOpen ? 'rotate-180' : ''}`}>expand_more</span>
-            </button>
-
-            <div className={`overflow-hidden transition-all duration-300 ${isBusinessHubOpen ? 'max-h-96' : 'max-h-0'}`}>
-              <div className="pl-8 pr-4 pb-2 space-y-1">
-                {businessHubItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className="block px-3 py-2 rounded-lg text-slate-600 hover:text-slate-800 transition-all text-sm flex items-center gap-2"
-                    onClick={() => {
-                      setIsOpen(false);
-                      setIsBusinessHubOpen(false);
+                      setIsMobileResourcesOpen(false);
                     }}
                   >
                     <span className="material-symbols-outlined text-xs text-slate-400">{item.icon}</span>
@@ -309,7 +275,7 @@ const Navbar = ({ isDark = false }) => {
           </Link>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
 

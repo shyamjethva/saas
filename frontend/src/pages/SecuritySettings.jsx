@@ -101,86 +101,87 @@ const SecuritySettings = () => {
   return (
     <div className="min-h-screen premium-bg pt-20">
       {/* Header Section */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-500/30 backdrop-blur-sm mb-8">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-red-50 border border-red-100 mb-8 shadow-sm">
               <motion.span
                 animate={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="material-symbols-outlined text-red-400"
+                className="material-symbols-outlined text-red-600 text-sm font-black"
               >
                 shield
               </motion.span>
-              <span className="text-red-400 font-bold tracking-wider uppercase text-sm">SECURITY SETTINGS</span>
+              <span className="text-red-600 font-black tracking-widest uppercase text-[10px]">SECURITY INFRASTRUCTURE</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 font-space-grotesk">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
               Enterprise-Grade
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-red-500">
-                Security
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-red-600">
+                Data Protection
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-              Your business data is protected with multi-layered security protocols.
+            <p className="text-lg text-slate-500 max-w-3xl leading-relaxed font-medium mx-auto">
+              Your business data is protected with multi-layered, military-grade security protocols and real-time monitoring.
             </p>
           </motion.div>
         </div>
       </div>
 
       {/* Security Dashboard */}
-      <div className="px-6 py-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 pb-20">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white/80 rounded-2xl p-8 border border-slate-200 backdrop-blur-sm mb-16 shadow-xl shadow-slate-200/50"
+            className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] mb-16"
           >
-            <h2 className="text-2xl font-black text-slate-900 mb-6 text-center">Security Status Dashboard</h2>
+            <h2 className="text-3xl font-black text-slate-900 mb-12 text-center tracking-tighter uppercase tracking-widest text-xs font-black">Security Governance Overview</h2>
 
             {/* Security Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
               {securityStats.map((stat, index) => (
-                <div key={index} className="bg-slate-50 rounded-xl p-4 border border-slate-200 text-center">
-                  <div className="text-slate-500 text-sm mb-1 font-bold">{stat.label}</div>
-                  <div className="text-2xl font-black text-slate-900">{stat.value}</div>
-                  <div className={`text-sm font-black ${stat.color === 'text-green-400' ? 'text-green-600' : 'text-blue-600'}`}>{stat.change}</div>
+                <div key={index} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 text-center group hover:border-red-200 transition-all">
+                  <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{stat.label}</div>
+                  <div className="text-3xl font-black text-slate-900 mb-1 tracking-tight">{stat.value}</div>
+                  <div className={`text-xs font-black uppercase tracking-tighter ${stat.color === 'text-green-400' ? 'text-green-600' : 'text-blue-600'}`}>{stat.change}</div>
                 </div>
               ))}
             </div>
 
             {/* Security Visualization */}
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-slate-900 font-black">Security Layers</h3>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-green-600 text-sm font-black">All Systems Secure</span>
+            <div className="bg-slate-50 rounded-[2rem] p-10 border border-slate-100">
+              <div className="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
+                <h3 className="text-xs font-black text-slate-900 uppercase tracking-[0.2em]">Security Infrastructure Layers</h3>
+                <div className="flex items-center gap-3 px-5 py-2 bg-white rounded-full border border-slate-200 shadow-sm">
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-green-600 text-[10px] font-black uppercase tracking-widest">Autonomous Defense Active</span>
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-6">
                 {[100, 95, 88, 92, 100, 85, 90, 97].map((percentage, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-32 text-slate-600 text-sm font-bold">
+                  <div key={index} className="flex flex-col md:flex-row md:items-center gap-4">
+                    <div className="w-48 text-slate-400 text-[10px] font-black uppercase tracking-widest">
                       {['Firewall', 'Encryption', 'Authentication', 'Monitoring', 'Backup', 'Access Control', 'Threat Detection', 'Compliance'][index]}
                     </div>
-                    <div className="flex-1 bg-slate-200 rounded-full h-2">
+                    <div className="flex-1 bg-white rounded-full h-3 p-0.5 border border-slate-100">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${percentage}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full shadow-lg shadow-green-500/20"
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        className="bg-gradient-to-r from-red-600 to-pink-600 h-full rounded-full shadow-[0_0_15px_rgba(239,68,68,0.3)]"
                       ></motion.div>
                     </div>
-                    <div className="w-12 text-right text-slate-900 font-black text-sm">{percentage}%</div>
+                    <div className="w-12 text-right text-slate-900 font-black text-xs">{percentage}%</div>
                   </div>
                 ))}
               </div>
@@ -190,19 +191,19 @@ const SecuritySettings = () => {
       </div>
 
       {/* Security Features Grid */}
-      <div className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-6 py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4 font-space-grotesk">Advanced Security Features</h2>
-            <p className="text-xl text-slate-600 font-medium">Military-grade protection for your business data</p>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Advanced Defense Protocols</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Military-grade protection for your professional business infrastructure.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {securityFeatures.map((feature, index) => (
               <motion.div
                 key={index}
@@ -210,34 +211,25 @@ const SecuritySettings = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className={`bg-white rounded-xl p-6 border border-slate-200 transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden ${feature.color.includes('red') ? 'hover:border-red-500/50' :
-                    feature.color.includes('blue') ? 'hover:border-blue-500/50' :
-                      feature.color.includes('green') ? 'hover:border-emerald-500/50' :
-                        feature.color.includes('purple') ? 'hover:border-purple-500/50' :
-                          feature.color.includes('orange') ? 'hover:border-orange-500/50' :
-                            feature.color.includes('teal') ? 'hover:border-teal-500/50' :
-                              feature.color.includes('indigo') ? 'hover:border-indigo-500/50' :
-                                feature.color.includes('yellow') ? 'hover:border-yellow-500/50' :
-                                  'hover:border-red-500/50'
-                  }`}
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-[2rem] p-8 border border-slate-200 transition-all duration-500 shadow-xl hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] relative overflow-hidden group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                    <span className="material-symbols-outlined text-white">{feature.icon}</span>
+                <div className="flex items-start gap-8">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center flex-shrink-0 shadow-2xl group-hover:scale-110 transition-transform duration-500`}>
+                    <span className="material-symbols-outlined text-white text-3xl font-black">{feature.icon}</span>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-black text-slate-900">{feature.title}</h3>
-                      <span className={`px-2 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${feature.status === 'Active'
-                        ? 'bg-green-500 text-white'
-                        : 'bg-blue-600 text-white'
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-xl font-black text-slate-900 tracking-tight">{feature.title}</h3>
+                      <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${feature.status === 'Active'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-slate-50 text-slate-400 border border-slate-100'
                         }`}>
                         {feature.status}
                       </span>
                     </div>
-                    <p className="text-slate-600 text-sm font-medium">{feature.description}</p>
+                    <p className="text-slate-500 text-sm font-medium leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -247,34 +239,34 @@ const SecuritySettings = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-24">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group"
+            className="bg-white rounded-[4rem] p-16 border border-slate-200 shadow-2xl relative overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-red-100 transition-colors"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-red-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-red-100 transition-colors"></div>
 
-            <h2 className="relative z-10 text-4xl font-black text-slate-900 mb-6 font-space-grotesk">
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter">
               Ready to
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-red-500">
-                Secure My System?
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-red-600">
+                Fortify My Infrastructure?
               </span>
             </h2>
 
-            <p className="relative z-10 text-xl text-slate-600 mb-10 font-medium">
-              Protect your business with enterprise-grade security infrastructure
+            <p className="relative z-10 text-xl text-slate-500 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+              Transform your business security with our advanced, multi-layered defense protocols.
             </p>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-10 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-black px-10 py-5 rounded-3xl transition-all shadow-2xl shadow-red-500/25 flex items-center gap-3 text-lg mx-auto"
+              className="relative z-10 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-red-500/25 flex items-center gap-4 text-xl mx-auto"
             >
-              <span className="material-symbols-outlined font-black">shield_lock</span>
-              Secure My System
+              <span className="material-symbols-outlined text-2xl font-black">shield_lock</span>
+              Protect My Enterprise
             </motion.button>
           </motion.div>
         </div>

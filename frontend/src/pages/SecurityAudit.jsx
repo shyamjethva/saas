@@ -62,64 +62,111 @@ const SecurityAudit = () => {
   ]);
 
   return (
-    <div className="pt-24 pb-12 px-6">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
-        <h1 className="text-4xl font-bold text-white mb-2">Security & Audit</h1>
-        <p className="text-slate-400">Monitor security events, audit logs, and system integrity</p>
-      </motion.div>
-
-      {/* Tabs */}
-      <div className="flex gap-2 mb-8">
-        {[
-          { id: 'logs', label: 'Audit Logs', icon: 'history' },
-          { id: 'alerts', label: 'Security Alerts', icon: 'warning' },
-          { id: 'access', label: 'Access Control', icon: 'shield' },
-          { id: 'compliance', label: 'Compliance', icon: 'gavel' }
-        ].map(tab => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
-              activeTab === tab.id
-                ? 'bg-primary text-white'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
-            }`}
+    <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10">
+      {/* Header Section */}
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="material-symbols-outlined">{tab.icon}</span>
-            {tab.label}
-          </button>
-        ))}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
+                  <span className="material-symbols-outlined text-blue-600 text-sm font-black">security</span>
+                  <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">SECURITY AUDIT PERIMETER</span>
+                </div>
+
+                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                  Vigilance
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+                    & Governance
+                  </span>
+                </h1>
+
+                <p className="text-xl text-slate-500 max-w-3xl leading-relaxed font-medium">
+                  Maintain absolute system integrity with real-time audit trails, automated threat detection, and comprehensive compliance monitoring across the entire SaaS infrastructure.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4 h-fit">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 shadow-2xl hover:bg-black"
+                >
+                  <span className="material-symbols-outlined text-sm font-black">download</span>
+                  Export Audit Ledger
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <StatCard title="Total Events" value={auditLogs.length} icon="event" color="blue" />
-        <StatCard title="Security Alerts" value={securityAlerts.filter(a => !a.resolved).length} icon="warning" color="red" />
-        <StatCard title="Active Sessions" value="12" icon="devices" color="green" />
-        <StatCard title="Compliance Score" value="98%" icon="gavel" color="yellow" />
+      {/* Tab Navigation */}
+      <div className="px-6 py-8">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-4">
+          {[
+            { id: 'logs', label: 'Audit Trail', icon: 'history' },
+            { id: 'alerts', label: 'Threat Matrix', icon: 'warning' },
+            { id: 'access', label: 'Access protocols', icon: 'shield' },
+            { id: 'compliance', label: 'Compliance Ledger', icon: 'gavel' }
+          ].map(tab => (
+            <motion.button
+              key={tab.id}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 relative ${activeTab === tab.id
+                ? 'bg-slate-900 text-white shadow-2xl'
+                : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-800'
+                }`}
+            >
+              <span className="material-symbols-outlined text-sm font-black">{tab.icon}</span>
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="security-tab-underline"
+                  className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-blue-600 rounded-full"
+                />
+              )}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
-      {/* Main Content */}
-      {activeTab === 'logs' && (
-        <AuditLogs logs={auditLogs} setAuditLogs={setAuditLogs} />
-      )}
+      {/* Stats Section */}
+      <div className="px-6 py-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StatCard title="Security Events" value={auditLogs.length} icon="event" color="blue" />
+          <StatCard title="Active Alerts" value={securityAlerts.filter(a => !a.resolved).length} icon="warning" color="indigo" />
+          <StatCard title="Active Nodes" value="12" icon="devices" color="purple" />
+          <StatCard title="Compliance Index" value="98%" icon="verified" color="blue" />
+        </div>
+      </div>
 
-      {activeTab === 'alerts' && (
-        <SecurityAlerts alerts={securityAlerts} setSecurityAlerts={setSecurityAlerts} />
-      )}
+      {/* Main Content Area */}
+      <div className="px-6 py-12 pb-40">
+        <div className="max-w-7xl mx-auto">
+          {activeTab === 'logs' && (
+            <AuditTrail logs={auditLogs} />
+          )}
 
-      {activeTab === 'access' && (
-        <AccessControl />
-      )}
+          {activeTab === 'alerts' && (
+            <SecurityAlerts alerts={securityAlerts} />
+          )}
 
-      {activeTab === 'compliance' && (
-        <ComplianceDashboard />
-      )}
+          {activeTab === 'access' && (
+            <AccessManagement />
+          )}
+
+          {activeTab === 'compliance' && (
+            <ComplianceDashboard />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
@@ -127,190 +174,144 @@ const SecurityAudit = () => {
 const StatCard = ({ title, value, icon, color }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10"
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className="bg-white rounded-[2.5rem] p-8 border border-slate-200 shadow-xl hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-all group"
   >
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-slate-400 text-sm">{title}</p>
-        <p className={`text-3xl font-bold mt-2 text-${color}-400`}>{value}</p>
+        <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{title}</p>
+        <p className="text-4xl font-black text-slate-900 tracking-tight italic">{value}</p>
       </div>
-      <div className={`p-3 rounded-xl bg-${color}-500/20`}>
-        <span className={`material-symbols-outlined text-${color}-400 text-2xl`}>{icon}</span>
+      <div className={`w-14 h-14 rounded-2xl bg-${color}-50 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner`}>
+        <span className={`material-symbols-outlined text-${color}-600 text-2xl font-black`}>{icon}</span>
       </div>
     </div>
   </motion.div>
 );
 
-const AuditLogs = ({ logs, setAuditLogs }) => (
+const AuditTrail = ({ logs }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    className="space-y-6"
+    className="space-y-12"
   >
-    <div className="flex justify-between items-center">
-      <h2 className="text-2xl font-bold text-white">Audit Trail</h2>
-      <div className="flex gap-2">
-        <button className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 rounded-lg">
-          Export Logs
-        </button>
-        <button className="bg-white/10 hover:bg-white/20 text-white font-bold px-4 py-2 rounded-lg">
-          Refresh
-        </button>
+    <div className="bg-white rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden relative group">
+      <div className="p-10 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+        <h2 className="text-xl font-black text-slate-900 tracking-widest uppercase text-xs">High-Fidelity Audit Ledger</h2>
       </div>
-    </div>
-
-    <div className="bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-white/5">
+          <thead className="bg-slate-900">
             <tr>
-              <th className="text-left p-4 text-slate-300 font-semibold">User</th>
-              <th className="text-left p-4 text-slate-300 font-semibold">Action</th>
-              <th className="text-left p-4 text-slate-300 font-semibold">IP Address</th>
-              <th className="text-left p-4 text-slate-300 font-semibold">Timestamp</th>
-              <th className="text-left p-4 text-slate-300 font-semibold">Status</th>
-              <th className="text-left p-4 text-slate-300 font-semibold">Details</th>
+              <th className="text-left px-10 py-6 text-white text-[10px] font-black uppercase tracking-widest">Operator Identity</th>
+              <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Action Protocol</th>
+              <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Network Origin (IP)</th>
+              <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Chronos Marker</th>
+              <th className="text-left px-8 py-6 text-white text-[10px] font-black uppercase tracking-widest">Execution Status</th>
+              <th className="text-right px-10 py-6 text-white text-[10px] font-black uppercase tracking-widest">Operational Detail</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-slate-100">
             {logs.map((log, index) => (
               <motion.tr
                 key={log.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: index * 0.05 }}
-                className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                className="hover:bg-slate-50 transition-colors group/row"
               >
-                <td className="p-4">
-                  <span className="text-white font-medium">{log.user}</span>
+                <td className="px-10 py-8">
+                  <p className="text-slate-900 font-black tracking-tight text-xs uppercase">{log.user}</p>
                 </td>
-                <td className="p-4 text-slate-300">{log.action}</td>
-                <td className="p-4 text-slate-300 font-mono text-sm">{log.ip}</td>
-                <td className="p-4 text-slate-300">{log.timestamp}</td>
-                <td className="p-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    log.status === 'Success' 
-                      ? 'bg-green-500/20 text-green-400' 
-                      : 'bg-red-500/20 text-red-400'
-                  }`}>
+                <td className="px-8 py-8 text-slate-400 text-[10px] font-black uppercase tracking-tight italic">{log.action}</td>
+                <td className="px-8 py-8 text-slate-500 font-black text-[10px] font-mono italic tracking-widest">{log.ip}</td>
+                <td className="px-8 py-8 text-slate-400 text-[10px] font-black uppercase tracking-widest">{log.timestamp}</td>
+                <td className="px-8 py-8">
+                  <span className={`px-4 py-1.5 rounded-full text-[8px] font-black uppercase tracking-widest ${log.status === 'Success' ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'bg-slate-900 text-white shadow-lg'}`}>
                     {log.status}
                   </span>
                 </td>
-                <td className="p-4 text-slate-300 text-sm max-w-xs truncate">{log.details}</td>
+                <td className="px-10 py-8 text-right max-w-xs">
+                  <p className="text-slate-500 text-[10px] font-bold uppercase italic truncate">"{log.details}"</p>
+                </td>
               </motion.tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
-
-    {/* Filter Controls */}
-    <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-      <h3 className="text-xl font-bold text-white mb-4">Filter Logs</h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div>
-          <label className="block text-slate-300 text-sm mb-2">Date Range</label>
-          <div className="flex gap-2">
-            <input
-              type="date"
-              className="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm"
-            />
-            <input
-              type="date"
-              className="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm"
-            />
-          </div>
-        </div>
-        
-        <div>
-          <label className="block text-slate-300 text-sm mb-2">User</label>
-          <select className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm">
-            <option className="bg-background-dark">All Users</option>
-            <option className="bg-background-dark">Rajesh Patel</option>
-            <option className="bg-background-dark">Priya Sharma</option>
-          </select>
-        </div>
-        
-        <div>
-          <label className="block text-slate-300 text-sm mb-2">Action Type</label>
-          <select className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm">
-            <option className="bg-background-dark">All Actions</option>
-            <option className="bg-background-dark">Login</option>
-            <option className="bg-background-dark">Data Access</option>
-            <option className="bg-background-dark">Configuration Change</option>
-          </select>
-        </div>
-        
-        <div className="flex items-end">
-          <button className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2 rounded-lg">
-            Apply Filters
-          </button>
-        </div>
-      </div>
-    </div>
   </motion.div>
 );
 
-const SecurityAlerts = ({ alerts, setSecurityAlerts }) => (
+const SecurityAlerts = ({ alerts }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    className="space-y-6"
+    className="space-y-12"
   >
-    <div className="flex justify-between items-center">
-      <h2 className="text-2xl font-bold text-white">Security Alerts</h2>
-      <button className="bg-red-500/20 hover:bg-red-500/30 text-red-400 font-bold px-4 py-2 rounded-lg">
-        Acknowledge All
+    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div>
+        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black">Threat Detection Matrix</h2>
+        <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Active security anomaly monitoring</p>
+      </div>
+      <button className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl hover:bg-black transition-all">
+        Acknowledge Perimeter
       </button>
     </div>
 
-    <div className="space-y-4">
-      {alerts.map(alert => (
+    <div className="grid grid-cols-1 gap-8">
+      {alerts.map((alert, index) => (
         <motion.div
           key={alert.id}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className={`p-5 rounded-xl border ${
-            alert.severity === 'High' 
-              ? 'bg-red-500/10 border-red-500/30' 
-              : 'bg-yellow-500/10 border-yellow-500/30'
-          }`}
+          transition={{ delay: index * 0.1 }}
+          className={`p-10 rounded-[3rem] border shadow-2xl relative overflow-hidden group ${alert.severity === 'High'
+              ? 'bg-slate-900 border-slate-800'
+              : 'bg-white border-slate-200'
+            }`}
         >
-          <div className="flex justify-between items-start mb-3">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className={`material-symbols-outlined ${
-                  alert.severity === 'High' ? 'text-red-400' : 'text-yellow-400'
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 relative z-10">
+            <div className="flex gap-6 items-start">
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 transition-transform ${alert.severity === 'High' ? 'bg-white/10' : 'bg-slate-50'
                 }`}>
-                  {alert.severity === 'High' ? 'error' : 'warning'}
+                <span className={`material-symbols-outlined font-black ${alert.severity === 'High' ? 'text-white' : 'text-slate-900'
+                  }`}>
+                  {alert.severity === 'High' ? 'gpp_maybe' : 'report'}
                 </span>
-                <h3 className="text-white font-bold">{alert.title}</h3>
               </div>
-              <p className="text-slate-300 text-sm">{alert.description}</p>
+              <div>
+                <h3 className={`text-2xl font-black tracking-tighter uppercase italic mb-2 ${alert.severity === 'High' ? 'text-white' : 'text-slate-900'
+                  }`}>{alert.title}</h3>
+                <p className={`text-sm font-bold italic leading-relaxed max-w-2xl ${alert.severity === 'High' ? 'text-slate-400' : 'text-slate-500'
+                  }`}>"{alert.description}"</p>
+                <div className="flex gap-4 mt-4">
+                  <span className={`text-[10px] font-black uppercase tracking-widest italic ${alert.severity === 'High' ? 'text-blue-500' : 'text-slate-400'
+                    }`}>{alert.timestamp}</span>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col items-end gap-2">
-              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                alert.severity === 'High' 
-                  ? 'bg-red-500/20 text-red-400' 
-                  : 'bg-yellow-500/20 text-yellow-400'
-              }`}>
-                {alert.severity} Severity
+
+            <div className="flex flex-col items-end gap-4 min-w-[200px]">
+              <span className={`px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-lg ${alert.severity === 'High'
+                  ? 'bg-blue-600 text-white shadow-blue-500/20'
+                  : 'bg-slate-100 text-slate-500'
+                }`}>
+                {alert.severity} Criticality
               </span>
               {!alert.resolved && (
-                <button className="bg-green-500/20 hover:bg-green-500/30 text-green-400 text-xs px-3 py-1 rounded-full">
-                  Resolve
+                <button className={`w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${alert.severity === 'High'
+                    ? 'border-white/10 text-white hover:bg-white/10'
+                    : 'border-slate-200 text-slate-900 hover:border-slate-900'
+                  }`}>
+                  Initiate Resolution
                 </button>
               )}
+              {alert.resolved && (
+                <span className="text-blue-600 font-black uppercase tracking-widest text-[10px] italic">Verified Resolved ✓</span>
+              )}
             </div>
-          </div>
-          
-          <div className="flex justify-between items-center text-xs text-slate-400">
-            <span>{alert.timestamp}</span>
-            {alert.resolved && (
-              <span className="text-green-400">✓ Resolved</span>
-            )}
           </div>
         </motion.div>
       ))}
@@ -318,61 +319,61 @@ const SecurityAlerts = ({ alerts, setSecurityAlerts }) => (
   </motion.div>
 );
 
-const AccessControl = () => (
+const AccessManagement = () => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    className="space-y-6"
+    className="space-y-12"
   >
-    <h2 className="text-2xl font-bold text-white">Access Control Management</h2>
-    
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <h3 className="text-xl font-bold text-white mb-6">Two-Factor Authentication</h3>
-        
-        <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-50 transition-colors"></div>
+        <h3 className="text-xl font-black text-slate-900 mb-10 tracking-widest uppercase text-xs italic">Identity Synthesis (2FA)</h3>
+
+        <div className="space-y-6 relative z-10">
+          <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex items-center justify-between hover:bg-white hover:border-slate-900 transition-all group/item">
             <div>
-              <h4 className="text-white font-medium">System-wide 2FA</h4>
-              <p className="text-slate-300 text-sm">Enabled for all administrative accounts</p>
+              <p className="text-slate-900 font-black tracking-tighter uppercase italic">Institutional 2FA</p>
+              <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-1">Universal Protocol Active</p>
             </div>
-            <span className="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">
-              Active
-            </span>
+            <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover/item:scale-110 transition-transform">
+              <span className="material-symbols-outlined text-white text-xl font-black">verified_user</span>
+            </div>
           </div>
-          
-          <div className="flex items-center justify-between p-4 bg-blue-500/10 rounded-lg">
+
+          <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex items-center justify-between hover:bg-white hover:border-slate-900 transition-all group/item">
             <div>
-              <h4 className="text-white font-medium">User Enrollment</h4>
-              <p className="text-slate-300 text-sm">85% of users enrolled in 2FA</p>
+              <p className="text-slate-900 font-black tracking-tighter uppercase italic">Operator Enrollment</p>
+              <div className="flex items-center gap-3 mt-2">
+                <div className="w-32 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                  <div className="bg-blue-600 h-full rounded-full" style={{ width: '85%' }}></div>
+                </div>
+                <span className="text-slate-900 font-black text-[10px] italic">85%</span>
+              </div>
             </div>
-            <div className="text-right">
-              <p className="text-white font-medium">85%</p>
-              <p className="text-slate-400 text-xs">21 of 25 users</p>
-            </div>
+            <span className="text-slate-400 text-[9px] font-black uppercase italic tracking-widest">21 of 25 NODES</span>
           </div>
         </div>
       </div>
-      
-      <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <h3 className="text-xl font-bold text-white mb-6">Session Management</h3>
-        
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-slate-300">Active Sessions</span>
-            <span className="text-white font-medium">12 sessions</span>
+
+      <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group">
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-20"></div>
+        <h3 className="text-xl font-black text-slate-900 mb-10 tracking-widest uppercase text-xs italic">Session Lifecycle Control</h3>
+
+        <div className="space-y-8 relative z-10">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-6 bg-slate-50 rounded-2xl">
+              <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-1">Active Latency</p>
+              <p className="text-2xl font-black text-slate-900 tracking-tighter italic">12 NODES</p>
+            </div>
+            <div className="p-6 bg-slate-50 rounded-2xl">
+              <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-1">Expiry Protocol</p>
+              <p className="text-2xl font-black text-slate-900 tracking-tighter italic">30 MINS</p>
+            </div>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-slate-300">Session Timeout</span>
-            <span className="text-white">30 minutes</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-slate-300">Max Concurrent Sessions</span>
-            <span className="text-white">3 per user</span>
-          </div>
-          
-          <button className="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 font-bold py-2 rounded-lg mt-4">
-            Terminate All Sessions
+
+          <button className="w-full bg-slate-900 text-white font-black py-5 rounded-2xl text-[10px] uppercase tracking-widest shadow-2xl hover:bg-black transition-all">
+            Execute Node Termination (ALL)
           </button>
         </div>
       </div>
@@ -382,87 +383,60 @@ const AccessControl = () => (
 
 const ComplianceDashboard = () => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    className="space-y-6"
+    className="space-y-12"
   >
-    <h2 className="text-2xl font-bold text-white">Compliance Dashboard</h2>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="material-symbols-outlined text-green-400 text-2xl">gavel</span>
-          </div>
-          <h3 className="text-2xl font-bold text-green-400 mb-2">98%</h3>
-          <p className="text-slate-300">GDPR Compliance</p>
-        </div>
-      </div>
-      
-      <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="material-symbols-outlined text-blue-400 text-2xl">lock</span>
-          </div>
-          <h3 className="text-2xl font-bold text-blue-400 mb-2">100%</h3>
-          <p className="text-slate-300">Data Encryption</p>
-        </div>
-      </div>
-      
-      <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="material-symbols-outlined text-purple-400 text-2xl">history</span>
-          </div>
-          <h3 className="text-2xl font-bold text-purple-400 mb-2">95%</h3>
-          <p className="text-slate-300">Audit Coverage</p>
-        </div>
-      </div>
-      
-      <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="material-symbols-outlined text-yellow-400 text-2xl">security</span>
-          </div>
-          <h3 className="text-2xl font-bold text-yellow-400 mb-2">92%</h3>
-          <p className="text-slate-300">Access Control</p>
-        </div>
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <ComplianceStat title="GDPR INDEX" value="98%" icon="gavel" color="blue" />
+      <ComplianceStat title="ENCYPTION RATIO" value="100%" icon="lock" color="indigo" />
+      <ComplianceStat title="AUDIT RADIUS" value="95%" icon="radar" color="purple" />
+      <ComplianceStat title="GOVERNANCE" value="92%" icon="verified" color="blue" />
     </div>
-    
-    <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-      <h3 className="text-xl font-bold text-white mb-6">Compliance Checklist</h3>
-      
-      <div className="space-y-3">
+
+    <div className="bg-white rounded-[4rem] p-16 border border-slate-200 shadow-2xl relative overflow-hidden group">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none transition-colors group-hover:bg-blue-50"></div>
+      <h3 className="text-xl font-black text-slate-900 mb-12 tracking-widest uppercase text-xs italic">Institutional Compliance Inventory</h3>
+
+      <div className="space-y-4 relative z-10">
         {[
-          { item: 'Regular Security Audits', status: 'Completed', date: '2024-01-15' },
-          { item: 'Data Breach Response Plan', status: 'Completed', date: '2024-01-20' },
-          { item: 'Employee Security Training', status: 'In Progress', date: '2024-02-01' },
-          { item: 'Third-party Vendor Assessment', status: 'Pending', date: '2024-02-15' }
+          { item: 'Cyclical Security Audit Persistence', status: 'VERIFIED', date: 'JAN 15, 2024' },
+          { item: 'Data Finality & Breach protocols', status: 'VERIFIED', date: 'JAN 20, 2024' },
+          { item: 'Operator Security Induction', status: 'SYNCHRONIZING', date: 'FEB 01, 2024' },
+          { item: 'Vendor Entity Compliance Assessment', status: 'QUEUED', date: 'FEB 15, 2024' }
         ].map((check, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="flex items-center justify-between p-3 bg-white/5 rounded-lg"
+            className="flex items-center justify-between p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:border-slate-900 transition-all group/item"
           >
-            <span className="text-slate-300">{check.item}</span>
-            <div className="flex items-center gap-3">
-              <span className={`text-xs px-2 py-1 rounded-full ${
-                check.status === 'Completed' ? 'bg-green-500/20 text-green-400' :
-                check.status === 'In Progress' ? 'bg-yellow-500/20 text-yellow-400' :
-                'bg-gray-500/20 text-gray-400'
-              }`}>
+            <span className="text-slate-900 font-black text-xs uppercase tracking-tight italic group-hover/item:text-blue-600 transition-colors">"{check.item}"</span>
+            <div className="flex items-center gap-6">
+              <span className={`text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm ${check.status === 'VERIFIED' ? 'bg-blue-600 text-white shadow-blue-500/20' :
+                  check.status === 'SYNCHRONIZING' ? 'bg-indigo-600 text-white shadow-indigo-500/20' :
+                    'bg-slate-200 text-slate-500'
+                }`}>
                 {check.status}
               </span>
-              <span className="text-slate-400 text-sm">{check.date}</span>
+              <span className="text-slate-400 text-[10px] font-black uppercase italic">{check.date}</span>
             </div>
           </motion.div>
         ))}
       </div>
     </div>
   </motion.div>
+);
+
+const ComplianceStat = ({ title, value, icon, color }) => (
+  <div className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-xl text-center group hover:border-blue-600 transition-all">
+    <div className={`w-16 h-16 bg-${color}-50 rounded-[1.5rem] flex items-center justify-center mx-auto mb-8 shadow-inner group-hover:scale-110 transition-transform`}>
+      <span className={`material-symbols-outlined text-${color}-600 text-2xl font-black`}>{icon}</span>
+    </div>
+    <h3 className="text-4xl font-black text-slate-900 tracking-tighter mb-2 italic">{value}</h3>
+    <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest">{title}</p>
+  </div>
 );
 
 export default SecurityAudit;

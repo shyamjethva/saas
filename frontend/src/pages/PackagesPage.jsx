@@ -218,7 +218,7 @@ const PackagesPage = () => {
   };
 
   return (
-    <div className="min-h-screen premium-bg pt-32 pb-20 px-4 text-slate-900 selection:bg-blue-500/30">
+    <div className="min-h-screen premium-bg pt-32 pb-16 px-4 text-slate-900 selection:bg-blue-500/30">
       {/* Background Decor */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-500/5 blur-[120px] rounded-full" />
@@ -231,12 +231,12 @@ const PackagesPage = () => {
         {/* ═══════════════════════════════════════
            PAGE HEADER
         ═══════════════════════════════════════ */}
-        <div className="text-center mb-20 px-4">
+        <div className="text-center mb-12 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-bold mb-6 shadow-sm"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-bold mb-10 shadow-sm"
+
           >
             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
             Packages & Pricing
@@ -245,17 +245,17 @@ const PackagesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-slate-900"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            className="text-4xl md:text-7xl font-black mb-8 tracking-tighter text-slate-900 py-10 leading-[1.3] overflow-visible"
+
           >
-            Industries We <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Empower</span>
+            Industries We <span className="text-blue-600 pb-4 inline-block">Empower</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-lg max-w-2xl mx-auto font-medium"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+
           >
             Tailored digital ecosystems designed for your specific industry needs. Explore sectors & choose your package below.
           </motion.p>
@@ -264,7 +264,7 @@ const PackagesPage = () => {
         {/* ═══════════════════════════════════════
            SECTION 1: INDUSTRY SECTORS (Informational)
         ═══════════════════════════════════════ */}
-        <section className="mb-12">
+        <section className="mb-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
             {sectors.map((sector, idx) => (
               <motion.button
@@ -295,7 +295,7 @@ const PackagesPage = () => {
                   }`}>
                   <span className="material-symbols-outlined text-2xl">{sector.icon}</span>
                 </div>
-                <h3 className={`text-sm font-black mb-1 relative z-10 transition-colors ${selectedSector?.id === sector.id ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-900'}`} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{sector.name}</h3>
+                <h3 className={`text-sm font-black mb-1 relative z-10 transition-colors ${selectedSector?.id === sector.id ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-900'}`}>{sector.name}</h3>
                 <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest relative z-10">{sector.subLabel}</p>
               </motion.button>
             ))}
@@ -322,9 +322,9 @@ const PackagesPage = () => {
                         <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
                           <span className="material-symbols-outlined text-xl">{selectedSector.icon}</span>
                         </div>
-                        <h2 className="text-2xl font-black tracking-tight text-slate-900" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{selectedSector.name} Solutions</h2>
+                        <h2 className="text-2xl font-black tracking-tight text-slate-900">{selectedSector.name} Solutions</h2>
                       </div>
-                      <p className="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <p className="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">
                         {selectedSector.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-6">
@@ -345,7 +345,7 @@ const PackagesPage = () => {
 
                     {/* Right: Stats */}
                     <div className="p-8 md:p-10 bg-slate-50/50">
-                      <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-6 border-l-2 border-blue-500 pl-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-6 border-l-2 border-blue-500 pl-3">
                         Why This Works For You
                       </h3>
                       <div className="space-y-4">
@@ -357,8 +357,8 @@ const PackagesPage = () => {
                             transition={{ delay: i * 0.08 + 0.2 }}
                             className="bg-white p-5 rounded-2xl border border-slate-100 flex items-center justify-between group hover:border-blue-300 transition-all shadow-sm"
                           >
-                            <span className="text-slate-500 font-semibold text-xs uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>{stat.label}</span>
-                            <span className="text-2xl font-extrabold text-slate-900 group-hover:text-blue-600 transition-all" style={{ fontFamily: "'Inter', sans-serif" }}>
+                            <span className="text-slate-500 font-semibold text-xs uppercase tracking-wider">{stat.label}</span>
+                            <span className="text-2xl font-extrabold text-slate-900 group-hover:text-blue-600 transition-all">
                               {stat.value}
                             </span>
                           </motion.div>
@@ -375,9 +375,9 @@ const PackagesPage = () => {
         {/* ═══════════════════════════════════════
            DIVIDER
         ═══════════════════════════════════════ */}
-        <div className="flex items-center gap-6 mb-16 max-w-3xl mx-auto">
+        <div className="flex items-center gap-6 mb-10 max-w-3xl mx-auto">
           <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/10" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
             Choose Your Package
           </span>
           <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/10" />
@@ -386,7 +386,7 @@ const PackagesPage = () => {
         {/* ═══════════════════════════════════════
            SECTION 2: MAIN CATEGORIES (B2B / B2C / D2C / Core)
         ═══════════════════════════════════════ */}
-        <section ref={categorySectionRef} className="mb-12">
+        <section ref={categorySectionRef} className="mb-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {mainCategories.map((cat, idx) => (
               <motion.button
@@ -416,7 +416,7 @@ const PackagesPage = () => {
                   <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} style={{ backgroundColor: cat.color }}></div>
                   <span className="material-symbols-outlined text-2xl relative z-10">{cat.icon}</span>
                 </div>
-                <h3 className="text-xl font-black mb-1 relative z-10" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{cat.name}</h3>
+                <h3 className="text-xl font-black mb-1 relative z-10">{cat.name}</h3>
                 <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest relative z-10">{cat.subLabel}</p>
                 {activeCategory?.id === cat.id && (
                   <motion.div
@@ -446,28 +446,28 @@ const PackagesPage = () => {
             >
               {/* Category Header */}
               <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-4xl font-black mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  {activeCategory.name} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Packages</span>
+                <h2 className="text-3xl md:text-4xl font-black mb-3 pb-8 text-slate-800">
+                  {activeCategory.name} <span className="text-blue-600 pb-4">Packages</span>
                 </h2>
-                <p className="text-slate-400 text-sm max-w-lg mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <p className="text-slate-400 text-sm max-w-lg mx-auto">
                   Flexible pricing tailored for {activeCategory.subLabel.toLowerCase()} models. Scale as you grow.
                 </p>
               </div>
 
               {/* Billing Toggle */}
-              <div className="flex flex-col items-center mb-14 px-4">
+              <div className="flex flex-col items-center mb-8 px-4">
                 <div className="bg-white/5 p-1.5 rounded-2xl border border-white/10 flex gap-2 backdrop-blur-xl relative">
                   <button
                     onClick={() => setBillingCycle('monthly')}
                     className={`px-8 py-3 rounded-xl font-bold text-sm transition-all relative z-10 ${billingCycle === 'monthly' ? 'text-white' : 'text-slate-400 hover:text-white'}`}
-                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+
                   >
                     Monthly
                   </button>
                   <button
                     onClick={() => setBillingCycle('yearly')}
                     className={`px-8 py-3 rounded-xl font-bold text-sm transition-all relative z-10 ${billingCycle === 'yearly' ? 'text-white' : 'text-slate-400 hover:text-white'}`}
-                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+
                   >
                     Yearly (Save 20%)
                   </button>
@@ -480,7 +480,7 @@ const PackagesPage = () => {
                 {billingCycle === 'yearly' && activeCategory?.id !== 'core' && (
                   <motion.p initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
                     className="mt-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400 flex items-center gap-2"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
+
                   >
                     <span className="material-symbols-outlined text-sm">auto_awesome</span>
                     Annual Billing: 20% Discount Applied
@@ -504,7 +504,7 @@ const PackagesPage = () => {
                         <span className={`material-symbols-outlined text-xl transition-transform duration-300 ${activeCoreService.id === service.id ? 'scale-110 rotate-12' : 'group-hover:scale-110'}`}>
                           {service.icon}
                         </span>
-                        <span className="text-sm font-bold tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                        <span className="text-sm font-bold tracking-tight">
                           {service.name}
                         </span>
                       </button>
@@ -593,11 +593,11 @@ const PackagesPage = () => {
               </div>
 
               {/* Common Features */}
-              <div className="mb-20 text-center">
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-6" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Included In Every Plan</p>
+              <div className="mb-12 text-center">
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-6">Included In Every Plan</p>
                 <div className="flex flex-wrap justify-center gap-3">
                   {commonFeatures.map(item => (
-                    <span key={item} className="px-5 py-2 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-slate-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    <span key={item} className="px-5 py-2 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-slate-300">
                       {item}
                     </span>
                   ))}
@@ -616,8 +616,8 @@ const PackagesPage = () => {
                       <span className="material-symbols-outlined text-xl">add_circle</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-black text-slate-900" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Extra Growth Catalysts</h3>
-                      <p className="text-slate-500 text-xs font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>Add specific modules to your core plan.</p>
+                      <h3 className="text-xl font-black text-slate-900">Extra Growth Catalysts</h3>
+                      <p className="text-slate-500 text-xs font-medium">Add specific modules to your core plan.</p>
                     </div>
                   </div>
                   <div className="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[9px] font-bold uppercase text-slate-500 tracking-widest">
@@ -636,8 +636,8 @@ const PackagesPage = () => {
                         <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
                           <span className="material-symbols-outlined text-2xl">{addon.icon}</span>
                         </div>
-                        <p className="text-slate-900 text-xs font-black mb-1.5 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{addon.name}</p>
-                        <p className="text-blue-600 text-[10px] font-black uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>{addon.price}</p>
+                        <p className="text-slate-900 text-xs font-black mb-1.5 leading-tight">{addon.name}</p>
+                        <p className="text-blue-600 text-[10px] font-black uppercase tracking-wider">{addon.price}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -667,26 +667,26 @@ const PricingTier = ({ title, tagline, dayPrice, monthPrice, features, isPopular
 
     {isPopular && (
       <div className="absolute top-0 right-0">
-        <div className="bg-blue-600 text-white px-8 py-2 rounded-bl-3xl text-[10px] font-black tracking-widest uppercase shadow-xl" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <div className="bg-blue-600 text-white px-8 py-2 rounded-bl-3xl text-[10px] font-black tracking-widest uppercase shadow-xl">
           Most Popular
         </div>
       </div>
     )}
 
     <div className="mb-10 text-center">
-      <h3 className="text-sm font-black tracking-[0.2em] text-slate-400 mb-8 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{title}</h3>
-      <div className="flex items-center justify-center gap-1.5 mb-2">
-        {typeof dayPrice === 'number' && <span className="text-2xl font-black text-slate-900 align-top mt-1" style={{ fontFamily: "'Inter', sans-serif" }}>₹</span>}
-        <span className={`text-6xl font-black tracking-tighter ${gradient ? `text-transparent bg-clip-text bg-gradient-to-r ${gradient}` : ''}`} style={{ fontFamily: "'Inter', sans-serif", fontFeatureSettings: "'tnum'", color: gradient ? undefined : color }}>
+      <h3 className="text-sm font-black tracking-[0.2em] text-slate-400 mb-8 uppercase">{title}</h3>
+      <div className="flex items-center justify-center gap-1.5 mb-2 py-4 overflow-visible">
+        {typeof dayPrice === 'number' && <span className="text-2xl font-black text-slate-900 align-top mt-1">₹</span>}
+        <span className={`text-5xl font-black tracking-tighter pb-4 pt-2 inline-block leading-tight ${gradient ? `text-transparent bg-clip-text bg-gradient-to-r ${gradient}` : ''}`}>
           {typeof dayPrice === 'number' ? dayPrice.toLocaleString() : dayPrice}
         </span>
-        <span className="text-sm font-bold text-slate-400 ml-1 mt-6" style={{ fontFamily: "'Inter', sans-serif" }}>{unit}</span>
+        <span className="text-sm font-bold text-slate-400 ml-1 mt-6">{unit}</span>
       </div>
       {monthPrice !== 'custom' && (
-        <p className="text-sm font-bold text-slate-500 mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>₹{monthPrice.toLocaleString()}/month</p>
+        <p className="text-sm font-bold text-slate-500 mb-8">₹{monthPrice.toLocaleString()}/month</p>
       )}
       <div className="px-5 py-3 bg-slate-50 rounded-2xl border border-slate-100 inline-block mt-4">
-        <p className="text-xs font-bold text-slate-600 italic" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>"{tagline}"</p>
+        <p className="text-xs font-bold text-slate-600 italic">"{tagline}"</p>
       </div>
     </div>
 
@@ -695,7 +695,7 @@ const PricingTier = ({ title, tagline, dayPrice, monthPrice, features, isPopular
     <div className="flex-1 mb-10">
       <ul className="space-y-4">
         {features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-4 text-sm font-medium group/feat" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <li key={idx} className="flex items-start gap-4 text-sm font-medium group/feat">
             <span className={`material-symbols-outlined text-lg flex-shrink-0 mt-0.5 transition-transform group-hover/feat:scale-110 bg-clip-text text-transparent bg-gradient-to-r ${gradient ? gradient : `from-blue-600 to-cyan-500`}`}>
               {feature.includes('Everything in') ? 'stars' : 'check_circle'}
             </span>
@@ -708,7 +708,7 @@ const PricingTier = ({ title, tagline, dayPrice, monthPrice, features, isPopular
     <button
       className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-500 shadow-xl hover:shadow-2xl hover:scale-[1.05] active:scale-95 text-white bg-gradient-to-r ${gradient ? gradient : `from-blue-600 to-indigo-600`
         } ${isPopular ? 'shadow-blue-500/20' : 'hover:opacity-90'}`}
-      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+
     >
       Get Started
     </button>

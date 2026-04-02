@@ -8,242 +8,224 @@ const ERPPricing = () => {
   const pricingPlans = [
     {
       name: 'Growth Plan',
-      tier: '🥉',
+      tier: 'Institutional Starter',
       price: '4,999',
       period: '/ Month',
-      color: 'from-green-500 to-emerald-500',
       popular: false,
       features: [
-        'Lead Management',
-        'Basic Pipeline',
-        'Task Assignment',
-        'Email Automation',
-        'Basic Reports'
+        'Entity Lifecycle Logic',
+        'Basic Pipeline Architecture',
+        'Protocol Task Assignment',
+        'Automated Interaction Sync',
+        'Standard Intelligence Reports'
       ],
       notIncluded: [
-        'Advanced Pipeline',
-        'WhatsApp Automation',
-        'Billing + GST',
-        'Payment Tracking',
-        'Performance Dashboard',
-        'API Integration',
-        'AI Lead Scoring',
-        'Predictive Analytics',
-        'AI Sales Assistant',
-        'Multi-Branch Control',
-        'Advanced Security',
-        'Dedicated Manager'
+        'Advanced Neural Pipeline',
+        'Institutional WhatsApp Sync',
+        'Financial Ledger + GST',
+        'Capital Flux Tracking',
+        'Performance Metrics Matrix',
+        'Strategic API Integration',
+        'Neural Identity Scoring',
+        'Predictive Growth Analytics',
+        'Autonomous Sales Agent',
+        'Multi-Entity Control',
+        'High-Security Governance',
+        'Dedicated Protocol Manager'
       ]
     },
     {
       name: 'Professional Plan',
-      tier: '🥈',
+      tier: 'Organizational Core',
       price: '9,999',
       period: '/ Month',
-      color: 'from-blue-500 to-cyan-500',
       popular: true,
       features: [
         'Everything in Growth +',
-        'Advanced Pipeline',
-        'WhatsApp Automation',
-        'Billing + GST',
-        'Payment Tracking',
-        'Performance Dashboard',
-        'API Integration'
+        'Advanced Neural Pipeline',
+        'Institutional WhatsApp Sync',
+        'Financial Ledger + GST',
+        'Capital Flux Tracking',
+        'Performance Metrics Matrix',
+        'Strategic API Integration'
       ],
       notIncluded: [
-        'AI Lead Scoring',
-        'Predictive Analytics',
-        'AI Sales Assistant',
-        'Multi-Branch Control',
-        'Advanced Security',
-        'Dedicated Manager'
+        'Neural Identity Scoring',
+        'Predictive Growth Analytics',
+        'Autonomous Sales Agent',
+        'Multi-Entity Control',
+        'High-Security Governance',
+        'Dedicated Protocol Manager'
       ]
     },
     {
       name: 'Enterprise Plan',
-      tier: '🥇',
+      tier: 'Market Leadership',
       price: 'Custom',
-      period: 'Pricing',
-      color: 'from-purple-500 to-pink-500',
+      period: 'Provisioning',
       popular: false,
       features: [
-        'Full Custom ERP',
-        'AI Lead Scoring',
-        'Predictive Analytics',
-        'AI Sales Assistant',
-        'Multi-Branch Control',
-        'Advanced Security',
-        'Dedicated Manager'
+        'Bespoke Institutional ERP',
+        'Neural Identity Scoring',
+        'Predictive Growth Analytics',
+        'Autonomous Sales Agent',
+        'Multi-Entity Governance',
+        'High-Security Perimeter',
+        'Dedicated Protocol Manager'
       ],
       notIncluded: []
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-green-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10 font-plus-jakarta">
       {/* Hero Section */}
-      <div className="px-6 py-20">
-        <div className="max-w-6xl mx-auto text-center">
+      <div className="px-6 py-16">
+        <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-green-400">workspace_premium</span>
-              <span className="text-green-400 font-bold tracking-wider uppercase text-sm">ERP PRICING</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm mx-auto">
+              <span className="material-symbols-outlined text-blue-600 text-sm font-black">finance</span>
+              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">ERP CAPITAL ARCHITECTURE</span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Monthly 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-cyan-400">
-                Premium Model
+
+            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible">
+              Growth
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 py-4">
+                Provisioning
               </span>
             </h1>
-            
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
-              Build Once. Scale Every Month.
-            </p>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-12">
-              Continuous updates, automation improvements, AI upgrades, and real human support included.
+
+            <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
+              Architect Once. Scale Indefinitely. Continuous neural updates, protocol improvements, and high-fidelity institutional support.
             </p>
           </motion.div>
         </div>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="px-6 pb-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+      {/* Pricing Modules */}
+      <div className="px-6 py-20 pb-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
+                transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className={`glass-card rounded-2xl p-8 border transition-all duration-300 relative backdrop-blur-sm ${
-                  plan.popular 
-                    ? 'border-green-500/50 ring-2 ring-green-500/30 scale-105' 
-                    : 'border-white/10 '
-                }`}
+                className={`bg-white rounded-[3.5rem] p-12 border transition-all duration-500 relative flex flex-col group ${plan.popular
+                  ? 'border-blue-600 shadow-2xl scale-105 z-10'
+                  : 'border-slate-200 shadow-xl'
+                  }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-full text-sm font-bold">
-                      MOST POPULAR
+                  <div className="absolute top-0 right-0 p-8">
+                    <span className="px-5 py-2 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-blue-500/20">
+                      Standard Provision
                     </span>
                   </div>
                 )}
-                
-                <div className="text-center mb-8">
-                  <div className="text-4xl mb-2">{plan.tier}</div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{plan.name}</h3>
-                  <div className="mb-6">
-                    <span className="text-5xl font-black text-white">₹</span>
-                    <span className="text-5xl font-black text-white">{plan.price}</span>
-                    <span className="text-xl text-slate-300">{plan.period}</span>
+
+                <div className="mb-12">
+                  <h3 className="text-sm font-black text-slate-400 font-black uppercase tracking-[0.2em] mb-4">{plan.tier}</h3>
+                  <div className="flex items-baseline gap-2 mb-4 py-2 overflow-visible">
+                    <span className="text-2xl font-black text-slate-900">₹</span>
+                    <span className={`text-6xl font-black tracking-tighter leading-tight ${plan.popular ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600' : 'text-slate-900'}`}>
+                      {plan.price}
+                    </span>
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-widest ml-1">{plan.period}</span>
                   </div>
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight uppercase italic">{plan.name}</h2>
                 </div>
 
-                {/* Included Features */}
-                <div className="mb-8">
-                  <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-green-400">check_circle</span>
-                    Included Features
-                  </h4>
-                  <ul className="space-y-3">
+                <div className="flex-1 mb-12">
+                  <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-6 border-l-2 border-blue-600 pl-4">Included Logic</h4>
+                  <ul className="space-y-4 mb-10">
                     {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-slate-300">
-                        <span className="material-symbols-outlined text-green-400 mt-1 text-sm">
-                          {feature.startsWith('Everything in') ? 'upgrade' : 'check_circle'}
-                        </span>
-                        <span className={feature.startsWith('Everything in') ? 'font-semibold text-green-400' : ''}>
-                          {feature}
-                        </span>
+                      <li key={idx} className="flex items-start gap-4">
+                        <span className="material-symbols-outlined text-blue-600 text-lg font-black shrink-0">verified</span>
+                        <span className="text-slate-600 text-sm font-bold italic leading-tight">{feature}</span>
                       </li>
                     ))}
                   </ul>
+
+                  {plan.notIncluded.length > 0 && (
+                    <div className="pt-8 border-t border-slate-50">
+                      <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Advanced Gates</h4>
+                      <ul className="space-y-3 opacity-40 grayscale">
+                        {plan.notIncluded.slice(0, 5).map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-4 text-slate-400">
+                            <span className="material-symbols-outlined text-sm font-black mt-0.5">close</span>
+                            <span className="text-[10px] font-black uppercase tracking-wider">{feature}</span>
+                          </li>
+                        ))}
+                        <li className="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em] mt-4 italic">+ {plan.notIncluded.length - 5} More Advanced Protocols</li>
+                      </ul>
+                    </div>
+                  )}
                 </div>
 
-                {/* Not Included (for comparison) */}
-                {plan.notIncluded.length > 0 && (
-                  <div className="mb-8">
-                    <h4 className="text-slate-400 font-semibold mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-red-400">cancel</span>
-                      Not Included
-                    </h4>
-                    <ul className="space-y-2 max-h-40 overflow-y-auto">
-                      {plan.notIncluded.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-slate-500">
-                          <span className="material-symbols-outlined text-red-400/60 mt-1 text-sm">close</span>
-                          <span className="text-sm line-through">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* CTA Button */}
-                <Link to="/book-demo">
+                <Link to="/book-demo" className="mt-auto">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-full font-bold py-4 rounded-full transition-all flex items-center justify-center gap-3 text-lg ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white shadow-2xl hover:shadow-green-500/25'
-                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
-                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`w-full py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${plan.popular
+                      ? 'bg-slate-900 text-white shadow-xl hover:bg-black'
+                      : 'bg-white text-slate-900 border border-slate-200 hover:border-slate-900'
+                      }`}
                   >
-                    <span className="material-symbols-outlined">
-                      {plan.name === 'Enterprise Plan' ? 'contact_support' : 'smart_toy'}
+                    <span className="material-symbols-outlined text-lg font-black">
+                      {plan.name === 'Enterprise Plan' ? 'contact_support' : 'robot_2'}
                     </span>
-                    {plan.name === 'Enterprise Plan' ? 'Contact Sales' : 'Book Free ERP Demo'}
+                    {plan.name === 'Enterprise Plan' ? 'Contact Architecture Sales' : 'Initialize ERP Provisioning'}
                   </motion.button>
                 </Link>
               </motion.div>
             ))}
           </div>
 
-          {/* Money Back Guarantee */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="glass-card rounded-2xl p-8 border border-white/10 bg-gradient-to-br from-green-500/10 to-emerald-500/10 mt-16 text-center backdrop-blur-sm"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-[4rem] p-16 border border-slate-200 shadow-2xl mt-24 text-center relative overflow-hidden group"
           >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="material-symbols-outlined text-3xl text-green-400">verified</span>
-              <h3 className="text-2xl font-bold text-white">30-Day Money Back Guarantee</h3>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[100px] -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8 relative z-10">
+              <div className="w-20 h-20 rounded-3xl bg-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/40">
+                <span className="material-symbols-outlined text-4xl text-white font-black">verified_user</span>
+              </div>
+              <div className="text-left">
+                <h3 className="text-3xl font-black text-slate-900 tracking-tighter uppercase italic">30-Cycle Efficiency Guarantee</h3>
+                <p className="text-slate-500 font-bold text-lg mt-2 italic">Institutional-grade satisfaction protocol. Absolute financial ledger transparency.</p>
+              </div>
             </div>
-            <p className="text-slate-300 max-w-2xl mx-auto">
-              Not satisfied? Get a full refund within 30 days. No questions asked.
-            </p>
+            <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em] max-w-2xl mx-auto italic">RELIABLE • ARCHITECTURAL • ENTITY-FOCUSED</p>
           </motion.div>
         </div>
       </div>
 
-      {/* FAQ Section */}
-      <div className="px-6 py-20 bg-gradient-to-r from-slate-800/50 to-green-900/30">
+      {/* FAQ Matrix */}
+      <section className="px-6 py-24 bg-slate-50/50 border-y border-slate-100">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-white text-center mb-16">Frequently Asked Questions</h2>
+          <h2 className="text-4xl font-black text-slate-900 text-center mb-16 tracking-tighter uppercase italic">Institutional Inquiries</h2>
           <div className="space-y-6">
             {[
               {
-                question: 'Can I switch between plans?',
-                answer: 'Yes, you can upgrade or downgrade your plan anytime. Changes take effect immediately.'
+                question: 'Tier Transition Protocols?',
+                answer: 'Organizations can dynamically upgrade or scale their provision tiers. Our architecture prorates node usage with absolute ledger precision.'
               },
               {
-                question: 'Is there a setup fee?',
-                answer: 'No setup fees! Everything is included in your monthly subscription.'
+                question: 'Provisioning Setup Latency?',
+                answer: 'Zero entry friction. Core logic is provisioned immediately upon agreement synchronization.'
               },
               {
-                question: 'What support do you provide?',
-                answer: '24/7 email support for all plans. Phone support available for Professional and Enterprise plans.'
-              },
-              {
-                question: 'Can I cancel anytime?',
-                answer: 'Yes, you can cancel your subscription at any time with no cancellation fees.'
+                question: 'Governance Support Availability?',
+                answer: 'High-fidelity institutional support is available 24/7 for all structural inquiries and architectural optimizations.'
               }
             ].map((faq, index) => (
               <motion.div
@@ -251,15 +233,15 @@ const ERPPricing = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-xl p-6 border border-white/10 backdrop-blur-sm"
+                className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-xl hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.05)] transition-all group"
               >
-                <h3 className="text-xl font-bold text-white mb-3">{faq.question}</h3>
-                <p className="text-slate-300">{faq.answer}</p>
+                <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight uppercase italic group-hover:text-blue-600 transition-colors">{faq.question}</h3>
+                <p className="text-slate-500 font-medium leading-relaxed italic">"{faq.answer}"</p>
               </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

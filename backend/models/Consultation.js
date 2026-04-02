@@ -12,7 +12,7 @@ const consultationSchema = new mongoose.Schema({
     required: [true, 'Email is required'],
     trim: true,
     lowercase: true,
-    match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email']
+    match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, 'Please enter a valid email']
   },
   company: {
     type: String,

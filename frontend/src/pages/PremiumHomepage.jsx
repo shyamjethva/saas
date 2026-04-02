@@ -14,14 +14,16 @@ const Homepage = () => {
 
     useEffect(() => {
       const generateParticles = () => {
+        const isMobile = window.innerWidth < 768;
+        const count = isMobile ? 12 : 50; // Drastically reduce on mobile
         const newParticles = [];
-        for (let i = 0; i < 50; i++) { // Increased particles for more visual effect
+        for (let i = 0; i < count; i++) {
           newParticles.push({
             id: i,
             x: Math.random() * 100,
             y: Math.random() * 100,
             size: Math.random() * 3 + 1,
-            duration: Math.random() * 30 + 20,
+            duration: isMobile ? (Math.random() * 20 + 20) : (Math.random() * 30 + 20),
             delay: Math.random() * 8,
             shape: ['circle', 'square', 'triangle'][Math.floor(Math.random() * 3)]
           });
@@ -99,11 +101,19 @@ const Homepage = () => {
 
     // Generate SVG path for line chart
     const generatePath = (data) => {
-      if (!data || !Array.isArray(data) || data.length < 2) return "M 0 0";
+      if (!data || !Array.isArray(data) || data.length < 2) return "M 0 100 L 300 100";
       const width = 300;
       const height = 100;
       const step = width / (data.length - 1);
-      return data.map((val, i) => `${i === 0 ? 'M' : 'L'} ${i * step} ${height - ((Number(val) || 0) / 100) * height}`).join(' ');
+
+      const points = data.map((val, i) => {
+        const x = i * step;
+        const y = height - ((Number(val) || 0) / 100) * height;
+        // Ensure values are numbers and finite
+        return `${i === 0 ? 'M' : 'L'} ${Number.isFinite(x) ? x : 0} ${Number.isFinite(y) ? y : height}`;
+      });
+
+      return points.join(' ');
     };
 
     return (
@@ -117,21 +127,21 @@ const Homepage = () => {
                 <span className="material-symbols-outlined text-blue-600">group</span>
               </div>
               <div>
-                <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Sales CRM</div>
-                <div className="text-xs font-bold text-slate-900 uppercase tracking-tight">Active Pipeline</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Sales CRM</div>
+                <div className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 uppercase tracking-tight">Active Pipeline</div>
               </div>
             </div>
             <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/10">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="text-[9px] font-black text-emerald-600 tracking-widest uppercase">● LIVE</span>
+              <span className="text-[9px] font-bold text-emerald-600 tracking-widest uppercase">● LIVE</span>
             </div>
           </div>
 
           {/* CRM Tabs Preview */}
           <div className="flex gap-2 mb-6">
-            <div className="px-3 py-1.5 rounded-lg bg-blue-600 text-[9px] font-black text-white cursor-pointer shadow-lg shadow-blue-500/20">LEADS</div>
-            <div className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[9px] font-black text-slate-400 cursor-not-allowed uppercase">Tasks</div>
-            <div className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[9px] font-black text-slate-400 cursor-not-allowed uppercase">Pipeline</div>
+            <div className="px-3 py-1.5 rounded-lg bg-blue-600 text-[9px] font-bold text-white cursor-pointer shadow-lg shadow-blue-500/20">LEADS</div>
+            <div className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[9px] font-bold text-slate-400 cursor-not-allowed uppercase">Tasks</div>
+            <div className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[9px] font-bold text-slate-400 cursor-not-allowed uppercase">Pipeline</div>
           </div>
 
           {/* Main Comparison Chart */}
@@ -148,8 +158,14 @@ const Homepage = () => {
             </div>
 
             <svg viewBox="0 0 300 100" className="w-full h-full overflow-visible">
+              <defs>
+                <linearGradient id="leadsGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0f172a" />
+                  <stop offset="100%" stopColor="#3b82f6" />
+                </linearGradient>
+              </defs>
               {[0, 25, 50, 75, 100].map(y => (
-                <line key={y} x1="0" y1={y} x2="300" y2={y} stroke="black" strokeOpacity="0.05" strokeWidth="0.5" />
+                <line key={y} x1="0" y1={y} x2="300" y2={y} stroke="currentColor" className="text-slate-200" strokeOpacity="0.5" strokeWidth="0.5" />
               ))}
 
               {/* Leads Line */}
@@ -157,7 +173,7 @@ const Homepage = () => {
                 d={generatePath(leadsData)}
                 animate={{ d: generatePath(leadsData) }}
                 fill="none"
-                stroke="#0f172a"
+                stroke="url(#leadsGradient)"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 transition={{ duration: 1, ease: "easeInOut" }}
@@ -179,22 +195,22 @@ const Homepage = () => {
 
           {/* CRM Quick View Table */}
           <div className="space-y-2.5">
-            <div className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">Hot Leads Queue</div>
+            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-3">Hot Leads Queue</div>
             {[
               { name: "Global Tech Inc.", status: "Negotiation", val: "$15.8k", color: "blue" },
               { name: "Digital Pulse Co.", status: "Review", val: "$9.2k", color: "purple" }
             ].map((lead, i) => (
               <div key={i} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-all cursor-pointer group">
                 <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-xl bg-${lead.color}-500/10 flex items-center justify-center text-[10px] font-black text-${lead.color}-600`}>
+                  <div className={`w-8 h-8 rounded-xl bg-${lead.color}-500/10 flex items-center justify-center text-[10px] font-bold text-${lead.color}-600`}>
                     {lead.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="text-[11px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{lead.name}</div>
+                    <div className="text-[11px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 group-hover:from-blue-600 group-hover:to-blue-400 transition-all uppercase tracking-tight">{lead.name}</div>
                     <div className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">{lead.status}</div>
                   </div>
                 </div>
-                <div className="text-[11px] font-black text-emerald-600 tabular-nums">{lead.val}</div>
+                <div className="text-[11px] font-bold text-emerald-600 tabular-nums">{lead.val}</div>
               </div>
             ))}
           </div>
@@ -380,24 +396,38 @@ const Homepage = () => {
                 }}
               />
 
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-slate-100 border border-slate-200 backdrop-blur-sm mb-8 relative z-10">
-                <span className="material-symbols-outlined text-slate-800">architecture</span>
-                <span className="text-slate-800 font-bold tracking-wider uppercase text-sm">Enterprise Digital Solutions</span>
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-slate-100/50 border border-slate-200/50 backdrop-blur-md mb-8 relative z-10 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-emerald-500/10 to-blue-500/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 font-bold">architecture</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-900 font-bold tracking-wider uppercase text-sm">Enterprise Digital Solutions</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 mb-8 leading-[1.05] relative z-10 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Architecting
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-blue-600 to-indigo-600 py-2">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-[1.1] relative z-10 tracking-tighter pb-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-slate-900">
+                  Architecting
+                </span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 pb-2">
                   Scalable Digital
                 </span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-blue-600 to-indigo-600 py-2">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-500 via-emerald-500 to-teal-600 pb-2">
                   Growth
                 </span>
-                <span className="block font-medium text-slate-500">for Modern</span>
-                <span className="block italic text-slate-900 underline decoration-slate-200 underline-offset-8">Businesses</span>
+                <span className="block font-bold text-slate-500 text-2xl md:text-4xl tracking-tight mt-6">for Modern</span>
+                <span className="relative inline-block mt-2">
+                  <span className="relative z-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-violet-600 pb-4">
+                    Businesses
+                  </span>
+                  <motion.span
+                    initial={{ width: 0 }}
+                    animate={{ width: '100%' }}
+                    transition={{ delay: 1, duration: 1 }}
+                    className="absolute bottom-4 left-0 h-3 bg-blue-400/20 -rotate-1 -z-0 rounded-full"
+                  />
+                  <div className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-blue-600/0 via-blue-600 to-blue-600/0 rounded-full blur-[1px]"></div>
+                </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed mb-12 font-light relative z-10">
+              <p className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed mb-12 font-medium relative z-10">
                 We design intelligent digital ecosystems — CRM systems, AI automation, enterprise software,
                 and performance-driven marketing strategies that help businesses scale faster and smarter.
               </p>
@@ -407,7 +437,7 @@ const Homepage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-[#10b981] hover:bg-[#059669] text-white font-black px-8 py-5 rounded-3xl transition-all shadow-[0_20px_40px_-12px_rgba(16,185,129,0.3)] flex items-center justify-center gap-3 text-lg min-w-[280px]"
+                    className="bg-[#10b981] hover:bg-[#059669] text-white font-bold px-8 py-5 rounded-3xl transition-all shadow-[0_20px_40px_-12px_rgba(16,185,129,0.3)] flex items-center justify-center gap-3 text-lg min-w-[280px]"
                   >
                     <span className="material-symbols-outlined font-bold">calendar_today</span>
                     <span className="whitespace-nowrap uppercase tracking-widest text-sm">Get Free Consultation</span>
@@ -417,7 +447,7 @@ const Homepage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-black px-8 py-5 rounded-3xl transition-all shadow-[0_20px_40px_-12px_rgba(37,99,235,0.3)] flex items-center justify-center gap-3 text-lg min-w-[280px]"
+                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-8 py-5 rounded-3xl transition-all shadow-[0_20px_40px_-12px_rgba(37,99,235,0.3)] flex items-center justify-center gap-3 text-lg min-w-[280px]"
                   >
                     <span className="material-symbols-outlined font-bold">smart_toy</span>
                     <span className="whitespace-nowrap uppercase tracking-widest text-sm">Book Free CRM Demo</span>
@@ -443,10 +473,10 @@ const Homepage = () => {
       <div className="relative z-10 px-6 pt-10 pb-20 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-5xl md:text-6xl heading-premium text-premium-gradient mb-4">
               Proven Impact
             </h2>
-            <p className="text-xl text-slate-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-500 mt-4 max-w-2xl mx-auto font-medium">
               Real results from our partnerships with industry leaders
             </p>
           </div>
@@ -473,7 +503,7 @@ const Homepage = () => {
                   className="bg-white rounded-2xl p-8 border border-slate-200 text-center hover:shadow-2xl transition-all duration-700 relative overflow-hidden group"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${colors[index % colors.length]} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                  <div className={`text-6xl font-black mb-3 bg-clip-text text-transparent bg-gradient-to-r ${colors[index % colors.length]}`}>
+                  <div className={`text-6xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r ${colors[index % colors.length]}`}>
                     {count}{metric.suffix}
                   </div>
                   <div className="text-slate-600 font-semibold text-lg">{metric.label}</div>
@@ -501,8 +531,8 @@ const Homepage = () => {
                   transition={{ delay: 0.2 }}
                   className="glass-card rounded-2xl p-6 border border-slate-200 backdrop-blur-sm inline-block shadow-lg"
                 >
-                  <div className="text-slate-900 font-bold text-2xl mb-2">500+</div>
-                  <div className="text-slate-600">Enterprise Clients</div>
+                  <div className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-extrabold text-2xl mb-2">65+</div>
+                  <div className="text-slate-600 font-semibold tracking-wide uppercase text-[10px]">Enterprise Clients</div>
                 </motion.div>
               </div>
               <div className="text-left">
@@ -513,8 +543,8 @@ const Homepage = () => {
                   transition={{ delay: 0.4 }}
                   className="glass-card rounded-2xl p-6 border border-slate-200 backdrop-blur-sm inline-block shadow-lg"
                 >
-                  <div className="text-slate-800 font-bold text-2xl mb-2">1000+</div>
-                  <div className="text-slate-600">Successful Projects</div>
+                  <div className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 font-extrabold text-2xl mb-2">15+</div>
+                  <div className="text-slate-600 font-semibold tracking-wide uppercase text-[10px]">Successful Projects</div>
                 </motion.div>
               </div>
 
@@ -526,8 +556,8 @@ const Homepage = () => {
                   transition={{ delay: 0.6 }}
                   className="glass-card rounded-2xl p-6 border border-slate-200 backdrop-blur-sm inline-block shadow-lg"
                 >
-                  <div className="text-slate-900 font-bold text-2xl mb-2">99.9%</div>
-                  <div className="text-slate-600">Client Retention</div>
+                  <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-extrabold text-2xl mb-2">99.9%</div>
+                  <div className="text-slate-600 font-semibold tracking-wide uppercase text-[10px]">Client Retention</div>
                 </motion.div>
               </div>
               <div className="text-left">
@@ -538,8 +568,8 @@ const Homepage = () => {
                   transition={{ delay: 0.8 }}
                   className="glass-card rounded-2xl p-6 border border-slate-200 backdrop-blur-sm inline-block shadow-lg"
                 >
-                  <div className="text-slate-900 font-bold text-2xl mb-2">24/7</div>
-                  <div className="text-slate-600">Expert Support</div>
+                  <div className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600 font-extrabold text-2xl mb-2">24/7</div>
+                  <div className="text-slate-600 font-semibold tracking-wide uppercase text-[10px]">Expert Support</div>
                 </motion.div>
               </div>
             </div>
@@ -556,11 +586,11 @@ const Homepage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Industries We Serve</h2>
-            <p className="text-xl text-slate-600">Trusted by organizations across diverse sectors</p>
+            <h2 className="text-4xl md:text-5xl heading-premium text-premium-gradient mb-4">Industries We Serve</h2>
+            <p className="text-xl text-slate-500 font-medium">Trusted by organizations across diverse sectors</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-6">
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
@@ -575,7 +605,7 @@ const Homepage = () => {
                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${industry.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
                   <span className="material-symbols-outlined text-white text-2xl">{industry.icon}</span>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-500">{industry.name}</h3>
+                <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 group-hover:from-blue-600 group-hover:to-blue-400 transition-all duration-500 uppercase tracking-tight pb-1">{industry.name}</h3>
               </motion.div>
             ))}
           </div>
@@ -586,7 +616,7 @@ const Homepage = () => {
       <div className="relative z-10 px-6 py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-4 pb-6 leading-normal">
               Trusted by Businesses Worldwide
             </h2>
             <p className="text-xl text-slate-600 mt-4 max-w-2xl mx-auto">
@@ -603,7 +633,7 @@ const Homepage = () => {
                   <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
                     <span className="material-symbols-outlined text-white text-3xl">business</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900">B2B Enterprises</h3>
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900">B2B Enterprises</h3>
                 </div>
                 <p className="text-slate-600 mb-6">Comprehensive solutions for enterprise-level organizations</p>
 
@@ -639,7 +669,7 @@ const Homepage = () => {
                   <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
                     <span className="material-symbols-outlined text-white text-3xl">shopping_cart</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900">B2C Brands</h3>
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-indigo-900">B2C Brands</h3>
                 </div>
                 <p className="text-slate-600 mb-6">Innovative digital experiences for consumer-facing brands</p>
 
@@ -701,7 +731,7 @@ const Homepage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Core Strengths</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-emerald-600 to-indigo-700 mb-6 pb-6 tracking-tight">Core Strengths</h2>
             <p className="text-xl text-slate-600">Our expertise drives your success</p>
           </motion.div>
 
@@ -729,7 +759,7 @@ const Homepage = () => {
                 <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${strength.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-xl shadow-slate-200/50`}>
                   <span className="material-symbols-outlined text-white text-3xl">{strength.icon}</span>
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-500 tracking-tight">{strength.title}</h3>
+                <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 group-hover:from-blue-600 group-hover:to-indigo-600 transition-all duration-500 tracking-tight pb-2">{strength.title}</h3>
                 <p className="text-slate-600 font-medium leading-relaxed flex-grow">{strength.description}</p>
               </motion.div>
             ))}
@@ -749,7 +779,7 @@ const Homepage = () => {
               className="relative"
             >
               <div className="relative glass-card rounded-3xl p-10 border border-slate-200 backdrop-blur-sm bg-white">
-                <h2 className="text-4xl font-bold text-slate-900 mb-6">
+                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-6 pb-4">
                   Innovation That Evolves With You
                 </h2>
                 <p className="text-xl text-slate-600 mb-8 leading-relaxed">
@@ -793,7 +823,7 @@ const Homepage = () => {
               <div className="relative glass-card rounded-3xl p-8 border border-slate-200 backdrop-blur-sm bg-white">
                 {!showPackages ? (
                   <>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Your Growth Journey</h3>
+                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 mb-6 text-center pb-2">Your Growth Journey</h3>
 
                     {/* Animated Timeline */}
                     <div className="relative space-y-8">
@@ -819,7 +849,7 @@ const Homepage = () => {
                           </div>
                           <div className="flex-1">
                             <div className="text-sm text-slate-400">{phase.time}</div>
-                            <div className="font-bold text-slate-900">{phase.title}</div>
+                            <div className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 uppercase tracking-tight">{phase.title}</div>
                             <div className="text-slate-600 text-sm">{phase.desc}</div>
                           </div>
                         </motion.div>
@@ -840,7 +870,7 @@ const Homepage = () => {
                           className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl text-lg flex items-center gap-3 mx-auto cursor-pointer"
                         >
                           <span className="material-symbols-outlined font-bold">stars</span>
-                          <span className="font-black">Start Your Journey</span>
+                          <span className="font-bold">Start Your Journey</span>
                           <span className="material-symbols-outlined font-bold">arrow_forward</span>
                         </motion.button>
                       </Link>
@@ -859,7 +889,7 @@ const Homepage = () => {
                         <span className="material-symbols-outlined text-slate-600 text-sm">apps</span>
                         <span className="text-slate-600 text-sm font-medium tracking-wider uppercase">CRM & ERP Solutions</span>
                       </div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2">Powerful Business Software</h3>
+                      <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-2 pb-2">Powerful Business Software</h3>
                       <p className="text-slate-500 text-sm">Complete solutions tailored for your business size</p>
                     </div>
 
@@ -877,7 +907,7 @@ const Homepage = () => {
                             <span className="material-symbols-outlined text-white">storefront</span>
                           </div>
                           <div>
-                            <h4 className="text-lg font-bold text-slate-900">Small Business</h4>
+                            <h4 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-green-900">Small Business</h4>
                             <p className="text-green-600 text-xs">Startups & Growing Teams</p>
                           </div>
                         </div>
@@ -913,7 +943,7 @@ const Homepage = () => {
                             <span className="material-symbols-outlined text-white">business_center</span>
                           </div>
                           <div>
-                            <h4 className="text-lg font-bold text-slate-900">Medium Business</h4>
+                            <h4 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900">Medium Business</h4>
                             <p className="text-blue-600 text-xs">Established Companies</p>
                           </div>
                         </div>
@@ -953,7 +983,7 @@ const Homepage = () => {
                             <span className="material-symbols-outlined text-white">corporate_fare</span>
                           </div>
                           <div>
-                            <h4 className="text-lg font-bold text-slate-900">Large Enterprise</h4>
+                            <h4 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-purple-900">Large Enterprise</h4>
                             <p className="text-purple-600 text-xs">Organizations with Complex Needs</p>
                           </div>
                         </div>
@@ -1021,8 +1051,8 @@ const Homepage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Success Stories</h2>
-            <p className="text-xl text-slate-600">Real results from our valued clients</p>
+            <h2 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 mb-6 pb-2">Success Stories</h2>
+            <p className="text-2xl text-slate-600 font-medium tracking-tight">Real results from our valued clients</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -1036,10 +1066,10 @@ const Homepage = () => {
                 className="glass-card rounded-2xl p-8 border border-slate-200 backdrop-blur-sm bg-white"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-slate-900">{story.company}</h3>
-                  <div className="text-3xl font-black text-green-600">{story.growth}</div>
+                  <h3 className="text-2xl font-bold text-slate-900 pb-1">{story.company}</h3>
+                  <div className="text-4xl font-bold text-green-600">{story.growth}</div>
                 </div>
-                <p className="text-slate-600 mb-4">{story.description}</p>
+                <p className="text-slate-600 mb-6 text-lg font-medium leading-relaxed">{story.description}</p>
                 <div className="flex items-center gap-4 text-sm text-slate-500">
                   <span className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-green-500">schedule</span>
@@ -1066,7 +1096,7 @@ const Homepage = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 text-slate-900 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Ready to scale your business?</h2>
+            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 tracking-tighter pb-4">Ready to scale your business?</h2>
             <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto font-medium">
               Join hundreds of successful businesses that have transformed their digital presence with Error Infotech.
             </p>
@@ -1075,7 +1105,7 @@ const Homepage = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-black px-12 py-5 rounded-full text-xl shadow-2xl shadow-blue-500/25 transition-all flex items-center justify-center gap-3"
+                  className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-12 py-5 rounded-full text-xl shadow-2xl shadow-blue-500/25 transition-all flex items-center justify-center gap-3"
                 >
                   Start Your Journey
                   <span className="material-symbols-outlined font-bold">arrow_forward</span>
