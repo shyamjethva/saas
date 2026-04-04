@@ -49,11 +49,11 @@ const About = () => {
     { id: 3, name: 'Prayushi Teraiya', role: 'BDE', department: 'Operations', image: '/images/team/Prayushi Teraiya.png' },
     { id: 4, name: 'Hemal Bhatasana', role: 'Human Resource Management', department: 'Operations', image: '/images/team/Hemal Bhatasana.png' },
     { id: 5, name: 'Parth Patadiya', role: 'Project Manager', department: 'Leadership', image: '/images/team/Parth Patadiya.png' },
-    { id: 6, name: 'Manav Jotangiya', role: 'Fullstack Developer', department: 'Engineering', image: '/images/team/Manav Jotangiya.png' },
-    { id: 7, name: 'Shyam Jethva', role: 'Fullstack Developer', department: 'Engineering', image: '/images/team/Shyam Jethva.png' },
+    { id: 6, name: 'Manav Jotangiya', role: 'Ai Solution Architect', department: 'Engineering', image: '/images/team/Manav Jotangiya.png' },
+    { id: 7, name: 'Shyam Jethva', role: 'Ai Automation Developer', department: 'Engineering', image: '/images/team/Shyam Jethva.png' },
     { id: 8, name: 'Astha Maniyar', role: 'Fullstack Developer', department: 'Engineering', image: '/images/team/Astha Maniyar.png' },
-    { id: 9, name: 'Rohit Jariya', role: 'Physical Marketing', department: 'Marketing', image: '/images/team/Rohit Jariya.png' },
-    { id: 10, name: 'Prushti Boriya', role: 'Digital Marketing', department: 'Marketing', image: '/images/team/Prushti Boriya.png' },
+    { id: 9, name: 'Rohit Jariya', role: 'Digital Marketing', department: 'Marketing', image: '/images/team/Rohit Jariya.png' },
+    { id: 10, name: 'Prushti Boriya', role: 'Creative Content Creator', department: 'Marketing', image: '/images/team/Prushti Boriya.png' },
     { id: 11, name: 'Bansi Zalariya', role: 'Graphic Designer', department: 'Design', image: '/images/team/Bansi Zalariya.png' },
   ];
 

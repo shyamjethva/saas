@@ -104,14 +104,13 @@ const About = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {[
               { name: 'Rakshit Patadiya', role: 'CEO & Founder', bio: 'Strategic architect with 3+ years in global IT delivery.', image: '/images/team/Rakshit Patadiya.png', initials: 'RP' },
-              { name: 'Jeel Karkar', role: 'Co-Founder', bio: 'Technical polymath specializing in high-load systems.', image: '/images/team/Jeel Karkar.png', initials: 'JK' },
               { name: 'Prayushi Teraiya', role: 'Biz-Dev Executive', bio: 'Orchestrating strategic enterprise partnerships.', image: '/images/team/Prayushi Teraiya.png', initials: 'PT' },
               { name: 'Hemal Bhatasana', role: 'HR Operations', bio: 'Curating elite technical talent protocols.', image: '/images/team/Hemal Bhatasana.png', initials: 'HB' },
-              { name: 'Parth Patadiya', role: 'Project Ops', bio: 'Synchronizing complex deliverable lifecycles.', image: '/images/team/Parth Patadiya.png', initials: 'PP' },
-              { name: 'Manav Jotangiya', role: 'Fullstack Systems', bio: 'Engineered 11+ high-performance applications.', image: '/images/team/Manav Jotangiya.png', initials: 'MJ' },
-              { name: 'Shyam Jethva', role: 'Frontend Architect', bio: 'Specialist in premium high-contrast UI/UX.', image: '/images/team/Shyam Jethva.png', initials: 'SJ' },
-              { name: 'Ashtha Maniyar', role: 'Backend Engineer', bio: 'Securing mission-critical data pipelines.', image: '/images/team/Ashtha Maniyar.png', initials: 'AM' },
-              { name: 'Rohit Jariya', role: 'Growth Marketing', bio: 'Scaling institutional market presence.', image: '/images/team/Rohit Jariya.png', initials: 'RJ' },
+              { name: 'Parth Patadiya', role: 'Manager', bio: 'Synchronizing complex deliverable lifecycles.', image: '/images/team/Parth Patadiya.png', initials: 'PP' },
+              { name: 'Manav Jotangiya', role: 'Ai Architect Devloper', bio: 'Engineered 11+ high-performance applications.', image: '/images/team/Manav Jotangiya.png', initials: 'MJ' },
+              { name: 'Shyam Jethva', role: 'Ai Automation Developer', bio: 'Specialist in premium high-contrast UI/UX.', image: '/images/team/Shyam Jethva.png', initials: 'SJ' },
+              { name: 'Ashtha Maniyar', role: 'Full Stack Developer', bio: 'Securing mission-critical data pipelines.', image: '/images/team/Ashtha Maniyar.png', initials: 'AM' },
+              { name: 'Rohit Jariya', role: 'Digital Marketing', bio: 'Scaling institutional market presence.', image: '/images/team/Rohit Jariya.png', initials: 'RJ' },
             ].map((leader, index) => (
               <motion.div
                 key={index}

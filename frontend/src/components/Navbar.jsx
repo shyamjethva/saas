@@ -81,7 +81,7 @@ const Navbar = ({ isDark = false }) => {
         <img
           src="/images/error_logo_horiz.png"
           alt="Error Infotech"
-          className="h-8 sm:h-10 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105 mix-blend-multiply contrast-[1.1]"
+          className="logo-img h-8 sm:h-10 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105"
         />
       </Link>
 

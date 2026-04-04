@@ -69,8 +69,8 @@ const Homepage = () => {
 
   // Proper Sales CRM Dashboard Component
   const LiveCRMDashboard = () => {
-    const [leadsData, setLeadsData] = useState([30, 45, 35, 55, 45, 65, 55, 75, 65, 80]);
-    const [conversionData, setConversionData] = useState([20, 25, 22, 30, 28, 35, 32, 40, 38, 45]);
+    const [leadsData, setLeadsData] = useState([30, 45, 35, 55, 45, 65, 55, 75, 65, 80, 70, 85, 75, 90, 85]);
+    const [conversionData, setConversionData] = useState([20, 25, 22, 30, 28, 35, 32, 40, 38, 45, 42, 50, 48, 55, 52]);
     const [leads, setLeads] = useState(1247);
     const [conversion, setConversion] = useState(12.5);
 
@@ -92,28 +92,71 @@ const Homepage = () => {
           return newData;
         });
 
-        if (Math.random() > 0.6) setLeads(prev => prev + 1);
-        if (Math.random() > 0.8) setConversion(prev => +(prev + 0.1).toFixed(1));
-      }, 3000);
+        if (Math.random() > 0.6) setLeads(prev => prev + Math.floor(Math.random() * 3) + 1);
+        if (Math.random() > 0.4) setConversion(prev => {
+          const change = (Math.random() * 0.8 - 0.4).toFixed(1);
+          return Math.min(100, Math.max(60, +(prev + parseFloat(change)).toFixed(1)));
+        });
+      }, 1000);
 
       return () => clearInterval(interval);
     }, []);
 
-    // Generate SVG path for line chart
-    const generatePath = (data) => {
-      if (!data || !Array.isArray(data) || data.length < 2) return "M 0 100 L 300 100";
+    // Smooth Area Chart Component
+    const SmoothAreaChart = ({ data, color }) => {
       const width = 300;
       const height = 100;
       const step = width / (data.length - 1);
 
-      const points = data.map((val, i) => {
-        const x = i * step;
-        const y = height - ((Number(val) || 0) / 100) * height;
-        // Ensure values are numbers and finite
-        return `${i === 0 ? 'M' : 'L'} ${Number.isFinite(x) ? x : 0} ${Number.isFinite(y) ? y : height}`;
-      });
+      const generatePath = (d) => {
+        if (!d || d.length < 2) return "";
+        return d.reduce((path, val, i, arr) => {
+          const x = i * step;
+          const y = height - (val / 100) * height;
+          if (i === 0) return `M ${x} ${y}`;
+          const cpX = (i - 1) * step + (x - (i - 1) * step) / 2;
+          return `${path} C ${cpX} ${height - (arr[i - 1] / 100) * height}, ${cpX} ${y}, ${x} ${y}`;
+        }, "");
+      };
 
-      return points.join(' ');
+      const path = generatePath(data);
+
+      return (
+        <svg viewBox="0 0 300 100" className="w-full h-full overflow-visible">
+          <defs>
+            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="100%">
+              <stop offset="0%" stopColor={color} stopOpacity="0.4" />
+              <stop offset="100%" stopColor={color} stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <motion.path
+            d={`${path} L 300 100 L 0 100 Z`}
+            animate={{ d: `${path} L 300 100 L 0 100 Z` }}
+            fill="url(#areaGrad)"
+            transition={{ duration: 1, ease: "easeInOut" }}
+          />
+          <motion.path
+            d={path}
+            animate={{ d: path }}
+            fill="none" stroke={color} strokeWidth="3" strokeLinecap="round"
+            transition={{ duration: 1, ease: "easeInOut" }}
+          />
+
+          {/* Live Tip Indicator */}
+          {data.length > 0 && (
+            <motion.g
+              animate={{
+                x: 300,
+                y: 100 - (data[data.length - 1] / 100) * 100
+              }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            >
+              <circle r="4" fill={color} className="animate-pulse" />
+              <circle r="8" fill={color} fillOpacity="0.2" className="animate-ping" />
+            </motion.g>
+          )}
+        </svg>
+      );
     };
 
     return (
@@ -128,7 +171,15 @@ const Homepage = () => {
               </div>
               <div>
                 <div className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Sales CRM</div>
-                <div className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-900 uppercase tracking-tight">Active Pipeline</div>
+                <div className="flex items-center gap-2">
+                  <div className="text-xs font-bold text-slate-900 uppercase tracking-tight">Active Pipeline</div>
+                  <div className="text-[10px] font-black text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
+                    {leads.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                    {conversion}%
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/10">
@@ -144,73 +195,92 @@ const Homepage = () => {
             <div className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[9px] font-bold text-slate-400 cursor-not-allowed uppercase">Pipeline</div>
           </div>
 
-          {/* Main Comparison Chart */}
-          <div className="h-32 w-full relative mb-8">
-            <div className="absolute -top-4 right-0 flex gap-4">
-              <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
-                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-wider">Leads</span>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                <span className="material-symbols-outlined text-blue-600 text-sm">analytics</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-wider">Conversion</span>
+              <div>
+                <div className="text-[9px] font-bold text-slate-400 underline-offset-2 uppercase tracking-widest">Performance</div>
+                <div className="text-xs font-black text-slate-900 leading-none">Sales Monitoring</div>
               </div>
             </div>
-
-            <svg viewBox="0 0 300 100" className="w-full h-full overflow-visible">
-              <defs>
-                <linearGradient id="leadsGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0f172a" />
-                  <stop offset="100%" stopColor="#3b82f6" />
-                </linearGradient>
-              </defs>
-              {[0, 25, 50, 75, 100].map(y => (
-                <line key={y} x1="0" y1={y} x2="300" y2={y} stroke="currentColor" className="text-slate-200" strokeOpacity="0.5" strokeWidth="0.5" />
-              ))}
-
-              {/* Leads Line */}
-              <motion.path
-                d={generatePath(leadsData)}
-                animate={{ d: generatePath(leadsData) }}
-                fill="none"
-                stroke="url(#leadsGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                transition={{ duration: 1, ease: "easeInOut" }}
-              />
-
-              {/* Conversion Line */}
-              <motion.path
-                d={generatePath(conversionData)}
-                animate={{ d: generatePath(conversionData) }}
-                fill="none"
-                stroke="#3b82f6"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeDasharray="4 4"
-                transition={{ duration: 1, ease: "easeInOut" }}
-              />
-            </svg>
+            <div className="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center cursor-pointer hover:bg-slate-50">
+              <span className="material-symbols-outlined text-slate-400 text-sm">more_horiz</span>
+            </div>
           </div>
 
-          {/* CRM Quick View Table */}
-          <div className="space-y-2.5">
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-3">Hot Leads Queue</div>
+          {/* Performance Metric */}
+          <div className="mb-4">
+            <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">New Pipeline Value</div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-baseline gap-1">
+                <span className="material-symbols-outlined text-emerald-500 text-lg font-black">keyboard_arrow_up</span>
+                <motion.span
+                  key={conversion}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-4xl font-black text-slate-900 tracking-tighter"
+                >
+                  {conversion}%
+                </motion.span>
+              </div>
+              <div className="text-xs font-bold text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-full">+14</div>
+            </div>
+          </div>
+
+          {/* Main Area Chart */}
+          <div className="h-28 w-full relative mb-6">
+            <SmoothAreaChart data={leadsData.slice(-12)} color="#10b981" />
+          </div>
+
+          {/* Sales Progress */}
+          <div className="pt-4 border-t border-slate-50">
+            <div className="flex justify-between items-end mb-2">
+              <div>
+                <div className="text-[10px] font-bold text-slate-500 uppercase">Total Orders</div>
+                <div className="text-[9px] text-slate-400 font-medium">Last year expenses</div>
+              </div>
+              <motion.div
+                key={leads}
+                initial={{ opacity: 0.8 }}
+                animate={{ opacity: 1 }}
+                className="text-lg font-black text-emerald-600"
+              >
+                ${leads.toLocaleString()}
+              </motion.div>
+            </div>
+            <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-blue-600"
+                animate={{ width: `${(leads / 2000) * 100}%` }}
+                transition={{ duration: 1 }}
+              />
+            </div>
+            <div className="flex justify-between mt-1 text-[9px] font-black text-slate-400">
+              <span>YoY Growth</span>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Activity Timeline Mini */}
+        <div className="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="material-symbols-outlined text-pink-500 text-sm">history</span>
+            <span className="text-[10px] font-black text-slate-900 uppercase">Activity Log</span>
+          </div>
+          <div className="space-y-3">
             {[
-              { name: "Global Tech Inc.", status: "Negotiation", val: "$15.8k", color: "blue" },
-              { name: "Digital Pulse Co.", status: "Review", val: "$9.2k", color: "purple" }
-            ].map((lead, i) => (
-              <div key={i} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-all cursor-pointer group">
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-xl bg-${lead.color}-500/10 flex items-center justify-center text-[10px] font-bold text-${lead.color}-600`}>
-                    {lead.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 group-hover:from-blue-600 group-hover:to-blue-400 transition-all uppercase tracking-tight">{lead.name}</div>
-                    <div className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">{lead.status}</div>
-                  </div>
-                </div>
-                <div className="text-[11px] font-bold text-emerald-600 tabular-nums">{lead.val}</div>
+              { time: "11:42", label: "New Tech Lead", color: "blue" },
+              { time: "09:15", label: "Deal Closed", color: "emerald" },
+              { time: "Yesterday", label: "System Sync", color: "slate" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 relative">
+                <div className={`w-1.5 h-1.5 rounded-full bg-${item.color}-500 relative z-10`} />
+                <div className="text-[10px] font-bold text-slate-400 w-12">{item.time}</div>
+                <div className="text-[10px] font-black text-slate-700">{item.label}</div>
+                {i < 2 && <div className="absolute left-[2.5px] top-3 w-[1px] h-3 bg-slate-200" />}
               </div>
             ))}
           </div>

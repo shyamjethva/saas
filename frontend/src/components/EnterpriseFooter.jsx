@@ -12,26 +12,38 @@ const Footer = () => {
             <p className="text-slate-600 mb-4 font-medium">
               Building structured, scalable digital systems for modern businesses.
             </p>
-            <div className="flex gap-4">
+            <ul className="social-icons-list !justify-start">
               {/* Facebook */}
-              <a href="#" className="text-slate-400 hover:text-blue-600 transition-colors" title="Facebook">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
+              <li className="icon-content">
+                <div className="tooltip">Facebook</div>
+                <a href="#" className="!w-9 !h-9" data-social="facebook">
+                  <div className="filled"></div>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10.003 10.003 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                  </svg>
+                </a>
+              </li>
               {/* LinkedIn */}
-              <a href="https://in.linkedin.com/in/error-infotech704400" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600 transition-colors" title="LinkedIn">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              {/* Instagram */}
-              <a href="https://www.instagram.com/errorinfotech_pvt.ltd?igsh=NzVhOWU2Njc4YWV2" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-pink-600 transition-colors" title="Instagram">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-              </a>
-            </div>
+              <li className="icon-content">
+                <div className="tooltip">LinkedIn</div>
+                <a href="https://in.linkedin.com/in/error-infotech704400" target="_blank" rel="noopener noreferrer" className="!w-9 !h-9" data-social="linkedin">
+                  <div className="filled"></div>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a2.7 2.7 0 0 0-2.7-2.7c-1.2 0-2.3.7-2.7 1.7V10.2H10v8.3h3.1v-4.5c0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4v4.5h3.1M6.7 8.7c1 0 1.8-.8 1.8-1.8S7.7 5.1 6.7 5.1s-1.8.8-1.8 1.8.8 1.8 1.8 1.8m1.5 9.8V10.2H5.2v8.3h3z" />
+                  </svg>
+                </a>
+              </li>
+              {/* WhatsApp */}
+              <li className="icon-content">
+                <div className="tooltip">WhatsApp</div>
+                <a href="https://wa.me/918128704400" target="_blank" rel="noopener noreferrer" className="!w-9 !h-9" data-social="whatsapp">
+                  <div className="filled"></div>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.01 2.01c-5.52 0-9.99 4.47-9.99 9.99 0 1.72.44 3.34 1.21 4.76L2 22l5.37-1.41c1.4.76 3 1.21 4.64 1.21 5.52 0 9.99-4.47 9.99-9.99s-4.47-9.99-9.99-9.99zm5.55 14.15c-.23.64-1.15 1.18-1.59 1.24-.44.06-.88.09-2.58-.6-2.07-.84-3.41-2.95-3.51-3.09-.1-.14-.84-1.12-.84-2.14 0-1.02.53-1.51.72-1.71.19-.2.43-.25.56-.25h.39c.14 0 .32 0 .49.4.17.4.58 1.4.63 1.51.05.11.08.23.01.36-.07.13-.1.21-.2.33-.1.12-.21.25-.3.34-.1.11-.21.22-.09.43.34.6 1.09 1.34 1.77 2 .77.68 1.42 1.12 1.64 1.22.22.1.35.08.49-.07.14-.15.58-.67.73-.9.15-.23.31-.2.52-.12.21.08 1.33.63 1.55.74.22.11.37.17.43.27.05.11.05.58-.19 1.26z" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Services */}
