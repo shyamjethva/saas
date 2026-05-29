@@ -7,12 +7,12 @@ const SimpleAboutUs = () => {
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-blue-900/30 border border-blue-500/50 rounded-full mb-6">
-              <span className="text-blue-400 font-bold">ABOUT ERROR INFOTECH</span>
+            <div className="inline-block px-4 py-2 bg-slate-100 border border-slate-200 rounded-full mb-6">
+              <span className="text-slate-900 font-bold uppercase tracking-widest text-xs">ABOUT ERROR INFOTECH</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 font-space-grotesk tracking-tighter">
-              Engineering Structured <span className="text-blue-600">Digital Growth</span>
+             <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 font-space-grotesk tracking-tighter">
+              Engineering Structured <span className="text-slate-500">Digital Growth</span>
             </h1>
 
             <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
@@ -23,7 +23,7 @@ const SimpleAboutUs = () => {
           {/* Mission Vision Values */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+               <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-slate-900/20">
                 <span className="text-white text-xl">🚀</span>
               </div>
               <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tighter">Our Mission</h3>
@@ -33,7 +33,7 @@ const SimpleAboutUs = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+               <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-slate-900/20">
                 <span className="text-white text-xl">👁️</span>
               </div>
               <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tighter">Our Vision</h3>
@@ -43,7 +43,7 @@ const SimpleAboutUs = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
+               <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-slate-900/20">
                 <span className="text-white text-xl">💎</span>
               </div>
               <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tighter">Our Values</h3>
@@ -54,8 +54,8 @@ const SimpleAboutUs = () => {
           </div>
 
           {/* Industries We Serve */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-white text-center mb-8">Industries We Serve</h2>
+           <div className="mb-16">
+            <h2 className="text-3xl font-black text-slate-900 text-center mb-8 uppercase tracking-tighter">Industries We Serve</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { name: 'Education', icon: '🏫' },
@@ -65,7 +65,7 @@ const SimpleAboutUs = () => {
                 { name: 'Agencies', icon: '💼' },
                 { name: 'Startups', icon: '💡' }
               ].map((industry, index) => (
-                <div key={index} className="bg-white border border-slate-200 rounded-lg p-6 text-center shadow-lg hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+                 <div key={index} className="bg-white border border-slate-200 rounded-lg p-6 text-center shadow-lg hover:shadow-xl hover:border-slate-400 transition-all duration-300 group">
                   <div className="text-3xl mb-3 transform group-hover:scale-110 transition-transform">{industry.icon}</div>
                   <h3 className="text-lg font-black text-slate-900">{industry.name}</h3>
                 </div>
@@ -84,7 +84,7 @@ const SimpleAboutUs = () => {
                 { name: 'Sneha Gupta', role: 'Marketing Director' }
               ].map((member, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-black shadow-xl shadow-blue-500/20">
+                   <div className="w-32 h-32 bg-slate-900 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-black shadow-xl shadow-slate-900/20">
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <h3 className="text-xl font-black text-slate-900">{member.name}</h3>
@@ -104,8 +104,8 @@ const SimpleAboutUs = () => {
                 'Microsoft Partner',
                 'Google Cloud Partner'
               ].map((badge, index) => (
-                <div key={index} className="bg-white border border-slate-200 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all duration-300">
-                  <div className="text-blue-600 text-2xl mb-2 font-black">✓</div>
+                 <div key={index} className="bg-white border border-slate-200 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all duration-300">
+                  <div className="text-slate-900 text-2xl mb-2 font-black">✓</div>
                   <h3 className="text-slate-900 font-black tracking-tighter uppercase text-sm">{badge}</h3>
                 </div>
               ))}

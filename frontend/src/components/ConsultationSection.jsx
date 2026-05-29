@@ -45,7 +45,7 @@ const ConsultationSection = () => {
   ];
 
   return (
-    <div className="relative z-10 px-6 py-24 bg-gradient-to-br from-gray-900 via-slate-900 to-green-900/20">
+    <div className="relative z-10 px-6 py-24 premium-bg">
       <div className="max-w-7xl mx-auto">
         {/* Main Consultation Section */}
         <motion.div
@@ -76,7 +76,7 @@ const ConsultationSection = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg"
+                className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-blue-600/25 flex items-center gap-3 text-lg"
               >
                 <span className="material-symbols-outlined">calendar_today</span>
                 Schedule Free Consultation
@@ -194,7 +194,7 @@ const ConsultationSection = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-12 py-5 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg mx-auto"
+                className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-12 py-5 rounded-full transition-all shadow-2xl hover:shadow-blue-600/25 flex items-center gap-3 text-lg mx-auto"
               >
                 <span className="material-symbols-outlined">rocket_launch</span>
                 Get My Free Strategy Session

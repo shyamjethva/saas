@@ -98,14 +98,14 @@ const UserManagement = () => {
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="flex-1">
-                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
-                  <span className="material-symbols-outlined text-blue-600 text-sm font-black">groups</span>
-                  <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">IDENTITY INFRASTRUCTURE</span>
+                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-slate-50 border border-slate-100 mb-8 shadow-sm">
+                  <span className="material-symbols-outlined text-slate-900 text-sm font-black">groups</span>
+                  <span className="text-slate-900 font-black tracking-widest uppercase text-[10px]">IDENTITY INFRASTRUCTURE</span>
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                 <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
                   User Governance
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+                  <span className="block text-slate-400">
                     & Permission Matrix
                   </span>
                 </h1>
@@ -114,10 +114,10 @@ const UserManagement = () => {
                   Orchestrate platform access, manage high-level administrative roles, and audit security protocols across your organizational hierarchy.
                 </p>
 
-                {loading && (
-                  <div className="flex items-center gap-3 mt-8 px-5 py-3 bg-blue-50 rounded-2xl border border-blue-100 w-fit">
-                    <div className="w-5 h-5 border-[3px] border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-blue-600 text-[10px] font-black uppercase tracking-widest">Synchronizing Directory...</span>
+                 {loading && (
+                  <div className="flex items-center gap-3 mt-8 px-5 py-3 bg-slate-50 rounded-2xl border border-slate-100 w-fit">
+                    <div className="w-5 h-5 border-[3px] border-slate-900 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-slate-900 text-[10px] font-black uppercase tracking-widest">Synchronizing Directory...</span>
                   </div>
                 )}
               </div>
@@ -151,10 +151,10 @@ const UserManagement = () => {
       {/* Stats Section */}
       <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <StatCard title="Identity Volume" value={users.length} icon="groups" color="blue" />
-          <StatCard title="Active Protocols" value={users.filter(u => u.status === 'Active').length} icon="verified" color="indigo" />
-          <StatCard title="Administrative Tier" value={users.filter(u => u.role === 'Admin').length} icon="admin_panel_settings" color="purple" />
-          <StatCard title="Partner Entities" value={users.filter(u => u.role === 'Client').length} icon="business" color="blue" />
+           <StatCard title="Identity Volume" value={users.length} icon="groups" color="slate" />
+          <StatCard title="Active Protocols" value={users.filter(u => u.status === 'Active').length} icon="verified" color="slate" />
+          <StatCard title="Administrative Tier" value={users.filter(u => u.role === 'Admin').length} icon="admin_panel_settings" color="slate" />
+          <StatCard title="Partner Entities" value={users.filter(u => u.role === 'Client').length} icon="business" color="slate" />
         </div>
       </div>
 
@@ -198,18 +198,18 @@ const UserManagement = () => {
                           <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">{user.email}</p>
                         </div>
                       </td>
-                      <td className="px-8 py-8">
-                        <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest ${user.role === 'Admin' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' :
-                          user.role === 'Manager' ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' :
-                            user.role === 'Employee' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20' :
+                       <td className="px-8 py-8">
+                        <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest ${user.role === 'Admin' ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/20' :
+                          user.role === 'Manager' ? 'bg-slate-700 text-white shadow-lg shadow-slate-700/20' :
+                            user.role === 'Employee' ? 'bg-slate-500 text-white shadow-lg shadow-slate-500/20' :
                               'bg-slate-100 text-slate-400'
                           }`}>
                           {user.role}
                         </span>
                       </td>
-                      <td className="px-8 py-8">
+                       <td className="px-8 py-8">
                         <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest ${user.status === 'Active'
-                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                          ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/20'
                           : 'bg-slate-100 text-slate-400'
                           }`}>
                           {user.status}
@@ -222,7 +222,7 @@ const UserManagement = () => {
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             onClick={() => toggleUserStatus(user.id)}
-                            className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-sm border border-slate-200 transition-all ${user.status === 'Active' ? 'bg-white text-slate-400 hover:text-red-600 hover:border-red-600' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
+                             className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-sm border border-slate-200 transition-all ${user.status === 'Active' ? 'bg-white text-slate-400 hover:text-red-600 hover:border-red-600' : 'bg-slate-900 text-white hover:bg-black'}`}
                           >
                             <span className="material-symbols-outlined text-sm font-black">
                               {user.status === 'Active' ? 'block' : 'check'}
@@ -255,9 +255,9 @@ const UserManagement = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
               {roles.map(role => (
                 <div key={role} className="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 hover:bg-white hover:border-slate-900 transition-all group/role">
-                  <h3 className={`text-xl font-black tracking-tighter mb-6 ${role === 'Admin' ? 'text-purple-600' :
-                    role === 'Manager' ? 'text-blue-600' :
-                      role === 'Employee' ? 'text-indigo-600' :
+                   <h3 className={`text-xl font-black tracking-tighter mb-6 ${role === 'Admin' ? 'text-slate-900' :
+                    role === 'Manager' ? 'text-slate-700' :
+                      role === 'Employee' ? 'text-slate-500' :
                         'text-slate-900'
                     }`}>
                     {role}
@@ -265,8 +265,8 @@ const UserManagement = () => {
                   <ul className="space-y-4">
                     {permissions[role].map((permission, idx) => (
                       <li key={idx} className="text-slate-500 text-xs font-bold flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center group-hover/role:bg-blue-600 transition-colors">
-                          <span className="material-symbols-outlined text-blue-600 text-[10px] font-black group-hover/role:text-white transition-colors">check</span>
+                         <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center group-hover/role:bg-slate-900 transition-colors">
+                          <span className="material-symbols-outlined text-slate-900 text-[10px] font-black group-hover/role:text-white transition-colors">check</span>
                         </div>
                         {permission}
                       </li>
@@ -287,7 +287,7 @@ const UserManagement = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             className="bg-white rounded-[3rem] p-12 w-full max-w-xl border border-slate-200 shadow-[0_64px_128px_-24px_rgba(0,0,0,0.15)] overflow-hidden relative"
           >
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500"></div>
+             <div className="absolute top-0 left-0 w-full h-2 bg-slate-900"></div>
             <h3 className="text-4xl font-black text-slate-900 mb-10 tracking-tighter">Engineer Identity</h3>
 
             <div className="space-y-8">
@@ -360,8 +360,8 @@ const StatCard = ({ title, value, icon, color }) => (
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{title}</p>
         <p className="text-4xl font-black text-slate-900 tracking-tight">{value}</p>
       </div>
-      <div className={`w-14 h-14 rounded-2xl bg-${color}-50 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-        <span className={`material-symbols-outlined text-${color}-600 text-2xl font-black`}>{icon}</span>
+       <div className={`w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+        <span className={`material-symbols-outlined text-slate-900 text-2xl font-black`}>{icon}</span>
       </div>
     </div>
   </motion.div>

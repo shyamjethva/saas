@@ -143,7 +143,7 @@ const CaseStudyFinancial = () => {
                 title: "Microservices Architecture", 
                 desc: "Decoupled monolith into scalable microservices for better performance and maintenance",
                 icon: "account_tree",
-                color: "from-blue-500 to-cyan-500"
+                color: "from-blue-700 to-sky-500"
               },
               { 
                 title: "Cloud-Native Infrastructure", 
@@ -194,7 +194,7 @@ const CaseStudyFinancial = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               { value: "+42%", label: "Efficiency Gain", color: "from-green-500 to-teal-500" },
-              { value: "2.1s", label: "Avg Response Time", color: "from-blue-500 to-cyan-500" },
+              { value: "2.1s", label: "Avg Response Time", color: "from-blue-700 to-sky-500" },
               { value: "99.98%", label: "Uptime", color: "from-purple-500 to-pink-500" },
               { value: "25M", label: "Monthly Transactions", color: "from-orange-500 to-red-500" }
             ].map((result, index) => (

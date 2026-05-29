@@ -146,15 +146,18 @@ const Blog = () => {
   const categories = ['All', 'Business Solutions', 'Artificial Intelligence', 'Global Business', 'Education Technology', 'Healthcare', 'Company Culture', 'Technology'];
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
+    <main className="min-h-screen premium-bg relative pt-12 pb-12">
+      <div className="bg-slate-50/30 rounded-[4rem] mx-6 border border-slate-100/50 relative overflow-hidden pt-8 pb-40 mb-12">
+        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.02]"></div>
+        
+        {/* Hero Section */}
+        <section className="pt-24 pb-12 px-6 relative z-10 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1.5 h-1.5 bg-blue-600/10 rounded-full"
+              className="absolute w-1.5 h-1.5 bg-slate-400/10 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -180,13 +183,11 @@ const Blog = () => {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-8">
-              <span className="material-symbols-outlined text-blue-600">psychology</span>
-              <span className="text-blue-600 font-black uppercase tracking-widest text-[10px]">Neural Intelligence</span>
-            </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter font-space-grotesk leading-tight">
-              Insights & <span className="text-blue-600">Leadership</span>
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tighter leading-tight">
+              <span className="heading-underline active pb-2 inline-block">
+                Insights & <span className="text-slate-500">Leadership</span>
+              </span>
             </h1>
             <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
               Cutting-edge analysis, industry benchmarks, and expert technical strategy.
@@ -203,9 +204,9 @@ const Blog = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-8 py-3 rounded-full border transition-all font-black uppercase tracking-widest text-[10px] ${selectedCategory === category
-                  ? 'bg-blue-600 text-white border-blue-600 shadow-xl shadow-blue-500/30'
-                  : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-slate-900 shadow-sm'
+                className={`px-6 py-3 rounded-2xl border transition-all font-black uppercase tracking-widest text-[10px] ${selectedCategory === category
+                  ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-500/10'
+                  : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900 shadow-sm'
                   }`}
               >
                 {category}
@@ -215,28 +216,28 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Stats Overview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto">
+      {/* Stats Overview - Replaced Boxes with Typographic Columns */}
+      <section className="py-12 relative z-10">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '4.2K', label: 'Monthly Readers', color: 'from-blue-600 to-cyan-500' },
-              { value: '200+', label: 'Articles', color: 'from-purple-600 to-pink-600' },
-              { value: '98%', label: 'Engagement Rate', color: 'from-emerald-600 to-teal-600' },
-              { value: '24/7', label: 'Updates', color: 'from-orange-600 to-red-600' }
+              { value: '4.2K', label: 'Monthly Readers', color: 'from-slate-900 to-slate-600' },
+              { value: '200+', label: 'Articles', color: 'from-slate-500 to-slate-400' },
+              { value: '98%', label: 'Engagement Rate', color: 'from-slate-900 to-slate-600' },
+              { value: '24/7', label: 'Updates', color: 'from-slate-500 to-slate-400' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-[2.5rem] p-10 border border-slate-100 text-center shadow-xl hover:shadow-2xl transition-all duration-700 relative overflow-hidden group"
+                whileHover={{ y: -8 }}
+                className="p-6 relative overflow-hidden md:border-r border-slate-200/60 last:border-0 group transition-all duration-500 text-center"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`text-5xl font-black mb-3 font-space-grotesk transition-all duration-700 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>{stat.value}</div>
-                <div className="text-slate-500 font-black uppercase tracking-widest text-[10px]">{stat.label}</div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none`}></div>
+                <div className={`text-4xl md:text-5xl font-black mb-4 transition-all duration-500 bg-clip-text text-transparent bg-gradient-to-r ${stat.color} py-1`}>{stat.value}</div>
+                <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-normal">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -244,13 +245,13 @@ const Blog = () => {
       </section>
 
       {/* Featured Article */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-consistent-3xl overflow-hidden border border-slate-200 shadow-3xl hover:border-blue-300 transition-all"
+            className="bg-white rounded-consistent-3xl overflow-hidden border border-slate-200 shadow-3xl hover:border-slate-300 transition-all"
           >
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="lg:order-2">
@@ -260,9 +261,9 @@ const Blog = () => {
                     alt={blogPosts[0].title}
                     className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-125 group-hover:scale-110 transition-all duration-1000 ease-in-out"
                   />
-                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors duration-700"></div>
+                  <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-colors duration-700"></div>
                   <div className="absolute top-8 right-8">
-                    <span className="px-6 py-2 bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-2xl">
+                    <span className="px-6 py-2 bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] rounded-full shadow-2xl">
                       Featured Report
                     </span>
                   </div>
@@ -270,14 +271,14 @@ const Blog = () => {
               </div>
 
               <div className="lg:order-1 flex flex-col justify-center p-12 lg:p-20">
-                <div className="flex items-center gap-6 text-slate-400 font-black uppercase tracking-widest text-[10px] mb-8">
-                  <span className="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100">Technology</span>
+                <div className="flex flex-wrap items-center gap-3 md:gap-6 text-slate-400 font-black uppercase tracking-widest text-[9px] md:text-[10px] mb-8">
+                  <span className="px-3 md:px-4 py-1.5 bg-slate-50 text-slate-600 rounded-full border border-slate-200/60">Technology</span>
                   <span>March 15, 2024</span>
-                  <div className="w-1.5 h-1.5 bg-slate-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1.5 h-1.5 bg-slate-200 rounded-full"></div>
                   <span>8 min read</span>
                 </div>
 
-                <h2 className="text-4xl font-black text-slate-900 mb-8 tracking-tighter leading-tight font-space-grotesk group-hover:text-blue-600 transition-colors">
+                <h2 className="text-4xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.15] font-space-grotesk group-hover:text-slate-900 transition-colors">
                   {blogPosts[0].title}
                 </h2>
 
@@ -287,7 +288,7 @@ const Blog = () => {
 
                 <div className="flex flex-wrap items-center gap-8 mb-12">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-blue-600 font-black text-xs">RP</div>
+                    <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 font-black text-xs">RP</div>
                     <span className="text-slate-900 font-black uppercase tracking-widest text-[10px]">Rakshit Patadiya</span>
                   </div>
                   <div className="grid grid-cols-2 gap-6">
@@ -306,7 +307,7 @@ const Blog = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-10 py-5 rounded-full shadow-2xl shadow-blue-500/30 hover:bg-blue-700 transition-all"
+                    className="bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] px-10 py-5 rounded-full shadow-2xl shadow-slate-900/10 hover:bg-slate-800 transition-all"
                   >
                     Read Intelligence Report
                   </motion.button>
@@ -318,7 +319,7 @@ const Blog = () => {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {filteredPosts.map((post, index) => (
@@ -329,13 +330,9 @@ const Blog = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className={`group relative rounded-[2.5rem] overflow-hidden border border-slate-200 bg-white transition-all duration-700 shadow-xl hover:shadow-2xl ${index % 4 === 0 ? 'hover:border-blue-500/50' :
-                  index % 4 === 1 ? 'hover:border-purple-500/50' :
-                    index % 4 === 2 ? 'hover:border-emerald-500/50' :
-                      'hover:border-pink-500/50'
-                  }`}
+                className="group relative rounded-[2.5rem] overflow-hidden border border-slate-200 bg-white transition-all duration-700 shadow-xl hover:shadow-2xl hover:border-slate-400/60"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-700 pointer-events-none"></div>
                 {/* Post Image */}
                 <div className="h-64 bg-slate-100 relative overflow-hidden group">
                   <img
@@ -343,9 +340,9 @@ const Blog = () => {
                     alt={post.title}
                     className="w-full h-full object-cover saturate-[0.7] group-hover:saturate-150 group-hover:scale-110 transition-all duration-1000 ease-out"
                   />
-                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors duration-700"></div>
+                  <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-colors duration-700"></div>
                   <div className="absolute bottom-6 left-6">
-                    <span className="px-4 py-1.5 bg-blue-600 text-white font-black uppercase tracking-widest text-[9px] rounded-full shadow-lg">
+                    <span className="px-4 py-1.5 bg-slate-900 text-white font-black uppercase tracking-widest text-[9px] rounded-full shadow-lg">
                       {post.category}
                     </span>
                   </div>
@@ -365,7 +362,7 @@ const Blog = () => {
                     <span>{post.author}</span>
                   </div>
 
-                  <h2 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-blue-600 transition-colors leading-tight font-space-grotesk">
+                  <h2 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-slate-800 transition-colors leading-tight font-space-grotesk">
                     {post.title}
                   </h2>
 
@@ -410,9 +407,7 @@ const Blog = () => {
                   <div className="flex items-center gap-6">
                     <Link to={`/blog/post/${post.id}`}>
                       <motion.button
-                        whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(37,99,235,0.2)' }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-blue-600 text-white font-black uppercase tracking-widest text-[9px] px-6 py-3 rounded-full shadow-xl shadow-blue-500/10 hover:bg-blue-700 transition-all"
+                        className="bg-slate-900 text-white font-black uppercase tracking-widest text-[9px] px-6 py-3 rounded-full shadow-xl shadow-slate-900/10 hover:bg-slate-800 transition-all"
                       >
                         Read Report
                       </motion.button>
@@ -420,7 +415,7 @@ const Blog = () => {
 
                     <button
                       onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}
-                      className="text-blue-600 font-black uppercase tracking-widest text-[9px] flex items-center gap-2 hover:text-blue-700 transition-colors group/btn"
+                      className="text-slate-600 font-black uppercase tracking-widest text-[9px] flex items-center gap-2 hover:text-slate-800 transition-colors group/btn"
                     >
                       {expandedPost === post.id ? 'Minimize' : 'Briefing'}
                       <span className="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-y-1">
@@ -436,6 +431,7 @@ const Blog = () => {
       </section>
 
 
+      </div>
     </main>
   );
 };

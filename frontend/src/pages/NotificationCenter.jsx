@@ -97,7 +97,7 @@ const NotificationCenter = () => {
 
   const priorityColors = {
     high: 'from-red-500 to-orange-500',
-    medium: 'from-blue-500 to-cyan-500',
+    medium: 'from-blue-700 to-sky-500',
     low: 'from-green-500 to-emerald-500'
   };
 
@@ -130,9 +130,9 @@ const NotificationCenter = () => {
   const unreadCount = notifications.filter(n => n.unread).length;
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -140,14 +140,14 @@ const NotificationCenter = () => {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
-              <span className="material-symbols-outlined text-blue-600 text-sm font-black">notifications_active</span>
-              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">NOTIFICATION CENTER</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-emerald-50 border border-emerald-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-blue-emerald text-sm font-black">notifications_active</span>
+              <span className="text-blue-emerald font-black tracking-widest uppercase text-[10px]">NOTIFICATION CENTER</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.1] heading-underline active pb-2">
               Strategic Event &
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+              <span className="block text-premium-gradient">
                 Alert Monitoring
               </span>
             </h1>
@@ -170,7 +170,7 @@ const NotificationCenter = () => {
                 <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none">Total Events</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-blue-600 mb-1">{unreadCount}</div>
+                <div className="text-4xl font-black text-blue-emerald mb-1">{unreadCount}</div>
                 <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none">Unread Alert</div>
               </div>
               <div className="text-center">
@@ -188,7 +188,7 @@ const NotificationCenter = () => {
                 onClick={markAllAsRead}
                 disabled={unreadCount === 0}
                 className={`px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-3 ${unreadCount > 0
-                  ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20 hover:bg-blue-700'
+                  ? 'bg-blue-emerald text-white shadow-xl shadow-blue-500/20 hover:bg-blue-600/90'
                   : 'bg-slate-50 text-slate-300 border border-slate-100 cursor-not-allowed'
                   }`}
               >
@@ -232,14 +232,14 @@ const NotificationCenter = () => {
                 <span className="material-symbols-outlined text-sm font-black">{tab.icon}</span>
                 {tab.label}
                 {tab.id === 'unread' && unreadCount > 0 && (
-                  <span className="bg-blue-600 text-white text-[10px] font-black rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                  <span className="bg-blue-emerald text-white text-[10px] font-black rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center shadow-lg shadow-blue-500/20">
                     {unreadCount}
                   </span>
                 )}
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="tab-underline"
-                    className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-blue-600 rounded-full"
+                    className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-blue-emerald rounded-full"
                   />
                 )}
               </motion.button>
@@ -269,7 +269,7 @@ const NotificationCenter = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className={`bg-white rounded-[3rem] p-10 border transition-all duration-500 shadow-xl relative overflow-hidden group ${notification.unread
-                    ? 'border-blue-200 shadow-[0_32px_64px_-16px_rgba(37,99,235,0.1)]'
+                    ? 'border-emerald-200 shadow-[0_32px_64px_-16px_rgba(16,185,129,0.1)]'
                     : 'border-slate-200 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)]'
                     }`}
                 >
@@ -277,7 +277,7 @@ const NotificationCenter = () => {
 
                   {notification.unread && (
                     <div className="absolute top-0 right-0 p-8">
-                      <span className="w-3 h-3 rounded-full bg-blue-600 block shadow-[0_0_15px_rgba(37,99,235,0.5)]"></span>
+                      <span className="w-3 h-3 rounded-full bg-blue-emerald block shadow-[0_0_15px_rgba(16,185,129,0.5)]"></span>
                     </div>
                   )}
 
@@ -297,7 +297,7 @@ const NotificationCenter = () => {
                         <div className="flex items-center justify-center md:justify-end gap-4">
                           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{notification.time}</span>
                           <span className={`px-4 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border ${notification.priority === 'high' ? 'bg-red-50 text-red-600 border-red-100' :
-                            notification.priority === 'medium' ? 'bg-blue-50 text-blue-600 border-blue-100' :
+                            notification.priority === 'medium' ? 'bg-emerald-50 text-blue-emerald border-emerald-100' :
                               'bg-slate-50 text-slate-500 border-slate-100'
                             }`}>
                             {notification.priority}
@@ -320,7 +320,7 @@ const NotificationCenter = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => markAsRead(notification.id)}
-                            className="bg-blue-600 text-white font-black px-6 py-2 rounded-xl text-[10px] uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all"
+                            className="bg-blue-emerald text-white font-black px-6 py-2 rounded-xl text-[10px] uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:bg-blue-600/90 transition-all"
                           >
                             Acknowledge Alert
                           </motion.button>

@@ -233,7 +233,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
                       <div className="space-y-3">
                         {caseStudy.team.map((member, index) => (
                           <div key={index} className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-slate-900 text-xs font-bold">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-slate-900 text-xs font-bold">
                               {member.name.charAt(0)}
                             </div>
                             <div>
@@ -334,7 +334,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
                         className="bg-slate-50 rounded-consistent-2xl p-8 border border-slate-100 shadow-sm transition-all"
                       >
                         <div className="flex items-start gap-4">
-                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-slate-900 font-bold text-xl flex-shrink-0">
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-slate-900 font-bold text-xl flex-shrink-0">
                             {testimonial.name.charAt(0)}
                           </div>
                           <div className="flex-1">

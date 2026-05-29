@@ -71,21 +71,16 @@ const CRMDemoPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative py-32 px-6 bg-slate-50 border-b border-slate-200">
+      <div className="relative py-12 px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-8">
-              <span className="material-symbols-outlined text-blue-600">inventory_2</span>
-              <span className="text-blue-600 font-black uppercase tracking-widest text-[10px]">Enterprise CRM Demo</span>
-            </div>
-
-            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter font-space-grotesk leading-none">
+            <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter font-space-grotesk leading-[1.1] heading-underline active pb-2 pt-8">
               Experience Our <br />
-              <span className="text-blue-600">
+              <span className="text-premium-gradient">
                 Enterprise CRM
               </span>
             </h1>
@@ -99,16 +94,16 @@ const CRMDemoPage = () => {
       </div>
 
       {/* CRM Interface Preview */}
-      <section className="px-6 py-32 bg-white">
+      <section className="px-6 py-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter">Live CRM Interface</h2>
+            <h2 className="text-5xl font-black text-black mb-6 tracking-tighter heading-underline active inline-block">Live <span className="text-premium-gradient">CRM Interface</span></h2>
             <p className="text-xl text-slate-600 font-medium">Explore our intuitive dashboard and powerful enterprise features</p>
           </div>
 
           {/* CRM Dashboard Preview */}
           <div className="bg-white rounded-consistent-2xl p-8 border border-slate-200 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-2 bg-blue-600"></div>
+            <div className="absolute top-0 left-0 w-full h-2 bg-blue-emerald"></div>
             {/* Tab Navigation */}
             <div className="flex flex-wrap gap-2 mb-10 bg-slate-50 rounded-consistent-xl p-2 border border-slate-100">
               {tabs.map((tab) => (
@@ -116,7 +111,7 @@ const CRMDemoPage = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-3 px-6 py-3 rounded-consistent-lg transition-all font-black uppercase tracking-widest text-[10px] ${activeTab === tab.id
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                    ? 'bg-blue-emerald text-white shadow-lg shadow-blue-500/20'
                     : 'text-slate-500 hover:bg-white hover:text-slate-900'
                     }`}
                 >
@@ -133,15 +128,15 @@ const CRMDemoPage = () => {
                   <h3 className="text-3xl font-black text-slate-900 mb-10 tracking-tight">Dashboard Overview</h3>
                   <div className="grid md:grid-cols-3 gap-8 mb-10">
                     <div className="bg-white rounded-consistent-xl p-8 border border-slate-200 shadow-sm group hover:border-blue-300 transition-all">
-                      <div className="text-4xl font-black text-blue-600 mb-2 font-space-grotesk tracking-tighter">1,247</div>
+                      <div className="text-4xl font-black text-blue-emerald mb-2 font-space-grotesk tracking-tighter">1,247</div>
                       <div className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Total Customers</div>
                     </div>
                     <div className="bg-white rounded-consistent-xl p-8 border border-slate-200 shadow-sm group hover:border-blue-300 transition-all">
-                      <div className="text-4xl font-black text-blue-600 mb-2 font-space-grotesk tracking-tighter">89</div>
+                      <div className="text-4xl font-black text-blue-emerald mb-2 font-space-grotesk tracking-tighter">89</div>
                       <div className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Active Deals</div>
                     </div>
                     <div className="bg-white rounded-consistent-xl p-8 border border-slate-200 shadow-sm group hover:border-blue-300 transition-all">
-                      <div className="text-4xl font-black text-blue-600 mb-2 font-space-grotesk tracking-tighter">₹2.4M</div>
+                      <div className="text-4xl font-black text-blue-emerald mb-2 font-space-grotesk tracking-tighter">₹2.4M</div>
                       <div className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Revenue This Month</div>
                     </div>
                   </div>
@@ -152,9 +147,9 @@ const CRMDemoPage = () => {
                     </div>
                     <div className="space-y-4">
                       {[
-                        { label: 'John Doe signed contract', time: '2 minutes ago', color: 'bg-blue-600' },
-                        { label: 'New lead from website', time: '15 minutes ago', color: 'bg-blue-400' },
-                        { label: 'Meeting scheduled with ABC Corp', time: '1 hour ago', color: 'bg-blue-200' }
+                        { label: 'John Doe signed contract', time: '2 minutes ago', color: 'bg-blue-emerald' },
+                        { label: 'New lead from website', time: '15 minutes ago', color: 'bg-emerald-400' },
+                        { label: 'Meeting scheduled with ABC Corp', time: '1 hour ago', color: 'bg-emerald-200' }
                       ].map((activity, i) => (activity && (
                         <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 rounded-consistent-lg group hover:bg-slate-100 transition-colors">
                           <div className={`w-2 h-2 ${activity.color} rounded-full`}></div>
@@ -184,12 +179,12 @@ const CRMDemoPage = () => {
                           <div className="text-slate-500 font-medium text-sm">{customer.email}</div>
                         </div>
                         <div className="flex items-center gap-8">
-                          <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${customer.status === 'Active' ? 'bg-blue-50 text-blue-600 border-blue-100' :
+                          <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${customer.status === 'Active' ? 'bg-emerald-50 text-blue-emerald border-emerald-100' :
                             'bg-slate-100 text-slate-500 border-slate-200'
                             }`}>
                             {customer.status}
                           </span>
-                          <span className="text-blue-600 font-black font-space-grotesk">{customer.value}</span>
+                          <span className="text-blue-emerald font-black font-space-grotesk">{customer.value}</span>
                         </div>
                       </div>
                     ))}
@@ -243,10 +238,10 @@ const CRMDemoPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="px-6 py-32 bg-slate-50 border-y border-slate-200">
+      <section className="px-6 py-12 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter">Powerful CRM Features</h2>
+            <h2 className="text-5xl font-black text-black mb-8 tracking-tighter heading-underline active inline-block">Powerful <span className="text-premium-gradient">CRM Features</span></h2>
             <p className="text-xl text-slate-600 font-medium max-w-3xl mx-auto">Everything you need to manage customers and scale your enterprise at peak performance.</p>
           </div>
 
@@ -272,7 +267,7 @@ const CRMDemoPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="px-6 py-32 bg-white">
+      <section className="px-6 py-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12">
             {[
@@ -301,12 +296,12 @@ const CRMDemoPage = () => {
       </section>
 
       {/* Booking Section */}
-      <section className="px-6 py-32 bg-slate-50 border-y border-slate-200">
+      <section className="px-6 py-12 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-consistent-2xl p-16 border border-slate-200 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full -mr-32 -mt-32 -z-10"></div>
-            <h2 className="text-4xl font-black text-slate-900 mb-4 text-center tracking-tighter">
-              Ready to See It <span className="text-blue-600">In Action?</span>
+            <h2 className="text-4xl font-black text-black mb-4 text-center tracking-tighter heading-underline active inline-block">
+              Ready to See It <span className="text-premium-gradient">In Action?</span>
             </h2>
             <p className="text-xl text-slate-600 text-center mb-16 font-medium">
               Book a personalized enterprise walkthrough and see how the CRM scales with your data.
@@ -347,7 +342,7 @@ const CRMDemoPage = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-5 rounded-full bg-slate-50 border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all"
+                    className="w-full px-6 py-5 rounded-full bg-slate-50 border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all"
                     placeholder="Your company name"
                   />
                 </div>
@@ -359,7 +354,7 @@ const CRMDemoPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-5 rounded-full bg-slate-50 border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all"
+                    className="w-full px-6 py-5 rounded-full bg-slate-50 border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all"
                     placeholder="+91 00000 00000"
                   />
                 </div>
@@ -372,7 +367,7 @@ const CRMDemoPage = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="4"
-                  className="w-full px-8 py-6 rounded-3xl bg-slate-50 border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all resize-none"
+                  className="w-full px-8 py-6 rounded-3xl bg-slate-50 border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all resize-none"
                   placeholder="Tell us about your business goals and what you'd like to see in the system..."
                 ></textarea>
               </div>
@@ -380,7 +375,7 @@ const CRMDemoPage = () => {
               <div className="text-center pt-8">
                 <button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-6 rounded-full transition-all shadow-2xl shadow-blue-500/40 flex items-center gap-4 text-sm mx-auto uppercase tracking-widest"
+                  className="bg-blue-emerald hover:bg-blue-600/90 text-white font-black px-12 py-6 rounded-full transition-all shadow-2xl shadow-blue-500/40 flex items-center gap-4 text-sm mx-auto uppercase tracking-widest"
                 >
                   <span className="material-symbols-outlined font-black">calendar_today</span>
                   Initialize Demo Booking
@@ -396,10 +391,10 @@ const CRMDemoPage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="px-6 py-32 bg-white">
+      <section className="px-6 py-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter">Strategic Impact</h2>
+            <h2 className="text-5xl font-black text-black mb-6 tracking-tighter heading-underline active inline-block">Strategic <span className="text-premium-gradient">Impact</span></h2>
             <p className="text-xl text-slate-600 font-medium">Quantified results from our global enterprise partners</p>
           </div>
 
@@ -434,7 +429,7 @@ const CRMDemoPage = () => {
               >
                 <div className="flex gap-1 mb-8">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="material-symbols-outlined text-blue-600 text-xl font-black">star</span>
+                    <span key={i} className="material-symbols-outlined text-blue-emerald text-xl font-black">star</span>
                   ))}
                 </div>
                 <p className="text-slate-600 text-xl leading-relaxed font-medium mb-10 flex-grow italic">"{testimonial.quote}"</p>

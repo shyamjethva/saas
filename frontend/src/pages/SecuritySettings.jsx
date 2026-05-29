@@ -44,7 +44,7 @@ const SecuritySettings = () => {
       title: 'Secure Login & Authentication',
       description: 'Advanced authentication protocols with session management',
       icon: 'lock',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-700 to-sky-500',
       status: 'Active'
     },
     {
@@ -94,14 +94,14 @@ const SecuritySettings = () => {
   const securityStats = [
     { label: 'Active Threats Blocked', value: '1,247', change: '+12%', color: 'text-green-400' },
     { label: 'Security Incidents', value: '0', change: '0%', color: 'text-green-400' },
-    { label: '2FA Enabled Users', value: '89%', change: '+15%', color: 'text-blue-400' },
+    { label: '2FA Enabled Users', value: '89%', change: '+15%', color: 'text-blue-emerald' },
     { label: 'Encrypted Records', value: '100%', change: '✓', color: 'text-green-400' }
   ];
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -120,9 +120,9 @@ const SecuritySettings = () => {
               <span className="text-red-600 font-black tracking-widest uppercase text-[10px]">SECURITY INFRASTRUCTURE</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.1] heading-underline active pb-2">
               Enterprise-Grade
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-red-600">
+              <span className="block text-premium-gradient">
                 Data Protection
               </span>
             </h1>
@@ -143,7 +143,7 @@ const SecuritySettings = () => {
             viewport={{ once: true }}
             className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] mb-16"
           >
-            <h2 className="text-3xl font-black text-slate-900 mb-12 text-center tracking-tighter uppercase tracking-widest text-xs font-black">Security Governance Overview</h2>
+            <h2 className="text-3xl font-black text-slate-900 mb-12 text-center tracking-tighter uppercase tracking-widest text-xs heading-underline active inline-block">Security Governance Overview</h2>
 
             {/* Security Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
@@ -151,7 +151,7 @@ const SecuritySettings = () => {
                 <div key={index} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 text-center group hover:border-red-200 transition-all">
                   <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{stat.label}</div>
                   <div className="text-3xl font-black text-slate-900 mb-1 tracking-tight">{stat.value}</div>
-                  <div className={`text-xs font-black uppercase tracking-tighter ${stat.color === 'text-green-400' ? 'text-green-600' : 'text-blue-600'}`}>{stat.change}</div>
+                  <div className={`text-xs font-black uppercase tracking-tighter ${stat.color === 'text-green-400' ? 'text-green-600' : 'text-blue-emerald'}`}>{stat.change}</div>
                 </div>
               ))}
             </div>
@@ -199,7 +199,7 @@ const SecuritySettings = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Advanced Defense Protocols</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter heading-underline active inline-block">Advanced Defense Protocols</h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Military-grade protection for your professional business infrastructure.</p>
           </motion.div>
 
@@ -249,7 +249,7 @@ const SecuritySettings = () => {
           >
             <div className="absolute top-0 right-0 w-96 h-96 bg-red-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-red-100 transition-colors"></div>
 
-            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter">
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter heading-underline active inline-block">
               Ready to
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-red-600">
                 Fortify My Infrastructure?

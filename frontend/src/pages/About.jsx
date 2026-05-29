@@ -3,24 +3,24 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="homepage-monochrome min-h-screen premium-bg relative overflow-x-hidden">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-slate-50 border-b border-slate-200">
+      <section className="pt-40 pb-20 px-6 relative border-b border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-8">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
               <span className="material-symbols-outlined text-blue-600">corporate_fare</span>
-              <span className="text-blue-600 font-black uppercase tracking-widest text-[10px]">Institutional Profile</span>
+              <span className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Institutional Profile</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
-              <span className="text-gradient">About Error Infotech.</span>
+            <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none text-slate-900">
+              About <span className="text-slate-500">Error Infotech.</span>
             </h1>
-            <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-2xl text-slate-500 max-w-3xl mx-auto font-light leading-relaxed">
               Global architects of the digital-first enterprise, delivering high-performance technical infrastructure since 2021.
             </p>
           </motion.div>
@@ -28,7 +28,7 @@ const About = () => {
       </section>
 
       {/* Company Story */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-32 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -36,21 +36,21 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="text-blue-600 font-black uppercase tracking-widest text-[10px] mb-6">Our Genesis</div>
-              <h2 className="text-5xl font-black mb-8 tracking-tighter">
-                <span className="text-gradient">The Visionary Roadmap.</span>
+              <div className="text-slate-500 font-black uppercase tracking-widest text-[10px] mb-6">Our Genesis</div>
+              <h2 className="text-5xl font-black mb-8 tracking-tighter text-slate-900">
+                The Visionary <span className="text-slate-500">Roadmap.</span>
               </h2>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed font-medium">
+              <p className="text-xl text-slate-500 mb-8 leading-relaxed font-light">
                 Founded in Rajkot, Error Infotech emerged from a singular objective: to architect zero-friction technical ecosystems for the world's most ambitious enterprises.
               </p>
-              <p className="text-lg text-slate-500 mb-10 leading-relaxed font-medium">
+              <p className="text-lg text-slate-500 mb-10 leading-relaxed font-light">
                 What began as an elite engineering collective has evolved into a global technical powerhouse. We operate at the intersection of neural networks and cloud-native infrastructure, serving a diverse portfolio from high-growth startups to Fortune 500 conglomerates.
               </p>
               <div className="flex flex-wrap gap-6">
-                <div className="px-6 py-3 bg-blue-50 border border-blue-100 rounded-full text-blue-600 font-black uppercase tracking-widest text-[10px]">
+                <div className="px-6 py-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full text-blue-600 font-black uppercase tracking-widest text-[10px]">
                   3+ Years Excellence
                 </div>
-                <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-full text-slate-500 font-black uppercase tracking-widest text-[10px]">
+                <div className="px-6 py-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full text-slate-500 font-black uppercase tracking-widest text-[10px]">
                   11+ Global Nodes
                 </div>
               </div>
@@ -60,9 +60,9 @@ const About = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-consistent-3xl p-12 border border-slate-200 shadow-xl"
+              className="bg-white/80 backdrop-blur-md rounded-consistent-3xl p-12 border border-slate-100 shadow-2xl shadow-slate-200/50"
             >
-              <h3 className="text-2xl font-black text-slate-800 mb-10 tracking-tight">Institutional Milestones</h3>
+              <h3 className="text-2xl font-black text-slate-900 mb-10 tracking-tight">Institutional Milestones</h3>
               <div className="space-y-10">
                 {[
                   { year: '2021', event: 'Initial Convergence', desc: 'Formation of the core engineering node.' },
@@ -71,12 +71,12 @@ const About = () => {
                   { year: '2024', event: 'Apex Performance', desc: 'Scaling to 11+ dedicated specialists.' }
                 ].map((milestone, index) => (
                   <div key={index} className="flex gap-8 group">
-                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-600 font-black text-lg shadow-lg group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 font-black text-lg shadow-sm group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all">
                       {milestone.year}
                     </div>
                     <div>
-                      <h4 className="text-xl font-black text-slate-800 mb-1">{milestone.event}</h4>
-                      <p className="text-slate-500 font-medium text-sm leading-relaxed">{milestone.desc}</p>
+                      <h4 className="text-xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{milestone.event}</h4>
+                      <p className="text-slate-500 font-light text-sm leading-relaxed">{milestone.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -87,7 +87,7 @@ const About = () => {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-32 px-6 bg-slate-50 border-y border-slate-200">
+      <section className="py-32 px-6 relative border-y border-slate-100">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -95,10 +95,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-5xl font-black mb-6 tracking-tighter">
-              <span className="text-gradient">Strategic Leadership.</span>
+            <h2 className="text-5xl font-black mb-6 tracking-tighter text-slate-900">
+              Strategic <span className="text-slate-500">Leadership.</span>
             </h2>
-            <p className="text-xl text-slate-600 font-medium">The technical architects behind our global success.</p>
+            <p className="text-xl text-slate-500 font-light">The technical architects behind our global success.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
@@ -119,7 +119,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-consistent-2xl p-10 text-center border border-slate-200 hover:border-blue-300 transition-all duration-300 shadow-xl group"
+                className="bg-white/80 backdrop-blur-sm rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-400/50 transition-all duration-300 shadow-xl shadow-slate-200/50 group"
               >
                 <div className="w-32 h-32 mx-auto mb-8 relative rounded-full overflow-hidden bg-slate-50 border-4 border-white shadow-2xl">
                   <img
@@ -135,9 +135,9 @@ const About = () => {
                     {leader.initials}
                   </div>
                 </div>
-                <h3 className="text-2xl font-black text-slate-800 mb-2 tracking-tight">{leader.name}</h3>
+                <h3 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">{leader.name}</h3>
                 <div className="text-blue-600 font-black uppercase tracking-widest text-[10px] mb-6">{leader.role}</div>
-                <p className="text-slate-500 font-medium text-sm leading-relaxed">{leader.bio}</p>
+                <p className="text-slate-500 font-light text-sm leading-relaxed">{leader.bio}</p>
               </motion.div>
             ))}
           </div>
@@ -145,7 +145,7 @@ const About = () => {
       </section>
 
       {/* Culture & Values */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-32 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -153,10 +153,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-5xl font-black mb-6 tracking-tighter">
-              <span className="text-gradient">Institutional Values.</span>
+            <h2 className="text-5xl font-black mb-6 tracking-tighter text-slate-900">
+              Institutional <span className="text-slate-500">Values.</span>
             </h2>
-            <p className="text-xl text-slate-600 font-medium">The technical standards that govern our operation.</p>
+            <p className="text-xl text-slate-500 font-light">The technical standards that govern our operation.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -173,13 +173,13 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-slate-50 rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-300 transition-all shadow-sm"
+                className="bg-white/80 backdrop-blur-md rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-400/50 transition-all shadow-2xl shadow-slate-200/50"
               >
                 <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-8 shadow-lg">
                   <span className="material-symbols-outlined text-blue-600 text-2xl">{value.icon}</span>
                 </div>
-                <h3 className="text-xl font-black text-slate-800 mb-4 tracking-tight">{value.title}</h3>
-                <p className="text-slate-500 font-medium text-sm leading-relaxed">{value.desc}</p>
+                <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-blue-600 transition-colors">{value.title}</h3>
+                <p className="text-slate-500 font-light text-sm leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -187,19 +187,19 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-40 text-center bg-slate-50 border-t border-slate-200">
+      <section className="py-40 text-center relative border-t border-slate-100">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-10 shadow-3xl shadow-blue-500/40">
+          <div className="w-24 h-24 rounded-full bg-slate-900 flex items-center justify-center mx-auto mb-10 shadow-3xl shadow-slate-200/50">
             <span className="material-symbols-outlined text-4xl text-white font-black">hub</span>
           </div>
-          <h2 className="text-5xl font-black mb-8 tracking-tighter">
-            <span className="text-gradient">Initialize Partnership.</span>
+          <h2 className="text-5xl font-black mb-8 tracking-tighter text-slate-900">
+            Initialize <span className="text-slate-500">Partnership.</span>
           </h2>
-          <p className="text-2xl text-slate-600 mb-16 max-w-2xl mx-auto font-medium">
+          <p className="text-2xl text-slate-500 mb-16 max-w-2xl mx-auto font-light">
             Converge with the leaders of the digital transformation frontier.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center px-6">
@@ -207,7 +207,7 @@ const About = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full shadow-2xl shadow-blue-500/40 hover:bg-blue-700 transition-all"
+                className="w-full sm:w-auto bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full shadow-2xl shadow-slate-200/50 hover:bg-blue-600 transition-all"
               >
                 Request Strategic Consultation
               </motion.button>
@@ -216,7 +216,7 @@ const About = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto bg-white text-slate-800 font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full border border-slate-200 shadow-xl hover:bg-slate-50 transition-all"
+                className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-slate-900 font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full border border-slate-200 shadow-xl hover:border-blue-400/50 transition-all"
               >
                 Talent Onboarding
               </motion.button>

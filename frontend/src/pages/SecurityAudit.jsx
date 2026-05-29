@@ -62,9 +62,9 @@ const SecurityAudit = () => {
   ]);
 
   return (
-    <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10">
+    <div className="min-h-screen premium-bg pt-12 selection:bg-blue-500/10">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -78,7 +78,7 @@ const SecurityAudit = () => {
                   <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">SECURITY AUDIT PERIMETER</span>
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1] heading-underline active pb-2">
                   Vigilance
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
                     & Governance
@@ -198,7 +198,7 @@ const AuditTrail = ({ logs }) => (
   >
     <div className="bg-white rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden relative group">
       <div className="p-10 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-        <h2 className="text-xl font-black text-slate-900 tracking-widest uppercase text-xs">High-Fidelity Audit Ledger</h2>
+        <h2 className="text-xl font-black text-slate-900 tracking-widest uppercase text-xs heading-underline active inline-block">High-Fidelity Audit Ledger</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -252,7 +252,7 @@ const SecurityAlerts = ({ alerts }) => (
   >
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div>
-        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black">Threat Detection Matrix</h2>
+        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black heading-underline active inline-block">Threat Detection Matrix</h2>
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Active security anomaly monitoring</p>
       </div>
       <button className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl hover:bg-black transition-all">
@@ -268,8 +268,8 @@ const SecurityAlerts = ({ alerts }) => (
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.1 }}
           className={`p-10 rounded-[3rem] border shadow-2xl relative overflow-hidden group ${alert.severity === 'High'
-              ? 'bg-slate-900 border-slate-800'
-              : 'bg-white border-slate-200'
+            ? 'bg-slate-900 border-slate-800'
+            : 'bg-white border-slate-200'
             }`}
         >
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 relative z-10">
@@ -295,15 +295,15 @@ const SecurityAlerts = ({ alerts }) => (
 
             <div className="flex flex-col items-end gap-4 min-w-[200px]">
               <span className={`px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-lg ${alert.severity === 'High'
-                  ? 'bg-blue-600 text-white shadow-blue-500/20'
-                  : 'bg-slate-100 text-slate-500'
+                ? 'bg-blue-600 text-white shadow-blue-500/20'
+                : 'bg-slate-100 text-slate-500'
                 }`}>
                 {alert.severity} Criticality
               </span>
               {!alert.resolved && (
                 <button className={`w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${alert.severity === 'High'
-                    ? 'border-white/10 text-white hover:bg-white/10'
-                    : 'border-slate-200 text-slate-900 hover:border-slate-900'
+                  ? 'border-white/10 text-white hover:bg-white/10'
+                  : 'border-slate-200 text-slate-900 hover:border-slate-900'
                   }`}>
                   Initiate Resolution
                 </button>
@@ -328,7 +328,7 @@ const AccessManagement = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
       <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-50 transition-colors"></div>
-        <h3 className="text-xl font-black text-slate-900 mb-10 tracking-widest uppercase text-xs italic">Identity Synthesis (2FA)</h3>
+        <h3 className="text-xl font-black text-slate-900 mb-10 tracking-widest uppercase text-xs italic heading-underline active inline-block">Identity Synthesis (2FA)</h3>
 
         <div className="space-y-6 relative z-10">
           <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex items-center justify-between hover:bg-white hover:border-slate-900 transition-all group/item">
@@ -358,7 +358,7 @@ const AccessManagement = () => (
 
       <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-2xl relative overflow-hidden group">
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-20"></div>
-        <h3 className="text-xl font-black text-slate-900 mb-10 tracking-widest uppercase text-xs italic">Session Lifecycle Control</h3>
+        <h3 className="text-xl font-black text-slate-900 mb-10 tracking-widest uppercase text-xs italic heading-underline active inline-block">Session Lifecycle Control</h3>
 
         <div className="space-y-8 relative z-10">
           <div className="grid grid-cols-2 gap-4">
@@ -396,7 +396,7 @@ const ComplianceDashboard = () => (
 
     <div className="bg-white rounded-[4rem] p-16 border border-slate-200 shadow-2xl relative overflow-hidden group">
       <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none transition-colors group-hover:bg-blue-50"></div>
-      <h3 className="text-xl font-black text-slate-900 mb-12 tracking-widest uppercase text-xs italic">Institutional Compliance Inventory</h3>
+      <h3 className="text-xl font-black text-slate-900 mb-12 tracking-widest uppercase text-xs italic heading-underline active inline-block">Institutional Compliance Inventory</h3>
 
       <div className="space-y-4 relative z-10">
         {[
@@ -415,8 +415,8 @@ const ComplianceDashboard = () => (
             <span className="text-slate-900 font-black text-xs uppercase tracking-tight italic group-hover/item:text-blue-600 transition-colors">"{check.item}"</span>
             <div className="flex items-center gap-6">
               <span className={`text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm ${check.status === 'VERIFIED' ? 'bg-blue-600 text-white shadow-blue-500/20' :
-                  check.status === 'SYNCHRONIZING' ? 'bg-indigo-600 text-white shadow-indigo-500/20' :
-                    'bg-slate-200 text-slate-500'
+                check.status === 'SYNCHRONIZING' ? 'bg-indigo-600 text-white shadow-indigo-500/20' :
+                  'bg-slate-200 text-slate-500'
                 }`}>
                 {check.status}
               </span>

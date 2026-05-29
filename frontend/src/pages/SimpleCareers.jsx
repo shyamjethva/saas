@@ -83,12 +83,12 @@ const SimpleCareers = () => {
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-blue-900/30 border border-blue-500/50 rounded-full mb-6">
-              <span className="text-blue-400 font-bold">JOIN OUR TEAM</span>
+            <div className="inline-block px-4 py-2 bg-slate-100 border border-slate-200 rounded-full mb-6">
+              <span className="text-slate-900 font-bold">JOIN OUR TEAM</span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 font-space-grotesk tracking-tighter">
-              Build the Future of <span className="text-blue-600">Digital Business</span>
+              Build the Future of <span className="text-slate-500">Digital Business</span>
             </h1>
 
             <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
@@ -105,13 +105,13 @@ const SimpleCareers = () => {
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-black text-slate-900">{job.title}</h3>
                     <div className="text-right">
-                      <div className="text-blue-600 font-black">{job.salary}</div>
+                      <div className="text-slate-900 font-black">{job.salary}</div>
                       <div className="text-gray-400 text-sm">{job.type}</div>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-black uppercase tracking-widest border border-blue-100">{job.department}</span>
+                   <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="px-2 py-1 bg-slate-100 text-slate-900 rounded text-xs font-black uppercase tracking-widest border border-slate-200">{job.department}</span>
                     <span className="px-2 py-1 bg-green-50 text-green-600 rounded text-xs font-black uppercase tracking-widest border border-green-100">{job.location}</span>
                   </div>
 
@@ -128,7 +128,7 @@ const SimpleCareers = () => {
                     </ul>
                   </div>
 
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition-colors">
+                   <button className="w-full bg-slate-900 hover:bg-black text-white font-bold py-2 rounded-lg transition-colors">
                     Apply Now
                   </button>
                 </div>
@@ -141,8 +141,8 @@ const SimpleCareers = () => {
             <h2 className="text-3xl font-black text-slate-900 text-center mb-8 uppercase tracking-tighter">Why Work With Us?</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {whyWorkWithUs.map((benefit, index) => (
-                <div key={index} className="bg-white border border-slate-200 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/20">
+                 <div key={index} className="bg-white border border-slate-200 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-lg shadow-slate-900/20">
                     <span className="text-white text-xl">★</span>
                   </div>
                   <h3 className="text-slate-900 font-black tracking-tighter uppercase">{benefit}</h3>
@@ -154,8 +154,8 @@ const SimpleCareers = () => {
           {/* Application Form */}
           <div>
             <h2 className="text-3xl font-black text-slate-900 text-center mb-8 uppercase tracking-tighter">Ready to Join Us?</h2>
-            <div className="bg-white border border-slate-200 rounded-xl p-8 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -mr-32 -mt-32"></div>
+             <div className="bg-white border border-slate-200 rounded-xl p-8 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-3xl -mr-32 -mt-32"></div>
               <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
                 <div>
                   <label className="block text-slate-900 font-black mb-2 tracking-tighter uppercase text-sm">Full Name *</label>
@@ -165,7 +165,7 @@ const SimpleCareers = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                   />
                 </div>
 
@@ -177,7 +177,7 @@ const SimpleCareers = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                   />
                 </div>
 
@@ -188,7 +188,7 @@ const SimpleCareers = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                   />
                 </div>
 
@@ -199,7 +199,7 @@ const SimpleCareers = () => {
                     value={formData.position}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                   >
                     <option value="">Select Position</option>
                     {openPositions.map((job, idx) => (
@@ -215,7 +215,7 @@ const SimpleCareers = () => {
                     value={formData.experience}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                   >
                     <option value="">Select Experience Level</option>
                     <option value="0-1">0-1 years</option>
@@ -234,7 +234,7 @@ const SimpleCareers = () => {
                     onChange={handleInputChange}
                     accept=".pdf,.doc,.docx"
                     required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                   />
                 </div>
 
@@ -245,14 +245,14 @@ const SimpleCareers = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:border-slate-900 focus:outline-none"
                     placeholder="Tell us why you want to join Error Infotech..."
                   ></textarea>
                 </div>
 
-                <button
+                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors"
+                  className="w-full bg-slate-900 hover:bg-black text-white font-bold py-3 rounded-lg transition-colors"
                 >
                   Submit Application
                 </button>

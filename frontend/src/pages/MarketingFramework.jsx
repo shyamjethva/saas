@@ -9,7 +9,7 @@ const MarketingFramework = () => {
       title: 'Market Research',
       description: 'Deep dive into target audience, competitor landscape, and market opportunities to identify growth potential',
       icon: 'search',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       step: '2',
@@ -72,7 +72,7 @@ const MarketingFramework = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-green-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20">
       {/* Hero Section */}
       <div className="px-6 py-20">
         <div className="max-w-6xl mx-auto text-center">
@@ -80,25 +80,25 @@ const MarketingFramework = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-green-400">campaign</span>
-              <span className="text-green-400 font-bold tracking-wider uppercase text-sm">MARKETING FRAMEWORK</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-600">campaign</span>
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">MARKETING FRAMEWORK</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tighter">
               Performance-Driven 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-cyan-400">
+              <span className="block text-slate-500">
                 Growth Systems
               </span>
             </h1>
             
-            <p className="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-6">
+            <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-6 font-medium">
               We don't run ads.
             </p>
-            <p className="text-2xl text-green-400 max-w-3xl mx-auto leading-relaxed mb-6">
+            <p className="text-2xl text-blue-600 max-w-3xl mx-auto leading-relaxed mb-6 font-bold">
               We build growth systems.
             </p>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-medium">
               Structured approach to sustainable business growth through systematic marketing execution
             </p>
           </motion.div>
@@ -108,7 +108,7 @@ const MarketingFramework = () => {
       {/* Core Principles */}
       <div className="px-6 pb-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white text-center mb-16">Core Principles</h2>
+          <h2 className="text-4xl font-bold text-slate-900 text-center mb-16 tracking-tight">Core Principles</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {corePrinciples.map((principle, index) => (
               <motion.div
@@ -118,11 +118,11 @@ const MarketingFramework = () => {
                 transition={{ delay: index * 0.1 }}
                 className="glass-card rounded-xl p-6 border border-white/10  transition-all duration-300 backdrop-blur-sm text-center"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center mx-auto mb-4">
                   <span className="material-symbols-outlined text-white">{principle.icon}</span>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{principle.title}</h3>
-                <p className="text-slate-300 text-sm">{principle.description}</p>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{principle.title}</h3>
+                <p className="text-slate-500 text-sm font-medium">{principle.description}</p>
               </motion.div>
             ))}
           </div>
@@ -130,9 +130,9 @@ const MarketingFramework = () => {
       </div>
 
       {/* Framework Process */}
-      <div className="px-6 py-20 bg-gradient-to-r from-slate-800/50 to-green-900/30">
+      <div className="px-6 py-20 bg-blue-50/30">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white text-center mb-16">6-Step Framework</h2>
+          <h2 className="text-4xl font-bold text-slate-900 text-center mb-16 tracking-tight">6-Step Framework</h2>
           
           {/* Connected Steps */}
           <div className="relative">
@@ -159,8 +159,8 @@ const MarketingFramework = () => {
                         <span className="text-white text-2xl font-bold">{step.step}</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                        <p className="text-slate-300">{step.description}</p>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
+                        <p className="text-slate-600 font-medium">{step.description}</p>
                       </div>
                     </div>
                     
@@ -181,7 +181,7 @@ const MarketingFramework = () => {
       {/* Results Section */}
       <div className="px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-16">Proven Results</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-16 tracking-tight">Proven Results</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -189,9 +189,9 @@ const MarketingFramework = () => {
               transition={{ delay: 0.1 }}
               className="glass-card rounded-2xl p-8 border border-white/10 backdrop-blur-sm"
             >
-              <div className="text-5xl font-bold text-green-400 mb-4">300%</div>
-              <h3 className="text-xl font-bold text-white mb-2">Average Lead Growth</h3>
-              <p className="text-slate-300">Across clients using our systematic approach</p>
+              <div className="text-5xl font-bold text-blue-600 mb-4">300%</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">Average Lead Growth</h3>
+              <p className="text-slate-500 font-medium">Across clients using our systematic approach</p>
             </motion.div>
             
             <motion.div
@@ -220,7 +220,7 @@ const MarketingFramework = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-20 bg-gradient-to-r from-slate-800/50 to-green-900/30">
+      <div className="px-6 py-20 bg-blue-50/30">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -228,8 +228,8 @@ const MarketingFramework = () => {
             viewport={{ once: true }}
             className="glass-card rounded-2xl p-12 border border-white/10 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">Ready to Build Your Growth System?</h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">Ready to Build Your Growth System?</h2>
+            <p className="text-xl text-slate-500 mb-8 max-w-2xl mx-auto font-medium">
               Let's create a structured marketing framework that delivers consistent, measurable results for your business
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -237,7 +237,7 @@ const MarketingFramework = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg"
+                  className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl hover:shadow-blue-600/25 flex items-center gap-3 text-lg"
                 >
                   <span className="material-symbols-outlined">calendar_today</span>
                   Schedule Strategy Session

@@ -114,7 +114,7 @@ const ERPPackagesPage = () => {
   return (
     <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -128,9 +128,9 @@ const ERPPackagesPage = () => {
                   <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">ERP INFRASTRUCTURE TIERS</span>
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible">
+                <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible heading-underline active">
                   Unit
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 py-4">
+                  <span className="block text-premium-gradient py-4 pb-2">
                     Provisions
                   </span>
                 </h1>

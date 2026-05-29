@@ -149,24 +149,24 @@ const Careers = () => {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="homepage-monochrome min-h-screen premium-bg relative overflow-x-hidden">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-slate-50 border-b border-slate-200">
+      <section className="pt-40 pb-20 px-6 relative border-b border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-8">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
               <span className="material-symbols-outlined text-blue-600">rocket_launch</span>
-              <span className="text-blue-600 font-black uppercase tracking-widest text-[10px]">Future Frontiers</span>
+              <span className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Future Frontiers</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-slate-800 mb-8 tracking-tighter font-space-grotesk leading-none">
-              Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-400">Future</span>
+            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-none">
+              Build the <span className="text-slate-500">Future.</span>
             </h1>
-            <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-2xl text-slate-500 max-w-3xl mx-auto font-light leading-relaxed">
               Join a team of visionaries shaping the next generation of global enterprise technology.
             </p>
           </motion.div>
@@ -174,7 +174,7 @@ const Careers = () => {
       </section>
 
       {/* Why Join Us */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-32 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -182,10 +182,10 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl font-black text-slate-800 mb-6 tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-blue-900 to-blue-600">Why Innovate Here?</span>
+            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter uppercase">
+              Why Innovate <span className="text-slate-500">Here?</span>
             </h2>
-            <p className="text-xl text-slate-600 font-medium">We invest in the architects of tomorrow.</p>
+            <p className="text-xl text-slate-500 font-light">We invest in the architects of tomorrow.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -228,13 +228,13 @@ const Careers = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="bg-slate-50 rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-300 transition-all shadow-sm group"
+                className="bg-white/80 backdrop-blur-sm rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-400/50 transition-all shadow-2xl shadow-slate-200/50 group"
               >
-                <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:bg-blue-600 transition-all group-hover:border-blue-500">
+                <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:bg-slate-900 transition-all group-hover:border-slate-900">
                   <span className="material-symbols-outlined text-blue-600 transition-colors group-hover:text-white text-3xl">{benefit.icon}</span>
                 </div>
-                <h3 className="text-2xl font-black text-slate-800 mb-4 tracking-tight">{benefit.title}</h3>
-                <p className="text-slate-600 font-medium leading-relaxed">{benefit.desc}</p>
+                <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-blue-600 transition-colors">{benefit.title}</h3>
+                <p className="text-slate-500 font-light leading-relaxed">{benefit.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -242,7 +242,7 @@ const Careers = () => {
       </section>
 
       {/* Open Positions */}
-      <section className="py-32 px-6 bg-slate-50 border-y border-slate-200">
+      <section className="py-32 px-6 relative border-y border-slate-100">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -250,10 +250,10 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-5xl font-black text-slate-800 mb-6 tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-slate-800 to-blue-600">Strategic Openings</span>
+            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter uppercase">
+              Strategic <span className="text-slate-500">Openings</span>
             </h2>
-            <p className="text-xl text-slate-600 font-medium">Secure your node in our high-performance network.</p>
+            <p className="text-xl text-slate-500 font-light">Secure your node in our high-performance network.</p>
           </motion.div>
 
           <div className="max-w-5xl mx-auto space-y-8">
@@ -265,11 +265,11 @@ const Careers = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-consistent-2xl p-10 border border-slate-200 hover:border-blue-300 transition-all shadow-xl group"
+                className="bg-white/80 backdrop-blur-md rounded-consistent-2xl p-10 border border-slate-100 hover:border-blue-400/50 transition-all shadow-2xl shadow-slate-200/50 group"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
                   <div className="flex-1">
-                    <h3 className="text-3xl font-black text-slate-800 mb-4 tracking-tight group-hover:text-blue-600 transition-colors">{position.title}</h3>
+                    <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-blue-600 transition-colors">{position.title}</h3>
                     <div className="flex flex-wrap gap-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">
                       <span className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-sm">business</span>
@@ -288,12 +288,12 @@ const Careers = () => {
 
                   <div className="flex flex-col sm:flex-row items-center gap-10">
                     <div className="text-right">
-                      <div className="text-blue-600 font-black text-xl font-space-grotesk">{position.salary}</div>
+                      <div className="text-blue-600 font-black text-xl">{position.salary}</div>
                       <div className="text-slate-400 font-black uppercase tracking-widest text-[9px] mt-1">{position.experience} EXP REQUIRED</div>
                     </div>
                     <button
                       onClick={() => openApplicationModal(position)}
-                      className="bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-10 py-5 rounded-full shadow-2xl shadow-blue-500/30 hover:bg-blue-700 transition-all"
+                      className="bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] px-10 py-5 rounded-full shadow-2xl shadow-slate-200/50 hover:bg-blue-600 transition-all"
                     >
                       Initialize Application
                     </button>
@@ -306,7 +306,7 @@ const Careers = () => {
       </section>
 
       {/* Hiring Process */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-32 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -314,10 +314,10 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-5xl font-black text-slate-800 mb-6 tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-blue-900 to-blue-600">Onboarding Protocol</span>
+            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter uppercase">
+              Onboarding <span className="text-slate-500">Protocol</span>
             </h2>
-            <p className="text-xl text-slate-600 font-medium">Efficient, transparent, and merit-based.</p>
+            <p className="text-xl text-slate-500 font-light">Efficient, transparent, and merit-based.</p>
           </motion.div>
 
           <div className="max-w-6xl mx-auto relative px-10">
@@ -342,12 +342,12 @@ const Careers = () => {
                   <div className="flex flex-col items-center">
                     <motion.div
                       whileHover={{ scale: 1.1 }}
-                      className="w-20 h-20 rounded-full bg-white border-4 border-blue-600 flex items-center justify-center mb-8 shadow-2xl shadow-blue-500/20"
+                      className="w-20 h-20 rounded-full bg-white border-4 border-slate-900 flex items-center justify-center mb-8 shadow-2xl shadow-slate-200/50"
                     >
-                      <span className="text-blue-600 font-black text-xl font-space-grotesk">{process.step}</span>
+                      <span className="text-slate-900 font-black text-xl">{process.step}</span>
                     </motion.div>
-                    <h3 className="text-xl font-black text-slate-800 mb-3 tracking-tight">{process.title}</h3>
-                    <p className="text-slate-500 font-medium text-sm leading-relaxed">{process.desc}</p>
+                    <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight">{process.title}</h3>
+                    <p className="text-slate-500 font-light text-sm leading-relaxed">{process.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -357,19 +357,19 @@ const Careers = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-40 text-center bg-slate-50 border-t border-slate-200">
+      <section className="py-40 text-center relative border-t border-slate-100">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-10 shadow-3xl shadow-blue-500/40">
+          <div className="w-24 h-24 rounded-full bg-slate-900 flex items-center justify-center mx-auto mb-10 shadow-3xl shadow-slate-200/50">
             <span className="material-symbols-outlined text-4xl text-white font-black">join_full</span>
           </div>
-          <h2 className="text-5xl font-black text-slate-800 mb-8 tracking-tighter uppercase">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-slate-800 to-blue-600">Ready to Converge?</span>
+          <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter uppercase">
+            Ready to <span className="text-slate-500">Converge?</span>
           </h2>
-          <p className="text-2xl text-slate-600 mb-16 max-w-2xl mx-auto font-medium">
+          <p className="text-2xl text-slate-500 mb-16 max-w-2xl mx-auto font-light">
             We are always scouting for peak intelligence.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center px-6">
@@ -377,7 +377,7 @@ const Careers = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full shadow-2xl shadow-blue-500/40 hover:bg-blue-700 transition-all"
+                className="w-full sm:w-auto bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full shadow-2xl shadow-slate-200/50 hover:bg-blue-600 transition-all"
               >
                 Consult with Talent Ops
               </motion.button>
@@ -385,7 +385,7 @@ const Careers = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto bg-white text-slate-800 font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full border border-slate-200 shadow-xl hover:bg-slate-50 transition-all"
+              className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-slate-900 font-black uppercase tracking-widest text-[10px] h-20 px-12 rounded-full border border-slate-200 shadow-xl hover:border-blue-400/50 transition-all"
             >
               Master Position Index
             </motion.button>
@@ -406,14 +406,14 @@ const Careers = () => {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-consistent-3xl border border-slate-200 shadow-3xl p-12"
+              className="bg-white/95 backdrop-blur-md w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-consistent-3xl border border-slate-100 shadow-3xl p-12"
             >
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <div className="text-blue-600 font-black uppercase tracking-widest text-[10px] mb-3">Application Module</div>
-                  <h2 className="text-4xl font-black text-slate-800 tracking-tighter">Applying for {selectedPosition?.title}</h2>
+                  <h2 className="text-4xl font-black text-slate-900 tracking-tighter">Applying for <span className="text-slate-500">{selectedPosition?.title}</span></h2>
                 </div>
-                <button onClick={closeApplicationModal} className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-800 transition-colors">
+                <button onClick={closeApplicationModal} className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-colors">
                   <span className="material-symbols-outlined">close</span>
                 </button>
               </div>
@@ -422,22 +422,22 @@ const Careers = () => {
                 <div className="space-y-6">
                   <div>
                     <label className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-3 block">Full Legal Name</label>
-                    <input name="fullName" required value={applicationData.fullName} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-800 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
+                    <input name="fullName" required value={applicationData.fullName} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
                   </div>
                   <div>
                     <label className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-3 block">Email Address (Secure)</label>
-                    <input name="email" type="email" required value={applicationData.email} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-800 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
+                    <input name="email" type="email" required value={applicationData.email} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
                   </div>
                   <div>
                     <label className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-3 block">Mobile Vector</label>
-                    <input name="phone" required value={applicationData.phone} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-800 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
+                    <input name="phone" required value={applicationData.phone} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div>
                     <label className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-3 block">Portfolio URL (Beacon)</label>
-                    <input name="portfolio" value={applicationData.portfolio} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-800 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
+                    <input name="portfolio" value={applicationData.portfolio} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-6 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all" />
                   </div>
                   <div>
                     <label className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-3 block">Resume / Curriculum Vitae (PDF)</label>
@@ -453,7 +453,7 @@ const Careers = () => {
 
                 <div className="md:col-span-2">
                   <label className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-3 block">Strategic Intent (Cover Letter)</label>
-                  <textarea name="coverLetter" rows="6" value={applicationData.coverLetter} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-8 py-6 text-slate-800 font-medium focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all resize-none"></textarea>
+                  <textarea name="coverLetter" rows="6" value={applicationData.coverLetter} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-100 rounded-consistent-lg px-8 py-6 text-slate-900 font-light focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all resize-none"></textarea>
                 </div>
 
                 <div className="md:col-span-2 pt-6">
@@ -461,7 +461,7 @@ const Careers = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] h-20 rounded-full shadow-2xl shadow-blue-500/40 hover:bg-blue-700 transition-all"
+                    className="w-full bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] h-20 rounded-full shadow-2xl shadow-slate-200/50 hover:bg-blue-600 transition-all"
                   >
                     Execute Submission Protocol
                   </motion.button>

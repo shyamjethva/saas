@@ -8,7 +8,7 @@ const AboutUs = () => {
       title: 'Our Mission',
       description: 'To empower businesses with intelligent, scalable digital infrastructure that drives measurable growth and operational excellence through structured innovation.',
       icon: 'rocket_launch',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       title: 'Our Vision',
@@ -25,7 +25,7 @@ const AboutUs = () => {
   ];
 
   const industries = [
-    { name: 'Education', icon: 'school', color: 'from-blue-500 to-cyan-500' },
+    { name: 'Education', icon: 'school', color: 'from-blue-700 to-sky-500' },
     { name: 'Healthcare', icon: 'local_hospital', color: 'from-red-500 to-pink-500' },
     { name: 'Real Estate', icon: 'apartment', color: 'from-green-500 to-emerald-500' },
     { name: 'Manufacturing', icon: 'factory', color: 'from-orange-500 to-red-500' },
@@ -68,7 +68,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20">
       {/* Hero Section */}
       <div className="px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -77,19 +77,19 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-400">corporate_fare</span>
-              <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">ABOUT ERROR INFOTECH</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-600">corporate_fare</span>
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">ABOUT ERROR INFOTECH</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tighter">
               Engineering Structured 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
+              <span className="block text-slate-500">
                 Digital Growth
               </span>
             </h1>
             
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
               We design intelligent digital ecosystems that help businesses scale faster and smarter through innovative technology solutions.
             </p>
           </motion.div>
@@ -188,7 +188,7 @@ const AboutUs = () => {
                   </div>
                   <a 
                     href={member.linkedin}
-                    className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
+                    className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-700 to-sky-500 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
                   >
                     <span className="material-symbols-outlined">link</span>
                   </a>
@@ -256,7 +256,7 @@ const AboutUs = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3 text-lg"
+                  className="bg-gradient-to-r from-blue-700 to-sky-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3 text-lg"
                 >
                   <span className="material-symbols-outlined">contact_support</span>
                   Get In Touch

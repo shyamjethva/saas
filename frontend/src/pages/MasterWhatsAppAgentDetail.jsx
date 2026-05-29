@@ -91,7 +91,7 @@ const MasterWhatsAppAgentDetail = () => {
     <div className="min-h-screen premium-bg text-slate-900">
       {/* Header */}
       <div className="relative overflow-hidden bg-slate-50 border-b border-slate-200">
-        <div className="relative z-10 px-6 py-24">
+        <div className="relative z-10 px-6 py-12">
           <div className="max-w-6xl mx-auto">
             <Link
               to="/ai-center"
@@ -102,11 +102,11 @@ const MasterWhatsAppAgentDetail = () => {
             </Link>
 
             <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-blue-600 mb-6 shadow-2xl shadow-blue-500/20">
+              <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-slate-900 mb-6 shadow-2xl shadow-slate-900/40">
                 <span className="material-symbols-outlined text-white text-5xl">smart_toy</span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-4 tracking-tighter font-space-grotesk leading-none">
-                MASTER <span className="text-blue-600">WHATSAPP</span> CHAT AGENT
+              <h1 className="text-5xl md:text-7xl font-black text-black mb-4 tracking-tighter font-space-grotesk leading-none">
+                MASTER <span className="text-slate-400 pb-2">WHATSAPP</span> CHAT AGENT
               </h1>
               <p className="text-xl text-slate-600 font-black uppercase tracking-[0.2em]">Complete Workflow & System Architecture</p>
             </div>
@@ -115,7 +115,7 @@ const MasterWhatsAppAgentDetail = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-6 py-12">
+      <div className="relative z-10 px-6 py-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ const MasterWhatsAppAgentDetail = () => {
                   className="w-full h-full object-contain"
                 />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] shadow-xl shadow-blue-500/40">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] shadow-xl shadow-slate-900/40">
                     <span className="material-symbols-outlined text-sm font-black">smart_toy</span>
                     Master WhatsApp Automation System
                   </div>
@@ -147,7 +147,7 @@ const MasterWhatsAppAgentDetail = () => {
                   <span className="material-symbols-outlined text-slate-900 text-3xl">target</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter">
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter heading-underline active">
                     1. CORE OBJECTIVE
                   </h2>
                   <p className="text-slate-400 text-lg">
@@ -182,11 +182,11 @@ const MasterWhatsAppAgentDetail = () => {
             {/* Technology Stack Section */}
             <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-2xl">
               <div className="flex items-start gap-4 mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-700 to-sky-500 flex items-center justify-center flex-shrink-0">
                   <span className="material-symbols-outlined text-slate-900 text-3xl">construction</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter">
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter heading-underline active">
                     2. SYSTEM TECHNOLOGY STACK
                   </h2>
                   <p className="text-slate-400 text-lg">
@@ -233,7 +233,7 @@ const MasterWhatsAppAgentDetail = () => {
                   <span className="material-symbols-outlined text-slate-900 text-3xl">timeline</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter">
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter heading-underline active">
                     3. WORKFLOW LOGIC ARCHITECTURE
                   </h2>
                   <p className="text-slate-400 text-lg">
@@ -270,7 +270,7 @@ const MasterWhatsAppAgentDetail = () => {
                   <span className="material-symbols-outlined text-slate-900 text-3xl">account_tree</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter">
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter heading-underline active">
                     4. n8n NODE ARCHITECTURE BREAKDOWN
                   </h2>
                   <p className="text-slate-400 text-lg">
@@ -308,7 +308,7 @@ const MasterWhatsAppAgentDetail = () => {
                   <span className="material-symbols-outlined text-slate-900 text-3xl">security</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter">
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter heading-underline active">
                     5. SECURITY & SCALABILITY DESIGN
                   </h2>
                   <p className="text-slate-400 text-lg">
@@ -352,7 +352,7 @@ const MasterWhatsAppAgentDetail = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold h-14 px-10 rounded-full transition-all shadow-xl shadow-indigo-500/20 flex items-center gap-3"
+                    className="bg-slate-900 text-white font-bold h-14 px-10 rounded-full transition-all shadow-xl shadow-slate-900/20 flex items-center gap-3"
                   >
                     <span className="material-symbols-outlined">launch</span>
                     Deploy Master Agent

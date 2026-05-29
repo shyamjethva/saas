@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="circle">
+      <circle cx="64" cy="64" r="62" />
+    </clipPath>
+  </defs>
+  <circle cx="64" cy="64" r="62" fill="#f7f7f7" />
+  <image
+    href="/images/error_logo_main.jpg"
+    x="-38"
+    y="-38"
+    width="204"
+    height="204"
+    preserveAspectRatio="xMidYMid slice"
+    clip-path="url(#circle)"
+  />
+</svg>

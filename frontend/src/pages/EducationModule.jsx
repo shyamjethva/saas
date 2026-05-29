@@ -53,16 +53,17 @@ const EducationModule = () => {
   ]);
 
   return (
-    <div className="pt-24 pb-12 px-6">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
-        <h1 className="text-4xl font-bold text-white mb-2">Education Management</h1>
-        <p className="text-slate-400">School, college, and training center administration</p>
-      </motion.div>
+      <div className="min-h-screen premium-bg">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8 p-6"
+        >
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-2 tracking-tighter">
+            Education <span className="text-slate-500">Management</span>
+          </h1>
+          <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">School, college, and training center administration</p>
+        </motion.div>
 
       {/* Tabs */}
       <div className="flex gap-2 mb-8">
@@ -75,9 +76,9 @@ const EducationModule = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${activeTab === tab.id
-                ? 'bg-primary text-white'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+            className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${activeTab === tab.id
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                : 'bg-white text-slate-500 border border-slate-100 hover:bg-slate-50 hover:text-slate-900'
               }`}
           >
             <span className="material-symbols-outlined">{tab.icon}</span>
@@ -118,11 +119,11 @@ const StatCard = ({ title, value, icon, color }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10"
+    className="bg-white rounded-2xl p-6 border border-slate-100 shadow-lg"
   >
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-slate-400 text-sm">{title}</p>
+        <p className="text-slate-500 text-xs font-bold uppercase tracking-wider">{title}</p>
         <p className={`text-3xl font-bold mt-2 text-${color}-400`}>{value}</p>
       </div>
       <div className={`p-3 rounded-xl bg-${color}-500/20`}>
@@ -139,8 +140,8 @@ const EducationDashboard = ({ institutes, courses }) => (
     className="grid grid-cols-1 lg:grid-cols-2 gap-8"
   >
     {/* Institute Overview */}
-    <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
-      <h2 className="text-xl font-bold text-white mb-6">Institute Overview</h2>
+    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-xl">
+      <h2 className="text-xl font-black text-slate-900 mb-6 tracking-tight">Institute Overview</h2>
 
       <div className="space-y-4">
         {institutes.map(institute => (
@@ -299,7 +300,7 @@ const StudentManagement = () => (
       </div>
 
       <div className="bg-blue-50/50 rounded-xl p-8 text-center border border-blue-100">
-        <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-16 h-16 bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 rounded-full flex items-center justify-center mx-auto mb-4">
           <span className="material-symbols-outlined text-white text-2xl">groups</span>
         </div>
         <p className="text-slate-300">Student management dashboard with enrollment, attendance, and academic records</p>

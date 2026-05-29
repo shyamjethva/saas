@@ -173,7 +173,7 @@ const ContactModal = ({ isOpen, onClose, formType }) => {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:border-green-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
                 >
                   <option value="" className="bg-slate-800">Select project type</option>
                   <option value="Web Development" className="bg-slate-800">Web Development</option>
@@ -191,7 +191,7 @@ const ContactModal = ({ isOpen, onClose, formType }) => {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:border-green-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
                 >
                   <option value="" className="bg-slate-800">Select budget range</option>
                   <option value="Under ₹1L" className="bg-slate-800">Under ₹1L</option>
@@ -269,7 +269,7 @@ const Homepage = () => {
         {particles.map(particle => (
           <motion.div
             key={particle.id}
-            className="absolute rounded-full bg-gradient-to-r from-green-400/30 to-blue-400/30"
+            className="absolute rounded-full bg-gradient-to-r from-blue-400/30 to-sky-400/30"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -352,9 +352,9 @@ const Homepage = () => {
 
   // Core Strengths
   const coreStrengths = [
-    { title: 'Custom CRM Development', icon: 'account_tree', color: 'from-blue-500 to-cyan-500' },
+    { title: 'Custom CRM Development', icon: 'account_tree', color: 'from-blue-700 to-sky-500' },
     { title: 'AI Automation Systems', icon: 'auto_mode', color: 'from-purple-500 to-pink-500' },
-    { title: 'Performance Marketing', icon: 'trending_up', color: 'from-green-500 to-emerald-500' },
+    { title: 'Performance Marketing', icon: 'trending_up', color: 'from-blue-500 to-sky-500' },
     { title: 'School ERP Software', icon: 'school', color: 'from-amber-500 to-orange-500' },
     { title: 'Web & App Development', icon: 'devices', color: 'from-indigo-500 to-purple-500' }
   ];
@@ -446,7 +446,7 @@ const Homepage = () => {
       <Particles />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-blue-500/5 to-cyan-500/5 animate-pulse"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 animate-pulse"></div>
 
       {/* Hero Section */}
       <div className="relative z-10 px-6 py-32">
@@ -465,9 +465,9 @@ const Homepage = () => {
             <h1 className="text-7xl md:text-9xl font-black text-slate-900 mb-8 leading-none tracking-tighter font-space-grotesk">
               Architecting
               <span className="block text-blue-600">
-                Scalable Growth
+                Scalable Digital Success
               </span>
-              <span className="block text-slate-900">for Business</span>
+              <span className="block text-slate-900">for Modern Businesses</span>
             </h1>
 
             <p className="text-2xl md:text-3xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-16 font-medium">
@@ -558,7 +558,7 @@ const Homepage = () => {
             <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
               <div className="bg-white rounded-consistent-2xl p-10 border border-slate-200 shadow-xl group hover:border-blue-200 transition-all">
                 <h3 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-4 tracking-tight">
-                  <span className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+                  <span className="w-12 h-12 bg-slate-400 text-white rounded-full flex items-center justify-center shadow-lg shadow-slate-400/20 group-hover:scale-110 transition-transform">
                     <span className="material-symbols-outlined text-2xl">business</span>
                   </span>
                   B2B Enterprises
@@ -574,7 +574,7 @@ const Homepage = () => {
               </div>
               <div className="bg-white rounded-consistent-2xl p-10 border border-slate-200 shadow-xl group hover:border-blue-200 transition-all">
                 <h3 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-4 tracking-tight">
-                  <span className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+                  <span className="w-12 h-12 bg-slate-400 text-white rounded-full flex items-center justify-center shadow-lg shadow-slate-400/20 group-hover:scale-110 transition-transform">
                     <span className="material-symbols-outlined text-2xl">person</span>
                   </span>
                   B2C Ecosystems

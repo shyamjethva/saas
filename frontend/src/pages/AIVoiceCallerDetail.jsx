@@ -12,7 +12,7 @@ const AIVoiceCallerDetail = () => {
       subtitle: 'Main Calling Brain',
       role: 'Handles real-time AI conversation during outbound calls.',
       icon: 'chat',
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-slate-800 to-slate-500',
       image: '/images/ai-conversation/aiconversationagent1.jpeg', // Your custom image 1
       steps: [
         'Twilio connects the call',
@@ -30,7 +30,7 @@ const AIVoiceCallerDetail = () => {
       subtitle: 'Campaign Script Generator',
       role: 'Generates full campaign sales script before calls start.',
       icon: 'description',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-slate-700 to-slate-400',
       image: '/images/ai-conversation/scriptbuilder2.jpeg', // Your custom image 2
       steps: [
         { title: 'Inputs', desc: 'Product/Service, City, Offer, Industry, Language' },
@@ -46,7 +46,7 @@ const AIVoiceCallerDetail = () => {
       subtitle: 'Post-Call Analytics',
       role: 'Analyzes transcript after call completion.',
       icon: 'analytics',
-      color: 'from-purple-500 to-violet-500',
+      color: 'from-slate-800 to-slate-500',
       image: '/images/ai-conversation/callanalysis3.jpeg', // Your custom image 3
       features: [
         { label: 'Sentiment Detection', value: 'Positive / Neutral / Negative' },
@@ -62,7 +62,7 @@ const AIVoiceCallerDetail = () => {
       subtitle: 'Automation Decision Maker',
       role: 'Makes automation decisions after each call.',
       icon: 'smart_toy',
-      color: 'from-pink-500 to-rose-500',
+      color: 'from-slate-700 to-slate-400',
       image: '/images/ai-conversation/smartretry4.jpeg', // Your custom image 4
       decisions: [
         { condition: 'No answer', action: 'Retry (max 2 times)' },
@@ -97,12 +97,9 @@ const AIVoiceCallerDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white border border-slate-200 shadow-xl mb-8 group transition-all duration-700 hover:shadow-green-500/10">
-              <span className="material-symbols-outlined text-green-600 group-hover:rotate-12 transition-transform">phone_in_talk</span>
-              <span className="text-slate-900 font-black tracking-widest uppercase text-[10px]">AI Voice Technology</span>
-            </div>
-            <h1 className="text-5xl md:text-8xl font-black text-slate-900 mb-6 tracking-tighter leading-none">
-              AUTO HUMAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">CALLING</span> AGENT
+
+            <h1 className="text-5xl md:text-8xl font-black text-black mb-6 tracking-tighter leading-none">
+              AUTO HUMAN <span className="text-slate-400 pb-2">CALLING</span> AGENT
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
               Intelligent outbound calling system powered by AI. Automate your sales calls with human-like conversations,
@@ -121,12 +118,12 @@ const AIVoiceCallerDetail = () => {
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className={`flex items-center gap-2 px-6 py-5 text-sm font-black transition-all whitespace-nowrap border-b-2 relative group ${activeTab === index
-                  ? 'text-slate-900 border-green-500'
+                  ? 'text-slate-900 border-slate-900'
                   : 'text-slate-500 border-transparent hover:text-slate-900 hover:bg-slate-50'
                   }`}
               >
                 <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${workflow.color} transition-opacity duration-300 ${activeTab === index ? 'opacity-100' : 'opacity-0'}`}></div>
-                <span className={`material-symbols-outlined text-lg ${activeTab === index ? 'text-green-600' : 'text-slate-400'}`}>
+                <span className={`material-symbols-outlined text-lg ${activeTab === index ? 'text-slate-900' : 'text-slate-400'}`}>
                   {workflow.icon}
                 </span>
                 <span className="uppercase tracking-wider">{workflow.title}</span>
@@ -147,12 +144,12 @@ const AIVoiceCallerDetail = () => {
             className="space-y-8"
           >
             {/* Workflow Image */}
-            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-2xl">
-              <div className="relative aspect-video bg-slate-950">
+            <div className="rounded-[3rem] overflow-hidden shadow-2xl p-0 bg-slate-900">
+              <div className="relative bg-slate-900 overflow-hidden">
                 <img
                   src={workflows[activeTab].image}
                   alt={`${workflows[activeTab].title} Workflow`}
-                  className="w-full h-full object-contain"
+                  className="w-full h-auto object-cover grayscale opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
                 <div className="absolute bottom-6 left-6 right-6">
@@ -171,7 +168,7 @@ const AIVoiceCallerDetail = () => {
                   <span className="material-symbols-outlined text-white text-3xl">{workflows[activeTab].icon}</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter">
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tighter heading-underline active">
                     {workflows[activeTab].id}) {workflows[activeTab].title}
                   </h2>
                   <p className={`text-lg font-semibold bg-gradient-to-r ${workflows[activeTab].color} bg-clip-text text-transparent`}>
@@ -196,14 +193,7 @@ const AIVoiceCallerDetail = () => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: idx * 0.1 }}
-                          className={`flex items-start gap-5 p-6 rounded-2xl bg-white hover:bg-slate-50 transition-all duration-700 border border-slate-100 group shadow-sm hover:shadow-xl relative overflow-hidden ${workflows[activeTab].color.includes('blue') ? 'hover:border-blue-500/50' :
-                            workflows[activeTab].color.includes('purple') ? 'hover:border-purple-500/50' :
-                              workflows[activeTab].color.includes('emerald') ? 'hover:border-emerald-500/50' :
-                                workflows[activeTab].color.includes('orange') ? 'hover:border-orange-500/50' :
-                                  workflows[activeTab].color.includes('pink') ? 'hover:border-pink-500/50' :
-                                    workflows[activeTab].color.includes('indigo') ? 'hover:border-indigo-500/50' :
-                                      'hover:border-blue-500/50'
-                            }`}
+                          className={`flex items-start gap-5 p-6 rounded-2xl bg-white hover:bg-slate-50 transition-all duration-700 border border-slate-100 group shadow-sm hover:shadow-xl relative overflow-hidden hover:border-slate-500/50`}
                         >
                           <div className={`absolute inset-0 bg-gradient-to-br ${workflows[activeTab].color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
                           <span className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${workflows[activeTab].color} text-white flex items-center justify-center font-black shadow-lg group-hover:scale-110 transition-transform duration-500`}>
@@ -306,7 +296,7 @@ const AIVoiceCallerDetail = () => {
                     key={idx}
                     onClick={() => setActiveTab(idx)}
                     className={`w-3 h-3 rounded-full transition-all duration-500 ${activeTab === idx
-                      ? 'bg-green-600 w-10'
+                      ? 'bg-slate-800 w-10'
                       : 'bg-slate-200 hover:bg-slate-300'
                       }`}
                   />
@@ -318,7 +308,7 @@ const AIVoiceCallerDetail = () => {
                 disabled={activeTab === workflows.length - 1}
                 className={`flex items-center gap-2 px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs transition-all ${activeTab === workflows.length - 1
                   ? 'bg-slate-50 text-slate-300 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/20 hover:scale-105'
+                  : 'bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:scale-105'
                   }`}
               >
                 Next
@@ -336,7 +326,7 @@ const AIVoiceCallerDetail = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-3xl p-12 border border-white/10 bg-gradient-to-br from-green-500/10 to-cyan-500/10"
+            className="rounded-3xl p-12 border border-slate-200 bg-gradient-to-br from-slate-100 to-slate-50 shadow-xl hover:shadow-2xl transition-shadow duration-300"
           >
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
               Ready to Automate Your Calls?
@@ -349,7 +339,7 @@ const AIVoiceCallerDetail = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600 text-white font-bold px-10 py-4 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg"
+                  className="bg-slate-900 hover:bg-black text-white font-bold px-10 py-4 rounded-full transition-all shadow-2xl hover:shadow-slate-900/25 flex items-center gap-3 text-lg"
                 >
                   <span className="material-symbols-outlined">phone_in_talk</span>
                   Book AI Voice Caller Demo
@@ -359,7 +349,7 @@ const AIVoiceCallerDetail = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold px-10 py-4 rounded-full transition-all shadow-xl shadow-blue-500/20 flex items-center gap-3 text-xl"
+                  className="bg-white border border-slate-200 text-slate-900 font-bold px-10 py-4 rounded-full transition-all shadow-xl hover:bg-slate-50 flex items-center gap-3 text-xl"
                 >
                   <span className="material-symbols-outlined">contact_support</span>
                   Contact Sales

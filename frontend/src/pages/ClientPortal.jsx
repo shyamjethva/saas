@@ -297,7 +297,7 @@ const ClientPortal = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { title: "Active Projects", value: stats.activeProjects, icon: "folder", color: "from-blue-500 to-cyan-500" },
+              { title: "Active Projects", value: stats.activeProjects, icon: "folder", color: "from-blue-700 to-sky-500" },
               { title: "Completed Projects", value: stats.completedProjects, icon: "check_circle", color: "from-green-500 to-teal-500" },
               { title: "Team Members", value: stats.totalTeamMembers, icon: "groups", color: "from-purple-500 to-pink-500" },
               { title: "Hours Logged", value: stats.totalHoursLogged.toLocaleString(), icon: "schedule", color: "from-orange-500 to-red-500" }
@@ -448,7 +448,7 @@ const ClientPortal = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { title: "Upload Documents", icon: "upload_file", color: "from-blue-500 to-cyan-500" },
+                { title: "Upload Documents", icon: "upload_file", color: "from-blue-700 to-sky-500" },
                 { title: "Schedule Meeting", icon: "event", color: "from-purple-500 to-pink-500" },
                 { title: "Request Changes", icon: "edit", color: "from-green-500 to-teal-500" },
                 { title: "View Reports", icon: "bar_chart", color: "from-orange-500 to-red-500" }

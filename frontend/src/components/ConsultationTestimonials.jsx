@@ -57,7 +57,7 @@ const ConsultationTestimonials = () => {
               
               <div className="border-t border-white/10 pt-6">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white font-bold">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-white font-bold">
                     {testimonial.author.charAt(0)}
                   </div>
                   <div>

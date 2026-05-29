@@ -71,7 +71,7 @@ const Blog = () => {
       );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20">
       {/* Hero Section */}
       <div className="px-6 py-20">
         <div className="max-w-6xl mx-auto text-center">
@@ -80,19 +80,19 @@ const Blog = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-400">article</span>
-              <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">ERROR INFOTECH BLOG</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-600">article</span>
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">ERROR INFOTECH BLOG</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tighter">
               Insights & 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
+              <span className="block text-slate-500">
                 Innovation
               </span>
             </h1>
             
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-12">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
               Stay updated with the latest trends, strategies, and success stories in digital transformation, CRM, and business automation
             </p>
           </motion.div>
@@ -125,7 +125,7 @@ const Blog = () => {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-blue-700 to-sky-500 text-white shadow-lg'
                     : 'bg-white/10 text-slate-300 hover:bg-white/20'
                 }`}
               >
@@ -141,7 +141,7 @@ const Blog = () => {
       {featuredPosts.length > 0 && (
         <div className="px-6 mb-20">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Featured Articles</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center tracking-tight">Featured Articles</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {featuredPosts.map((post, index) => (
                 <motion.div
@@ -175,7 +175,7 @@ const Blog = () => {
                     <p className="text-slate-300 mb-6">{post.excerpt}</p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-700 to-sky-500 flex items-center justify-center">
                           <span className="material-symbols-outlined text-white text-sm">person</span>
                         </div>
                         <div>
@@ -184,7 +184,7 @@ const Blog = () => {
                         </div>
                       </div>
                       <Link to={`/blog/${post.id}`}>
-                        <button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-6 py-3 rounded-full transition-all">
+                        <button className="bg-gradient-to-r from-blue-700 to-sky-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-6 py-3 rounded-full transition-all">
                           Read More
                         </button>
                       </Link>
@@ -239,7 +239,7 @@ const Blog = () => {
                   <p className="text-slate-300 mb-6 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-700 to-sky-500 flex items-center justify-center">
                         <span className="material-symbols-outlined text-white text-xs">person</span>
                       </div>
                       <span className="text-slate-400 text-sm">{post.author}</span>

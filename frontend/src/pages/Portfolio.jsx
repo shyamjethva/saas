@@ -15,7 +15,7 @@ const Portfolio = () => {
       client: 'Global Tech Solutions',
       year: '2024',
       results: '40% increase in sales productivity',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       id: 2,
@@ -148,7 +148,7 @@ const Portfolio = () => {
     {
       name: 'Software Development',
       count: 15,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-700 to-sky-500',
       icon: 'code'
     },
     {
@@ -197,7 +197,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20">
       {/* Header Section */}
       <div className="px-6 py-12">
         <div className="max-w-6xl mx-auto">
@@ -206,19 +206,19 @@ const Portfolio = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-purple-400">work</span>
-              <span className="text-purple-400 font-bold tracking-wider uppercase text-sm">PORTFOLIO</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-600">work</span>
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">PORTFOLIO</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tighter">
               Our 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
+              <span className="block text-slate-500">
                 Success Stories
               </span>
             </h1>
             
-            <p className="text-xl text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
               Showcasing innovative digital solutions that drive measurable business results across industries.
             </p>
           </motion.div>

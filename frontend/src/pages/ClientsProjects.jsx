@@ -143,7 +143,7 @@ const ClientsProjects = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-green-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20">
       {/* Hero Section */}
       <div className="px-6 py-20">
         <div className="max-w-6xl mx-auto text-center">
@@ -151,19 +151,19 @@ const ClientsProjects = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-green-400">work</span>
-              <span className="text-green-400 font-bold tracking-wider uppercase text-sm">Our Portfolio</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-600">work</span>
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">Our Portfolio</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tighter">
               Clients &
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-cyan-400">
+              <span className="block text-slate-500">
                 Projects
               </span>
             </h1>
 
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-12">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
               Real-world success stories showcasing our expertise in delivering structured digital solutions
               that drive measurable business transformation
             </p>
@@ -180,8 +180,8 @@ const ClientsProjects = () => {
                 key={category.id}
                 onClick={() => setActiveFilter(category.id)}
                 className={`px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center gap-2 ${activeFilter === category.id
-                  ? 'bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-2xl'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
+                  ? 'bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 text-white shadow-2xl'
+                  : 'bg-white text-slate-500 border border-slate-100 hover:border-slate-300 hover:text-slate-900 shadow-sm'
                   }`}
               >
                 <span className="material-symbols-outlined">{category.icon}</span>
@@ -198,14 +198,14 @@ const ClientsProjects = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-2xl p-8 border border-white/10  transition-all duration-300 backdrop-blur-sm"
+                className="bg-white rounded-2xl p-8 border border-slate-100 transition-all duration-300 shadow-lg hover:shadow-2xl"
               >
                 <div className="mb-6">
-                  <span className="inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-bold mb-4">
+                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-bold mb-4 border border-blue-100">
                     {project.industry}
                   </span>
-                  <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-slate-400">Client: {project.client}</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">{project.title}</h3>
+                  <p className="text-slate-500 font-medium italic text-sm">Client: {project.client}</p>
                 </div>
 
                 {/* Project Details */}
@@ -247,15 +247,15 @@ const ClientsProjects = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-green-400">trending_up</span>
+                    <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-blue-600">trending_up</span>
                       Key Results
                     </h4>
                     <div className="grid grid-cols-1 gap-3">
                       {project.results.map((result, idx) => (
-                        <div key={idx} className="flex justify-between items-center p-3 bg-white/5 rounded-lg border border-white/10  transition-all">
-                          <span className="text-slate-300">{result.metric}</span>
-                          <span className="text-green-400 font-bold">{result.improvement}</span>
+                        <div key={idx} className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-slate-100">
+                          <span className="text-slate-600 font-medium">{result.metric}</span>
+                          <span className="text-blue-600 font-bold">{result.improvement}</span>
                         </div>
                       ))}
                     </div>
@@ -287,7 +287,7 @@ const ClientsProjects = () => {
 
                 {/* View Details Button */}
                 <div className="mt-6">
-                  <button className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-full transition-all flex items-center justify-center gap-2">
+                  <button className="w-full bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-full transition-all flex items-center justify-center gap-2">
                     <span className="material-symbols-outlined">visibility</span>
                     View Full Case Study
                   </button>
@@ -299,7 +299,7 @@ const ClientsProjects = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-20 bg-gradient-to-r from-slate-800/50 to-green-900/30">
+      <div className="px-6 py-20 bg-blue-50/30">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -307,8 +307,8 @@ const ClientsProjects = () => {
             viewport={{ once: true }}
             className="glass-card rounded-2xl p-12 border border-white/10 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">Ready to Join Our Success Stories?</h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">Ready to Join Our Success Stories?</h2>
+            <p className="text-xl text-slate-500 mb-8 max-w-2xl mx-auto font-medium">
               Let's discuss how we can transform your business with structured digital solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -316,7 +316,7 @@ const ClientsProjects = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg"
+                  className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl hover:shadow-blue-600/25 flex items-center gap-3 text-lg"
                 >
                   <span className="material-symbols-outlined">calendar_today</span>
                   Schedule Free Consultation

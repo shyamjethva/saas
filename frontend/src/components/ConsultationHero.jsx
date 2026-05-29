@@ -10,7 +10,7 @@ const ConsultationHero = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-green-900/20 relative overflow-hidden">
+    <div className="min-h-screen premium-bg relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -66,7 +66,7 @@ const ConsultationHero = () => {
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg"
+                    className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-blue-600/25 flex items-center gap-3 text-lg"
                   >
                     <span className="material-symbols-outlined">calendar_today</span>
                     Book Free Consultation

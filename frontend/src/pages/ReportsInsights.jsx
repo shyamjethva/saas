@@ -31,10 +31,13 @@ const ReportsInsights = () => {
   ]);
 
   return (
-    <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10">
-      {/* Header Section */}
-      <div className="px-6 py-16">
-        <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen premium-bg pt-12 selection:bg-blue-500/10 pb-12">
+      <div className="bg-blue-50/50 rounded-[4rem] mx-6 border border-blue-100 relative overflow-hidden pt-8 pb-40">
+        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.02]"></div>
+        
+        {/* Header Section */}
+        <div className="px-6 py-8 relative z-10">
+          <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,9 +50,9 @@ const ReportsInsights = () => {
                   <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">BUSINESS INTELLIGENCE ARCHITECTURE</span>
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter leading-[1.1] heading-underline active pb-2">
                   Intelligence
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+                  <span className="block text-premium-gradient">
                     & Insight Matrix
                   </span>
                 </h1>
@@ -74,9 +77,9 @@ const ReportsInsights = () => {
         </div>
       </div>
 
-      {/* Tab Navigation */}
-      <div className="px-6 py-8">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-4">
+        {/* Tab Navigation */}
+        <div className="px-6 py-8 relative z-10">
+          <div className="max-w-7xl mx-auto flex flex-wrap gap-4">
           {[
             { id: 'custom', label: 'Custom Architect', icon: 'assessment' },
             { id: 'scheduled', label: 'Protocol Schedule', icon: 'schedule' },
@@ -106,9 +109,9 @@ const ReportsInsights = () => {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="px-6 py-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Stats Section */}
+        <div className="px-6 py-8 relative z-10">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <StatCard title="Report Volume" value={reports.length} icon="description" color="blue" />
           <StatCard title="Scheduled Cycles" value={reports.filter(r => r.status === 'Scheduled').length} icon="schedule" color="indigo" />
           <StatCard title="Daily Pulse" value="12" icon="verified" color="purple" />
@@ -116,9 +119,9 @@ const ReportsInsights = () => {
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <div className="px-6 py-12 pb-40">
-        <div className="max-w-7xl mx-auto">
+        {/* Main Content Area */}
+        <div className="px-6 py-12 relative z-10">
+          <div className="max-w-7xl mx-auto">
           {activeTab === 'custom' && (
             <CustomReportBuilder reports={reports} />
           )}
@@ -131,9 +134,10 @@ const ReportsInsights = () => {
             <ReportTemplates />
           )}
 
-          {activeTab === 'analytics' && (
-            <AIInsights />
-          )}
+            {activeTab === 'analytics' && (
+              <AIInsights />
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -167,7 +171,7 @@ const CustomReportBuilder = ({ reports }) => (
   >
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div>
-        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black">Custom Report Architect</h2>
+        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black heading-underline active inline-block">Custom Report Architect</h2>
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Granular data modeling & visualization</p>
       </div>
     </div>
@@ -254,7 +258,7 @@ const ScheduledReports = ({ reports }) => (
   >
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div>
-        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black">Logic Protocol Schedule</h2>
+        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase tracking-widest text-xs font-black heading-underline active inline-block">Logic Protocol Schedule</h2>
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Automated intelligence lifecycle monitoring</p>
       </div>
     </div>

@@ -46,7 +46,7 @@ const SystemSettings = () => {
       id: 'role-management',
       title: 'Role Management',
       icon: 'admin_panel_settings',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-slate-900 to-slate-700',
       description: 'Define user roles and permissions across your organization',
       features: ['Admin Access Control', 'Manager Permissions', 'Sales Team Roles', 'Accounts Department Access', 'Custom Role Creation', 'Role-Based Dashboards']
     },
@@ -54,7 +54,7 @@ const SystemSettings = () => {
       id: 'access-control',
       title: 'Access Control Permissions',
       icon: 'vpn_key',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-slate-800 to-slate-600',
       description: 'Granular permission settings for different user groups',
       features: ['Module-Level Access', 'Data Visibility Controls', 'Action-Based Permissions', 'Time-Restricted Access', 'IP-Based Restrictions', 'Audit Trail Logging']
     },
@@ -62,7 +62,7 @@ const SystemSettings = () => {
       id: 'workflow',
       title: 'Workflow Customization',
       icon: 'account_tree',
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-slate-700 to-slate-500',
       description: 'Design custom business processes and approval workflows',
       features: ['Approval Chains', 'Task Routing Logic', 'Conditional Workflows', 'Parallel Processing', 'Escalation Rules', 'Workflow Templates']
     },
@@ -70,7 +70,7 @@ const SystemSettings = () => {
       id: 'department',
       title: 'Department Setup',
       icon: 'corporate_fare',
-      color: 'from-orange-500 to-red-500',
+      color: 'from-slate-600 to-slate-400',
       description: 'Organize your business structure with department hierarchies',
       features: ['Department Creation', 'Team Structure Management', 'Reporting Lines', 'Resource Allocation', 'Budget Distribution', 'Performance Metrics']
     },
@@ -78,7 +78,7 @@ const SystemSettings = () => {
       id: 'branch-config',
       title: 'Multi-Branch Configuration',
       icon: 'location_city',
-      color: 'from-teal-500 to-cyan-500',
+      color: 'from-slate-500 to-slate-300',
       description: 'Manage multiple office locations from centralized system',
       features: ['Branch Profiles', 'Regional Settings', 'Local Compliance', 'Cross-Branch Sync', 'Centralized Reporting', 'Location-Based Access']
     },
@@ -86,7 +86,7 @@ const SystemSettings = () => {
       id: 'custom-fields',
       title: 'Custom Field Creation',
       icon: 'edit_note',
-      color: 'from-indigo-500 to-purple-500',
+      color: 'from-slate-800 to-slate-500',
       description: 'Add custom data fields to match your business requirements',
       features: ['Dynamic Field Types', 'Form Builder', 'Validation Rules', 'Conditional Logic', 'Field Dependencies', 'Template Library']
     },
@@ -94,7 +94,7 @@ const SystemSettings = () => {
       id: 'automation',
       title: 'Automation Rule Setup',
       icon: 'bolt',
-      color: 'from-yellow-500 to-orange-500',
+      color: 'from-slate-900 to-slate-400',
       description: 'Create smart automation rules to streamline operations',
       features: ['Trigger Events', 'Action Sequences', 'Schedule-Based Rules', 'Conditional Automation', 'Notification Triggers', 'Process Optimization']
     },
@@ -102,16 +102,16 @@ const SystemSettings = () => {
       id: 'integrations',
       title: 'Email & WhatsApp Integration Settings',
       icon: 'integration_instructions',
-      color: 'from-red-500 to-pink-500',
+      color: 'from-slate-700 to-slate-300',
       description: 'Connect external communication channels seamlessly',
       features: ['SMTP Configuration', 'WhatsApp Business API', 'Template Integration', 'Message Queuing', 'Delivery Tracking', 'Response Handling']
     }
   ];
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -119,14 +119,14 @@ const SystemSettings = () => {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
-              <span className="material-symbols-outlined text-blue-600 text-sm font-black">settings</span>
-              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">PLATFORM GOVERNANCE</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-slate-50 border border-slate-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-slate-900 text-sm font-black">settings</span>
+              <span className="text-slate-900 font-black tracking-widest uppercase text-[10px]">PLATFORM GOVERNANCE</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+             <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.1] heading-underline active pb-2">
               Advanced System
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+              <span className="block text-slate-400">
                 Orchestration
               </span>
             </h1>
@@ -148,8 +148,8 @@ const SystemSettings = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-white rounded-[2.5rem] border transition-all duration-500 shadow-xl relative overflow-hidden group ${expandedSections[section.id]
-                ? 'border-blue-200 shadow-[0_32px_64px_-16px_rgba(37,99,235,0.1)]'
+               className={`bg-white rounded-[2.5rem] border transition-all duration-500 shadow-xl relative overflow-hidden group ${expandedSections[section.id]
+                ? 'border-slate-900 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]'
                 : 'border-slate-200 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]'
                 }`}
             >
@@ -183,8 +183,8 @@ const SystemSettings = () => {
                 >
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {section.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:bg-white transition-colors group/item">
-                        <span className="material-symbols-outlined text-blue-600 text-sm font-black">verified</span>
+                       <div key={idx} className="flex items-center gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:bg-white transition-colors group/item">
+                        <span className="material-symbols-outlined text-slate-900 text-sm font-black">verified</span>
                         <span className="text-slate-600 text-[11px] font-black uppercase tracking-tight">{feature}</span>
                       </div>
                     ))}
@@ -207,9 +207,9 @@ const SystemSettings = () => {
           >
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-blue-100 transition-colors"></div>
 
-            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter">
+             <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter heading-underline active inline-block">
               Ready to
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+              <span className="block text-slate-400 py-2">
                 Optimize Your Workflow?
               </span>
             </h2>
@@ -218,10 +218,10 @@ const SystemSettings = () => {
               Tailor the platform specifically to your business requirements with granular controls.
             </p>
 
-            <motion.button
+             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-10 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-blue-500/25 flex items-center gap-4 text-xl mx-auto"
+              className="relative z-10 bg-slate-900 hover:bg-black text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-slate-900/25 flex items-center gap-4 text-xl mx-auto"
             >
               <span className="material-symbols-outlined text-2xl font-black">tune</span>
               Configure My Platform

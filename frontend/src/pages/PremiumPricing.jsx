@@ -10,7 +10,7 @@ const CRMPricing = () => {
       name: 'Growth',
       price: '4,999',
       period: '/month',
-      color: 'from-blue-600 to-cyan-500',
+      color: 'from-blue-700 to-sky-500',
       popular: false,
       features: [
         'Lead Management',
@@ -65,14 +65,14 @@ const CRMPricing = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-600">workspace_premium</span>
-              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">CRM PRICING</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-emerald-50 border border-emerald-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-emerald">workspace_premium</span>
+              <span className="text-blue-emerald font-bold tracking-wider uppercase text-sm">CRM PRICING</span>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tighter">
               Monthly
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600">
+              <span className="block text-premium-gradient py-2">
                 CRM Subscription
               </span>
             </h1>
@@ -91,7 +91,7 @@ const CRMPricing = () => {
             <button
               onClick={() => setBillingCycle('monthly')}
               className={`px-8 py-3 rounded-full font-black transition-all duration-300 uppercase tracking-widest text-xs ${billingCycle === 'monthly'
-                ? 'bg-blue-600 text-white shadow-lg'
+                ? 'bg-blue-emerald text-white shadow-lg'
                 : 'text-slate-500 hover:text-slate-900'
                 }`}>
               Monthly
@@ -99,7 +99,7 @@ const CRMPricing = () => {
             <button
               onClick={() => setBillingCycle('annual')}
               className={`px-8 py-3 rounded-full font-black transition-all duration-300 uppercase tracking-widest text-xs ${billingCycle === 'annual'
-                ? 'bg-blue-600 text-white shadow-lg'
+                ? 'bg-blue-emerald text-white shadow-lg'
                 : 'text-slate-500 hover:text-slate-900'
                 }`}>
               Annual
@@ -120,7 +120,7 @@ const CRMPricing = () => {
                 transition={{ delay: index * 0.2 }}
                 whileHover={{ y: -15, borderColor: 'rgba(37,99,235,0.2)' }}
                 className={`bg-white rounded-[2rem] p-10 border transition-all duration-700 relative shadow-xl hover:shadow-2xl overflow-hidden group ${plan.popular
-                  ? 'border-blue-500/50'
+                  ? 'border-blue-emerald'
                   : 'border-slate-100'
                   }`}
               >
@@ -128,7 +128,7 @@ const CRMPricing = () => {
 
                 {plan.popular && (
                   <div className="absolute top-0 right-0">
-                    <div className="bg-blue-600 text-white px-6 py-2 rounded-bl-2xl text-[10px] font-black uppercase tracking-widest">
+                    <div className="bg-blue-emerald text-white px-6 py-2 rounded-bl-2xl text-[10px] font-black uppercase tracking-widest">
                       Most Popular
                     </div>
                   </div>
@@ -231,7 +231,7 @@ const CRMPricing = () => {
                     <td className="p-6 text-slate-700 text-sm font-bold">{feature}</td>
                     <td className="p-6 text-center">
                       {index < 5 ? (
-                        <span className="material-symbols-outlined text-blue-600 font-black">check</span>
+                        <span className="material-symbols-outlined text-blue-emerald font-black">check</span>
                       ) : (
                         <span className="material-symbols-outlined text-slate-200">close</span>
                       )}
@@ -263,13 +263,13 @@ const CRMPricing = () => {
             viewport={{ once: true }}
             className="bg-white rounded-[3rem] p-16 border border-slate-100 shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600"></div>
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500"></div>
 
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-8 tracking-tighter">Trusted by Enterprises Worldwide</h2>
 
             <div className="grid grid-cols-3 gap-8 mb-12">
               <div className="text-center p-6 bg-slate-50 rounded-2xl">
-                <div className="text-4xl font-black text-blue-600 mb-2">99.9%</div>
+                <div className="text-4xl font-black text-blue-emerald mb-2">99.9%</div>
                 <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Uptime</div>
               </div>
               <div className="text-center p-6 bg-slate-50 rounded-2xl">
@@ -290,7 +290,7 @@ const CRMPricing = () => {
               <motion.button
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-5 rounded-2xl transition-all shadow-2xl shadow-blue-500/30 text-sm uppercase tracking-widest"
+                className="bg-blue-emerald text-white font-black px-12 py-5 rounded-2xl transition-all shadow-2xl shadow-blue-500/30 text-sm uppercase tracking-widest"
               >
                 Get Started Today
               </motion.button>

@@ -57,28 +57,28 @@ const ContactPage = () => {
       title: 'Direct Call',
       description: 'Speak directly with our consultants',
       icon: 'call',
-      detail: '+91 98765 43210',
-      color: 'from-blue-600 to-cyan-500'
+      detail: '+91 81287 04400',
+      color: 'from-blue-700 to-sky-500'
     },
     {
       title: 'Business Email',
       description: 'Professional correspondence',
       icon: 'mail',
-      detail: 'hello@errorinfotech.com',
+      detail: 'errorinfotech404@gmail.com',
       color: 'from-purple-600 to-pink-600'
     },
     {
       title: 'WhatsApp Chat',
       description: 'Quick discussions',
       icon: 'chat',
-      detail: '+91 98765 43210',
-      color: 'from-emerald-600 to-teal-600'
+      detail: '+91 81287 04400',
+      color: 'from-blue-600 to-indigo-600'
     },
     {
       title: 'Office Visit',
       description: 'Visit our headquarters',
       icon: 'location_on',
-      detail: 'Mumbai, India',
+      detail: 'Rajkot, India',
       color: 'from-orange-600 to-red-600'
     }
   ];
@@ -88,14 +88,21 @@ const ContactPage = () => {
     'Custom Software Development',
     'AI/ML Integration',
     'Cloud Migration',
-    'Cybersecurity Audit',
     'Business Transformation'
   ];
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12 relative">
+      {/* BACKGROUND ELEMENTS */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Top-Left Element */}
+        <div className="absolute top-[-5%] left-[-5%] w-[40vw] h-[40vw] bg-slate-100/40 blur-[120px] rounded-full animate-pulse" />
+
+        {/* Bottom-Right Element */}
+        <div className="absolute bottom-[-5%] right-[-5%] w-[40vw] h-[40vw] bg-slate-50/50 blur-[120px] rounded-full" />
+      </div>
       {/* Hero Section */}
-      <section className="px-6 py-24 relative overflow-hidden">
+      <section className="px-6 py-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-slate-100 rounded-full blur-3xl -mr-48 -mt-48 opacity-50"></div>
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -104,19 +111,14 @@ const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-slate-200 mb-8 shadow-sm">
-              <span className="material-symbols-outlined text-slate-900">support_agent</span>
-              <span className="text-slate-900 font-black uppercase tracking-widest text-xs">Expert Consultation</span>
-            </div>
-
-            <h1 className="text-5xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+            <h1 className="text-6xl md:text-8xl font-bold text-slate-900 mb-8 tracking-tighter leading-none pt-10 heading-underline active inline-block pb-4">
               Talk to an
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 py-2">
+              <span className="block text-slate-500 py-2">
                 Industry Expert
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
               We believe in real human conversations that drive real business results. No bots, just genuine expertise.
             </p>
           </motion.div>
@@ -134,7 +136,7 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 text-slate-900 shadow-xl relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl -mr-32 -mt-32"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-slate-100/50 rounded-full blur-3xl -mr-32 -mt-32"></div>
               <div className="relative z-10">
                 <h2 className="text-3xl font-black mb-4 tracking-tight"> Start Your Success Story</h2>
                 <p className="text-slate-600 mb-8 font-medium">
@@ -148,7 +150,7 @@ const ContactPage = () => {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md">
                       <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center shadow-sm">
-                        <span className="material-symbols-outlined text-blue-600 text-lg">{item.icon}</span>
+                        <span className="material-symbols-outlined text-slate-900 text-lg">{item.icon}</span>
                       </div>
                       <div className="flex flex-col">
                         <div className="text-slate-900 font-bold text-sm leading-tight">{item.label}</div>
@@ -168,10 +170,10 @@ const ContactPage = () => {
                   className="p-5 bg-white rounded-3xl border border-slate-200 shadow-lg flex flex-col items-center text-center transition-all duration-500 relative overflow-hidden group"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${opt.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                  <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${opt.color} flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                  <div className={`w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
                     <span className="material-symbols-outlined text-white text-base">{opt.icon}</span>
                   </div>
-                  <h3 className="text-xs font-black text-slate-900 mb-0.5 group-hover:text-blue-600 transition-colors duration-500">{opt.title}</h3>
+                  <h3 className="text-xs font-black text-slate-900 mb-0.5 group-hover:text-slate-500 transition-colors duration-500">{opt.title}</h3>
                   <div className="text-slate-900 font-bold text-[10px] break-all mb-1">{opt.detail}</div>
                   <p className="text-slate-400 text-[9px] font-bold uppercase tracking-widest">{opt.description}</p>
                 </motion.div>
@@ -186,7 +188,7 @@ const ContactPage = () => {
             viewport={{ once: true }}
             className="lg:col-span-3 bg-white rounded-[2.5rem] p-8 lg:p-10 border border-slate-200 shadow-2xl self-start"
           >
-            <h2 className="text-3xl font-black text-slate-900 mb-2 tracking-tight">Project Inquiry</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">Project Inquiry</h2>
             <p className="text-slate-500 font-medium mb-6 leading-relaxed">Let's connect you with the right specialist.</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -254,7 +256,7 @@ const ContactPage = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
-                className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl text-lg shadow-2xl shadow-blue-500/25 flex items-center justify-center gap-3 transition-all disabled:opacity-50"
+                className="w-full py-5 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-2xl text-lg shadow-2xl shadow-slate-900/25 flex items-center justify-center gap-3 transition-all disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <><span className="material-symbols-outlined animate-spin flex-shrink-0">sync</span>Processing...</>

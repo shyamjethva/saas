@@ -134,20 +134,16 @@ const ConsultationPage = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <div className="relative py-20 px-6">
+      <div className="relative pt-32 pb-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
-              <span className="material-symbols-outlined text-green-600">chat</span>
-              <span className="text-green-600 font-black">FREE CONSULTATION</span>
-            </div>
 
-            <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tighter">
-              <span className="text-gradient">Transform Your Business <br /> with Expert Guidance.</span>
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-6 tracking-tighter leading-tight heading-underline active inline-block pb-4">
+              Transform Your Business <br /> with <span className="text-gray-500 pb-2">Expert Guidance.</span>
             </h1>
 
             <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-12 font-bold leading-relaxed">
@@ -159,17 +155,17 @@ const ConsultationPage = () => {
       </div>
 
       {/* Form Section */}
-      <div className="px-6 pb-20">
+      <div className="px-6 pb-12">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-slate-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
 
-            <h2 className="text-3xl font-black mb-2 text-center tracking-tighter">
-              <span className="text-gradient">Schedule Your Free Consultation.</span>
+            <h2 className="text-3xl font-black mb-2 text-center tracking-tighter inline-block">
+              <span className="text-slate-900 pb-2">Schedule Your Free Consultation.</span>
             </h2>
             <p className="text-slate-500 text-center mb-10 font-bold">
               Fill out the form below and we'll connect you with the right expert
@@ -217,22 +213,22 @@ const ConsultationPage = () => {
                     <div
                       key={type.value}
                       className={`p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${formData.consultationType === type.value
-                        ? 'border-green-600 bg-green-50/50 shadow-lg scale-[1.02]'
+                        ? 'border-slate-900 bg-slate-100/50 shadow-lg scale-[1.02]'
                         : 'border-slate-100 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-200'
                         }`}
                       onClick={() => setFormData(prev => ({ ...prev, consultationType: type.value }))}
                     >
                       <div className="flex items-start gap-4">
                         <div className={`mt-1.5 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0 ${formData.consultationType === type.value
-                          ? 'border-green-600'
+                          ? 'border-slate-900'
                           : 'border-slate-300'
                           }`}>
                           {formData.consultationType === type.value && (
-                            <div className="w-2.5 h-2.5 rounded-full bg-green-600 flex-shrink-0"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-slate-900 flex-shrink-0"></div>
                           )}
                         </div>
                         <div>
-                          <div className={`font-black tracking-tight ${formData.consultationType === type.value ? 'text-green-700' : 'text-slate-900'}`}>{type.label}</div>
+                          <div className={`font-black tracking-tight ${formData.consultationType === type.value ? 'text-slate-900' : 'text-slate-900'}`}>{type.label}</div>
                           <div className="text-sm text-slate-500 mt-1 font-bold leading-relaxed">{type.desc}</div>
                         </div>
                       </div>
@@ -253,7 +249,7 @@ const ConsultationPage = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -268,7 +264,7 @@ const ConsultationPage = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                     placeholder="name@company.com"
                   />
                 </div>
@@ -282,7 +278,7 @@ const ConsultationPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -296,7 +292,7 @@ const ConsultationPage = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                     placeholder="Your company name"
                   />
                 </div>
@@ -312,7 +308,7 @@ const ConsultationPage = () => {
                     name="industry"
                     value={formData.industry}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                   >
                     <option value="">Select Industry</option>
                     {industries.map(industry => (
@@ -329,7 +325,7 @@ const ConsultationPage = () => {
                     name="companySize"
                     value={formData.companySize}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                   >
                     <option value="">Select Size</option>
                     {companySizes.map(size => (
@@ -347,7 +343,7 @@ const ConsultationPage = () => {
                     name="website"
                     value={formData.website}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                     placeholder="https://yourcompany.com"
                   />
                 </div>
@@ -363,7 +359,7 @@ const ConsultationPage = () => {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                   >
                     <option value="">Select Project Type</option>
                     {projectTypes.map(type => (
@@ -380,7 +376,7 @@ const ConsultationPage = () => {
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                   >
                     <option value="">Select Budget</option>
                     {budgets.map(budget => (
@@ -398,7 +394,7 @@ const ConsultationPage = () => {
                   name="timeline"
                   value={formData.timeline}
                   onChange={handleInputChange}
-                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold"
                 >
                   <option value="">Select Timeline</option>
                   {timelines.map(timeline => (
@@ -417,7 +413,7 @@ const ConsultationPage = () => {
                     value={formData.goals}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold resize-none"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold resize-none"
                     placeholder="E.g., Increase online sales, improve customer experience, automate processes..."
                   ></textarea>
                 </div>
@@ -431,7 +427,7 @@ const ConsultationPage = () => {
                     value={formData.challenges}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 transition-all font-bold resize-none"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/20 focus:border-slate-500/50 transition-all font-bold resize-none"
                     placeholder="E.g., Low conversion rates, outdated technology, limited digital presence..."
                   ></textarea>
                 </div>
@@ -456,11 +452,11 @@ const ConsultationPage = () => {
                           value={method.value}
                           checked={formData.preferredContact === method.value}
                           onChange={handleInputChange}
-                          className="w-5 h-5 text-green-600 border-slate-300 focus:ring-green-500/20"
+                          className="w-5 h-5 text-slate-900 border-slate-300 focus:ring-slate-500/20"
                         />
                       </div>
-                      <span className={`material-symbols-outlined text-xl transition-colors ${formData.preferredContact === method.value ? 'text-green-600' : 'text-slate-400 group-hover:text-slate-500'}`}>{method.icon}</span>
-                      <span className={`font-bold transition-colors ${formData.preferredContact === method.value ? 'text-green-700' : 'text-slate-600 group-hover:text-slate-900'}`}>{method.label}</span>
+                      <span className={`material-symbols-outlined text-xl transition-colors ${formData.preferredContact === method.value ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-500'}`}>{method.icon}</span>
+                      <span className={`font-bold transition-colors ${formData.preferredContact === method.value ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-900'}`}>{method.label}</span>
                     </label>
                   ))}
                 </div>
@@ -473,7 +469,7 @@ const ConsultationPage = () => {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 disabled:opacity-50 text-white font-bold px-12 py-4 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg mx-auto"
+                  className="bg-slate-900 hover:bg-black disabled:opacity-50 text-white font-bold px-12 py-4 rounded-full transition-all shadow-2xl hover:shadow-slate-900/25 flex items-center gap-3 text-lg mx-auto"
                 >
                   {isSubmitting ? (
                     <>
@@ -496,7 +492,7 @@ const ConsultationPage = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

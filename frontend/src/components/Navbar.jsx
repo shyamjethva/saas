@@ -73,17 +73,14 @@ const Navbar = ({ isDark = false }) => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 px-4 sm:px-6 py-4 flex items-center justify-between transition-all duration-300 ${isDarkTheme
-      ? 'bg-blue-950/50 backdrop-blur-xl border-b border-white/10'
-      : 'bg-white/80 backdrop-blur-xl border-b border-blue-100 shadow-sm'
-      }`}>
-      <Link to="/" className="flex items-center pl-2 sm:pl-4 group scale-110 origin-left ml-2">
+    <nav className={`fixed top-0 w-full z-50 px-4 sm:px-6 py-4 flex items-center justify-between border-b transition-all duration-300 bg-white/90 border-slate-100 backdrop-blur-2xl shadow-sm`}>
+      <a href="https://errorinfotech.co.in/" className="flex items-center pl-2 sm:pl-4 group scale-110 origin-left ml-2">
         <img
-          src="/images/error_logo_horiz.png"
+          src="/images/error_logo_navbar.png"
           alt="Error Infotech"
           className="logo-img h-8 sm:h-10 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105"
         />
-      </Link>
+      </a>
 
       <div className="flex-grow"></div>
 
@@ -93,9 +90,9 @@ const Navbar = ({ isDark = false }) => {
           <Link
             key={item.path}
             to={item.path}
-            className={`px-3 sm:px-5 py-3 rounded-xl font-bold tracking-tight transition-all duration-300 relative group ${location.pathname === item.path
-              ? (isDarkTheme ? 'text-white bg-white/10' : 'text-blue-600 bg-blue-50')
-              : (isDarkTheme ? 'text-blue-100 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50')
+            className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 flex items-center gap-2 group ${location.pathname === item.path
+              ? 'text-slate-900 bg-slate-100'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
           >
             <span className="relative z-10">{item.label}</span>
@@ -106,13 +103,11 @@ const Navbar = ({ isDark = false }) => {
         <div
           ref={resourceRef}
           className="relative group nav-dropdown lg:pt-0"
-          onMouseEnter={() => setIsResourcesOpen(true)}
-          onMouseLeave={() => setIsResourcesOpen(false)}
         >
           <div
-            className={`px-3 sm:px-5 py-3 rounded-xl font-medium transition-all duration-300 cursor-pointer relative group ${isResourceActive || isResourcesOpen
-              ? (isDarkTheme ? 'text-white bg-white/10' : 'text-blue-600 bg-blue-50')
-              : (isDarkTheme ? 'text-blue-100 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50')
+            className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 cursor-pointer relative flex items-center gap-2 group ${isResourceActive || isResourcesOpen
+              ? 'text-slate-900 bg-slate-100'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             onClick={(e) => {
               e.stopPropagation();
@@ -126,7 +121,7 @@ const Navbar = ({ isDark = false }) => {
               <span className={`material-symbols-outlined text-sm transition-transform duration-300 ${isResourcesOpen ? 'rotate-180' : ''}`}>expand_more</span>
             </span>
           </div>
-          <div className={`absolute top-full left-0 mt-2 w-72 bg-white backdrop-blur-2xl rounded-2xl border border-slate-200 shadow-xl transition-all duration-300 z-30 ${isResourcesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+          <div className={`absolute top-full left-0 mt-2 w-72 bg-white/95 backdrop-blur-2xl rounded-2xl border border-slate-100 shadow-xl transition-all duration-300 z-30 ${isResourcesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
             <div className="p-2 space-y-1">
               <h3 className="text-slate-400 text-[9px] font-black uppercase tracking-[0.2em] mb-1 px-2 flex items-center gap-2">
                 <span className="material-symbols-outlined text-[10px]">work</span>
@@ -136,15 +131,15 @@ const Navbar = ({ isDark = false }) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-300 group/item ${location.pathname === item.path ? 'bg-slate-50 text-slate-800' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'}`}
+                  className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-300 group/item ${location.pathname === item.path ? 'bg-slate-50 text-slate-900' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}
                   onClick={() => setIsResourcesOpen(false)}
                 >
                   <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-slate-600 text-[12px]">{item.icon}</span>
+                    <span className="material-symbols-outlined text-slate-400 text-[12px] group-hover/item:text-slate-900">{item.icon}</span>
                   </div>
                   <div className="text-left">
-                    <div className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 underline-offset-4 group-hover/item:underline leading-tight">{item.label}</div>
-                    <div className="text-[9px] text-slate-400 mt-0.5">{item.desc}</div>
+                    <div className="text-xs font-black text-slate-900 underline-offset-4 group-hover/item:underline leading-tight">{item.label}</div>
+                    <div className="text-[9px] text-slate-500 mt-0.5">{item.desc}</div>
                   </div>
                 </Link>
               ))}
@@ -154,60 +149,14 @@ const Navbar = ({ isDark = false }) => {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link to="/join-contact" className="hidden md:block">
-          <button
-            className="w-11 h-11 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all shadow-lg hover:scale-110 group/start"
-            title="Get Started"
-          >
-            <span className="material-symbols-outlined text-xl group-hover:rotate-12 transition-transform">rocket_launch</span>
-          </button>
+        <Link to="/join-contact" className="hidden lg:flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 group">
+          <span>Get Started</span>
+          <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">rocket_launch</span>
         </Link>
-
-        {/* Business Hub Icon-Only Dropdown */}
-        <div ref={businessHubRef} className="relative h-full flex items-center group">
-          <div
-            className={`w-11 h-11 flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer border relative overflow-hidden group/btn ${isBusinessHubOpen || isBusinessHubActive
-              ? (isDarkTheme ? 'text-white border-white/20 bg-white/10' : 'text-blue-600 border-blue-200 bg-blue-50')
-              : (isDarkTheme ? 'text-blue-100 border-white/10 hover:border-white/20 hover:bg-white/5' : 'text-slate-500 border-slate-200 hover:border-blue-200 hover:bg-blue-50/30')
-              }`}
-            onClick={() => {
-              setIsBusinessHubOpen(!isBusinessHubOpen);
-              setIsResourcesOpen(false);
-            }}
-          >
-            <span className="flex items-center justify-center relative z-10 transition-transform duration-300 group-hover/btn:scale-110">
-              <span className="material-symbols-outlined text-xl">apps</span>
-            </span>
-          </div>
-          <div className={`absolute top-full right-0 mt-2 w-72 bg-white backdrop-blur-2xl rounded-2xl border border-slate-200 shadow-xl transition-all duration-300 z-30 ${isBusinessHubOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
-            <div className="p-2 space-y-1">
-              <h3 className="text-slate-400 text-[9px] font-black uppercase tracking-[0.2em] mb-1 px-2 flex items-center gap-2">
-                <span className="material-symbols-outlined text-[10px]">insights</span>
-                Business Intelligence
-              </h3>
-              {businessHubItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-300 group/item ${location.pathname === item.path ? 'bg-slate-50 text-slate-800' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'}`}
-                  onClick={() => setIsBusinessHubOpen(false)}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-slate-600 text-[12px]">{item.icon}</span>
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 underline-offset-4 group-hover/item:underline leading-tight">{item.label}</div>
-                    <div className="text-[9px] text-slate-400 mt-0.5">{item.desc}</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all"
+          className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-white border border-slate-100 text-slate-400 hover:bg-slate-50 transition-all"
           onClick={toggleMenu}
         >
           <span className="material-symbols-outlined text-sm sm:text-base">
@@ -217,13 +166,13 @@ const Navbar = ({ isDark = false }) => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed top-16 left-0 right-0 bg-white/95 backdrop-blur-3xl z-40 shadow-2xl border-b border-slate-200 transition-all duration-300 lg:hidden ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+      <div className={`fixed top-16 left-0 right-0 bg-white/95 backdrop-blur-3xl z-40 shadow-2xl border-b border-slate-100 transition-all duration-300 lg:hidden ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
         <div className="p-4 space-y-2">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 transition-all ${location.pathname === item.path ? 'text-slate-800 bg-slate-100' : ''}`}
+              className={`block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all ${location.pathname === item.path ? 'text-slate-900 bg-slate-50' : ''}`}
               onClick={() => setIsOpen(false)}
             >
               {item.label}
@@ -231,9 +180,9 @@ const Navbar = ({ isDark = false }) => {
           ))}
 
           {/* Mobile Resources Accordion */}
-          <div className="pt-2 border-t border-slate-200">
+          <div className="pt-2 border-t border-slate-100">
             <button
-              className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${isResourceActive || isMobileResourcesOpen ? 'text-slate-800 bg-slate-100' : 'text-slate-600 hover:bg-slate-50'}`}
+              className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${isResourceActive || isMobileResourcesOpen ? 'text-slate-900 bg-slate-50' : 'text-slate-600 hover:bg-slate-50'}`}
               onClick={() => {
                 setIsMobileResourcesOpen(!isMobileResourcesOpen);
               }}
@@ -251,7 +200,7 @@ const Navbar = ({ isDark = false }) => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className="block px-3 py-2 rounded-lg text-slate-600 hover:text-slate-800 transition-all text-sm flex items-center gap-2"
+                    className="block px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all text-sm flex items-center gap-2"
                     onClick={() => {
                       setIsOpen(false);
                       setIsMobileResourcesOpen(false);
@@ -267,7 +216,7 @@ const Navbar = ({ isDark = false }) => {
 
           <Link to="/join-contact" className="block mt-4">
             <button
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold h-11 px-7 rounded-xl transition-all shadow-lg"
+              className="w-full bg-slate-900 text-white font-bold h-11 px-7 rounded-xl transition-all shadow-lg shadow-slate-900/20 border border-slate-800"
               onClick={() => setIsOpen(false)}
             >
               Get Started

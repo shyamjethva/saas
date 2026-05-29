@@ -10,7 +10,7 @@ const ClientsProjects = () => {
   const segments = [
     { id: 'b2b-crm', name: 'B2B', desc: 'CRM Based Clients', icon: 'business_center', color: 'blue' },
     { id: 'b2c-erp', name: 'B2C', desc: 'ERP Based Industry Clients', icon: 'corporate_fare', color: 'purple' },
-    { id: 'd2c-brands', name: 'D2C', desc: 'Brand & E-commerce Clients', icon: 'shopping_bag', color: 'emerald' }
+    { id: 'd2c-brands', name: 'D2C', desc: 'Brand & E-commerce Clients', icon: 'shopping_bag', color: 'blue' }
   ];
 
   const b2bCrmData = [
@@ -86,11 +86,11 @@ const ClientsProjects = () => {
           }`}
         whileHover={{
           y: -10,
-          borderColor: isPremium ? 'rgba(251, 191, 36, 0.6)' : index === 1 ? 'rgba(59, 130, 246, 0.6)' : 'rgba(16, 185, 129, 0.6)'
+          borderColor: isPremium ? 'rgba(251, 191, 36, 0.6)' : index === 1 ? 'rgba(59, 130, 246, 0.6)' : 'rgba(37, 99, 235, 0.6)'
         }}
       >
         {/* Hover Gradient Overlay */}
-        <div className={`absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none bg-gradient-to-br ${isPremium ? 'from-amber-500 to-orange-500' : index === 1 ? 'from-blue-600 to-cyan-500' : 'from-emerald-500 to-teal-500'}`}></div>
+        <div className={`absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none bg-gradient-to-br ${isPremium ? 'from-amber-500 to-orange-500' : index === 1 ? 'from-blue-600 to-cyan-500' : 'from-blue-600 to-blue-400'}`}></div>
 
         {/* Tier Header */}
         <div className="text-center mb-10 border-b border-white/10 pb-8 relative">
@@ -120,7 +120,7 @@ const ClientsProjects = () => {
             <ul className="space-y-3 max-h-56 overflow-y-auto pr-3 custom-scrollbar">
               {tierData.industries.map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-300 text-sm group/item">
-                  <span className={`material-symbols-outlined text-[16px] mt-0.5 transition-transform group-hover/item:scale-125 ${isPremium ? 'text-amber-400' : 'text-green-400'}`}>
+                  <span className={`material-symbols-outlined text-[16px] mt-0.5 transition-transform group-hover/item:scale-125 ${isPremium ? 'text-amber-400' : 'text-blue-400'}`}>
                     {isPremium ? 'verified' : 'check_circle'}
                   </span>
                   <span className="group-hover/item:text-white transition-colors">{item}</span>
@@ -134,15 +134,15 @@ const ClientsProjects = () => {
             <motion.button
               whileHover={{
                 scale: 1.02,
-                backgroundColor: isPremium ? 'rgba(251, 191, 36, 0.2)' : index === 1 ? 'rgba(59, 130, 246, 0.2)' : 'rgba(16, 185, 129, 0.2)',
-                boxShadow: isPremium ? '0 10px 30px rgba(251, 191, 36, 0.3)' : index === 1 ? '0 10px 30px rgba(59, 130, 246, 0.3)' : '0 10px 30px rgba(16, 185, 129, 0.3)'
+                backgroundColor: isPremium ? 'rgba(251, 191, 36, 0.2)' : index === 1 ? 'rgba(59, 130, 246, 0.2)' : 'rgba(37, 99, 235, 0.2)',
+                boxShadow: isPremium ? '0 10px 30px rgba(251, 191, 36, 0.3)' : index === 1 ? '0 10px 30px rgba(59, 130, 246, 0.3)' : '0 10px 30px rgba(37, 99, 235, 0.3)'
               }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate(`/partner-profile/${activeSegment}/${tierData.industries[0].replace(/\s+/g, '-').toLowerCase()}`)}
               className={`w-full py-4 rounded-2xl border transition-all duration-500 flex items-center justify-center gap-3 group/partner overflow-hidden relative shadow-lg ${isPremium
                 ? 'border-amber-500/50 text-amber-600 bg-amber-500/10 '
                 : index === 1 ? 'border-blue-500/50 text-blue-600 bg-blue-500/10 '
-                  : 'border-emerald-500/50 text-emerald-600 bg-emerald-500/10 '
+                  : 'border-blue-500/50 text-blue-600 bg-blue-500/10 '
                 }`}
             >
               {/* Shimmer Effect */}
@@ -270,7 +270,7 @@ const ClientsProjects = () => {
             className="bg-white/5 border border-white/10 rounded-[30px] p-10 backdrop-blur-xl shadow-2xl relative overflow-hidden"
           >
             <h3 className="text-2xl font-black text-white mb-8 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400">
                 <span className="material-symbols-outlined text-3xl">token</span>
               </div>
               Marketing Suite
@@ -278,9 +278,9 @@ const ClientsProjects = () => {
             <div className="space-y-4">
               {d2cData.services.map((item, i) => (
                 <div key={i} className="relative group/s">
-                  <div className="px-6 py-4 rounded-2xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-black tracking-wide flex items-center justify-between hover:bg-emerald-500/20  transition-all cursor-default">
+                  <div className="px-6 py-4 rounded-2xl bg-blue-500/10 text-blue-300 border border-blue-500/20 font-black tracking-wide flex items-center justify-between hover:bg-blue-500/20  transition-all cursor-default">
                     {item}
-                    <span className="material-symbols-outlined text-emerald-500/50 group-hover/s:translate-x-2 transition-transform">trending_up</span>
+                    <span className="material-symbols-outlined text-blue-500/50 group-hover/s:translate-x-2 transition-transform">trending_up</span>
                   </div>
                 </div>
               ))}
@@ -289,10 +289,10 @@ const ClientsProjects = () => {
             {/* Your Partner Button */}
             <div className="mt-8">
               <motion.button
-                whileHover={{ scale: 1.02, backgroundColor: 'rgba(16, 185, 129, 0.15)', boxShadow: '0 0 20px rgba(16, 185, 129, 0.2)' }}
+                whileHover={{ scale: 1.02, backgroundColor: 'rgba(37, 99, 235, 0.15)', boxShadow: '0 0 20px rgba(37, 99, 235, 0.2)' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate(`/partner-profile/d2c/${d2cData.services[0].replace(/\s+/g, '-').toLowerCase()}`)}
-                className="w-full py-4 rounded-2xl border border-emerald-500/30 text-emerald-400 bg-emerald-500/5  transition-all duration-300 flex items-center justify-center gap-3 group/partner overflow-hidden relative"
+                className="w-full py-4 rounded-2xl border border-blue-500/30 text-blue-400 bg-blue-500/5  transition-all duration-300 flex items-center justify-center gap-3 group/partner overflow-hidden relative"
               >
                 <div className="absolute inset-0 shimmer opacity-30 pointer-events-none"></div>
                 <span className="material-symbols-outlined text-[22px] group-hover/partner:rotate-12 transition-transform relative z-10">handshake</span>
@@ -306,7 +306,7 @@ const ClientsProjects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#020617] pt-20 overflow-x-hidden">
+    <div className="min-h-screen premium-bg pt-20 overflow-x-hidden">
 
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -348,7 +348,7 @@ const ClientsProjects = () => {
       `}} />
 
       {/* Hero Section */}
-      <div className="px-6 py-28 relative overflow-hidden">
+      <div className="px-6 py-12 relative overflow-hidden">
         {/* Background Accents */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-6xl pointer-events-none opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-[120px]"></div>
@@ -361,19 +361,19 @@ const ClientsProjects = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-10 shadow-2xl  transition-colors group cursor-default">
-              <span className="material-symbols-outlined text-blue-400 group-hover:scale-110 transition-transform">hub</span>
-              <span className="text-white font-black tracking-[0.2em] uppercase text-xs">The Global Client Network</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-slate-200 mb-10 shadow-xl  transition-colors group cursor-default">
+              <span className="material-symbols-outlined text-blue-600 group-hover:scale-110 transition-transform">hub</span>
+              <span className="text-slate-800 font-black tracking-[0.2em] uppercase text-xs">The Global Client Network</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
+            <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter leading-none heading-underline active">
               Client
-              <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
+              <span className="block mt-4 text-premium-gradient pb-2">
                 Segmentation
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-20 font-medium">
+            <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-20 font-medium">
               We provide enterprise-grade digital architecture across diverse business models, from B2B CRM systems to global D2C brand scaling.
             </p>
           </motion.div>
@@ -386,7 +386,7 @@ const ClientsProjects = () => {
               const themes = {
                 'b2b-crm': { glow: 'bg-blue-500', active: 'border-blue-500 bg-blue-500/10', text: 'text-blue-400' },
                 'b2c-erp': { glow: 'bg-purple-500', active: 'border-purple-500 bg-purple-500/10', text: 'text-purple-400' },
-                'd2c-brands': { glow: 'bg-emerald-500', active: 'border-emerald-500 bg-emerald-500/10', text: 'text-emerald-400' }
+                'd2c-brands': { glow: 'bg-blue-500', active: 'border-blue-500 bg-blue-500/10', text: 'text-blue-400' }
               };
 
               return (
@@ -412,9 +412,9 @@ const ClientsProjects = () => {
                     {segment.desc}
                   </p>
 
-                  <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${segment.id === 'b2b-crm' ? 'from-blue-500 to-cyan-500' :
+                  <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${segment.id === 'b2b-crm' ? 'from-blue-700 to-sky-500' :
                     segment.id === 'b2c-erp' ? 'from-purple-500 to-pink-500' :
-                      'from-emerald-500 to-teal-500'
+                      'from-blue-600 to-blue-400'
                     } opacity-0 transition-opacity duration-300 ${isActive ? 'opacity-100' : ''}`} />
                 </motion.button>
               );
@@ -434,9 +434,9 @@ const ClientsProjects = () => {
             transition={{ duration: 0.5, ease: "circOut" }}
           >
             <div className="mb-16 text-center">
-              <h2 className="text-2xl font-black text-white uppercase tracking-[0.4em] inline-block relative">
+              <h2 className="text-2xl font-black text-white uppercase tracking-[0.4em] inline-block relative heading-underline active">
                 {segments.find(s => s.id === activeSegment).desc}
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-blue-500 rounded-full"></div>
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-blue-500 rounded-full opacity-0"></div>
               </h2>
             </div>
 
@@ -461,7 +461,7 @@ const ClientsProjects = () => {
       </div>
 
       {/* High-End Redesigned CTA Section */}
-      <div className="relative py-24 px-6 overflow-hidden">
+      <div className="relative py-12 px-6 overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617] pointer-events-none"></div>
@@ -471,7 +471,7 @@ const ClientsProjects = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
               { label: 'Partners', value: '65+', icon: 'handshake', bgColor: 'bg-blue-500/20', textColor: 'text-blue-400' },
-              { label: 'Retention', value: '98%', icon: 'verified_user', bgColor: 'bg-emerald-500/20', textColor: 'text-emerald-400' },
+              { label: 'Retention', value: '98%', icon: 'verified_user', bgColor: 'bg-blue-500/20', textColor: 'text-blue-400' },
               { label: 'Live Support', value: '24/7', icon: 'public', bgColor: 'bg-purple-500/20', textColor: 'text-purple-400' }
             ].map((stat, i) => (
               <motion.div
@@ -501,7 +501,7 @@ const ClientsProjects = () => {
           >
             {/* Visual Orbs */}
             <div className="absolute -top-32 -left-32 w-80 h-80 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
-            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-emerald-600/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-blue-600/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
 
             <div className="relative z-10">
               <motion.div
@@ -516,9 +516,9 @@ const ClientsProjects = () => {
                 Digital Intelligence Architecture
               </motion.div>
 
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-[1.1] transition-transform duration-700">
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-[1.1] transition-transform duration-700 heading-underline active">
                 Scale Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">Empire Today</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 pb-2">Empire Today</span>
               </h2>
 
               <p className="text-base md:text-lg text-slate-400 mb-10 max-w-xl mx-auto font-medium leading-relaxed opacity-80">
@@ -535,7 +535,7 @@ const ClientsProjects = () => {
                     whileTap={deployStatus === 'idle' ? { scale: 0.95 } : {}}
                     className={`w-full sm:w-80 h-16 rounded-2xl shadow-giant flex items-center justify-center gap-4 text-xs font-black uppercase tracking-[0.2em] transition-all relative overflow-hidden ${deployStatus === 'idle' ? 'bg-white text-slate-900' :
                       deployStatus === 'loading' ? 'bg-blue-600 text-white cursor-wait' :
-                        'bg-emerald-500 text-white'
+                        'bg-blue-600 text-white'
                       }`}
                   >
                     <AnimatePresence mode="wait">

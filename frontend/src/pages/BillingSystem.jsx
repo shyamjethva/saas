@@ -7,7 +7,7 @@ const BillingSystem = () => {
       title: 'Invoice Creation',
       description: 'Auto-generated invoices with professional templates and automatic numbering',
       icon: 'receipt_long',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       title: 'GST Integration',
@@ -56,14 +56,14 @@ const BillingSystem = () => {
   const dashboardStats = [
     { label: 'Total Revenue', value: '₹2.4M', change: '+12.5%', color: 'text-green-400' },
     { label: 'Pending Payments', value: '₹3.2L', change: '-8.2%', color: 'text-orange-400' },
-    { label: 'Active Subscriptions', value: '142', change: '+15', color: 'text-blue-400' },
+    { label: 'Active Subscriptions', value: '142', change: '+15', color: 'text-blue-emerald' },
     { label: 'Overdue Invoices', value: '7', change: '-3', color: 'text-red-400' }
   ];
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -71,14 +71,14 @@ const BillingSystem = () => {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
-              <span className="material-symbols-outlined text-blue-600 text-sm font-black">payments</span>
-              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">BILLING SYSTEM</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-emerald-50 border border-emerald-100 mb-8 shadow-sm">
+              <span className="material-symbols-outlined text-blue-emerald text-sm font-black">payments</span>
+              <span className="text-blue-emerald font-black tracking-widest uppercase text-[10px]">BILLING SYSTEM</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.1] heading-underline active pb-2">
               Enterprise Billing &
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+              <span className="block text-premium-gradient">
                 Revenue Control
               </span>
             </h1>
@@ -99,15 +99,15 @@ const BillingSystem = () => {
             viewport={{ once: true }}
             className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] mb-16"
           >
-            <h2 className="text-3xl font-black text-slate-900 mb-10 text-center tracking-tighter">Billing Performance</h2>
+            <h2 className="text-3xl font-black text-slate-900 mb-10 text-center tracking-tighter heading-underline active inline-block">Billing Performance</h2>
 
             {/* Stats Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
               {dashboardStats.map((stat, index) => (
-                <div key={index} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 group hover:border-blue-200 transition-all">
+                <div key={index} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 group hover:border-emerald-200 transition-all">
                   <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{stat.label}</div>
                   <div className="text-3xl font-black text-slate-900 mb-1 tracking-tight">{stat.value}</div>
-                  <div className={`text-xs font-black uppercase tracking-tighter ${stat.color === 'text-green-400' ? 'text-green-600' : stat.color === 'text-orange-400' ? 'text-orange-600' : stat.color === 'text-blue-400' ? 'text-blue-600' : 'text-red-600'}`}>{stat.change}</div>
+                  <div className={`text-xs font-black uppercase tracking-tighter ${stat.color === 'text-green-400' ? 'text-green-600' : stat.color === 'text-orange-400' ? 'text-orange-600' : stat.color === 'text-blue-emerald' ? 'text-blue-emerald' : 'text-red-600'}`}>{stat.change}</div>
                 </div>
               ))}
             </div>
@@ -117,7 +117,7 @@ const BillingSystem = () => {
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-slate-900 font-black uppercase tracking-widest text-xs">Revenue Trend Projection</h3>
                 <div className="flex gap-2">
-                  <span className="px-4 py-1.5 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase shadow-lg shadow-blue-500/20">Active View</span>
+                  <span className="px-4 py-1.5 bg-blue-emerald text-white rounded-full text-[10px] font-black uppercase shadow-lg shadow-blue-500/20">Active View</span>
                   <span className="px-4 py-1.5 bg-white border border-slate-200 text-slate-400 rounded-full text-[10px] font-black uppercase">Historical</span>
                 </div>
               </div>
@@ -127,7 +127,7 @@ const BillingSystem = () => {
                     key={index}
                     initial={{ height: 0 }}
                     whileInView={{ height: `${height}%` }}
-                    className="flex-1 max-w-[40px] bg-gradient-to-t from-blue-600 to-indigo-600 rounded-t-xl transition-all hover:scale-105"
+                    className="flex-1 max-w-[40px] bg-gradient-to-t from-blue-700 to-sky-500 rounded-t-xl transition-all hover:scale-105"
                     style={{ height: `${height}%` }}
                   ></motion.div>
                 ))}
@@ -177,10 +177,10 @@ const BillingSystem = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">
-              Unified
-              <span className="block md:inline text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 md:ml-3">
-                Billing Intelligence
+            <h2 className="text-4xl md:text-6xl font-black text-black mb-6 tracking-tighter heading-underline active inline-block">
+              Unified Billing
+              <span className="text-premium-gradient md:ml-3">
+                Intelligence
               </span>
             </h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Everything you need for enterprise-grade financial control and automation.</p>
@@ -220,9 +220,9 @@ const BillingSystem = () => {
           >
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-blue-100 transition-colors"></div>
 
-            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter">
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter heading-underline active inline-block">
               Ready to Enable
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-blue-600 to-emerald-400">
                 Smart Billing?
               </span>
             </h2>
@@ -235,7 +235,7 @@ const BillingSystem = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-10 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-500/25 flex items-center gap-3 text-lg"
+                className="bg-gradient-to-r from-blue-700 to-sky-500 hover:from-emerald-600 hover:to-blue-700 text-white font-black px-10 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-500/25 flex items-center gap-3 text-lg"
               >
                 <span className="material-symbols-outlined font-black">bolt</span>
                 Enable Smart Billing

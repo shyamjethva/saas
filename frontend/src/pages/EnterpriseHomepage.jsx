@@ -113,7 +113,7 @@ const Homepage = () => {
 
   // Core Strengths
   const coreStrengths = [
-    { title: 'Custom CRM Development', icon: 'account_tree', color: 'from-blue-500 to-cyan-500' },
+    { title: 'Custom CRM Development', icon: 'account_tree', color: 'from-blue-700 to-sky-500' },
     { title: 'AI Automation Systems', icon: 'auto_mode', color: 'from-purple-500 to-pink-500' },
     { title: 'Performance Marketing', icon: 'trending_up', color: 'from-green-500 to-emerald-500' },
     { title: 'School ERP Software', icon: 'school', color: 'from-amber-500 to-orange-500' },
@@ -297,7 +297,7 @@ const Homepage = () => {
       </div>
 
       {/* Subscription Advantage Section */}
-      <div className="relative z-10 px-6 py-20 bg-gradient-to-r from-slate-800/50 to-green-900/30">
+      <div className="relative z-10 px-6 py-20 bg-blue-50/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

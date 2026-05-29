@@ -118,7 +118,7 @@ const ServiceAIDetail = () => {
                 title: "Machine Learning Models",
                 desc: "Custom-built ML algorithms for predictive analytics, classification, and pattern recognition tailored to your specific business challenges.",
                 icon: "psychology",
-                color: "from-blue-500 to-cyan-500",
+                color: "from-blue-700 to-sky-500",
                 features: ["Supervised & Unsupervised Learning", "Neural Networks", "Deep Learning", "Model Optimization"]
               },
               {
@@ -283,7 +283,7 @@ const ServiceAIDetail = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               { value: "2.8x", label: "Productivity Increase", color: "from-green-500 to-teal-500" },
-              { value: "70%", label: "Manual Work Reduced", color: "from-blue-500 to-cyan-500" },
+              { value: "70%", label: "Manual Work Reduced", color: "from-blue-700 to-sky-500" },
               { value: "3x", label: "Faster Decision Making", color: "from-purple-500 to-pink-500" }
             ].map((result, index) => (
               <motion.div

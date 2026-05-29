@@ -6,7 +6,7 @@ const AICenter = () => {
   // Animated Particles Component
   const Particles = () => {
     const [particles, setParticles] = useState([]);
-    
+
     useEffect(() => {
       const generateParticles = () => {
         const newParticles = [];
@@ -22,10 +22,10 @@ const AICenter = () => {
         }
         setParticles(newParticles);
       };
-      
+
       generateParticles();
     }, []);
-    
+
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map(particle => (
@@ -61,7 +61,7 @@ const AICenter = () => {
       title: 'AI Revenue Prediction',
       description: 'Forecast future revenue streams with machine learning algorithms that analyze historical data and market trends.',
       icon: 'trending_up',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-700 to-sky-500',
       benefits: ['95% accuracy', 'Real-time updates', 'Multi-scenario modeling']
     },
     {
@@ -75,7 +75,7 @@ const AICenter = () => {
       title: 'AI Sales Assistant',
       description: 'Intelligent virtual assistant that helps sales teams prioritize prospects and automate follow-up communications.',
       icon: 'support_agent',
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-blue-600 to-slate-900',
       benefits: ['24/7 availability', 'Natural language', 'Multi-channel support']
     },
     {
@@ -116,13 +116,13 @@ const AICenter = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-purple-900/20 relative overflow-hidden pt-20">
+    <div className="min-h-screen bg-slate-50 relative overflow-hidden pt-20">
       {/* Animated Background */}
       <Particles />
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-purple-500/5 to-blue-500/5 animate-pulse"></div>
-      
+
       {/* Hero Section */}
       <div className="relative z-10 px-6 py-20">
         <div className="max-w-6xl mx-auto text-center">
@@ -131,18 +131,14 @@ const AICenter = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-cyan-400">auto_mode</span>
-              <span className="text-cyan-400 font-bold tracking-wider uppercase text-sm">AI INNOVATION LAB</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Future of 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400">
+
+            <h1 className="text-5xl md:text-7xl font-bold text-black mb-6 heading-underline active pb-2">
+              Future of
+              <span className="block text-premium-gradient">
                 Business Intelligence
               </span>
             </h1>
-            
+
             <p className="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-6">
               Your CRM learns from your data.
             </p>
@@ -162,7 +158,7 @@ const AICenter = () => {
               {/* Brain Outline */}
               <div className="absolute inset-0 rounded-full border-4 border-cyan-400/30 animate-pulse"></div>
               <div className="absolute inset-4 rounded-full border-2 border-purple-400/30 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              
+
               {/* Neural Connections */}
               <div className="absolute inset-8">
                 {[...Array(12)].map((_, i) => (
@@ -177,7 +173,7 @@ const AICenter = () => {
                   ></div>
                 ))}
               </div>
-              
+
               {/* Central Core */}
               <div className="absolute inset-12 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center animate-pulse">
                 <span className="text-white text-4xl font-bold">AI</span>
@@ -205,7 +201,7 @@ const AICenter = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4 text-center">{feature.title}</h3>
                 <p className="text-slate-300 text-center mb-6">{feature.description}</p>
-                
+
                 {/* Benefits */}
                 <div className="space-y-2">
                   {feature.benefits.map((benefit, idx) => (
@@ -230,18 +226,14 @@ const AICenter = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-green-400">phone_in_talk</span>
-              <span className="text-green-400 font-bold tracking-wider uppercase text-sm">AI Voice Technology</span>
-            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Auto Human Calling Agent
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400">
+              <span className="block text-premium-gradient">
                 (AI Voice Caller)
               </span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Intelligent outbound calling system powered by AI. Automate your sales calls with human-like conversations, 
+              Intelligent outbound calling system powered by AI. Automate your sales calls with human-like conversations,
               real-time sentiment analysis, and smart decision-making.
             </p>
           </motion.div>
@@ -257,14 +249,14 @@ const AICenter = () => {
               className="glass-card rounded-2xl overflow-hidden border border-white/10  transition-all duration-300"
             >
               <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                <img 
-                  src="/images/ai-conversation/aiconversationagent1.jpeg" 
+                <img
+                  src="/images/ai-conversation/aiconversationagent1.jpeg"
                   alt="AI Conversation Agent Workflow"
                   className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm font-bold border border-green-500/30">Step 1</span>
+                  <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold border border-blue-500/30">Step 1</span>
                 </div>
               </div>
               <div className="p-6">
@@ -272,31 +264,31 @@ const AICenter = () => {
                 <p className="text-slate-400 text-sm mb-4">Role: Handles real-time AI conversation during outbound calls.</p>
                 <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>Twilio connects the call</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>Customer speech is converted to text (Speech-to-Text)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>Text is sent to OpenAI</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>AI generates a human-like reply</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>Reply is converted to speech (Text-to-Speech)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>Voice is played to customer and loop continues</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-sm mt-0.5">check_circle</span>
                     <span>Handles objections, multi-language, and human transfer triggers</span>
                   </li>
                 </ul>
@@ -312,8 +304,8 @@ const AICenter = () => {
               className="glass-card rounded-2xl overflow-hidden border border-white/10  transition-all duration-300"
             >
               <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                <img 
-                  src="/images/ai-conversation/scriptbuilder2.jpeg" 
+                <img
+                  src="/images/ai-conversation/scriptbuilder2.jpeg"
                   alt="Script Builder Agent Workflow"
                   className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity"
                 />
@@ -359,8 +351,8 @@ const AICenter = () => {
               className="glass-card rounded-2xl overflow-hidden border border-white/10  transition-all duration-300"
             >
               <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                <img 
-                  src="/images/ai-conversation/callanalysis3.jpeg" 
+                <img
+                  src="/images/ai-conversation/callanalysis3.jpeg"
                   alt="Call Analysis & Sentiment Agent Workflow"
                   className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity"
                 />
@@ -406,8 +398,8 @@ const AICenter = () => {
               className="glass-card rounded-2xl overflow-hidden border border-white/10  transition-all duration-300"
             >
               <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                <img 
-                  src="/images/ai-conversation/smartretry4.jpeg" 
+                <img
+                  src="/images/ai-conversation/smartretry4.jpeg"
                   alt="Smart Retry & Decision Agent Workflow"
                   className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity"
                 />
@@ -460,7 +452,7 @@ const AICenter = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3 text-lg mx-auto"
+                className="bg-slate-900 hover:bg-black text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-slate-900/25 flex items-center gap-3 text-lg mx-auto"
               >
                 <span className="material-symbols-outlined">visibility</span>
                 View Details
@@ -479,7 +471,7 @@ const AICenter = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-green-500/25 flex items-center gap-3 text-lg mx-auto"
+                className="bg-white border-2 border-slate-900 text-slate-900 hover:bg-slate-50 font-bold px-10 py-5 rounded-full transition-all shadow-xl flex items-center gap-3 text-lg mx-auto"
               >
                 <span className="material-symbols-outlined">phone_in_talk</span>
                 Book AI Voice Caller Demo
@@ -501,33 +493,33 @@ const AICenter = () => {
             <h2 className="text-4xl font-bold text-white mb-8">
               Your CRM Learns From Your Data
             </h2>
-            
+
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 rounded-full bg-slate-900 flex items-center justify-center mx-auto mb-4">
                   <span className="material-symbols-outlined text-white text-3xl">database</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Collects Intelligence</h3>
                 <p className="text-slate-300">Gathers structured data from all business touchpoints</p>
               </div>
-              
+
               <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                  <span className="material-symbols-outlined text-white text-3xl">psychology</span>
+                <div className="w-20 h-20 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center mx-auto mb-4">
+                  <span className="material-symbols-outlined text-slate-900 text-3xl">psychology</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Analyzes Patterns</h3>
                 <p className="text-slate-300">Identifies trends and behavioral insights automatically</p>
               </div>
-              
+
               <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4">
                   <span className="material-symbols-outlined text-white text-3xl">auto_fix_high</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Automates Actions</h3>
                 <p className="text-slate-300">Executes optimized workflows without manual intervention</p>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <div className="text-center">
                 <div className="text-5xl font-bold text-cyan-400 mb-2">70%</div>
@@ -538,7 +530,7 @@ const AICenter = () => {
                 <p className="text-slate-300">Cost Reduction</p>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-bold text-green-400 mb-2">3X</div>
+                <div className="text-5xl font-bold text-slate-900 mb-2">3X</div>
                 <p className="text-slate-300">ROI Improvement</p>
               </div>
             </div>
@@ -556,22 +548,22 @@ const AICenter = () => {
             className="glass-card rounded-2xl p-16 border border-white/10 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm"
           >
             <h2 className="text-5xl font-bold text-white mb-8">
-              Experience 
+              Experience
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400">
                 AI-Powered Growth
               </span>
             </h2>
-            
+
             <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
               Transform your business with intelligent automation and data-driven insights
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link to="/book-demo">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl hover:shadow-cyan-500/25 flex items-center gap-3 text-lg"
+                  className="bg-slate-900 hover:bg-black text-white font-bold px-10 py-5 rounded-full transition-all shadow-2xl flex items-center gap-3 text-lg"
                 >
                   <span className="material-symbols-outlined">smart_toy</span>
                   Book AI Demo

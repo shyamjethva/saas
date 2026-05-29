@@ -52,7 +52,7 @@ const ConsultationBanner = ({ variant = 'default' }) => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-green-500/25 flex items-center gap-2"
+                className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-blue-600/25 flex items-center gap-2"
               >
                 <span className="material-symbols-outlined">calendar_today</span>
                 {banner.cta}

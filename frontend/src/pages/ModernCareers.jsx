@@ -116,7 +116,7 @@ const Careers = () => {
     : openPositions.filter(job => job.department.toLowerCase() === activeFilter);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-blue-900/20 pt-20">
+    <div className="min-h-screen premium-bg pt-20">
       {/* Hero Section */}
       <div className="px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -125,19 +125,19 @@ const Careers = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-400">work</span>
-              <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">JOIN OUR TEAM</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 backdrop-blur-sm mb-8">
+              <span className="material-symbols-outlined text-blue-600">work</span>
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">JOIN OUR TEAM</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tighter">
               Build the Future of 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
+              <span className="block text-slate-500">
                 Digital Business
               </span>
             </h1>
             
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
               Join a team of innovators shaping the next generation of CRM and automation solutions
             </p>
           </motion.div>
@@ -148,8 +148,8 @@ const Careers = () => {
       <div className="px-6 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Open Positions</h2>
-            <p className="text-xl text-slate-300">Join our growing team of talented professionals</p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Open Positions</h2>
+            <p className="text-xl text-slate-500 font-medium">Join our growing team of talented professionals</p>
           </div>
 
           {/* Department Filters */}
@@ -160,7 +160,7 @@ const Careers = () => {
                 onClick={() => setActiveFilter(filter)}
                 className={`px-6 py-3 rounded-full font-bold transition-all ${
                   activeFilter === filter
-                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-blue-700 to-sky-500 text-white shadow-lg'
                     : 'bg-white/10 text-slate-300 hover:bg-white/20'
                 }`}
               >
@@ -223,7 +223,7 @@ const Careers = () => {
                   </div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-3 rounded-full transition-all">
+                <button className="w-full bg-gradient-to-r from-blue-700 to-sky-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-3 rounded-full transition-all">
                   Apply Now
                 </button>
               </motion.div>
@@ -251,7 +251,7 @@ const Careers = () => {
                 whileHover={{ y: -10 }}
                 className="glass-card rounded-2xl p-8 border border-white/10 backdrop-blur-sm text-center group"
               >
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-700 to-sky-500 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   <span className="material-symbols-outlined text-white text-2xl">{benefit.icon}</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">{benefit.title}</h3>
@@ -377,7 +377,7 @@ const Careers = () => {
               
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-4 rounded-full transition-all text-lg"
+                className="w-full bg-gradient-to-r from-blue-700 to-sky-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-4 rounded-full transition-all text-lg"
               >
                 Submit Application
               </button>

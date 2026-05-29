@@ -36,7 +36,7 @@ const PartnerProfilePage = () => {
     }, [name]);
 
     return (
-        <div className="min-h-screen bg-[#020617] text-white pt-24 pb-12 px-6">
+        <div className="min-h-screen bg-[#020617] text-white pt-12 pb-8 px-6">
             {/* Breadcrumbs & Header Navigation */}
             <div className="max-w-7xl mx-auto mb-8 flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -74,7 +74,7 @@ const PartnerProfilePage = () => {
                                     <span className="material-symbols-outlined text-white text-5xl">apartment</span>
                                 </div>
                                 <div>
-                                    <h1 className="text-4xl font-black tracking-tighter mb-2">{profileData.name}</h1>
+                                    <h1 className="text-4xl font-black tracking-tighter mb-2 heading-underline active pb-2">{profileData.name}</h1>
                                     <div className="flex items-center gap-3">
                                         <div className="flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest">
                                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -97,7 +97,7 @@ const PartnerProfilePage = () => {
                         </div>
 
                         <div className="mb-10">
-                            <h2 className="text-[12px] font-black text-white uppercase tracking-[0.3em] mb-8 border-b border-white/5 pb-4 inline-block">YOUR DETAILS</h2>
+                            <h2 className="text-[12px] font-black text-white uppercase tracking-[0.3em] mb-8 border-b border-white/5 pb-4 inline-block heading-underline active">YOUR DETAILS</h2>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {/* Name */}

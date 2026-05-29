@@ -349,60 +349,60 @@ const Careers = () => {
       title: "Competitive Compensation",
       icon: "payments",
       desc: "Market-leading salary with performance bonuses and stock options",
-      color: "from-blue-600 to-cyan-500"
+      color: "from-slate-900 to-slate-600"
     },
     {
       title: "Comprehensive Health",
       icon: "local_hospital",
       desc: "Medical, dental, vision, and mental health coverage",
-      color: "from-purple-600 to-pink-600"
+      color: "from-slate-500 to-slate-400"
     },
     {
       title: "Flexible Work Arrangements",
       icon: "schedule",
       desc: "Hybrid and remote work options with flexible hours",
-      color: "from-emerald-600 to-teal-600"
+      color: "from-slate-900 to-slate-600"
     },
     {
       title: "Professional Development",
       icon: "school",
       desc: "$5,000 annual learning budget for conferences and courses",
-      color: "from-orange-600 to-red-600"
+      color: "from-slate-500 to-slate-400"
     },
     {
       title: "Stock Equity Program",
       icon: "trending_up",
       desc: "Competitive equity package for all full-time employees",
-      color: "from-pink-600 to-purple-600"
+      color: "from-slate-900 to-slate-600"
     },
     {
       title: "Wellness Program",
       icon: "fitness_center",
       desc: "Gym membership, wellness stipend, and mental health days",
-      color: "from-cyan-600 to-blue-600"
+      color: "from-slate-500 to-slate-400"
     },
     {
       title: "Unlimited PTO",
       icon: "beach_access",
       desc: "Generous vacation policy to promote work-life balance",
-      color: "from-teal-600 to-emerald-600"
+      color: "from-slate-900 to-slate-600"
     },
     {
       title: "Family Benefits",
       icon: "family_restroom",
       desc: "Parental leave, childcare support, and family health coverage",
-      color: "from-blue-600 to-indigo-600"
+      color: "from-slate-500 to-slate-400"
     }
   ];
 
   // Enhanced hiring process
   const hiringProcess = [
-    { step: 1, title: "Application Review", desc: "Our talent team reviews your application and resume", color: "from-blue-600 to-indigo-600" },
-    { step: 2, title: "Initial Screening", desc: "30-minute phone/video call with HR", color: "from-purple-600 to-pink-600" },
-    { step: 3, title: "Technical Assessment", desc: "Skills evaluation and coding challenges", color: "from-emerald-600 to-teal-600" },
-    { step: 4, title: "Team Interviews", desc: "Meet with your potential teammates", color: "from-orange-600 to-red-600" },
-    { step: 5, title: "Leadership Interview", desc: "Final interview with department leadership", color: "from-pink-600 to-purple-600" },
-    { step: 6, title: "Offer & Onboarding", desc: "Job offer and seamless onboarding process", color: "from-cyan-600 to-blue-600" }
+    { step: 1, title: "Application Review", desc: "Our talent team reviews your application and resume", color: "from-slate-900 to-slate-600" },
+    { step: 2, title: "Initial Screening", desc: "30-minute phone/video call with HR", color: "from-slate-500 to-slate-400" },
+    { step: 3, title: "Technical Assessment", desc: "Skills evaluation and coding challenges", color: "from-slate-900 to-slate-600" },
+    { step: 4, title: "Team Interviews", desc: "Meet with your potential teammates", color: "from-slate-500 to-slate-400" },
+    { step: 5, title: "Leadership Interview", desc: "Final interview with department leadership", color: "from-slate-900 to-slate-600" },
+    { step: 6, title: "Offer & Onboarding", desc: "Job offer and seamless onboarding process", color: "from-slate-500 to-slate-400" }
   ];
 
   // Enhanced company culture values - AI Focus
@@ -411,25 +411,25 @@ const Careers = () => {
       title: "AI Innovation First",
       desc: "We pioneer cutting-edge AI solutions and encourage experimentation with emerging technologies",
       icon: "lightbulb",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-slate-900 to-slate-600"
     },
     {
       title: "Continuous AI Learning",
       desc: "Stay ahead with dedicated time for learning latest AI tools, frameworks, and methodologies",
       icon: "school",
-      color: "from-green-500 to-emerald-500"
+      color: "from-slate-500 to-slate-400"
     },
     {
       title: "AI for Everyone",
       desc: "Democratizing AI technology to solve real-world business problems",
       icon: "smart_toy",
-      color: "from-purple-500 to-pink-500"
+      color: "from-slate-900 to-slate-600"
     },
     {
       title: "Automation Excellence",
       desc: "Building intelligent automation solutions that transform how businesses operate",
       icon: "auto_mode",
-      color: "from-amber-500 to-orange-500"
+      color: "from-slate-500 to-slate-400"
     }
   ];
 
@@ -500,13 +500,13 @@ const Careers = () => {
   return (
     <main className="pt-24 pb-12 px-6 min-h-screen premium-bg">
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
+              className="absolute w-1 h-1 bg-slate-400/20 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -532,8 +532,10 @@ const Careers = () => {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <h1 className="text-4xl md:text-6xl font-black text-slate-800 mb-6 tracking-tighter">
-              Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-400">Future</span> With Us
+            <h1 className="text-4xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tighter font-space-grotesk">
+              <span className="heading-underline active pb-2 inline-block">
+                Build the <span className="text-slate-500">Future</span> With Us
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto">
               Join our team of innovators and help shape the next generation of enterprise technology solutions.
@@ -543,10 +545,10 @@ const Careers = () => {
           {/* Stats Overview */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
             {[
-              { value: '150+', label: 'Team Members', color: 'from-blue-600 to-cyan-500' },
-              { value: '4.9', label: 'Rating', color: 'from-purple-600 to-pink-600' },
-              { value: '98%', label: 'Retention', color: 'from-emerald-600 to-teal-600' },
-              { value: '24/7', label: 'Support', color: 'from-orange-600 to-red-600' }
+              { value: '15+', label: 'Team Members', color: 'from-slate-900 to-slate-600' },
+              { value: '4.9', label: 'Rating', color: 'from-slate-500 to-slate-400' },
+              { value: '98%', label: 'Retention', color: 'from-slate-900 to-slate-600' },
+              { value: '24/7', label: 'Support', color: 'from-slate-500 to-slate-400' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -554,12 +556,12 @@ const Careers = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-2xl relative overflow-hidden group transition-all duration-700"
+                whileHover={{ y: -8 }}
+                className="p-6 relative overflow-hidden md:border-r border-slate-200/60 last:border-0 group transition-all duration-500"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`text-4xl font-black mb-2 transition-all duration-700 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>{stat.value}</div>
-                <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{stat.label}</div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none`}></div>
+                <div className={`text-5xl font-black mb-3 transition-all duration-500 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>{stat.value}</div>
+                <div className="text-slate-500 text-[11px] font-black uppercase tracking-widest leading-none">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -567,7 +569,7 @@ const Careers = () => {
       </section>
 
       {/* Company Culture */}
-      <section className="py-20 bg-slate-50/50 rounded-3xl mb-20 border border-slate-100">
+      <section className="py-24 mb-12 border-y border-slate-100 bg-slate-50/30">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -575,8 +577,8 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-slate-800 mb-6 font-space-grotesk tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-blue-900 to-blue-600">Our Culture</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tighter font-space-grotesk">
+              Our <span className="text-slate-500">Culture</span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-xl">What makes Error Infotech a great place to work</p>
           </motion.div>
@@ -589,19 +591,15 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`bg-white rounded-2xl p-8 text-center border border-slate-200 transition-all duration-700 group shadow-lg hover:shadow-2xl relative overflow-hidden ${index % 4 === 0 ? 'hover:border-blue-500/50' :
-                  index % 4 === 1 ? 'hover:border-emerald-500/50' :
-                    index % 4 === 2 ? 'hover:border-purple-500/50' :
-                      'hover:border-orange-500/50'
-                  }`}
+                whileHover={{ y: -8 }}
+                className="p-6 relative overflow-hidden md:border-r border-slate-200/60 last:border-0 group transition-all duration-500 text-center"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${value.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <span className="material-symbols-outlined text-white text-3xl">{value.icon}</span>
+                <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none`}></div>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${value.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-md`}>
+                  <span className="material-symbols-outlined text-white text-2xl">{value.icon}</span>
                 </div>
-                <h3 className="text-slate-800 font-bold text-xl mb-4">{value.title}</h3>
-                <p className="text-slate-600">{value.desc}</p>
+                <h3 className="text-slate-900 font-bold text-lg mb-3 group-hover:text-slate-800 transition-colors">{value.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -617,8 +615,8 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-slate-800 mb-6 font-space-grotesk tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-slate-800 to-blue-600">Why Error Infotech?</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tighter font-space-grotesk">
+              Why <span className="text-slate-500">Error</span> Infotech?
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-xl">Join India's leading AI-powered technology solutions company</p>
           </motion.div>
@@ -629,37 +627,37 @@ const Careers = () => {
                 title: "AI-First Environment",
                 desc: "Work with cutting-edge AI technologies like GPT, LLMs, n8n, and automation tools daily",
                 icon: "smart_toy",
-                color: "from-blue-600 to-cyan-500"
+                color: "from-slate-900 to-slate-600"
               },
               {
                 title: "Learn AI Tools",
                 desc: "Master the latest AI coding tools, automation platforms, and ML frameworks",
                 icon: "school",
-                color: "from-purple-600 to-pink-600"
+                color: "from-slate-500 to-slate-400"
               },
               {
                 title: "Build AI Products",
                 desc: "Create intelligent solutions that transform businesses across industries",
                 icon: "rocket_launch",
-                color: "from-emerald-600 to-teal-600"
+                color: "from-slate-900 to-slate-600"
               },
               {
                 title: "AI Research Time",
                 desc: "Dedicated time to experiment with new AI models, tools, and technologies",
                 icon: "science",
-                color: "from-orange-600 to-red-600"
+                color: "from-slate-500 to-slate-400"
               },
               {
                 title: "Flexible & Remote",
                 desc: "Work from anywhere with flexible hours and AI-powered collaboration tools",
                 icon: "laptop",
-                color: "from-pink-600 to-purple-600"
+                color: "from-slate-900 to-slate-600"
               },
               {
                 title: "Growth in AI",
                 desc: "Fast-track your career in the booming AI industry with mentorship and training",
                 icon: "trending_up",
-                color: "from-blue-600 to-indigo-600"
+                color: "from-slate-500 to-slate-400"
               }
             ].map((benefit, index) => (
               <motion.div
@@ -668,19 +666,15 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`bg-white rounded-2xl p-8 text-center border border-slate-200 transition-all duration-700 group shadow-lg hover:shadow-2xl relative overflow-hidden ${index % 4 === 0 ? 'hover:border-blue-500/50' :
-                  index % 4 === 1 ? 'hover:border-purple-500/50' :
-                    index % 4 === 2 ? 'hover:border-emerald-500/50' :
-                      'hover:border-orange-500/50'
-                  }`}
+                whileHover={{ y: -8 }}
+                className="p-8 relative overflow-hidden border-b md:border-r border-slate-200/60 last:border-b-0 group transition-all duration-500 text-center"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                  <span className="material-symbols-outlined text-white text-3xl">{benefit.icon}</span>
+                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none`}></div>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-md`}>
+                  <span className="material-symbols-outlined text-white text-2xl">{benefit.icon}</span>
                 </div>
-                <h3 className="text-slate-800 font-bold text-xl mb-4 group-hover:text-blue-600 transition-colors duration-500">{benefit.title}</h3>
-                <p className="text-slate-600">{benefit.desc}</p>
+                <h3 className="text-slate-900 font-bold text-lg mb-3 group-hover:text-slate-800 transition-colors duration-500">{benefit.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{benefit.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -688,7 +682,7 @@ const Careers = () => {
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 bg-slate-50/50 rounded-3xl mb-20 border border-slate-100">
+      <section className="py-24 border-y border-slate-100 bg-slate-50/30 mb-12">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -696,8 +690,8 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-slate-800 mb-6 font-space-grotesk tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-blue-900 to-blue-600">Open Positions</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tighter font-space-grotesk">
+              Open <span className="text-slate-500">Positions</span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-xl">Join our growing team and help build tomorrow's technology</p>
           </motion.div>
@@ -710,37 +704,32 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`group relative rounded-[2.5rem] p-10 border border-slate-200 bg-white transition-all duration-700 cursor-pointer shadow-xl hover:shadow-2xl overflow-hidden ${index % 4 === 0 ? 'hover:border-blue-500/50' :
-                  index % 4 === 1 ? 'hover:border-purple-500/50' :
-                    index % 4 === 2 ? 'hover:border-emerald-500/50' :
-                      'hover:border-orange-500/50'
-                  }`}
+                className="group relative py-10 px-8 border-b border-slate-200/80 last:border-0 bg-transparent transition-all duration-300 cursor-pointer hover:bg-slate-50/30 rounded-3xl overflow-hidden"
                 onClick={() => openApplicationModal(position)}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-700 pointer-events-none"></div>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative z-10">
                   <div className="flex-1">
-                    <h3 className="text-2xl font-black text-slate-800 mb-4 group-hover:text-blue-600 transition-colors">{position.title}</h3>
+                    <h3 className="text-2xl font-black text-slate-800 mb-4 group-hover:text-slate-900 transition-colors">{position.title}</h3>
                     <div className="flex flex-wrap gap-5 text-slate-500 mb-6">
-                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span className="material-symbols-outlined text-sm text-blue-600">business</span>
+                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-white px-3 py-1.5 rounded-lg border border-slate-200/60">
+                        <span className="material-symbols-outlined text-sm text-slate-600">business</span>
                         {position.department}
                       </span>
-                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span className="material-symbols-outlined text-sm text-purple-600">location_on</span>
+                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-white px-3 py-1.5 rounded-lg border border-slate-200/60">
+                        <span className="material-symbols-outlined text-sm text-slate-500">location_on</span>
                         {position.location}
                       </span>
-                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span className="material-symbols-outlined text-sm text-emerald-600">schedule</span>
+                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-white px-3 py-1.5 rounded-lg border border-slate-200/60">
+                        <span className="material-symbols-outlined text-sm text-slate-600">schedule</span>
                         {position.type}
                       </span>
-                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span className="material-symbols-outlined text-sm text-orange-600">work</span>
+                      <span className="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest bg-white px-3 py-1.5 rounded-lg border border-slate-200/60">
+                        <span className="material-symbols-outlined text-sm text-slate-500">work</span>
                         {position.experience} exp.
                       </span>
                     </div>
-                    <div className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-black text-xl">{position.salary}</div>
+                    <div className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 font-black text-xl">{position.salary}</div>
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -749,7 +738,7 @@ const Careers = () => {
                         e.stopPropagation();
                         openApplicationModal(position);
                       }}
-                      className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black px-10 py-4 rounded-2xl hover:scale-105 transition-all whitespace-nowrap shadow-xl shadow-blue-500/20 uppercase tracking-widest text-[10px]"
+                      className="bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white font-black px-10 py-4 rounded-2xl hover:scale-105 transition-all whitespace-nowrap shadow-xl shadow-slate-900/10 uppercase tracking-widest text-[10px]"
                     >
                       Apply Now
                     </button>
@@ -770,8 +759,8 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-slate-800 mb-6 font-space-grotesk tracking-tighter uppercase">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-slate-800 to-blue-600">Employee Benefits</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tighter font-space-grotesk">
+              Employee <span className="text-slate-500">Benefits</span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-xl">We believe in taking care of our team members</p>
           </motion.div>
@@ -784,19 +773,15 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`bg-white rounded-2xl p-8 text-center border border-slate-200 transition-all duration-700 group shadow-lg hover:shadow-2xl relative overflow-hidden ${index % 4 === 0 ? 'hover:border-blue-500/50' :
-                  index % 4 === 1 ? 'hover:border-purple-500/50' :
-                    index % 4 === 2 ? 'hover:border-emerald-500/50' :
-                      'hover:border-orange-500/50'
-                  }`}
+                whileHover={{ y: -8 }}
+                className="p-6 relative overflow-hidden md:border-r border-slate-200/60 last:border-0 group transition-all duration-500 text-center"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                  <span className="material-symbols-outlined text-white text-3xl">{benefit.icon}</span>
+                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500 pointer-events-none`}></div>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-md`}>
+                  <span className="material-symbols-outlined text-white text-2xl">{benefit.icon}</span>
                 </div>
-                <h3 className="text-slate-800 font-bold text-xl mb-4 group-hover:text-blue-600 transition-colors duration-500">{benefit.title}</h3>
-                <p className="text-slate-600">{benefit.desc}</p>
+                <h3 className="text-slate-900 font-bold text-lg mb-3 group-hover:text-slate-800 transition-colors duration-500">{benefit.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{benefit.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -804,7 +789,7 @@ const Careers = () => {
       </section>
 
       {/* Hiring Process */}
-      <section className="py-20 bg-slate-50/50 rounded-3xl mt-20 border border-slate-100">
+      <section className="py-24 border-t border-slate-100 bg-slate-50/30 mt-12">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -812,7 +797,9 @@ const Careers = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-space-grotesk">Our Hiring Process</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tighter font-space-grotesk">
+              Our Hiring <span className="text-slate-500">Process</span>
+            </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-xl">Simple, transparent, and respectful</p>
           </motion.div>
 
@@ -830,9 +817,9 @@ const Careers = () => {
                   <div className="flex flex-col items-center">
                     <motion.div
                       whileHover={{ scale: 1.1 }}
-                      className={`w-24 h-24 rounded-full bg-gradient-to-br ${process.color} flex items-center justify-center mb-6 shadow-xl border-4 border-white`}
+                      className={`w-24 h-24 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center mb-6 shadow-xl border-4 border-white`}
                     >
-                      <span className="text-white font-black text-xl">{process.step}</span>
+                      <span className="text-slate-600 font-black text-xl">{process.step}</span>
                     </motion.div>
                     <h3 className="text-slate-800 font-bold text-lg mb-3">{process.title}</h3>
                     <p className="text-slate-600 text-sm font-medium">{process.desc}</p>
@@ -880,7 +867,7 @@ const Careers = () => {
                       value={applicationData.fullName}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                     />
                   </div>
                   <div>
@@ -891,7 +878,7 @@ const Careers = () => {
                       value={applicationData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                     />
                   </div>
                 </div>
@@ -904,7 +891,7 @@ const Careers = () => {
                       name="phone"
                       value={applicationData.phone}
                       onChange={handleInputChange}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                     />
                   </div>
                   <div>
@@ -914,7 +901,7 @@ const Careers = () => {
                       name="currentPosition"
                       value={applicationData.currentPosition}
                       onChange={handleInputChange}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                     />
                   </div>
                 </div>
@@ -928,7 +915,7 @@ const Careers = () => {
                       value={applicationData.linkedin}
                       onChange={handleInputChange}
                       placeholder="https://linkedin.com/in/your-profile"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                     />
                   </div>
                   <div>
@@ -939,7 +926,7 @@ const Careers = () => {
                       value={applicationData.github}
                       onChange={handleInputChange}
                       placeholder="https://github.com/your-profile"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                     />
                   </div>
                 </div>
@@ -952,7 +939,7 @@ const Careers = () => {
                     value={applicationData.portfolio}
                     onChange={handleInputChange}
                     placeholder="https://your-portfolio.com"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                   />
                 </div>
 
@@ -964,7 +951,7 @@ const Careers = () => {
                     onChange={handleInputChange}
                     accept=".pdf,.doc,.docx"
                     required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium"
                   />
                 </div>
 
@@ -976,7 +963,7 @@ const Careers = () => {
                     onChange={handleInputChange}
                     required
                     rows="6"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition-all font-medium resize-none"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-slate-800 transition-all font-medium resize-none"
                     placeholder="Tell us why you're interested in this position and what makes you a great fit..."
                   />
                 </div>
@@ -984,7 +971,7 @@ const Careers = () => {
                 <div className="flex gap-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl shadow-blue-500/20"
+                    className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-black py-4 rounded-xl transition-all shadow-xl shadow-slate-900/10"
                   >
                     Submit Application
                   </button>

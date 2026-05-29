@@ -679,11 +679,11 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
     return (
       <div className="min-h-screen premium-bg pt-24 pb-12 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-black text-slate-800 mb-4">Blog Post Not Found</h1>
+          <h1 className="text-4xl font-bold text-slate-900 mb-4">Blog Post Not Found</h1>
           <p className="text-slate-500 mb-8 font-medium">The blog post you're looking for doesn't exist.</p>
           <button
             onClick={() => navigate('/blog')}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold px-6 py-3 rounded-full"
+            className="bg-gradient-to-r from-blue-700 to-sky-500 text-white font-bold px-6 py-3 rounded-full"
           >
             Back to Blog
           </button>
@@ -698,7 +698,7 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
   return (
     <div className="min-h-screen premium-bg">
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-6">
+      <section className="pt-12 pb-8 px-6">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <motion.button
@@ -723,7 +723,7 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
               </span>
               <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{post.readTime}</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-slate-800 mb-8 tracking-tighter leading-tight font-space-grotesk">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tighter leading-tight">
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-slate-500 font-bold text-xs">
@@ -771,7 +771,7 @@ At Error Infotech, we analyze your specific requirements—budget, timeline, tar
                 // Check if it's a heading (starts with certain patterns)
                 if (paragraph.startsWith('Our ') || paragraph.startsWith('Key ') || paragraph.startsWith('Success ') || paragraph.startsWith('Industry') || paragraph.startsWith('Benefits') || paragraph.startsWith('What ') || paragraph.startsWith('The ') || paragraph.startsWith('Progressive') || paragraph.startsWith('Frontend') || paragraph.startsWith('Backend') || paragraph.startsWith('WebAssembly') || paragraph.startsWith('AI Integration') || paragraph.startsWith('Native') || paragraph.startsWith('Cross-Platform') || paragraph.startsWith('When to') || paragraph.startsWith('Choosing')) {
                   return (
-                    <h2 key={index} className="text-3xl font-black text-slate-800 mt-12 mb-6 tracking-tight">
+                    <h2 key={index} className="text-3xl font-bold text-slate-900 mt-12 mb-6 tracking-tight">
                       {paragraph}
                     </h2>
                   );

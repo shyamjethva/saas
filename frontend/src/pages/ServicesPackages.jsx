@@ -10,7 +10,7 @@ const ServicesPackages = () => {
       title: 'Digital Marketing Matrix',
       subtitle: 'Performance-Fused Expansion Protocols',
       icon: 'campaign',
-      color: 'blue',
+      color: 'slate',
       offerings: [
         {
           name: 'Performance Architecture',
@@ -41,7 +41,7 @@ const ServicesPackages = () => {
       title: 'Structural Development',
       subtitle: 'Custom Architectural Software Engineering',
       icon: 'code',
-      color: 'indigo',
+      color: 'slate',
       offerings: [
         {
           name: 'Institutional CRM Sync',
@@ -72,7 +72,7 @@ const ServicesPackages = () => {
       title: 'Neural Automation',
       subtitle: 'Intelligent Enterprise Transformation Nodes',
       icon: 'auto_mode',
-      color: 'purple',
+      color: 'slate',
       offerings: [
         {
           name: 'Autonomous Logic Flows',
@@ -92,9 +92,9 @@ const ServicesPackages = () => {
   const currentService = services[activeTab];
 
   return (
-    <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10 font-plus-jakarta">
+    <div className="min-h-screen premium-bg pt-16 selection:bg-blue-500/10 font-plus-jakarta">
       {/* Hero Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -102,14 +102,9 @@ const ServicesPackages = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm mx-auto">
-              <span className="material-symbols-outlined text-blue-600 text-sm font-black">verified</span>
-              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">PROFESSIONAL PROVISION MATRIX</span>
-            </div>
-
-            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible">
+             <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active">
               Service
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 py-4">
+              <span className="block text-slate-400 py-2">
                 Protocols
               </span>
             </h1>
@@ -143,7 +138,7 @@ const ServicesPackages = () => {
       </div>
 
       {/* Main Content */}
-      <div className="px-6 py-20 pb-40">
+      <div className="px-6 py-12 pb-32">
         <div className="max-w-7xl mx-auto">
           <motion.div
             key={activeTab}
@@ -158,8 +153,8 @@ const ServicesPackages = () => {
                 className="bg-white rounded-[3.5rem] p-12 border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col group"
               >
                 <div className="flex items-start gap-8 mb-10">
-                  <div className={`w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-colors shadow-inner`}>
-                    <span className="material-symbols-outlined text-blue-600 text-2xl font-black group-hover:text-white transition-colors">
+                   <div className={`w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-slate-900 transition-colors shadow-inner`}>
+                    <span className="material-symbols-outlined text-slate-900 text-2xl font-black group-hover:text-white transition-colors">
                       {offering.name.includes('Marketing') ? 'trending_up' :
                         offering.name.includes('CRM') ? 'hub' :
                           offering.name.includes('Web') ? 'devices' : 'auto_awesome'}
@@ -172,11 +167,11 @@ const ServicesPackages = () => {
                 </div>
 
                 <div className="mb-10">
-                  <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-6 border-l-2 border-blue-600 pl-4">Technological Components</h4>
+                   <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-6 border-l-2 border-slate-900 pl-4">Technological Components</h4>
                   <ul className="space-y-4">
                     {offering.includes.map((item, idx) => (
                       <li key={idx} className="flex items-center gap-4">
-                        <span className="material-symbols-outlined text-blue-600 text-lg font-black">verified</span>
+                         <span className="material-symbols-outlined text-slate-900 text-lg font-black">verified</span>
                         <span className="text-slate-600 text-sm font-bold italic">{item}</span>
                       </li>
                     ))}
@@ -184,8 +179,8 @@ const ServicesPackages = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-8 border-t border-slate-50">
-                  {offering.benefits.map((benefit, idx) => (
-                    <span key={idx} className="px-4 py-2 bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-widest rounded-full border border-blue-100 italic">
+                   {offering.benefits.map((benefit, idx) => (
+                    <span key={idx} className="px-4 py-2 bg-slate-50 text-slate-900 text-[9px] font-black uppercase tracking-widest rounded-full border border-slate-100 italic">
                       #{benefit}
                     </span>
                   ))}
@@ -205,7 +200,7 @@ const ServicesPackages = () => {
             viewport={{ once: true }}
             className="rounded-[4rem] p-16 md:p-24 bg-slate-900 text-center relative overflow-hidden group shadow-3xl"
           >
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[120px] -mr-48 -mt-48 opacity-20 group-hover:opacity-40 transition-opacity"></div>
+             <div className="absolute top-0 right-0 w-96 h-96 bg-slate-100 rounded-full blur-[120px] -mr-48 -mt-48 opacity-20 group-hover:opacity-40 transition-opacity"></div>
 
             <h2 className="text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter italic">Orchestrate Your Transformation</h2>
             <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-medium">

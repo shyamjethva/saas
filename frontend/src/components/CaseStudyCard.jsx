@@ -61,7 +61,7 @@ const CaseStudyCard = ({ caseStudy, onViewDetails }) => {
       {/* CTA Button */}
       <button
         onClick={() => onViewDetails(caseStudy)}
-        className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2 group"
+        className="w-full bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group"
       >
         <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
           visibility

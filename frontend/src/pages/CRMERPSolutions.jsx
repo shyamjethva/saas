@@ -8,9 +8,9 @@ const CRMERPSolutions = () => {
       name: 'Small Business',
       subtitle: 'Startups & Growing Teams',
       icon: 'storefront',
-      color: 'from-green-400 to-emerald-500',
-      bgColor: 'from-green-500/10 to-emerald-500/10',
-      borderColor: 'border-green-500/30',
+      color: 'from-slate-500 to-slate-600',
+      bgColor: 'from-slate-500/10 to-slate-600/10',
+      borderColor: 'border-slate-200',
       features: [
         { icon: 'contacts', title: 'Contact & Lead Management', desc: 'Track all customer interactions in one place' },
         { icon: 'receipt', title: 'Basic Invoicing & Billing', desc: 'Simple payment tracking and invoicing' },
@@ -25,9 +25,9 @@ const CRMERPSolutions = () => {
       name: 'Medium Business',
       subtitle: 'Established Companies',
       icon: 'business_center',
-      color: 'from-blue-400 to-cyan-500',
-      bgColor: 'from-blue-500/10 to-cyan-500/10',
-      borderColor: 'border-blue-500/30',
+      color: 'from-slate-600 to-slate-700',
+      bgColor: 'from-slate-600/10 to-slate-700/10',
+      borderColor: 'border-slate-200',
       features: [
         { icon: 'integration_instructions', title: 'Advanced CRM + ERP Integration', desc: 'Complete business suite with unified data' },
         { icon: 'inventory', title: 'Inventory & Supply Chain', desc: 'Track stock, orders, and suppliers' },
@@ -44,9 +44,9 @@ const CRMERPSolutions = () => {
       name: 'Large Enterprise',
       subtitle: 'Organizations with Complex Needs',
       icon: 'corporate_fare',
-      color: 'from-purple-400 to-pink-500',
-      bgColor: 'from-purple-500/10 to-pink-500/10',
-      borderColor: 'border-purple-500/30',
+      color: 'from-slate-700 to-slate-800',
+      bgColor: 'from-slate-700/10 to-slate-800/10',
+      borderColor: 'border-slate-200',
       features: [
         { icon: 'account_tree', title: 'Full ERP Suite', desc: 'Finance, HR, Operations, Sales unified platform' },
         { icon: 'code', title: 'Custom Module Development', desc: 'Tailored solutions for your unique workflow' },
@@ -66,25 +66,20 @@ const CRMERPSolutions = () => {
       <div className="relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-slate-200/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-slate-300/20 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative z-10 px-6 py-20">
+        <div className="relative z-10 px-6 py-8">
           <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 mb-6">
-                <span className="material-symbols-outlined text-blue-600">apps</span>
-                <span className="text-blue-600 text-sm font-bold tracking-wider uppercase">Complete Business Solutions</span>
-              </div>
-
-              <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tighter">
+              <h1 className="text-5xl md:text-7xl font-black text-black mb-6 tracking-tighter heading-underline active pt-10">
                 Powerful{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                <span className="text-slate-500 pb-2">
                   CRM & ERP
                 </span>{' '}
                 Software
@@ -100,7 +95,7 @@ const CRMERPSolutions = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl flex items-center gap-3"
+                    className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 text-white font-bold px-8 py-4 rounded-full transition-all shadow-2xl flex items-center gap-3 border border-slate-600/20"
                   >
                     <span className="material-symbols-outlined">chat</span>
                     Discuss Your Requirements
@@ -110,7 +105,7 @@ const CRMERPSolutions = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold px-8 py-4 rounded-full border border-slate-200 transition-all flex items-center gap-3 shadow-lg"
+                    className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-8 py-4 rounded-full border border-slate-200 transition-all flex items-center gap-3 shadow-lg"
                   >
                     <span className="material-symbols-outlined font-black">arrow_back</span>
                     Back to Services
@@ -141,12 +136,12 @@ const CRMERPSolutions = () => {
                 <div className="relative p-8 h-full flex flex-col">
                   {/* Header */}
                   <div className="flex items-center gap-4 mb-6">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${business.color} flex items-center justify-center shadow-xl`}>
-                      <span className="material-symbols-outlined text-white text-3xl">{business.icon}</span>
+                    <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center shadow-sm">
+                      <span className="material-symbols-outlined text-slate-900 text-3xl">{business.icon}</span>
                     </div>
                     <div>
                       <h2 className="text-2xl font-black text-slate-900 tracking-tight">{business.name}</h2>
-                      <p className={`text-xs font-black uppercase tracking-widest bg-gradient-to-r ${business.color} bg-clip-text text-transparent`}>
+                      <p className="text-xs font-black uppercase tracking-widest text-slate-500">
                         {business.subtitle}
                       </p>
                     </div>
@@ -162,7 +157,7 @@ const CRMERPSolutions = () => {
                         transition={{ delay: 0.3 + index * 0.1 + fIndex * 0.05 }}
                         className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 hover:bg-white transition-all duration-500 border border-slate-100 shadow-sm hover:shadow-md"
                       >
-                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${business.color} flex items-center justify-center flex-shrink-0`}>
+                        <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center flex-shrink-0">
                           <span className="material-symbols-outlined text-white text-sm">{feature.icon}</span>
                         </div>
                         <div>
@@ -179,7 +174,7 @@ const CRMERPSolutions = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`w-full py-3 rounded-xl bg-gradient-to-r ${business.color} text-white font-bold transition-all shadow-lg flex items-center justify-center gap-2`}
+                        className="w-full py-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-500 text-white font-bold transition-all shadow-lg flex items-center justify-center gap-2"
                       >
                         <span>Get Started</span>
                         <span className="material-symbols-outlined text-sm">arrow_forward</span>
@@ -194,7 +189,7 @@ const CRMERPSolutions = () => {
       </div>
 
       {/* Why Choose Us Section */}
-      <div className="px-6 py-16 bg-white/5">
+      <div className="px-6 py-8 bg-white/5">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -202,7 +197,7 @@ const CRMERPSolutions = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Why Choose Our Solutions?</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4 tracking-tight heading-underline active inline-block pt-10">Why Choose Our <span className="text-slate-500">Solutions?</span></h2>
             <p className="text-xl text-slate-600 font-medium">Trusted by businesses worldwide for reliability and innovation</p>
           </motion.div>
 
@@ -221,7 +216,7 @@ const CRMERPSolutions = () => {
                 transition={{ delay: 0.1 * index }}
                 className="text-center p-8 rounded-3xl bg-white border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-700"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center mx-auto mb-4">
                   <span className="material-symbols-outlined text-white text-2xl">{item.icon}</span>
                 </div>
                 <h3 className="text-slate-900 text-lg font-black mb-2 tracking-tight">{item.title}</h3>
@@ -239,15 +234,15 @@ const CRMERPSolutions = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.2 }}
-            className="text-center p-10 rounded-3xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-white/20 backdrop-blur-xl"
+            className="text-center p-10 rounded-3xl bg-slate-50 border border-slate-200"
           >
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight">Ready to Transform Your Business?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-black mb-4 tracking-tight heading-underline active inline-block pt-8">Ready to Transform Your <span className="text-slate-500">Business?</span></h2>
             <p className="text-xl text-slate-600 mb-8 font-medium">Let's discuss how our CRM & ERP solutions can help you grow</p>
             <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-slate-900 font-bold px-8 py-4 rounded-full hover:bg-slate-100 transition-all shadow-2xl flex items-center gap-3 mx-auto"
+                className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 text-white font-bold px-8 py-4 rounded-full hover:brightness-110 transition-all shadow-2xl flex items-center gap-3 mx-auto border border-slate-600/20"
               >
                 <span className="material-symbols-outlined">calendar_today</span>
                 Schedule a Free Consultation

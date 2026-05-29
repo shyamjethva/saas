@@ -80,21 +80,21 @@ const ERPPricing = () => {
   return (
     <div className="min-h-screen premium-bg pt-20 selection:bg-blue-500/10 font-plus-jakarta">
       {/* Hero Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm mx-auto">
-              <span className="material-symbols-outlined text-blue-600 text-sm font-black">finance</span>
-              <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">ERP CAPITAL ARCHITECTURE</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-emerald-50 border border-emerald-100 mb-8 shadow-sm mx-auto">
+              <span className="material-symbols-outlined text-blue-emerald text-sm font-black">finance</span>
+              <span className="text-blue-emerald font-black tracking-widest uppercase text-[10px]">ERP CAPITAL ARCHITECTURE</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible">
+            <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter leading-[1.3] py-8 overflow-visible heading-underline active">
               Growth
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 py-4">
+              <span className="block text-premium-gradient py-4 pb-2">
                 Provisioning
               </span>
             </h1>
@@ -107,7 +107,7 @@ const ERPPricing = () => {
       </div>
 
       {/* Pricing Modules */}
-      <div className="px-6 py-20 pb-40">
+      <div className="px-6 py-12 pb-40">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {pricingPlans.map((plan, index) => (
@@ -118,13 +118,13 @@ const ERPPricing = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
                 className={`bg-white rounded-[3.5rem] p-12 border transition-all duration-500 relative flex flex-col group ${plan.popular
-                  ? 'border-blue-600 shadow-2xl scale-105 z-10'
+                  ? 'border-blue-emerald shadow-2xl scale-105 z-10'
                   : 'border-slate-200 shadow-xl'
                   }`}
               >
                 {plan.popular && (
                   <div className="absolute top-0 right-0 p-8">
-                    <span className="px-5 py-2 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-blue-500/20">
+                    <span className="px-5 py-2 bg-blue-emerald text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-blue-500/20">
                       Standard Provision
                     </span>
                   </div>
@@ -134,7 +134,7 @@ const ERPPricing = () => {
                   <h3 className="text-sm font-black text-slate-400 font-black uppercase tracking-[0.2em] mb-4">{plan.tier}</h3>
                   <div className="flex items-baseline gap-2 mb-4 py-2 overflow-visible">
                     <span className="text-2xl font-black text-slate-900">₹</span>
-                    <span className={`text-6xl font-black tracking-tighter leading-tight ${plan.popular ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600' : 'text-slate-900'}`}>
+                    <span className={`text-6xl font-black tracking-tighter leading-tight ${plan.popular ? 'text-premium-gradient py-2 px-1' : 'text-slate-900'}`}>
                       {plan.price}
                     </span>
                     <span className="text-slate-400 text-xs font-black uppercase tracking-widest ml-1">{plan.period}</span>
@@ -143,11 +143,11 @@ const ERPPricing = () => {
                 </div>
 
                 <div className="flex-1 mb-12">
-                  <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-6 border-l-2 border-blue-600 pl-4">Included Logic</h4>
+                  <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-6 border-l-2 border-blue-emerald pl-4">Included Logic</h4>
                   <ul className="space-y-4 mb-10">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-4">
-                        <span className="material-symbols-outlined text-blue-600 text-lg font-black shrink-0">verified</span>
+                        <span className="material-symbols-outlined text-blue-emerald text-lg font-black shrink-0">verified</span>
                         <span className="text-slate-600 text-sm font-bold italic leading-tight">{feature}</span>
                       </li>
                     ))}
@@ -163,7 +163,7 @@ const ERPPricing = () => {
                             <span className="text-[10px] font-black uppercase tracking-wider">{feature}</span>
                           </li>
                         ))}
-                        <li className="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em] mt-4 italic">+ {plan.notIncluded.length - 5} More Advanced Protocols</li>
+                        <li className="text-[9px] font-black text-blue-emerald uppercase tracking-[0.2em] mt-4 italic">+ {plan.notIncluded.length - 5} More Advanced Protocols</li>
                       </ul>
                     </div>
                   )}
@@ -196,7 +196,7 @@ const ERPPricing = () => {
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[100px] -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8 relative z-10">
-              <div className="w-20 h-20 rounded-3xl bg-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/40">
+              <div className="w-20 h-20 rounded-3xl bg-blue-emerald flex items-center justify-center shadow-2xl shadow-blue-500/40">
                 <span className="material-symbols-outlined text-4xl text-white font-black">verified_user</span>
               </div>
               <div className="text-left">
@@ -210,9 +210,9 @@ const ERPPricing = () => {
       </div>
 
       {/* FAQ Matrix */}
-      <section className="px-6 py-24 bg-slate-50/50 border-y border-slate-100">
+      <section className="px-6 py-12 bg-slate-50/50 border-y border-slate-100">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-black text-slate-900 text-center mb-16 tracking-tighter uppercase italic">Institutional Inquiries</h2>
+          <h2 className="text-4xl font-black text-slate-900 text-center mb-16 tracking-tighter uppercase italic heading-underline active inline-block">Institutional Inquiries</h2>
           <div className="space-y-6">
             {[
               {
@@ -235,7 +235,7 @@ const ERPPricing = () => {
                 viewport={{ once: true }}
                 className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-xl hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.05)] transition-all group"
               >
-                <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight uppercase italic group-hover:text-blue-600 transition-colors">{faq.question}</h3>
+                <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight uppercase italic group-hover:text-blue-emerald transition-colors">{faq.question}</h3>
                 <p className="text-slate-500 font-medium leading-relaxed italic">"{faq.answer}"</p>
               </motion.div>
             ))}

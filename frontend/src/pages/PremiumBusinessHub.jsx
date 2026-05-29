@@ -203,9 +203,9 @@ const BusinessHub = () => {
             <span className="material-symbols-outlined text-blue-600 text-sm font-black">hub</span>
             <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">MANAGEMENT PANEL</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+          <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.1] heading-underline active">
             Business
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+            <span className="block text-premium-gradient pb-2">
               Hub Center
             </span>
           </h1>
@@ -248,7 +248,7 @@ const BusinessHub = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           <KPICard title="Total Clients" value={stats.totalClients} icon="groups" trend="+12%" color="from-blue-600 to-cyan-600" />
           <KPICard title="Active Projects" value={stats.activeProjects} icon="task" trend="+3" color="from-purple-600 to-pink-600" />
-          <KPICard title="Monthly Revenue" value={`₹${(stats.monthlyRevenue / 100000).toFixed(1)}L`} icon="payments" trend="+8.5%" color="from-emerald-600 to-teal-600" />
+          <KPICard title="Monthly Revenue" value={`₹${(stats.monthlyRevenue / 100000).toFixed(1)}L`} icon="payments" trend="+8.5%" color="from-blue-600 to-blue-400" />
           <KPICard title="Active Deals" value={stats.activeDeals} icon="receipt_long" subtitle={`Avg ₹${(stats.averageDealSize / 1000).toFixed(1)}K`} color="from-orange-600 to-red-600" />
         </div>
 
@@ -256,7 +256,7 @@ const BusinessHub = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Operational Timeline</h2>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tighter heading-underline active inline-block">Operational Timeline</h2>
               <div className="h-px flex-1 mx-10 bg-slate-100"></div>
             </div>
             <div className="space-y-6">
@@ -274,7 +274,7 @@ const BusinessHub = () => {
 
           <div className="lg:col-span-1">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight">Performance</h2>
+              <h2 className="text-2xl font-black text-slate-900 tracking-tight heading-underline active inline-block">Performance</h2>
               <div className="h-px flex-1 mx-8 bg-slate-100"></div>
             </div>
 

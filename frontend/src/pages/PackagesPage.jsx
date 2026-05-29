@@ -1,192 +1,269 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 /* ═══════════════════════════════════════
    SECTOR DATA (Informational Only)
 ═══════════════════════════════════════ */
 const sectors = [
   {
-    id: 'real-estate', name: 'Real Estate', icon: 'home_work', subLabel: 'Property & Agents',
-    color: 'from-blue-600 to-cyan-500',
-    description: 'Modernize your property business with automated lead capture, detailed property listings, and seamless follow-up management for faster closures.',
-    keywords: ['Lead Tracking', 'Property Portal', 'Agent ERP', 'Follow-up Automation'],
-    stats: [{ label: 'Lead Conversion', value: '+40%' }, { label: 'Inquiry Response', value: '< 5 mins' }, { label: 'Property Viewings', value: '+25%' }, { label: 'Agent Efficiency', value: '+30%' }]
+    id: 'service-business', name: 'Service Business', icon: 'business', subLabel: 'Professional Services',
+    color: 'from-slate-600 to-slate-400',
+    bgImage: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80',
+    description: 'Modernize your professional service business with automated scheduling, client management, and digital workflow tools.',
+    keywords: ['CRM', 'Scheduling', 'Invoicing', 'Client Portal'],
+    stats: [{ label: 'Efficiency', value: '+40%' }, { label: 'Client Satisfaction', value: '95%' }, { label: 'Admin Time', value: '-30%' }, { label: 'Revenue', value: '+20%' }]
   },
   {
-    id: 'education', name: 'Education', icon: 'school', subLabel: 'Schools & Courses',
-    color: 'from-purple-600 to-pink-600',
-    description: 'Streamline school and college operations with centralized admissions, automated fee tracking, and student performance monitoring in one place.',
-    keywords: ['Admissions', 'Fee Management', 'Student ERP', 'Parent Portal'],
-    stats: [{ label: 'Admission Growth', value: '+35%' }, { label: 'Fee Recovery', value: '98%' }, { label: 'Admin Time Saved', value: '50%' }, { label: 'Parent Satisfaction', value: '+45%' }]
-  },
-  {
-    id: 'e-commerce', name: 'E-Commerce', icon: 'shopping_cart', subLabel: 'Online Stores',
-    color: 'from-emerald-600 to-teal-600',
-    description: 'Scale your online store with advanced inventory management, customer behavioral analytics, and automated multi-channel marketing tools.',
-    keywords: ['Order Mgt', 'Loyalty', 'Funnel Tracking', 'Customer LTV'],
-    stats: [{ label: 'Order Volume', value: '+50%' }, { label: 'Cart Abandonment', value: '-30%' }, { label: 'Customer LTV', value: '+25%' }, { label: 'Fulfillment Speed', value: '+40%' }]
-  },
-  {
-    id: 'manufacturing', name: 'Manufacturing', icon: 'precision_manufacturing', subLabel: 'Production & Supply',
+    id: 'manufacturing', name: 'Manufacturing', icon: 'precision_manufacturing', subLabel: 'Factory & Production',
     color: 'from-orange-600 to-red-600',
-    description: 'Optimize production cycles with real-time supply chain visibility, resource allocation tracking, and predictive maintenance scheduling.',
-    keywords: ['Supply Chain', 'Production Tracking', 'ERP System', 'Inventory Control'],
-    stats: [{ label: 'Production Uptime', value: '99%' }, { label: 'Material Waste', value: '-20%' }, { label: 'Delivery Accuracy', value: '95%' }, { label: 'Operating Cost', value: '-15%' }]
+    bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
+    description: 'Optimize production cycles with real-time supply chain visibility and intelligent resource allocation.',
+    keywords: ['Production Tracking', 'Supply Chain', 'Inventory', 'Quality Control'],
+    stats: [{ label: 'Uptime', value: '99%' }, { label: 'Waste', value: '-25%' }, { label: 'Accuracy', value: '98%' }, { label: 'Output', value: '+30%' }]
   },
   {
-    id: 'healthcare', name: 'Healthcare', icon: 'medical_services', subLabel: 'Clinics & Care',
-    color: 'from-blue-500 to-indigo-500',
-    description: 'Enhance patient care through secure digital health records, intelligent appointment scheduling, and automated prescription management.',
-    keywords: ['Patient Portal', 'EHR System', 'Appointments', 'Tele-Consult'],
-    stats: [{ label: 'Patient Turnaround', value: '+30%' }, { label: 'No-show Rate', value: '-40%' }, { label: 'Staff Productivity', value: '+25%' }, { label: 'Billing Accuracy', value: '100%' }]
-  },
-  {
-    id: 'retail', name: 'Retail', icon: 'store', subLabel: 'Shops & Sales',
+    id: 'retail-shopping', name: 'Retail & Shopping', icon: 'shopping_bag', subLabel: 'Consumer Goods',
     color: 'from-pink-500 to-rose-500',
-    description: 'Transform your retail experience with integrated POS, real-time stock alerts, and personalized customer loyalty programs that drive repeat visits.',
-    keywords: ['POS Integration', 'Loyalty Program', 'Stock Alerts', 'Customer CX'],
-    stats: [{ label: 'Footfall Conv.', value: '+20%' }, { label: 'Inventory Turnover', value: '1.5x' }, { label: 'Customer Retention', value: '+40%' }, { label: 'Avg. Order Value', value: '+15%' }]
+    bgImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
+    description: 'Transform your retail store with integrated POS, stock alerts, and personalized customer loyalty programs.',
+    keywords: ['POS', 'Stock Management', 'Loyalty', 'E-commerce'],
+    stats: [{ label: 'Sales', value: '+25%' }, { label: 'Retention', value: '+40%' }, { label: 'Inventory Turn', value: '2x' }, { label: 'AOV', value: '+15%' }]
   },
   {
-    id: 'finance', name: 'Finance', icon: 'account_balance', subLabel: 'Assets & Wealth',
-    color: 'from-indigo-600 to-blue-700',
-    description: 'Secure and streamline financial operations with automated transaction monitoring, risk assessment tools, and client wealth management dashboards.',
-    keywords: ['Portfolio Mgt', 'Audit Trails', 'Risk Engine', 'Client Vault'],
-    stats: [{ label: 'Process Automation', value: '85%' }, { label: 'Data Security', value: 'High' }, { label: 'Client Reporting', value: 'Instant' }, { label: 'Risk Mitigation', value: '+50%' }]
-  },
-  {
-    id: 'hospitality', name: 'Hospitality', icon: 'hotel', subLabel: 'Hotels & Dining',
+    id: 'food-beverages', name: 'Food & Beverages', icon: 'restaurant', subLabel: 'Cafes & Dining',
     color: 'from-amber-500 to-orange-600',
-    description: 'Deliver world-class guest experiences with automated booking engines, personalized room preferences, and integrated feedback management.',
-    keywords: ['PMS System', 'Booking Engine', 'Feedback Loop', 'Guest ERP'],
-    stats: [{ label: 'Booking Conversion', value: '+30%' }, { label: 'Guest Re-visits', value: '+25%' }, { label: 'Service Rating', value: '4.8/5' }, { label: 'Rev. Per Room', value: '+20%' }]
+    bgImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',
+    description: 'Streamline restaurant operations with digital menus, online ordering, and table management systems.',
+    keywords: ['Online Ordering', 'Reservation', 'Kitchen Ops', 'Feedback'],
+    stats: [{ label: 'Order Speed', value: '+35%' }, { label: 'Table Turn', value: '+20%' }, { label: 'Rating', value: '4.7/5' }, { label: 'Waste', value: '-15%' }]
   },
   {
-    id: 'it-tech', name: 'IT & Tech', icon: 'terminal', subLabel: 'SaaS & Development',
-    color: 'from-cyan-600 to-blue-600',
-    description: 'Manage complex technology projects with agile sprint tracking, resource load balancing, and integrated service desk for client support.',
-    keywords: ['Project Tracking', 'Sprints', 'SLA Mgt', 'DevOps Ops'],
-    stats: [{ label: 'Project Delivery', value: '+40%' }, { label: 'Bug Resolution', value: '-50%' }, { label: 'Client Retention', value: '95%' }, { label: 'Team Velocity', value: '+30%' }]
+    id: 'health-wellness', name: 'Health & Wellness', icon: 'medical_services', subLabel: 'Clinics & Gyms',
+    color: 'from-slate-500 to-slate-700',
+    bgImage: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80',
+    description: 'Enhance patient care and fitness management with secure records and intelligent scheduling.',
+    keywords: ['EHR', 'Booking', 'Patient Care', 'Membership'],
+    stats: [{ label: 'Patient Flow', value: '+30%' }, { label: 'No-shows', value: '-45%' }, { label: 'Efficiency', value: '+25%' }, { label: 'Compliance', value: '100%' }]
   },
   {
-    id: 'logistics', name: 'Logistics', icon: 'hub', subLabel: 'Ships & Fleet',
+    id: 'education', name: 'Education', icon: 'school', subLabel: 'Learning & Growth',
+    color: 'from-purple-600 to-pink-600',
+    bgImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
+    description: 'Manage admissions, student progress, and parent communication in a unified digital campus.',
+    keywords: ['LMS', 'Admissions', 'Student ERP', 'Parent App'],
+    stats: [{ label: 'Admissions', value: '+40%' }, { label: 'Fees Recovery', value: '97%' }, { label: 'Admin Ease', value: 'High' }, { label: 'Engagement', value: '+50%' }]
+  },
+  {
+    id: 'automobile', name: 'Automobile', icon: 'directions_car', subLabel: 'Showrooms & Repair',
     color: 'from-slate-600 to-slate-900',
-    description: 'Master your supply chain with real-time fleet tracking, automated route optimization, and transparent delivery performance metrics.',
-    keywords: ['Fleet Tracking', 'Route Optimizer', 'SLA Tracking', 'Driver Portal'],
-    stats: [{ label: 'Route Efficiency', value: '+25%' }, { label: 'Fuel Savings', value: '15%' }, { label: 'On-time Delivery', value: '98%' }, { label: 'Fleet Utilization', value: '+35%' }]
+    bgImage: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+    description: 'Revolutionize auto sales and service with digital inventory, service booking, and customer history.',
+    keywords: ['Inventory', 'Service Booking', 'Leads', 'Warranties'],
+    stats: [{ label: 'Lead Conv.', value: '+30%' }, { label: 'Service Uptime', value: '95%' }, { label: 'AOV', value: '+20%' }, { label: 'Loyalty', value: '+35%' }]
+  },
+  {
+    id: 'home-lifestyle', name: 'Home & Lifestyle', icon: 'cottage', subLabel: 'Interior & Decor',
+    color: 'from-teal-600 to-emerald-600',
+    bgImage: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&q=80',
+    description: 'Grow your lifestyle brand with visual portfolio management and direct-to-consumer sales tools.',
+    keywords: ['Portfolio', 'E-commerce', 'Design CRM', 'Social Selling'],
+    stats: [{ label: 'Leads', value: '+50%' }, { label: 'Engagement', value: '+40%' }, { label: 'Project Dev', value: 'Fast' }, { label: 'Retention', value: '+25%' }]
+  },
+  {
+    id: 'entertainment', name: 'Entertainment', icon: 'theater_comedy', subLabel: 'Events & Media',
+    color: 'from-red-600 to-pink-600',
+    bgImage: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80',
+    description: 'Master event management and media distribution with intelligent ticketing and audience analytics.',
+    keywords: ['Ticketing', 'Booking', 'Analytics', 'Media Hub'],
+    stats: [{ label: 'Attendance', value: '+45%' }, { label: 'Ticket Sales', value: '+30%' }, { label: 'Reach', value: '2x' }, { label: 'Engagement', value: '+60%' }]
+  },
+  {
+    id: 'travel', name: 'Travel', icon: 'flight_takeoff', subLabel: 'Tours & Packages',
+    color: 'from-slate-400 to-slate-600',
+    bgImage: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80',
+    description: 'Simplify travel planning with automated itineraries, booking engines, and travel agent portals.',
+    keywords: ['Itineraries', 'Bookings', 'Agent Portal', 'Reviews'],
+    stats: [{ label: 'Bookings', value: '+35%' }, { label: 'Service Time', value: '-50%' }, { label: 'Rating', value: '4.8/5' }, { label: 'Growth', value: '+30%' }]
+  },
+  {
+    id: 'repair-services', name: 'Repair & Services', icon: 'handyman', subLabel: 'Maintenance & Fixing',
+    color: 'from-slate-600 to-slate-500',
+    bgImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80',
+    description: 'Organize field services with real-time technician tracking, job scheduling, and mobile payments.',
+    keywords: ['Field Service', 'Tracking', 'Maintenance', 'Billing'],
+    stats: [{ label: 'Job Completion', value: '+40%' }, { label: 'Response Time', value: '-60%' }, { label: 'Collection', value: '99%' }, { label: 'Efficiency', value: '+30%' }]
+  },
+  {
+    id: 'additional-retail-events', name: 'Additional Retail & Events', icon: 'event', subLabel: 'Special Occasions',
+    color: 'from-indigo-600 to-purple-600',
+    bgImage: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',
+    description: 'Customized solutions for specialized retail niches and large-scale event coordination.',
+    keywords: ['Specialized CRM', 'Mass Events', 'Logistics', 'Suppliers'],
+    stats: [{ label: 'Coordination', value: 'Seamless' }, { label: 'User Satisfaction', value: '98%' }, { label: 'Scale', value: 'Unlimited' }, { label: 'Impact', value: '+40%' }]
   }
 ];
 
 /* ═══════════════════════════════════════
-   MAIN CATEGORIES (B2B, B2C, D2C, Core)
+   SMART GROWTH MODEL DATA
 ═══════════════════════════════════════ */
-const mainCategories = [
-  { id: 'b2b', name: 'B2B', icon: 'business', subLabel: 'Business to Business', color: '#3b82f6' },
-  { id: 'b2c', name: 'B2C', icon: 'shopping_bag', subLabel: 'Business to Consumer', color: '#10b981' },
-  { id: 'd2c', name: 'D2C', icon: 'storefront', subLabel: 'Direct to Consumer', color: '#f59e0b' },
-  { id: 'core', name: 'Core Services', icon: 'grid_view', subLabel: 'Essential Add-ons', color: '#8b5cf6' }
+const smallBusinessPlans = [
+  {
+    id: 'sb-starter',
+    title: 'STARTER PLAN',
+    tagline: 'Starting stage business',
+    price: 9999,
+    gradient: 'from-slate-400 to-slate-500',
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Online presence + brand visibility'
+  },
+  {
+    id: 'sb-growth',
+    title: 'GROWTH PLAN',
+    tagline: 'Growing local business',
+    price: 19999,
+    gradient: 'from-slate-600 to-slate-700',
+    hasYearlyDiscount: true,
+    yearlyDiscountPercent: 30,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Consistent leads + structured system'
+  },
+  {
+    id: 'sb-pro',
+    title: 'PRO PLAN',
+    tagline: 'Advanced growth-focused',
+    price: 24999,
+    gradient: 'from-slate-900 to-slate-800',
+    isPopular: true,
+    hasYearlyDiscount: true,
+    yearlyDiscountPercent: 50,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Strong growth + semi automation'
+  }
 ];
 
-/* ═══════════════════════════════════════
-   ADD-ONS
-═══════════════════════════════════════ */
-const erpAddons = [
-  { name: 'Extra User', price: '₹1,000 / Year', icon: 'person_add' },
-  { name: 'Mobile App', price: '₹20,000 / Year', icon: 'smartphone' },
-  { name: 'WhatsApp API', price: '₹5,000 / Year', icon: 'chat' },
-  { name: 'Custom Branding', price: '₹5,000', icon: 'brush' },
-  { name: 'Account Manager', price: '₹15,000 / Year', icon: 'badge' },
-  { name: 'Custom Module', price: '₹15,000+', icon: 'extension' },
+const bigBusinessPlans = [
+  {
+    id: 'bb-standard',
+    title: 'STANDARD PLAN',
+    tagline: 'Established businesses',
+    price: 29999,
+    gradient: 'from-slate-400 to-slate-500',
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Scalable lead system'
+  },
+  {
+    id: 'bb-business',
+    title: 'BUSINESS PLAN',
+    tagline: 'High growth businesses',
+    price: 39999,
+    gradient: 'from-slate-600 to-slate-700',
+    hasYearlyDiscount: true,
+    yearlyDiscountPercent: 30,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'High volume leads + automation'
+  },
+  {
+    id: 'bb-enterprise',
+    title: 'ENTERPRISE PLAN',
+    tagline: 'Aggressive scaling',
+    price: 49999,
+    gradient: 'from-slate-900 to-slate-800',
+    isPopular: true,
+    hasYearlyDiscount: true,
+    yearlyDiscountPercent: 50,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Fully automated growth machine'
+  }
 ];
 
-const commonFeatures = [
-  'ERP Dashboard', 'Lead Management', 'Hosting', 'Data Security',
-  'Analytics', 'Support', 'Fast Setup', 'Free Updates'
-];
-
-/* ═══════════════════════════════════════
-   CORE SERVICES DATA (Sub-categories)
-═══════════════════════════════════════ */
-const coreServicesData = [
+const errorEnfotecPlans = [
   {
-    id: 'graphic', name: 'Graphic Designing', icon: 'palette',
-    plans: [
-      { id: 'basic', title: 'GRAPHIC DESIGN - BASIC', tagline: 'Small Businesses & Simple Design', price: '₹300 - ₹1500', unit: '/project', features: ['Social Media Post', 'Logo Design (Simple)', 'Basic Banner', '1 Color Palatte', 'Single Revision'] },
-      { id: 'standard', title: 'GRAPHIC DESIGN - STANDARD', tagline: 'Business Branding & Marketing', price: '₹800 - ₹4000', unit: '/project', features: ['Advanced Logo', 'Brochures & Flyers', 'Social Media Branding', 'Custom Illustrations', '3 Revisions'] },
-      { id: 'premium', title: 'GRAPHIC DESIGN - PREMIUM', tagline: 'Full Branding & Professional Projects', price: '₹1200 - ₹10,000+', unit: '/project', features: ['Premium Branding', 'Package Design', 'Complete Brand Identity', 'UI/UX Elements', 'Unlimited Revisions'] }
-    ]
+    id: 'ee-core1',
+    title: 'CORE 1 SOLUTIONS',
+    tagline: 'Premium Infrastructure',
+    price: 100000,
+    gradient: 'from-slate-400 to-slate-500',
+    hasYearlyDiscount: true,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Scalable Enterprise Backbone'
   },
   {
-    id: 'video-editing', name: 'Video Editing', icon: 'movie_edit',
-    plans: [
-      { id: 'basic', title: 'VIDEO EDIT - BASIC', tagline: 'Social Media Reels & Shorts', price: '₹1000 - ₹3000', unit: '/project', features: ['Reels / Shorts', 'Basic Cuts', 'Background Music', 'Text Overlays', 'Full HD'] },
-      { id: 'standard', title: 'VIDEO EDIT - STANDARD', tagline: 'YouTube & Commercial Videos', price: '₹5000 - ₹12000', unit: '/project', features: ['Commercial Ads', 'Advanced Transitions', 'Color Grading', 'Subtitles', '2K/4K Export'] },
-      { id: 'premium', title: 'VIDEO EDIT - PREMIUM', tagline: 'Professional Cinematic / VFX', price: '₹15000 - ₹50,000+', unit: '/project', features: ['Cinematic Edits', 'VFX / Animation', 'Custom Sound Design', 'Multi-cam Editing', 'Premium Assets'] }
-    ]
+    id: 'ee-core2',
+    title: 'CORE 2 SOLUTIONS',
+    tagline: 'Maximum Market Dominance',
+    price: 150000,
+    gradient: 'from-slate-600 to-slate-700',
+    hasYearlyDiscount: true,
+    yearlyDiscountPercent: 30,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Market Leader Positioning'
   },
   {
-    id: 'content-writing', name: 'Content Writing', icon: 'description',
-    plans: [
-      { id: 'basic', title: 'CONTENT - BASIC', tagline: 'Simple Ad Copy / Captions', price: '₹500 - ₹2000', unit: '/project', features: ['5 Ad Copies', 'SEO Basic', 'Social Media Caption', 'Plagiarism Check', 'Engaging Tone'] },
-      { id: 'standard', title: 'CONTENT - STANDARD', tagline: 'Website Content / Articles', price: '₹3000 - ₹8000', unit: '/project', features: ['Website Pages', 'Detailed Articles', 'Keyword Research', 'Brand Guidelines', 'Unlimited Edits'] },
-      { id: 'premium', title: 'CONTENT - PREMIUM', tagline: 'Whitepapers / Case Studies', price: '₹10000 - ₹30,000+', unit: '/project', features: ['Whitepapers', 'Case Studies', 'E-books', 'High-level Research', 'Expert Review'] }
-    ]
-  },
-  {
-    id: 'blog-writing', name: 'Blog Writing', icon: 'article',
-    plans: [
-      { id: 'basic', title: 'BLOG - BASIC', tagline: 'Standard SEO Blogs', price: '₹800 - ₹2000', unit: '/blog', features: ['800-1000 Words', 'SEO Optimization', '1 Image Included', 'Keyword Integration', 'Ready for Post'] },
-      { id: 'standard', title: 'BLOG - STANDARD', tagline: 'High Performance Blogs', price: '₹3000 - ₹6000', unit: '/blog', features: ['1500-2000 Words', 'Advanced Research', 'Custom Graphics', 'External Linking', 'SEO Score Max'] },
-      { id: 'premium', title: 'BLOG - PREMIUM', tagline: 'Expert & Niche Blogs', price: '₹8000 - ₹15,000+', unit: '/blog', features: ['Niche Specific', 'Full Authority Blog', 'Case Study Driven', 'Interactive Content', 'Ghost Writing'] }
-    ]
-  },
-  {
-    id: 'product-photography', name: 'Product Photography', icon: 'photo_camera',
-    plans: [
-      { id: 'basic', title: 'PHOTO - BASIC', tagline: 'E-commerce White BG', price: '₹1500 - ₹5000', unit: '/session', features: ['10 Images', 'White Background', 'Basic Retouch', 'Web Ready', 'Fast Delivery'] },
-      { id: 'standard', title: 'PHOTO - STANDARD', tagline: 'Creative Lifestyle Shots', price: '₹8000 - ₹20000', unit: '/session', features: ['25 Images', 'Product Lifestyle', 'Outdoor Lighting', 'Advanced Retouch', 'High Res Files'] },
-      { id: 'premium', title: 'PHOTO - PREMIUM', tagline: 'Full Ad Campaigns', price: '₹25000 - ₹80,000+', unit: '/session', features: ['Premium Shoot', 'Model Integration', 'Studio Setup', 'Full Campaign Rights', 'Premium Retouching'] }
-    ]
-  },
-  {
-    id: 'video-shooting', name: 'Video Shooting', icon: 'videocam',
-    plans: [
-      { id: 'basic', title: 'SHOOT - BASIC', tagline: 'Basic Social Media Shoot', price: '₹5000 - ₹15000', unit: '/shoot', features: ['Half Day Shoot', '1 Cameraman', 'Full HD Output', 'Basic Lighting', 'Phone/DSLR Ops'] },
-      { id: 'standard', title: 'SHOOT - STANDARD', tagline: 'Corporate / Ads Shoot', price: '₹20000 - ₹50000', unit: '/shoot', features: ['Full Day Shoot', '2 Cameramen', '4K Output', 'Pro Lighting/Audio', 'Director Support'] },
-      { id: 'premium', title: 'SHOOT - PREMIUM', tagline: 'High-end Production', price: '₹75000 - ₹2,00,000+', unit: '/shoot', features: ['Pro Production', 'Cinematic Crew', 'Highest Quality (RED)', 'Studio/Remote Ops', 'Full Crew Mgt'] }
-    ]
-  },
-  {
-    id: 'collaboration', name: 'Collaboration Marketing', icon: 'groups',
-    plans: [
-      { id: 'basic', title: 'COLLAB - BASIC', tagline: 'Micro Influencer Outreach', price: '₹3000 - ₹10000', unit: '/month', features: ['5 Influencers', 'Basic Campaign', 'Lead Tracking', 'Reach Analysis', '1 Post/Inbound'] },
-      { id: 'standard', title: 'COLLAB - STANDARD', tagline: 'Mid-Tier Campaigns', price: '₹15000 - ₹50000', unit: '/month', features: ['15 influencers', 'Cross-Platform', 'Engagement Ops', 'Brand Mention Tracking', 'Monthly Strategy'] },
-      { id: 'premium', title: 'COLLAB - PREMIUM', tagline: 'Celebrity & Macro Collab', price: '₹1,00,000+', unit: '/month', features: ['Macro Influencers', 'Celebrity Collab', 'Viral Strategies', 'PR Integration', 'ROI Guarantee'] }
-    ]
-  },
-  {
-    id: 'hosting', name: 'Hosting Services', icon: 'dns',
-    plans: [
-      { id: 'basic', title: 'HOSTING - BASIC', tagline: 'Shared / Shared Pro', price: '₹300 - ₹1200', unit: '/month', features: ['Single Domain', 'SSL Certificate', 'Cpanel Access', 'Standard Speed', 'Weekly Backup'] },
-      { id: 'standard', title: 'HOSTING - STANDARD', tagline: 'VPS / High Performance', price: '₹2000 - ₹8000', unit: '/month', features: ['Unlimited Domain', 'Dedicated IP', 'Turbo Speed', 'Daily Backup', 'DDoS Protection'] },
-      { id: 'premium', title: 'HOSTING - PREMIUM', tagline: 'Dedicated / Managed', price: '₹15000 - ₹50,000+', unit: '/month', features: ['Dedicated Server', 'Full Managed', 'Highest Security', 'Custom Config', 'Global CDN'] }
-    ]
-  },
-  {
-    id: 'seo', name: 'SEO', icon: 'search',
-    plans: [
-      { id: 'basic', title: 'SEO - BASIC', tagline: 'Local SEO / Quick Fixes', price: '₹5000 - ₹12000', unit: '/month', features: ['Google Maps Ops', 'Basic Keywords', 'On-page SEO', 'Search Console Mgt', 'Monthly Report'] },
-      { id: 'standard', title: 'SEO - STANDARD', tagline: 'Full SEO Optimization', price: '₹15000 - ₹35000', unit: '/month', features: ['National Rankings', 'Backlink Strategy', 'Content Optim.', 'Speed Optimization', 'Competitor Analysis'] },
-      { id: 'premium', title: 'SEO - PREMIUM', tagline: 'Global Power Ranking', price: '₹50000+', unit: '/month', features: ['Global Authority', 'Niche Dominance', 'Technical SEO Extra', 'PR Linking', 'ROI Driven Ops'] }
-    ]
-  },
-  {
-    id: 'extra-support', name: 'Any Extra Support Services', icon: 'support_agent',
-    plans: [
-      { id: 'basic', title: 'SUPPORT - BASIC', tagline: 'General Maintenance', price: '₹2000 - ₹5000', unit: '/month', features: ['Basic Updates', 'Email Support', 'Bug Fixes', 'Performance Check', 'Weekly Report'] },
-      { id: 'standard', title: 'SUPPORT - STANDARD', tagline: 'Dedicated Assistance', price: '₹10000 - ₹25000', unit: '/month', features: ['Dedicated Manager', 'Priority Fixes', 'Feature Additions', 'Strategic Advice', 'Full Availability'] },
-      { id: 'premium', title: 'SUPPORT - PREMIUM', tagline: 'Full Tech Partnership', price: '₹40000+', unit: '/month', features: ['Partner Grade Support', 'Unlimited Access', 'Tech Consultation', 'Roadmap Planning', 'White-glove Ops'] }
-    ]
+    id: 'ee-core3',
+    title: 'CORE 3 SOLUTIONS',
+    tagline: 'The Ultimate Growth Engine',
+    price: 200000,
+    gradient: 'from-slate-900 to-slate-800',
+    isPopular: true,
+    hasYearlyDiscount: true,
+    yearlyDiscountPercent: 50,
+    features: [
+      { category: 'DEVELOPMENT', items: ['Website', 'CRM / ERP'] },
+      { category: 'DIGITAL MARKETING', items: ['Social Media Post', 'Influencer Reel', 'Promotion Reel', 'Content + Blog Writing', 'SEO'] },
+      { category: 'PERFORMANCE MARKETING', items: ['Google Ads', 'Discount Coupon Selling', 'Collaboration Outreach'] },
+      { category: 'PHYSICAL MARKETING', items: ['Lead Generation Agent', 'Calling Agent', 'Chat Agent'] },
+      { category: 'END TO END SALES', items: ['Banners / Standee / Brochure', 'Catalog', 'NFC / Visiting Card'] }
+    ],
+    result: 'Unstoppable Market Authority'
   }
 ];
 
@@ -195,13 +272,9 @@ const coreServicesData = [
 ═══════════════════════════════════════ */
 const PackagesPage = () => {
   const [selectedSector, setSelectedSector] = useState(null);
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [billingCycle, setBillingCycle] = useState('monthly');
-  const [activeCoreService, setActiveCoreService] = useState(coreServicesData[0]);
-
+  const [businessType, setBusinessType] = useState('small'); // 'small', 'big', or 'special'
+  const [billingCycle, setBillingCycle] = useState('monthly'); // 'monthly' or 'yearly'
   const sectorInfoRef = useRef(null);
-  const categorySectionRef = useRef(null);
-  const pricingRef = useRef(null);
 
   const handleSectorClick = (sector) => {
     setSelectedSector(selectedSector?.id === sector.id ? null : sector);
@@ -210,99 +283,105 @@ const PackagesPage = () => {
     }
   };
 
-  const handleCategoryClick = (cat) => {
-    setActiveCategory(activeCategory?.id === cat.id ? null : cat);
-    if (activeCategory?.id !== cat.id) {
-      setTimeout(() => pricingRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
-    }
-  };
+  const activePlans =
+    businessType === 'small' ? smallBusinessPlans :
+      businessType === 'big' ? bigBusinessPlans :
+        errorEnfotecPlans;
 
   return (
-    <div className="min-h-screen premium-bg pt-32 pb-16 px-4 text-slate-900 selection:bg-blue-500/30">
-      {/* Background Decor */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-500/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/5 blur-[120px] rounded-full" />
-        <div className="absolute top-[40%] right-[20%] w-[30%] h-[30%] bg-emerald-500/3 blur-[100px] rounded-full" />
-      </div>
+    <div className="homepage-monochrome min-h-screen premium-bg relative overflow-x-hidden pt-24 pb-12 px-4 text-slate-900 selection:bg-slate-900/30">
+      {/* Global Premium Background Shades - Metallic Sky Blue Theme */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-white"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 transition-colors duration-700 text-slate-900">
 
-        {/* ═══════════════════════════════════════
-           PAGE HEADER
-        ═══════════════════════════════════════ */}
-        <div className="text-center mb-12 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-bold mb-10 shadow-sm"
-
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            Packages & Pricing
-          </motion.div>
+        {/* PAGE HEADER */}
+        <div className="text-center mb-8 px-4">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-black mb-8 tracking-tighter text-slate-900 py-10 leading-[1.3] overflow-visible"
-
+            className="text-4xl md:text-7xl font-black mb-8 tracking-tighter py-4 leading-[1.1] overflow-visible heading-underline active text-slate-900"
           >
-            Industries We <span className="text-blue-600 pb-4 inline-block">Empower</span>
+            Industries We <span className="text-slate-500 pb-2 inline-block">Empower</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-lg max-w-2xl mx-auto font-medium"
-
           >
             Tailored digital ecosystems designed for your specific industry needs. Explore sectors & choose your package below.
           </motion.p>
         </div>
 
-        {/* ═══════════════════════════════════════
-           SECTION 1: INDUSTRY SECTORS (Informational)
-        ═══════════════════════════════════════ */}
-        <section className="mb-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+        {/* SECTION 1: INDUSTRY SECTORS */}
+        <section className="mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
             {sectors.map((sector, idx) => (
               <motion.button
                 key={sector.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.04 }}
-                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                whileHover={{ y: -10 }}
                 onClick={() => handleSectorClick(sector)}
-                className={`p-5 md:p-6 rounded-2xl border transition-all duration-500 relative group flex flex-col items-center text-center overflow-hidden ${selectedSector?.id === sector.id
-                  ? 'bg-white shadow-xl ring-1 ring-blue-500/20'
-                  : 'bg-white border-slate-200 hover:shadow-xl'
-                  } ${sector.color.includes('blue-600') ? (selectedSector?.id === sector.id ? 'border-blue-500' : 'hover:border-blue-500/50') :
-                    sector.color.includes('purple-600') ? (selectedSector?.id === sector.id ? 'border-purple-500' : 'hover:border-purple-500/50') :
-                      sector.color.includes('emerald-600') ? (selectedSector?.id === sector.id ? 'border-emerald-500' : 'hover:border-emerald-500/50') :
-                        sector.color.includes('orange-600') ? (selectedSector?.id === sector.id ? 'border-orange-500' : 'hover:border-orange-500/50') :
-                          sector.color.includes('blue-500') ? (selectedSector?.id === sector.id ? 'border-blue-500' : 'hover:border-blue-500/50') :
-                            sector.color.includes('pink-500') ? (selectedSector?.id === sector.id ? 'border-pink-500' : 'hover:border-pink-500/50') :
-                              sector.color.includes('indigo-600') ? (selectedSector?.id === sector.id ? 'border-indigo-500' : 'hover:border-indigo-500/50') :
-                                sector.color.includes('amber-500') ? (selectedSector?.id === sector.id ? 'border-amber-500' : 'hover:border-amber-500/50') :
-                                  sector.color.includes('cyan-600') ? (selectedSector?.id === sector.id ? 'border-cyan-500' : 'hover:border-cyan-500/50') :
-                                    sector.color.includes('slate-600') ? (selectedSector?.id === sector.id ? 'border-slate-500' : 'hover:border-slate-500/50') :
-                                      (selectedSector?.id === sector.id ? 'border-blue-500' : 'hover:border-blue-500/50')
-                  }`}
+                className={`group relative h-48 md:h-52 rounded-[2rem] overflow-hidden transition-all duration-500 bg-white border border-slate-200 hover:border-slate-900 hover:shadow-2xl shadow-lg cursor-pointer ${selectedSector?.id === sector.id ? 'ring-2 ring-slate-900 border-transparent' : ''}`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${sector.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-500 relative z-10 ${selectedSector?.id === sector.id ? `bg-gradient-to-br ${sector.color} text-white shadow-lg shadow-blue-500/20` : `bg-slate-50 text-slate-400 group-hover:bg-gradient-to-br ${sector.color} group-hover:text-white`
-                  }`}>
-                  <span className="material-symbols-outlined text-2xl">{sector.icon}</span>
+                {/* Background Image with Blur Effect on Hover */}
+                <div
+                  className="absolute inset-0 z-0 opacity-50 transition-all duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+                  style={{
+                    backgroundImage: `url(${sector.bgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+
+                {/* Constant Visibility Overlay (Pre-hover) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+
+                {/* Default Bottom Title (Visible when not hovered) */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20 group-hover:opacity-0 transition-opacity duration-300">
+                  <h3 className="text-lg md:text-xl font-black text-white tracking-tight drop-shadow-lg">{sector.name}</h3>
                 </div>
-                <h3 className={`text-sm font-black mb-1 relative z-10 transition-colors ${selectedSector?.id === sector.id ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-900'}`}>{sector.name}</h3>
-                <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest relative z-10">{sector.subLabel}</p>
+
+                {/* UNIQUE HOVER EFFECT: Glassmorphic Panel Slide-up */}
+                <div className="absolute inset-0 z-30 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 translate-y-full group-hover:translate-y-0 bg-white/10 backdrop-blur-xl border-t border-white/20">
+                  {/* Background Gradient matching sector color */}
+                  <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${sector.color}`} />
+
+                  <div className="relative z-40 flex flex-col items-center text-center">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br ${sector.color} text-white shadow-xl shadow-slate-900/20`}
+                    >
+                      <span className="material-symbols-outlined text-3xl">{sector.icon}</span>
+                    </motion.div>
+
+                    <h3 className="text-xl font-black text-white mb-2 tracking-tight">{sector.name}</h3>
+                    <p className="text-xs font-bold text-white/80 uppercase tracking-[0.2em] mb-4 bg-white/10 px-3 py-1 rounded-full">{sector.subLabel}</p>
+
+                    <div className="flex gap-1">
+                      {[1, 2, 3].map(i => (
+                        <span key={i} className="w-1.5 h-1.5 rounded-full bg-slate-900 animate-pulse" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Selection Indicator */}
+                {selectedSector?.id === sector.id && (
+                  <div className="absolute top-4 right-4 z-40 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-lg border border-white/20">
+                    <span className="material-symbols-outlined text-sm font-bold">check</span>
+                  </div>
+                )}
               </motion.button>
             ))}
           </div>
         </section>
 
-        {/* SECTOR INFO PANEL (appears on click) */}
+        {/* SECTOR INFO PANEL */}
         <AnimatePresence>
           {selectedSector && (
             <motion.section
@@ -316,10 +395,9 @@ const PackagesPage = () => {
               <div className="max-w-5xl mx-auto">
                 <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-2xl">
                   <div className="grid md:grid-cols-2 gap-0">
-                    {/* Left: Info */}
                     <div className="p-8 md:p-10 border-b md:border-b-0 md:border-r border-slate-100">
                       <div className="flex items-center gap-3 mb-5">
-                        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+                        <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-900">
                           <span className="material-symbols-outlined text-xl">{selectedSector.icon}</span>
                         </div>
                         <h2 className="text-2xl font-black tracking-tight text-slate-900">{selectedSector.name} Solutions</h2>
@@ -329,23 +407,22 @@ const PackagesPage = () => {
                       </p>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {selectedSector.keywords.map(kw => (
-                          <span key={kw} className="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[10px] uppercase font-bold text-blue-600 tracking-wider">
+                          <span key={kw} className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[10px] uppercase font-bold text-slate-900 tracking-wider">
                             #{kw}
                           </span>
                         ))}
                       </div>
                       <button
                         onClick={() => setSelectedSector(null)}
-                        className="text-xs text-slate-500 hover:text-white transition-colors font-bold uppercase tracking-widest flex items-center gap-2"
+                        className="text-xs text-slate-500 hover:text-slate-900 transition-colors font-bold uppercase tracking-widest flex items-center gap-2"
                       >
                         <span className="material-symbols-outlined text-sm">close</span>
                         Close
                       </button>
                     </div>
 
-                    {/* Right: Stats */}
                     <div className="p-8 md:p-10 bg-slate-50/50">
-                      <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-6 border-l-2 border-blue-500 pl-3">
+                      <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-6 border-l-2 border-slate-900 pl-3">
                         Why This Works For You
                       </h3>
                       <div className="space-y-4">
@@ -355,10 +432,10 @@ const PackagesPage = () => {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.08 + 0.2 }}
-                            className="bg-white p-5 rounded-2xl border border-slate-100 flex items-center justify-between group hover:border-blue-300 transition-all shadow-sm"
+                            className="bg-white p-5 rounded-2xl border border-slate-100 flex items-center justify-between group hover:border-slate-900 transition-all shadow-sm"
                           >
                             <span className="text-slate-500 font-semibold text-xs uppercase tracking-wider">{stat.label}</span>
-                            <span className="text-2xl font-extrabold text-slate-900 group-hover:text-blue-600 transition-all">
+                            <span className="text-2xl font-extrabold text-slate-900 group-hover:text-slate-900 transition-all">
                               {stat.value}
                             </span>
                           </motion.div>
@@ -373,280 +450,159 @@ const PackagesPage = () => {
         </AnimatePresence>
 
         {/* ═══════════════════════════════════════
-           DIVIDER
+           SMART GROWTH MODEL - NEW UI
         ═══════════════════════════════════════ */}
-        <div className="flex items-center gap-6 mb-10 max-w-3xl mx-auto">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/10" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
-            Choose Your Package
-          </span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/10" />
-        </div>
+        <div className="pt-12 pb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            One System. One Solution. <span className="text-slate-500">Scaled for Your Business Size</span>
+          </h2>
+          <p className="text-lg font-bold text-slate-500 uppercase tracking-widest mb-10">
+            All Services Included – Only Limitations & Scale Change
+          </p>
 
-        {/* ═══════════════════════════════════════
-           SECTION 2: MAIN CATEGORIES (B2B / B2C / D2C / Core)
-        ═══════════════════════════════════════ */}
-        <section ref={categorySectionRef} className="mb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {mainCategories.map((cat, idx) => (
-              <motion.button
-                key={cat.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.08 + 0.1 }}
-                onClick={() => handleCategoryClick(cat)}
-                className={`relative p-6 md:p-8 rounded-3xl border transition-all duration-500 group flex flex-col items-center text-center overflow-hidden ${activeCategory?.id === cat.id
-                  ? 'border-opacity-60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 scale-[1.02]'
-                  : 'bg-white/[0.03] border-white/10  hover:bg-white/[0.06]'
-                  }`}
-                style={{
-                  borderColor: activeCategory?.id === cat.id ? cat.color : undefined,
-                  boxShadow: activeCategory?.id === cat.id ? `0 0 50px ${cat.color}20` : undefined,
-                  ringColor: activeCategory?.id === cat.id ? `${cat.color}40` : undefined,
-                }}
-              >
-                {/* Background glow */}
-                {activeCategory?.id === cat.id && (
-                  <div className="absolute inset-0 opacity-10 rounded-3xl" style={{ background: `radial-gradient(circle at center, ${cat.color}, transparent 70%)` }} />
-                )}
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 relative z-10 ${activeCategory?.id === cat.id
-                  ? 'text-white shadow-xl shadow-blue-500/20'
-                  : 'bg-slate-50 text-slate-400 group-hover:text-white'
-                  }`} style={{ backgroundColor: activeCategory?.id === cat.id ? cat.color : undefined }}>
-                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} style={{ backgroundColor: cat.color }}></div>
-                  <span className="material-symbols-outlined text-2xl relative z-10">{cat.icon}</span>
+          {/* Qualification Info Card */}
+          <div className="mb-16 bg-white/50 border border-slate-200 p-8 md:p-10 rounded-[2rem] max-w-4xl mx-auto shadow-sm backdrop-blur-sm text-left">
+            <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+              <div className="flex-1">
+                <h3 className="text-xl font-black text-slate-800 mb-2">How We Decide Your Plan</h3>
+                <p className="text-slate-500 text-sm font-medium mb-6">Simple qualification system based on your yearly turnover.</p>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <span className="w-3 h-3 rounded-full bg-slate-400"></span>
+                    <p className="text-sm font-bold text-slate-700 uppercase tracking-widest">Small Business: <span className="font-semibold text-slate-500 normal-case tracking-normal">Yearly Turnover below ₹15–17 Lakhs</span></p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-3 h-3 rounded-full bg-slate-600"></span>
+                    <p className="text-sm font-bold text-slate-700 uppercase tracking-widest">Big Business: <span className="font-semibold text-slate-500 normal-case tracking-normal">Yearly Turnover above ₹15–17 Lakhs</span></p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-3 h-3 rounded-full bg-slate-900"></span>
+                    <p className="text-sm font-bold text-slate-700 uppercase tracking-widest">Specialized: <span className="font-semibold text-slate-500 normal-case tracking-normal">Enterprise & Custom Solutions</span></p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-black mb-1 relative z-10">{cat.name}</h3>
-                <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest relative z-10">{cat.subLabel}</p>
-                {activeCategory?.id === cat.id && (
-                  <motion.div
-                    layoutId="categoryIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-1 rounded-t-full"
-                    style={{ backgroundColor: cat.color }}
-                  />
-                )}
-              </motion.button>
-            ))}
+              </div>
+              <div className="w-full md:w-auto p-5 bg-amber-50 border border-amber-200 rounded-2xl flex items-center md:items-start gap-4 mt-6 md:mt-0">
+                <span className="material-symbols-outlined text-amber-600 text-3xl">warning</span>
+                <p className="text-sm font-bold text-amber-800 leading-relaxed max-w-full md:max-w-[200px] text-left">Same services for both — only execution level changes.</p>
+              </div>
+            </div>
           </div>
-        </section>
 
-        {/* ═══════════════════════════════════════
-           SECTION 3: PRICING (appears on category click)
-        ═══════════════════════════════════════ */}
-        <AnimatePresence mode="wait">
-          {activeCategory && (
-            <motion.section
-              key={activeCategory.id}
-              ref={pricingRef}
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.4 }}
-              className="mt-8"
-            >
-              {/* Category Header */}
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-4xl font-black mb-3 pb-8 text-slate-800">
-                  {activeCategory.name} <span className="text-blue-600 pb-4">Packages</span>
-                </h2>
-                <p className="text-slate-400 text-sm max-w-lg mx-auto">
-                  Flexible pricing tailored for {activeCategory.subLabel.toLowerCase()} models. Scale as you grow.
+          {/* Business Type & Billing Cycle Toggles */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-16 px-4">
+            {/* Business Type Switch Toggle */}
+            <div className="bg-slate-100 p-1.5 rounded-2xl border border-slate-200 flex items-center relative shadow-inner w-full max-w-[400px] overflow-hidden">
+              {['small', 'big', 'special'].map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setBusinessType(type)}
+                  className={`flex-1 py-3 px-1 rounded-xl font-black text-[10px] md:text-[11px] lg:text-xs tracking-widest uppercase transition-all z-10 relative ${businessType === type ? 'text-white' : 'text-slate-500 hover:text-slate-800'
+                    }`}
+                >
+                  {type === 'small' ? 'Small Biz' : type === 'big' ? 'Big Biz' : 'Specialized'}
+                  {businessType === type && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-black rounded-xl -z-10 shadow-lg"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Monthly / Yearly Toggle */}
+            <div className="relative group">
+              {/* Special Offer Badge */}
+              <div className="absolute -top-3 -right-2 z-20 pointer-events-none">
+                <span className="bg-slate-900 text-white text-[8px] font-black px-2.5 py-1 rounded-full uppercase tracking-tighter shadow-xl animate-bounce whitespace-nowrap border border-white/20">Special Offer</span>
+              </div>
+              <div className="bg-slate-100 p-1.5 rounded-2xl border border-slate-200 flex gap-1 relative shadow-inner w-full max-w-[260px] overflow-hidden">
+                {['monthly', 'yearly'].map((cycle) => (
+                  <button
+                    key={cycle}
+                    onClick={() => setBillingCycle(cycle)}
+                    className={`flex-1 px-6 py-3 rounded-xl font-black text-[11px] tracking-widest uppercase transition-all z-10 relative ${billingCycle === cycle ? 'text-white' : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                  >
+                    {cycle}
+                    {billingCycle === cycle && (
+                      <motion.div
+                        layoutId="activeBilling"
+                        className="absolute inset-0 bg-black rounded-xl -z-10 shadow-lg"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <AnimatePresence>
+              {activePlans.map((p, i) => (
+                <motion.div
+                  key={`${p.id}-${billingCycle}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <PricingTier {...p} billingCycle={billingCycle} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Important Clarity */}
+          <div className="max-w-4xl mx-auto mt-12 mb-16 bg-white border border-slate-200 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 text-slate-900 shadow-xl relative overflow-hidden text-left">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-slate-300 rounded-full blur-[100px] opacity-20 -mr-20 -mt-20"></div>
+            <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center">
+              <div className="flex-1">
+                <h3 className="text-3xl font-black mb-4 tracking-tight text-slate-900">Important Clarity</h3>
+                <p className="text-slate-500 font-medium mb-8">All packages include our complete digital ecosystem out-of-the-box:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    'Website + Software + App + SaaS',
+                    'Digital + Performance Marketing',
+                    'BDE + Sales Support',
+                    'AI Agents + Automation',
+                    'Offline Marketing'
+                  ].map(item => (
+                    <div key={item} className="flex items-center gap-3">
+                      <span className="material-symbols-outlined text-slate-500">task_alt</span>
+                      <span className="text-sm font-bold text-slate-700">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="md:w-[40%] bg-slate-50 border border-slate-100 p-8 rounded-[2rem] text-center shadow-inner">
+                <span className="material-symbols-outlined text-5xl text-amber-500 mb-4 block">rocket_launch</span>
+                <p className="text-sm font-black tracking-widest text-slate-600 uppercase leading-relaxed">
+                  Only difference =<br /><span className="text-slate-900 text-[18px] md:text-xl mt-2 block tracking-tight">Limit, Speed &<br />Automation Level</span>
                 </p>
               </div>
+            </div>
+          </div>
 
-              {/* Billing Toggle */}
-              <div className="flex flex-col items-center mb-8 px-4">
-                <div className="bg-white/5 p-1.5 rounded-2xl border border-white/10 flex gap-2 backdrop-blur-xl relative">
-                  <button
-                    onClick={() => setBillingCycle('monthly')}
-                    className={`px-8 py-3 rounded-xl font-bold text-sm transition-all relative z-10 ${billingCycle === 'monthly' ? 'text-white' : 'text-slate-400 hover:text-white'}`}
+          {/* CTA Section - Horizontal Banner Strip (White Theme) */}
+          <div className="max-w-7xl mx-auto mb-20">
+            <div className="bg-white rounded-3xl md:rounded-full py-8 md:py-6 px-8 md:px-12 text-slate-900 shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 border border-slate-200">
+              <div className="absolute inset-0 bg-slate-50/50 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-40"></div>
 
-                  >
-                    Monthly
-                  </button>
-                  <button
-                    onClick={() => setBillingCycle('yearly')}
-                    className={`px-8 py-3 rounded-xl font-bold text-sm transition-all relative z-10 ${billingCycle === 'yearly' ? 'text-white' : 'text-slate-400 hover:text-white'}`}
-
-                  >
-                    Yearly (Save 20%)
-                  </button>
-                  <motion.div
-                    animate={{ x: billingCycle === 'monthly' ? 0 : '100%' }}
-                    transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
-                    className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(50%-6px)] bg-blue-600 rounded-xl shadow-lg z-0"
-                  />
-                </div>
-                {billingCycle === 'yearly' && activeCategory?.id !== 'core' && (
-                  <motion.p initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-                    className="mt-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400 flex items-center gap-2"
-
-                  >
-                    <span className="material-symbols-outlined text-sm">auto_awesome</span>
-                    Annual Billing: 20% Discount Applied
-                  </motion.p>
-                )}
+              <div className="relative z-10 text-left lg:flex-1">
+                <h2 className="text-xl md:text-2xl font-black leading-tight tracking-tight mb-1">Let’s Find the Right Plan for Your Business</h2>
+                <p className="text-slate-400 font-medium text-xs uppercase tracking-widest">Tailored solutions for your specific goals</p>
               </div>
 
-              {/* Core Services Sub-Category Selector (Horizontal Icons) */}
-              {activeCategory?.id === 'core' && (
-                <div className="max-w-7xl mx-auto mb-16 overflow-x-auto pb-4 scrollbar-hide px-4">
-                  <div className="flex gap-4 min-w-max justify-center">
-                    {coreServicesData.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => setActiveCoreService(service)}
-                        className={`px-8 py-4 rounded-3xl border transition-all duration-300 flex items-center gap-3 group whitespace-nowrap ${activeCoreService.id === service.id
-                          ? 'bg-blue-600 border-blue-500 shadow-xl shadow-blue-500/20 text-white'
-                          : 'bg-white/[0.03] border-white/10 text-slate-400  hover:bg-white/5'
-                          }`}
-                      >
-                        <span className={`material-symbols-outlined text-xl transition-transform duration-300 ${activeCoreService.id === service.id ? 'scale-110 rotate-12' : 'group-hover:scale-110'}`}>
-                          {service.icon}
-                        </span>
-                        <span className="text-sm font-bold tracking-tight">
-                          {service.name}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-
-              {/* Pricing Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                {activeCategory?.id === 'core' ? (
-                  activeCoreService.plans.map((p) => (
-                    <PricingTier
-                      key={p.id}
-                      title={p.title}
-                      color="#3b82f6"
-                      gradient="from-blue-600 to-cyan-500"
-                      tagline={p.tagline}
-                      isPopular={p.id === 'standard'}
-                      dayPrice={p.price}
-                      monthPrice="custom"
-                      unit={p.unit}
-                      features={p.features}
-                    />
-                  ))
-                ) : (
-                  <>
-                    <PricingTier
-                      title="BASIC PLAN"
-                      color="#10b981"
-                      gradient="from-emerald-600 to-teal-500"
-                      tagline="Less than a cup of coffee ☕ per day"
-                      dayPrice={billingCycle === 'monthly' ? (activeCategory?.id === 'b2b' ? 633 : activeCategory?.id === 'd2c' ? 233 : 366) : (activeCategory?.id === 'b2b' ? 506 : activeCategory?.id === 'd2c' ? 186 : 299)}
-                      monthPrice={billingCycle === 'monthly' ? (activeCategory?.id === 'b2b' ? 19000 : activeCategory?.id === 'd2c' ? 7000 : 11000) : (activeCategory?.id === 'b2b' ? 15200 : activeCategory?.id === 'd2c' ? 5600 : 8800)}
-                      features={activeCategory?.id === 'd2c' ? [
-                        'Digital Marketing Strategy', 'Performance Marketing', 'Social Media Setup',
-                        'Basic Physical Marketing', 'Direct Marketing', 'Monthly Analytics', 'Email Support'
-                      ] : [
-                        'ERP Access', 'Basic Website', 'Lead Management',
-                        'Basic Chatbot & Calling Agent', 'Social Media Marketing',
-                        'Performance Marketing', 'Email Support'
-                      ]}
-                    />
-                    <PricingTier
-                      title="STANDARD PLAN"
-                      color="#3b82f6"
-                      gradient="from-blue-600 to-violet-600"
-                      tagline="Grow your business daily with AI 🚀"
-                      isPopular
-                      dayPrice={billingCycle === 'monthly' ? (activeCategory?.id === 'b2b' ? 1633 : activeCategory?.id === 'b2c' ? 966 : activeCategory?.id === 'd2c' ? 500 : 700) : (activeCategory?.id === 'b2b' ? 1306 : activeCategory?.id === 'b2c' ? 773 : activeCategory?.id === 'd2c' ? 400 : 573)}
-                      monthPrice={billingCycle === 'monthly' ? (activeCategory?.id === 'b2b' ? 49000 : activeCategory?.id === 'b2c' ? 29000 : activeCategory?.id === 'd2c' ? 15000 : 21000) : (activeCategory?.id === 'b2b' ? 39200 : activeCategory?.id === 'b2c' ? 23200 : activeCategory?.id === 'd2c' ? 12000 : 16800)}
-                      features={activeCategory?.id === 'd2c' ? [
-                        'Everything in Basic +', 'Advanced Meta & Google Ads', 'Content Strategy',
-                        'Standard Physical Marketing', 'Hoardings & Banners',
-                        'Social Media Management', 'Campaign Scaling',
-                        'Monthly ROI Reports', 'Priority Support'
-                      ] : [
-                        'Everything in Basic +', 'Advanced ERP', 'Custom Website',
-                        'Standard Chatbot & Calling Agent', 'AI Lead Generation',
-                        'Social Media Marketing', 'Ads Management',
-                        'Performance Marketing', 'Monthly Reports', 'Priority Support'
-                      ]}
-                    />
-                    <PricingTier
-                      title="PREMIUM PLAN"
-                      color="#d946ef"
-                      gradient="from-purple-600 to-pink-600"
-                      tagline="Full automation, zero headache 🎯"
-                      dayPrice={billingCycle === 'monthly' ? (activeCategory?.id === 'b2b' ? 2500 : activeCategory?.id === 'd2c' ? 700 : 1166) : (activeCategory?.id === 'b2b' ? 2000 : activeCategory?.id === 'd2c' ? 560 : 933)}
-                      monthPrice={billingCycle === 'monthly' ? (activeCategory?.id === 'b2b' ? 75000 : activeCategory?.id === 'd2c' ? 21000 : 35000) : (activeCategory?.id === 'b2b' ? 60000 : activeCategory?.id === 'd2c' ? 16800 : 28000)}
-                      features={activeCategory?.id === 'd2c' ? [
-                        'Everything in Standard +', 'Full Marketing Automation', 'High-Level Funnel Strategy',
-                        'Premium Physical Marketing', 'Event & Merchandising',
-                        'Influencer Coordination', 'Advanced Scaling Ops',
-                        'Dedicated Manager', 'Weekly Strategy Calls'
-                      ] : [
-                        'Everything in Standard +', 'Advanced ERP+Automation', 'Website+App',
-                        'Premium Chatbot & Calling Agent', 'Full Sales Automation',
-                        'Social Media Marketing', 'High-Level Ads Strategy',
-                        'Performance Marketing', 'Dedicated Manager', 'Weekly Calls'
-                      ]}
-                    />
-                  </>
-                )}
+              <div className="relative z-10 flex flex-wrap gap-4 justify-center">
+                <Link to="/consultation" className="px-8 py-3 rounded-full bg-gradient-to-br from-slate-900 to-slate-800 text-white font-black text-[10px] uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform whitespace-nowrap">Free Consultation</Link>
+                <Link to="/contact" className="px-8 py-3 rounded-full bg-slate-100 text-slate-600 font-black text-[10px] uppercase tracking-[0.2em] hover:bg-slate-200 transition-colors border border-slate-200 hover:scale-105 whitespace-nowrap">Growth Plan</Link>
               </div>
-
-              {/* Common Features */}
-              <div className="mb-12 text-center">
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-6">Included In Every Plan</p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  {commonFeatures.map(item => (
-                    <span key={item} className="px-5 py-2 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-slate-300">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Add-ons */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-xl"
-              >
-                <div className="flex flex-col md:flex-row items-center justify-between gap-5 mb-10">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600">
-                      <span className="material-symbols-outlined text-xl">add_circle</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-black text-slate-900">Extra Growth Catalysts</h3>
-                      <p className="text-slate-500 text-xs font-medium">Add specific modules to your core plan.</p>
-                    </div>
-                  </div>
-                  <div className="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[9px] font-bold uppercase text-slate-500 tracking-widest">
-                    Available For All Plans
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {erpAddons.map((addon, i) => (
-                    <motion.div
-                      key={addon.name}
-                      whileHover={{ y: -5 }}
-                      className="p-6 rounded-[2.5rem] bg-white border border-slate-100 hover:border-blue-500/50 transition-all duration-500 text-center group cursor-pointer shadow-sm hover:shadow-2xl relative overflow-hidden"
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700`}></div>
-                      <div className="relative z-10">
-                        <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
-                          <span className="material-symbols-outlined text-2xl">{addon.icon}</span>
-                        </div>
-                        <p className="text-slate-900 text-xs font-black mb-1.5 leading-tight">{addon.name}</p>
-                        <p className="text-blue-600 text-[10px] font-black uppercase tracking-wider">{addon.price}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.section>
-          )}
-        </AnimatePresence>
-
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -655,64 +611,132 @@ const PackagesPage = () => {
 /* ═══════════════════════════════════════
    PRICING TIER COMPONENT
 ═══════════════════════════════════════ */
-const PricingTier = ({ title, tagline, dayPrice, monthPrice, features, isPopular, color, gradient, unit = '/day' }) => (
-  <motion.div
-    whileHover={{ y: -15 }}
-    className={`relative p-10 md:p-12 rounded-[3rem] border transition-all duration-700 flex flex-col h-full bg-white overflow-hidden group ${isPopular
-      ? `shadow-2xl ring-1 ring-blue-500/20 scale-105 z-10 md:mt-[-20px] md:mb-[-20px] ${gradient?.includes('blue') ? 'border-blue-500' : gradient?.includes('purple') ? 'border-purple-500' : gradient?.includes('emerald') ? 'border-emerald-500' : gradient?.includes('pink') ? 'border-pink-500' : 'border-blue-500'}`
-      : `border-slate-100 hover:shadow-2xl ${gradient?.includes('blue') ? 'hover:border-blue-500/50' : gradient?.includes('purple') ? 'hover:border-purple-500/50' : gradient?.includes('emerald') ? 'hover:border-emerald-500/50' : gradient?.includes('pink') ? 'hover:border-pink-500/50' : 'hover:border-blue-500/50'}`
-      }`}
-  >
-    <div className={`absolute inset-0 bg-gradient-to-br ${gradient ? gradient : `from-blue-600 to-cyan-500`} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none`}></div>
+const PricingTier = ({ title, tagline, price, features, result, isPopular, gradient, hasYearlyDiscount, billingCycle, yearlyDiscountPercent }) => {
+  const monthlyPrice = price;
+  const yearlyPrice = hasYearlyDiscount && yearlyDiscountPercent
+    ? (price * 12) * (1 - yearlyDiscountPercent / 100)
+    : price * 12;
 
-    {isPopular && (
-      <div className="absolute top-0 right-0">
-        <div className="bg-blue-600 text-white px-8 py-2 rounded-bl-3xl text-[10px] font-black tracking-widest uppercase shadow-xl">
-          Most Popular
+  const displayPrice = billingCycle === 'monthly' ? monthlyPrice : Math.round(yearlyPrice / 12);
+  const perDayPrice = Math.round(displayPrice / 30);
+
+  return (
+    <motion.div
+      whileHover={{ y: -10 }}
+      className={`relative p-5 md:p-8 rounded-[2rem] md:rounded-[3rem] border transition-all duration-500 flex flex-col h-full bg-white text-left overflow-hidden group ${isPopular ? 'shadow-2xl ring-1 ring-slate-900/10 scale-[1.02] z-10 md:mt-[-15px] border-slate-300' : 'border-slate-100 hover:border-slate-300 shadow-lg'
+        }`}
+    >
+
+      {/* Top Right Circle Badge - Per Day Price */}
+      <motion.div
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        whileHover={{ scale: 1.1 }}
+        className={`absolute ${isPopular ? 'top-10 md:top-12 lg:top-12' : 'top-4 lg:top-6'} right-4 lg:right-6 w-[100px] h-[100px] md:w-[85px] md:h-[85px] lg:w-[110px] lg:h-[110px] rounded-full bg-gradient-to-br ${gradient} flex flex-col items-center justify-center text-white shadow-xl z-20 border-4 border-white`}
+      >
+        <span className="text-[10px] md:text-[8px] lg:text-[11px] font-black uppercase tracking-tighter opacity-80 leading-none">Only</span>
+        <span className="text-[20px] md:text-[18px] lg:text-[24px] font-black tracking-tighter mt-0.5">₹{perDayPrice.toLocaleString()}</span>
+        <span className="text-[10px] md:text-[8px] lg:text-[11px] font-bold opacity-70 leading-none mt-0.5">/day</span>
+      </motion.div>
+
+      {isPopular && (
+        <div className="absolute top-0 left-6 md:left-4 lg:left-8 bg-slate-900 text-white px-4 md:px-6 py-2 rounded-b-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest z-10">
+          Highly Recommended
+        </div>
+      )}
+
+      <div className={`mb-4 border-b border-slate-100 pb-4 ${isPopular ? 'mt-12 md:mt-10 lg:mt-12' : 'mt-6 md:mt-2 lg:mt-4'}`}>
+        <h4 className="text-[18px] md:text-[16px] lg:text-[22px] font-black tracking-tighter text-slate-800 mb-1 pr-[110px] md:pr-[95px] lg:pr-[120px]">{title}</h4>
+        <p className="text-[11px] md:text-[10px] lg:text-[13px] font-bold text-slate-500 mb-4 italic pr-[110px] md:pr-[95px] lg:pr-[120px]">"{tagline}"</p>
+        <div className="flex flex-col gap-1 mb-2">
+          <div className="flex items-baseline gap-2 flex-nowrap whitespace-nowrap">
+            <span className="text-[32px] font-black tracking-tighter text-slate-900">₹{displayPrice.toLocaleString()}</span>
+            <div className="flex flex-col ml-1">
+              <span className="text-[14px] font-bold text-slate-400">/ month</span>
+              {billingCycle === 'yearly' && (
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none">(billed yearly)</span>
+                  <span className="text-[10px] font-bold text-slate-400 leading-none mt-1">₹{(price * 12 * (1 - (hasYearlyDiscount ? yearlyDiscountPercent / 100 : 0))).toLocaleString()}/year</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {billingCycle === 'yearly' && hasYearlyDiscount && yearlyDiscountPercent && (
+            <div className="flex flex-col gap-1 mt-3">
+              <span className="text-[12px] font-black line-through text-slate-400">₹{price.toLocaleString()}/mo</span>
+              <span className="text-slate-900 text-[12px] font-black uppercase tracking-widest">{yearlyDiscountPercent}% OFF · FOR FIRST 3 MONTHS</span>
+            </div>
+          )}
+
+          <div className="mt-6">
+            <span className="text-[12px] font-black text-slate-500 uppercase tracking-[0.2em]">Full System Implementation</span>
+          </div>
         </div>
       </div>
-    )}
 
-    <div className="mb-10 text-center">
-      <h3 className="text-sm font-black tracking-[0.2em] text-slate-400 mb-8 uppercase">{title}</h3>
-      <div className="flex items-center justify-center gap-1.5 mb-2 py-4 overflow-visible">
-        {typeof dayPrice === 'number' && <span className="text-2xl font-black text-slate-900 align-top mt-1">₹</span>}
-        <span className={`text-5xl font-black tracking-tighter pb-4 pt-2 inline-block leading-tight ${gradient ? `text-transparent bg-clip-text bg-gradient-to-r ${gradient}` : ''}`}>
-          {typeof dayPrice === 'number' ? dayPrice.toLocaleString() : dayPrice}
-        </span>
-        <span className="text-sm font-bold text-slate-400 ml-1 mt-6">{unit}</span>
+      <div className="flex-1 mb-4">
+        <div className="space-y-4">
+          {features.map((cat, idx) => (
+            <div key={idx} className="mb-6">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[16px] font-black uppercase tracking-[0.2em] text-slate-600">{cat.category}</span>
+                <div className="h-[1px] flex-1 bg-slate-200"></div>
+              </div>
+              <ul className="space-y-2">
+                {cat.items.map((f, i) => {
+                  const parts = f.split(':');
+                  const label = parts[0];
+                  const val = parts.slice(1).join(':').trim();
+                  return (
+                    <li key={i} className="flex gap-3 items-center">
+                      <span className={`material-symbols-outlined text-[18px] text-slate-400 flex-shrink-0`}>check_circle</span>
+                      <div className="flex items-baseline flex-wrap">
+                        {val ? (
+                          <>
+                            <span className="text-[18px] font-black text-slate-700 uppercase tracking-wider">{label}:</span>
+                            <span className="text-[16px] font-bold text-slate-500 ml-3 tracking-normal">
+                              {val}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-[16px] font-bold text-slate-500 tracking-normal">
+                            {f}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-      {monthPrice !== 'custom' && (
-        <p className="text-sm font-bold text-slate-500 mb-8">₹{monthPrice.toLocaleString()}/month</p>
-      )}
-      <div className="px-5 py-3 bg-slate-50 rounded-2xl border border-slate-100 inline-block mt-4">
-        <p className="text-xs font-bold text-slate-600 italic">"{tagline}"</p>
+
+      <div className="mt-auto border-t border-slate-100 pt-4">
+        <a
+          href="https://packages.errorinfotech.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-slate-50 rounded-2xl p-4 mb-4 hover:bg-slate-100 transition-all border border-transparent hover:border-slate-200 group/result"
+        >
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">Expected Result / Impact:</span>
+            <span className="text-[12px] font-bold text-slate-400 underline uppercase group-hover/result:text-slate-600 transition-colors">Details →</span>
+          </div>
+          <p className="text-[8px] font-bold text-slate-800 uppercase tracking-tight">{result}</p>
+        </a>
+
+        <motion.button
+          whileTap={{ scale: 0.98 }}
+          className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[13px] shadow-lg bg-gradient-to-r ${gradient} text-white hover:opacity-90 transition-opacity`}
+        >
+          Select Plan
+        </motion.button>
       </div>
-    </div>
-
-    <div className="h-px bg-slate-100 w-full mb-10"></div>
-
-    <div className="flex-1 mb-10">
-      <ul className="space-y-4">
-        {features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-4 text-sm font-medium group/feat">
-            <span className={`material-symbols-outlined text-lg flex-shrink-0 mt-0.5 transition-transform group-hover/feat:scale-110 bg-clip-text text-transparent bg-gradient-to-r ${gradient ? gradient : `from-blue-600 to-cyan-500`}`}>
-              {feature.includes('Everything in') ? 'stars' : 'check_circle'}
-            </span>
-            <span className={feature.includes('Everything in') ? 'font-black text-slate-900' : 'text-slate-600'}>{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <button
-      className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-500 shadow-xl hover:shadow-2xl hover:scale-[1.05] active:scale-95 text-white bg-gradient-to-r ${gradient ? gradient : `from-blue-600 to-indigo-600`
-        } ${isPopular ? 'shadow-blue-500/20' : 'hover:opacity-90'}`}
-
-    >
-      Get Started
-    </button>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 export default PackagesPage;

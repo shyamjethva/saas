@@ -119,7 +119,7 @@ const ServiceSecurityDetail = () => {
                 title: "Zero-Trust Architecture",
                 desc: "Modern security model that verifies every user and device before granting access to resources, regardless of location.",
                 icon: "shield_lock",
-                color: "from-blue-500 to-cyan-500",
+                color: "from-blue-700 to-sky-500",
                 features: ["Identity Verification", "Device Authentication", "Continuous Monitoring", "Least Privilege Access"]
               },
               {
@@ -188,7 +188,7 @@ const ServiceSecurityDetail = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               { value: "99.9%", label: "Threat Detection", color: "from-green-500 to-teal-500" },
-              { value: "0", label: "Security Breaches", color: "from-blue-500 to-cyan-500" },
+              { value: "0", label: "Security Breaches", color: "from-blue-700 to-sky-500" },
               { value: "<1 min", label: "Incident Response", color: "from-purple-500 to-pink-500" },
               { value: "24/7", label: "Monitoring Coverage", color: "from-orange-500 to-red-500" }
             ].map((metric, index) => (
@@ -263,7 +263,7 @@ const ServiceSecurityDetail = () => {
                 standard: "ISO 27001",
                 desc: "International standard for information security management systems",
                 status: "Certified",
-                color: "from-blue-500 to-cyan-500"
+                color: "from-blue-700 to-sky-500"
               },
               {
                 standard: "GDPR",

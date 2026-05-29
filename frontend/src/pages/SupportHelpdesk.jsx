@@ -48,14 +48,14 @@ const SupportHelpdesk = () => {
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="flex-1">
-                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-blue-50 border border-blue-100 mb-8 shadow-sm">
-                  <span className="material-symbols-outlined text-blue-600 text-sm font-black">support_agent</span>
-                  <span className="text-blue-600 font-black tracking-widest uppercase text-[10px]">CUSTOMER SUCCESS INFRASTRUCTURE</span>
+                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-xl bg-slate-50 border border-slate-100 mb-8 shadow-sm">
+                  <span className="material-symbols-outlined text-slate-900 text-sm font-black">support_agent</span>
+                  <span className="text-slate-900 font-black tracking-widest uppercase text-[10px]">CUSTOMER SUCCESS INFRASTRUCTURE</span>
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                 <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
                   Support Hub
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
+                  <span className="block text-slate-400">
                     & Resolution Matrix
                   </span>
                 </h1>
@@ -104,7 +104,7 @@ const SupportHelpdesk = () => {
               {activeTab === tab.id && (
                 <motion.div
                   layoutId="support-tab-underline"
-                  className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-blue-600 rounded-full"
+                  className="absolute bottom-[-1rem] left-1/2 -translate-x-1/2 w-4 h-1 bg-slate-900 rounded-full"
                 />
               )}
             </motion.button>
@@ -115,10 +115,10 @@ const SupportHelpdesk = () => {
       {/* Stats Cards */}
       <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <StatCard title="Active Inquiries" value={tickets.filter(t => t.status === 'Open').length} icon="confirmation_number" color="blue" />
-          <StatCard title="Mean Response" value="2.3 hrs" icon="timer" color="indigo" />
-          <StatCard title="Resolution Index" value="94%" icon="done_all" color="purple" />
-          <StatCard title="Partner Sentiment" value="4.8/5" icon="star" color="blue" />
+           <StatCard title="Active Inquiries" value={tickets.filter(t => t.status === 'Open').length} icon="confirmation_number" color="slate" />
+          <StatCard title="Mean Response" value="2.3 hrs" icon="timer" color="slate" />
+          <StatCard title="Resolution Index" value="94%" icon="done_all" color="slate" />
+          <StatCard title="Partner Sentiment" value="4.8/5" icon="star" color="slate" />
         </div>
       </div>
 
@@ -158,8 +158,8 @@ const StatCard = ({ title, value, icon, color }) => (
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{title}</p>
         <p className="text-4xl font-black text-slate-900 tracking-tight">{value}</p>
       </div>
-      <div className={`w-14 h-14 rounded-2xl bg-${color}-50 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-        <span className={`material-symbols-outlined text-${color}-600 text-2xl font-black`}>{icon}</span>
+       <div className={`w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+        <span className={`material-symbols-outlined text-slate-900 text-2xl font-black`}>{icon}</span>
       </div>
     </div>
   </motion.div>
@@ -168,8 +168,8 @@ const StatCard = ({ title, value, icon, color }) => (
 const TicketManagement = ({ tickets, setTickets }) => {
   const getPriorityColor = (priority) => {
     switch (priority) {
-      case 'High': return 'bg-blue-600 text-white shadow-lg shadow-blue-500/20';
-      case 'Medium': return 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20';
+       case 'High': return 'bg-slate-900 text-white shadow-lg shadow-slate-900/20';
+      case 'Medium': return 'bg-slate-500 text-white shadow-lg shadow-slate-500/20';
       case 'Low': return 'bg-slate-100 text-slate-400';
       default: return 'bg-slate-100 text-slate-400';
     }
@@ -177,8 +177,8 @@ const TicketManagement = ({ tickets, setTickets }) => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Open': return 'bg-blue-600 text-white shadow-lg shadow-blue-500/20';
-      case 'In Progress': return 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20';
+       case 'Open': return 'bg-slate-900 text-white shadow-lg shadow-slate-900/20';
+      case 'In Progress': return 'bg-slate-500 text-white shadow-lg shadow-slate-500/20';
       case 'Resolved': return 'bg-slate-100 text-slate-400 text-slate-900 border border-slate-200';
       default: return 'bg-slate-100 text-slate-400';
     }
@@ -352,11 +352,11 @@ const KnowledgeBase = () => (
           whileHover={{ y: -8 }}
           className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-full blur-2xl -mr-12 -mt-12 pointer-events-none transition-colors group-hover:bg-blue-50"></div>
+           <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-full blur-2xl -mr-12 -mt-12 pointer-events-none transition-colors group-hover:bg-slate-100"></div>
 
           <div className="flex items-center gap-4 mb-8 relative z-10">
-            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-              <span className="material-symbols-outlined text-blue-600 text-xl font-black">menu_book</span>
+             <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <span className="material-symbols-outlined text-slate-900 text-xl font-black">menu_book</span>
             </div>
             <div>
               <h3 className="text-slate-900 font-black tracking-tight text-sm leading-tight">{article.title}</h3>
@@ -367,7 +367,7 @@ const KnowledgeBase = () => (
           <div className="flex justify-between items-center mb-10 relative z-10 border-y border-slate-50 py-4">
             <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest">{article.views.toLocaleString()} AUDITS</span>
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-blue-600 text-[10px] font-black">stars</span>
+               <span className="material-symbols-outlined text-slate-900 text-[10px] font-black">stars</span>
               <span className="text-slate-900 text-[10px] font-black italic">{article.rating} INDEX</span>
             </div>
           </div>
@@ -403,14 +403,14 @@ const SLAMonitoring = () => (
           <div className="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:bg-white hover:border-slate-900 transition-all">
             <div className="flex justify-between items-center mb-4">
               <span className="text-slate-900 font-black tracking-tight text-xs uppercase">Primary Response Threshold</span>
-              <span className="text-blue-600 font-black text-xl italic tracking-tighter">96%</span>
+               <span className="text-slate-900 font-black text-xl italic tracking-tighter">96%</span>
             </div>
             <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden shadow-inner">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: '96%' }}
                 transition={{ duration: 1.5, ease: "circOut" }}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full"
+                 className="bg-slate-900 h-full rounded-full"
               ></motion.div>
             </div>
             <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-4 italic opacity-70 italic tracking-widest">Target: 95% within 120min lifecycle</p>
@@ -419,14 +419,14 @@ const SLAMonitoring = () => (
           <div className="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:bg-white hover:border-slate-900 transition-all">
             <div className="flex justify-between items-center mb-4">
               <span className="text-slate-900 font-black tracking-tight text-xs uppercase">Resolution Finality Matrix</span>
-              <span className="text-indigo-600 font-black text-xl italic tracking-tighter">92%</span>
+               <span className="text-slate-500 font-black text-xl italic tracking-tighter">92%</span>
             </div>
             <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden shadow-inner">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: '92%' }}
                 transition={{ duration: 1.5, ease: "circOut", delay: 0.2 }}
-                className="bg-gradient-to-r from-indigo-600 to-blue-500 h-full rounded-full"
+                 className="bg-gradient-to-r from-slate-900 to-slate-400 h-full rounded-full"
               ></motion.div>
             </div>
             <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-4 italic opacity-70 italic tracking-widest">Target: 90% within 24hr operational window</p>
@@ -476,25 +476,25 @@ const SupportAnalytics = ({ tickets }) => (
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-      <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-xl text-center group hover:border-blue-600 transition-all">
-        <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
-          <span className="material-symbols-outlined text-blue-600 text-3xl font-black">hub</span>
+       <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-xl text-center group hover:border-slate-900 transition-all">
+        <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
+          <span className="material-symbols-outlined text-slate-900 text-3xl font-black">hub</span>
         </div>
         <div className="text-6xl font-black text-slate-900 tracking-tighter mb-2 italic">24</div>
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest italic tracking-[0.2em]">Weekly Inquiries</p>
       </div>
 
-      <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-xl text-center group hover:border-indigo-600 transition-all">
-        <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
-          <span className="material-symbols-outlined text-indigo-600 text-3xl font-black">verified_user</span>
+       <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-xl text-center group hover:border-slate-700 transition-all">
+        <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
+          <span className="material-symbols-outlined text-slate-700 text-3xl font-black">verified_user</span>
         </div>
-        <div className="text-6xl font-black text-slate-900 tracking-tighter mb-2 italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">3.2</div>
+        <div className="text-6xl font-black text-slate-900 tracking-tighter mb-2 italic">3.2</div>
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest italic tracking-[0.2em]">Mean Resolution Hrs</p>
       </div>
 
-      <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-xl text-center group hover:border-purple-600 transition-all">
-        <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
-          <span className="material-symbols-outlined text-purple-600 text-3xl font-black">grade</span>
+       <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-xl text-center group hover:border-slate-500 transition-all">
+        <div className="w-16 h-16 bg-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
+          <span className="material-symbols-outlined text-slate-500 text-3xl font-black">grade</span>
         </div>
         <div className="text-6xl font-black text-slate-900 tracking-tighter mb-2 italic">4.8</div>
         <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest italic tracking-[0.2em]">Sentiment Index</p>
@@ -506,22 +506,22 @@ const SupportAnalytics = ({ tickets }) => (
       <h3 className="text-xl font-black text-slate-900 mb-16 tracking-widest uppercase text-xs text-center">Urgency Distribution Matrix</h3>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-20 relative z-10">
-        <div className="text-center group/metric">
-          <div className="w-40 h-40 rounded-full border-[10px] border-slate-100 border-t-blue-600 flex items-center justify-center mb-8 transform group-hover/metric:scale-110 transition-transform shadow-xl">
+         <div className="text-center group/metric">
+          <div className="w-40 h-40 rounded-full border-[10px] border-slate-100 border-t-slate-900 flex items-center justify-center mb-8 transform group-hover/metric:scale-110 transition-transform shadow-xl">
             <span className="text-4xl font-black text-slate-900 tracking-tighter italic">42%</span>
           </div>
           <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest tracking-[0.3em]">Critical Urgency</p>
         </div>
 
-        <div className="text-center group/metric">
-          <div className="w-40 h-40 rounded-full border-[10px] border-slate-100 border-t-indigo-600 flex items-center justify-center mb-8 transform group-hover/metric:scale-110 transition-transform shadow-xl">
+         <div className="text-center group/metric">
+          <div className="w-40 h-40 rounded-full border-[10px] border-slate-100 border-t-slate-700 flex items-center justify-center mb-8 transform group-hover/metric:scale-110 transition-transform shadow-xl">
             <span className="text-4xl font-black text-slate-900 tracking-tighter italic">35%</span>
           </div>
           <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest tracking-[0.3em]">Operational Priority</p>
         </div>
 
-        <div className="text-center group/metric">
-          <div className="w-40 h-40 rounded-full border-[10px] border-slate-100 border-t-blue-400 flex items-center justify-center mb-8 transform group-hover/metric:scale-110 transition-transform shadow-xl">
+         <div className="text-center group/metric">
+          <div className="w-40 h-40 rounded-full border-[10px] border-slate-100 border-t-slate-400 flex items-center justify-center mb-8 transform group-hover/metric:scale-110 transition-transform shadow-xl">
             <span className="text-4xl font-black text-slate-900 tracking-tighter italic">23%</span>
           </div>
           <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest tracking-[0.3em]">Standard Inquiries</p>

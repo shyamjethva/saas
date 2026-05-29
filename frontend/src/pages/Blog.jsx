@@ -78,24 +78,24 @@ const Blog = () => {
   const categories = ['All', 'Technology', 'Infrastructure', 'Case Studies', 'Security', 'Development', 'AI'];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="homepage-monochrome min-h-screen premium-bg relative overflow-x-hidden">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-slate-50 border-b border-slate-200">
+      <section className="pt-40 pb-24 px-6 relative border-b border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-8">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 mb-8 shadow-sm">
               <span className="material-symbols-outlined text-blue-600">insights</span>
-              <span className="text-blue-600 font-black uppercase tracking-widest text-[10px]">Strategic Insights</span>
+              <span className="text-slate-500 font-black uppercase tracking-widest text-[10px]">Strategic Insights</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter font-space-grotesk leading-none">
-              Platform <span className="text-blue-600">Intelligence</span>
+            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-none">
+              Platform <span className="text-slate-500">Intelligence.</span>
             </h1>
-            <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-2xl text-slate-500 max-w-3xl mx-auto font-light leading-relaxed">
               Expert analysis, technical roadmaps, and enterprise strategy for the modern digital era.
             </p>
           </motion.div>
@@ -111,8 +111,8 @@ const Blog = () => {
                 whileHover={{ scale: 1.05 }}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-8 py-3 rounded-full border transition-all font-black uppercase tracking-widest text-[10px] ${selectedCategory === category
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-500/20'
-                    : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-slate-900 shadow-sm'
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-200/50'
+                    : 'bg-white/80 backdrop-blur-sm text-slate-500 border-slate-200 hover:border-blue-400 hover:text-slate-900 shadow-sm'
                   }`}
               >
                 {category}
@@ -123,7 +123,7 @@ const Blog = () => {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-32 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {filteredPosts.map((post, index) => (
@@ -134,13 +134,13 @@ const Blog = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-consistent-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-300 shadow-xl group"
+                className="bg-white/80 backdrop-blur-md rounded-consistent-2xl overflow-hidden border border-slate-100 hover:border-blue-400/50 transition-all duration-300 shadow-2xl shadow-slate-200/50 group"
               >
-                {/* Post Image */}
+                {/* Post Image Container */}
                 <div className="h-64 bg-slate-50 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-colors"></div>
                   <div className="absolute bottom-6 left-6">
-                    <span className="px-4 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">
+                    <span className="px-4 py-1.5 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">
                       {post.category}
                     </span>
                   </div>
@@ -158,7 +158,7 @@ const Blog = () => {
                     {post.title}
                   </h2>
 
-                  <p className="text-slate-600 font-medium mb-8 leading-relaxed line-clamp-3">
+                  <p className="text-slate-500 font-light mb-8 leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
 
@@ -167,9 +167,9 @@ const Blog = () => {
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      className="mb-8 p-8 bg-slate-50 rounded-consistent-xl border border-slate-100"
+                      className="mb-8 p-8 bg-slate-50/50 rounded-consistent-xl border border-slate-100"
                     >
-                      <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                      <p className="text-slate-500 text-sm leading-relaxed font-light">
                         {post.content}
                       </p>
                     </motion.div>
@@ -192,18 +192,18 @@ const Blog = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-32 px-6 bg-slate-50 border-y border-slate-200">
+      <section className="py-32 px-6 relative border-y border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-blue-500/30">
+            <div className="w-20 h-20 rounded-full bg-slate-900 flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-slate-200/50">
               <span className="material-symbols-outlined text-3xl text-white font-black">mail</span>
             </div>
-            <h2 className="text-4xl font-black text-slate-900 mb-6 tracking-tighter">Stay Synchronized</h2>
-            <p className="text-xl text-slate-600 mb-12 font-medium">
+            <h2 className="text-4xl font-black text-slate-900 mb-6 tracking-tighter">Stay <span className="text-slate-500">Synchronized.</span></h2>
+            <p className="text-xl text-slate-500 mb-12 font-light">
               Join 5,000+ enterprise leaders receiving our weekly strategic analysis.
             </p>
 
@@ -211,12 +211,12 @@ const Blog = () => {
               <input
                 type="email"
                 placeholder="Chief Strategy Officer @ Company"
-                className="flex-[2] px-8 py-5 rounded-full bg-white border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-600/10 focus:border-blue-600 transition-all shadow-sm"
+                className="flex-[2] px-8 py-5 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 text-slate-900 font-bold placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-slate-900/5 focus:border-slate-900 transition-all shadow-sm"
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex-1 bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-8 py-5 rounded-full shadow-2xl shadow-blue-500/40 hover:bg-blue-700 transition-all"
+                className="flex-1 bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] px-8 py-5 rounded-full shadow-2xl shadow-slate-200/50 hover:bg-blue-600 transition-all"
               >
                 Subscribe
               </motion.button>
@@ -226,7 +226,7 @@ const Blog = () => {
       </section>
 
       {/* Featured Authors */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-32 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -234,8 +234,8 @@ const Blog = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter">Strategic Authors</h2>
-            <p className="text-xl text-slate-600 font-medium">Industry architects leading the digital transformation discourse.</p>
+            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter">Strategic <span className="text-slate-500">Authors.</span></h2>
+            <p className="text-xl text-slate-500 font-light">Industry architects leading the digital transformation discourse.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-12">
@@ -250,18 +250,18 @@ const Blog = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-slate-50 rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-300 transition-all shadow-sm group"
+                className="bg-white/80 backdrop-blur-md rounded-consistent-2xl p-10 text-center border border-slate-100 hover:border-blue-400/50 transition-all shadow-2xl shadow-slate-200/50 group"
               >
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-200 flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:bg-blue-600 transition-all group-hover:border-blue-500">
+                <div className="w-24 h-24 rounded-full bg-white border border-slate-200 flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:bg-slate-900 transition-all group-hover:border-slate-900">
                   <span className="text-2xl font-black text-blue-600 group-hover:text-white transition-colors">
                     {author.name.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">{author.name}</h3>
+                <h3 className="text-2xl font-black text-slate-900 mb-2 tracking-tight group-hover:text-blue-600 transition-colors">{author.name}</h3>
                 <div className="text-blue-600 font-black uppercase tracking-widest text-[10px] mb-4">{author.role}</div>
-                <div className="text-slate-500 font-black uppercase tracking-widest text-[9px] mb-8">{author.specialty}</div>
-                <div className="pt-8 border-t border-slate-200">
-                  <span className="font-black text-slate-900 font-space-grotesk text-xl">{author.posts}</span>
+                <div className="text-slate-400 font-black uppercase tracking-widest text-[9px] mb-8">{author.specialty}</div>
+                <div className="pt-8 border-t border-slate-100">
+                  <span className="font-black text-slate-900 text-xl">{author.posts}</span>
                   <span className="text-slate-400 font-black uppercase tracking-widest text-[9px] ml-2">Strategic Reports</span>
                 </div>
               </motion.div>

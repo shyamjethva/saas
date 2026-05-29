@@ -74,30 +74,30 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer-premium bg-slate-50 pt-12 px-10 pb-0 w-full mt-20 border-t border-slate-200">
+    <footer className="footer-premium bg-white pt-4 px-10 pb-0 w-full mt-10 relative z-10">
       <div className="max-w-7xl mx-auto">
 
         {/* SECTION 1 — TOP (Logo left + Info center) */}
-        <div className="relative min-h-[100px] border-b border-white/[0.07] pb-[18px] flex flex-col md:flex-row items-center md:items-start">
-          <div className="md:absolute md:left-0 md:top-0 mb-6 md:mb-0 origin-left ml-2">
+        <div className="relative flex flex-col md:flex-row items-start justify-between pb-4">
+          <div className="mb-4 md:mb-0 origin-left">
             <Link to="/" className="group block">
               <img
-                src="/images/error_logo_horiz.png"
+                src="/images/error_logo_navbar.png"
                 alt="Error Infotech"
-                className="logo-img h-7 sm:h-8 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105"
+                className="logo-img h-8 sm:h-9 w-auto object-contain transition-all duration-[400ms] group-hover:scale-105"
               />
             </Link>
           </div>
 
-          {/* INFO BLOCK */}
-          <div className="w-full flex flex-col items-center text-center">
-            <p className="text-[11.5px] text-[#64748b] text-center max-w-[380px] leading-[1.5] mb-[10px]">
+          {/* INFO BLOCK - Better separation on mobile */}
+          <div className="w-full md:absolute md:left-1/2 md:-translate-x-1/2 flex flex-col items-center text-center mt-6 md:-top-12 md:mt-2">
+            <p className="text-[11px] text-[#64748b] text-center max-w-[400px] leading-[1.4] mb-2">
               Your trusted partner for web development, app development, web designing,
               digital marketing, and AI-powered solutions. Based in Rajkot, Gujarat.
             </p>
 
             {/* Social icons row */}
-            <ul className="social-icons-list">
+            <ul className="social-icons-list scale-90 origin-center mb-1">
               {socialIcons.map((social) => (
                 <li key={social.id} className="icon-content">
                   <a
@@ -108,8 +108,8 @@ const Footer = () => {
                   >
                     <div className="filled"></div>
                     <svg
-                      width="13"
-                      height="13"
+                      width="12"
+                      height="12"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -121,7 +121,7 @@ const Footer = () => {
               ))}
             </ul>
 
-            <p className="text-[10px] text-[#334155] text-center mt-2">
+            <p className="text-[9px] text-[#334155] text-center">
               302 - Malviya Coins, Dr Yagnik Rd, Rajkot, Gujarat 360002
             </p>
           </div>
@@ -140,15 +140,15 @@ const Footer = () => {
                   }`}
               >
                 <div className="flex items-center gap-[8px]">
-                  <div className="w-[28px] h-[28px] rounded-md bg-[#00d4ff]/[0.08] flex items-center justify-center">
-                    <span className={`transition-colors duration-250 ${activeTab === cat.id ? 'text-[#00d4ff]' : 'text-[#64748b] group-hover:text-[#00d4ff]'}`}>
+                  <div className="w-[28px] h-[28px] rounded-md bg-blue-500/[0.08] flex items-center justify-center">
+                    <span className={`transition-colors duration-250 ${activeTab === cat.id ? 'text-blue-600' : 'text-[#64748b] group-hover:text-blue-600'}`}>
                       {cat.icon}
                     </span>
                   </div>
                   <span className="text-[12px] font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700 uppercase tracking-tight">{cat.title}</span>
                 </div>
                 <span
-                  className={`text-[14px] transition-all duration-300 ${activeTab === cat.id ? 'text-[#00d4ff] rotate-90' : 'text-[#334155]'}`}
+                  className={`text-[14px] transition-all duration-300 ${activeTab === cat.id ? 'text-blue-600 rotate-90' : 'text-[#334155]'}`}
                 >
                   ›
                 </span>
@@ -169,18 +169,18 @@ const Footer = () => {
                           <a
                             key={idx}
                             href={link.link}
-                            className="text-[11.5px] text-[#475569] hover:text-[#00d4ff] hover:bg-[#00d4ff]/[0.06] hover:pl-[12px] px-[8px] py-[5px] rounded-md transition-all duration-200 flex items-center gap-[5px] group"
+                            className="text-[11.5px] text-[#475569] hover:text-blue-600 hover:bg-blue-50 hover:pl-[12px] px-[8px] py-[5px] rounded-md transition-all duration-200 flex items-center gap-[5px] group"
                           >
-                            <span className="text-[#00d4ff]">›</span>
+                            <span className="text-blue-600">›</span>
                             {link.name}
                           </a>
                         ) : (
                           <Link
                             key={idx}
                             to={link.link}
-                            className="text-[11.5px] text-[#475569] hover:text-[#00d4ff] hover:bg-[#00d4ff]/[0.06] hover:pl-[12px] px-[8px] py-[5px] rounded-md transition-all duration-200 flex items-center gap-[5px] group"
+                            className="text-[11.5px] text-[#475569] hover:text-blue-600 hover:bg-blue-50 hover:pl-[12px] px-[8px] py-[5px] rounded-md transition-all duration-200 flex items-center gap-[5px] group"
                           >
-                            <span className="text-[#00d4ff]">›</span>
+                            <span className="text-blue-600">›</span>
                             {link.name}
                           </Link>
                         )
@@ -194,7 +194,7 @@ const Footer = () => {
         </div>
 
         {/* SECTION 3 — BOTTOM COPYRIGHT BAR */}
-        <div className="flex flex-col md:flex-row justify-between items-center py-3 px-[2px] mt-2 border-t border-white/[0.05]">
+        <div className="flex flex-col md:flex-row justify-between items-center py-3 px-[2px] mt-2">
           <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">
             © 2024 ERROR INFOTECH PVT. LTD. ALL RIGHTS RESERVED.
           </p>

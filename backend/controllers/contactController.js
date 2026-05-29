@@ -70,14 +70,14 @@ exports.submitContact = async (req, res) => {
     }
 
     // Send emails for all submissions
-    try {
-      await sendConsultationEmail(req.body);
-      await sendClientConfirmation(email, name);
-      console.log('✅ Notification emails sent successfully');
-    } catch (emailError) {
-      console.error('❌ Error sending notification emails:', emailError);
-      // Don't fail the request if email sending fails
-    }
+    // Execute asynchronously to not block the response
+    sendConsultationEmail(req.body)
+      .then(() => console.log('✅ Notification email to team sent successfully'))
+      .catch(emailError => console.error('❌ Error sending notification emails:', emailError));
+
+    sendClientConfirmation(email, name)
+      .then(() => console.log('✅ Confirmation email to client sent successfully'))
+      .catch(emailError => console.error('❌ Error sending client confirmation email:', emailError));
 
     // Return success response
     res.status(201).json({

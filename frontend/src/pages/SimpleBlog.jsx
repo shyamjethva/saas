@@ -82,32 +82,27 @@ const SimpleBlog = () => {
   };
 
   return (
-    <div style={{ 
-      minHeight: '100vh', 
-      background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-      padding: '20px',
-      color: 'white'
-    }}>
+    <div className="min-h-screen premium-bg py-8 px-6">
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>
-          Our <span style={{ color: '#22c55e' }}>Blog</span>
+      <div className="max-w-7xl mx-auto text-center mb-12">
+        <h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter heading-underline active inline-block">
+          Our <span className="text-premium-gradient pb-2">Blog</span>
         </h1>
-        <p style={{ fontSize: '1.2rem', color: '#94a3b8' }}>
+        <p className="text-lg text-slate-500 font-medium tracking-tight">
           Industry insights and technology trends
         </p>
       </div>
 
       {/* Blog Grid */}
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '30px',
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
         {blogPosts.map(post => (
-          <div 
+          <div
             key={post.id}
             style={{
               background: 'rgba(255,255,255,0.05)',
@@ -120,24 +115,24 @@ const SimpleBlog = () => {
             onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
-            <h3 style={{ 
-              fontSize: '1.5rem', 
+            <h3 style={{
+              fontSize: '1.5rem',
               marginBottom: '15px',
               color: '#22c55e'
             }}>
               {post.title}
             </h3>
-            
-            <p style={{ 
-              color: '#94a3b8', 
+
+            <p style={{
+              color: '#94a3b8',
               marginBottom: '20px',
               lineHeight: '1.6'
             }}>
               {post.excerpt}
             </p>
-            
-            <div style={{ 
-              display: 'flex', 
+
+            <div style={{
+              display: 'flex',
               justifyContent: 'space-between',
               fontSize: '0.9rem',
               color: '#64748b',
@@ -146,7 +141,7 @@ const SimpleBlog = () => {
               <span>By {post.author}</span>
               <span>{post.date}</span>
             </div>
-            
+
             <button
               onClick={() => openPost(post)}
               style={{
@@ -172,7 +167,7 @@ const SimpleBlog = () => {
 
       {/* Modal */}
       {selectedPost && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -188,7 +183,7 @@ const SimpleBlog = () => {
           }}
           onClick={closePost}
         >
-          <div 
+          <div
             style={{
               background: '#1e293b',
               borderRadius: '15px',
@@ -201,13 +196,13 @@ const SimpleBlog = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
               alignItems: 'center',
               marginBottom: '20px'
             }}>
-              <h2 style={{ 
+              <h2 style={{
                 fontSize: '2rem',
                 color: '#22c55e',
                 margin: 0
@@ -230,9 +225,9 @@ const SimpleBlog = () => {
                 ×
               </button>
             </div>
-            
-            <div style={{ 
-              display: 'flex', 
+
+            <div style={{
+              display: 'flex',
               gap: '20px',
               fontSize: '0.9rem',
               color: '#94a3b8',
@@ -242,16 +237,16 @@ const SimpleBlog = () => {
               <span>•</span>
               <span>{selectedPost.date}</span>
             </div>
-            
-            <div 
-              style={{ 
+
+            <div
+              style={{
                 color: '#e2e8f0',
                 lineHeight: '1.7'
               }}
               dangerouslySetInnerHTML={{ __html: selectedPost.content }}
             />
-            
-            <div style={{ 
+
+            <div style={{
               marginTop: '30px',
               paddingTop: '20px',
               borderTop: '1px solid rgba(255,255,255,0.1)'

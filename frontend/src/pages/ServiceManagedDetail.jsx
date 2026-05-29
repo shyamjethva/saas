@@ -127,7 +127,7 @@ const ServiceManagedDetail = () => {
                 title: "Proactive Monitoring",
                 desc: "24/7 surveillance of system performance, resource utilization, and potential issues with automated alerts and preventive actions.",
                 icon: "monitoring",
-                color: "from-blue-500 to-cyan-500",
+                color: "from-blue-700 to-sky-500",
                 features: ["Real-time Performance Tracking", "Resource Utilization Analytics", "Automated Alerting", "Predictive Maintenance"]
               },
               {
@@ -210,7 +210,7 @@ const ServiceManagedDetail = () => {
                 response: "30 minutes",
                 coverage: "24/7",
                 features: ["Advanced monitoring", "Phone & email support", "Weekly reporting", "Performance tuning", "Security updates"],
-                color: "from-blue-500 to-cyan-500",
+                color: "from-blue-700 to-sky-500",
                 popular: true
               },
               {
@@ -395,7 +395,7 @@ const ServiceManagedDetail = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold h-14 px-10 rounded-full transition-all shadow-xl shadow-green-500/20 flex items-center gap-3"
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold h-14 px-10 rounded-full transition-all shadow-xl shadow-blue-600/20 flex items-center gap-3"
                 >
                   <span className="material-symbols-outlined">support_agent</span>
                   Schedule Free Consultation

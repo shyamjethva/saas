@@ -1,13 +1,8 @@
 const express = require('express');
 const Term = require('../models/Term');
 const User = require('../models/User');
-const { protect, authorize } = require('../middleware/auth');
 
 const router = express.Router();
-
-// All terms/contracts routes require authentication
-router.use(protect);
-router.use(authorize('Admin', 'admin', 'client'));
 
 // Middleware to validate ObjectId format
 const { isValidObjectId } = require('mongoose');

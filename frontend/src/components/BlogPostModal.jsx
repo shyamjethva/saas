@@ -166,7 +166,7 @@ const BlogPostModal = ({ isOpen, onClose, blogPost }) => {
                   className="space-y-6"
                 >
                   <div className="flex items-center gap-6">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white font-bold text-2xl">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-white font-bold text-2xl">
                       {blogPost.author.charAt(0)}
                     </div>
                     <div>
@@ -247,7 +247,7 @@ const BlogPostModal = ({ isOpen, onClose, blogPost }) => {
                         rows={4}
                         className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:border-green-500 focus:outline-none resize-none"
                       ></textarea>
-                      <button className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-6 py-3 rounded-lg transition-all">
+                      <button className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-6 py-3 rounded-lg transition-all">
                         Post Comment
                       </button>
                     </div>
@@ -258,7 +258,7 @@ const BlogPostModal = ({ isOpen, onClose, blogPost }) => {
                     {blogPost.comments.map((comment, index) => (
                       <div key={index} className="glass-card rounded-xl p-4 border border-white/10">
                         <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-white font-bold text-sm">
                             {comment.author.charAt(0)}
                           </div>
                           <div className="flex-1">

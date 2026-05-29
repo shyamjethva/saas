@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RakshitPortfolio</title>
+  <script>
+    // Bulletproof console silencing for WebGL and shader noise
+    (function() {
+      const originalWarn = console.warn;
+      const originalError = console.error;
+      const silencePatterns = [
+        'THREE.Clock', 'deprecated', 'non-static position', 'X3595', 'X4122', 
+        'double precision', 'gradient instruction', 'WebGLProgram', 'React DevTools',
+        'texSubImage2D', 'Texture is immutable', 'WebGL', 'INVALID_VALUE', 
+        'INVALID_OPERATION', 'texImage2DRobustANGLE'
+      ];
+
+      console.warn = function(...args) {
+        const msg = args.join(' ');
+        if (silencePatterns.some(p => msg.includes(p))) return;
+        originalWarn.apply(console, args);
+      };
+
+      console.error = function(...args) {
+        const msg = args.join(' ');
+        if (silencePatterns.some(p => msg.includes(p))) return;
+        originalError.apply(console, args);
+      };
+
+      window.onerror = function(msg) {
+        if (silencePatterns.some(p => msg.includes(p))) return true;
+      };
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

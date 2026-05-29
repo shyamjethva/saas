@@ -34,7 +34,7 @@ const BlogCard = ({ blog, onViewDetails }) => {
       {/* Meta Info */}
       <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white text-xs font-bold">
+          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-white text-xs font-bold">
             {blog.author.charAt(0)}
           </div>
           <span>{blog.author}</span>
@@ -62,7 +62,7 @@ const BlogCard = ({ blog, onViewDetails }) => {
       {/* Read More Button */}
       <button
         onClick={() => onViewDetails(blog)}
-        className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2 group"
+        className="w-full bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group"
       >
         <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
           article

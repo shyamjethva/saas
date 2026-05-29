@@ -110,7 +110,7 @@ const AIControlCenter = () => {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`px-6 py-3 rounded-2xl font-medium transition-all flex items-center gap-2 ${activeTab === tab.id
-                ? 'bg-primary text-white'
+                ? 'bg-slate-900 text-white'
                 : 'bg-white/5 text-slate-300 hover:bg-white/10'
               }`}
           >
@@ -184,7 +184,7 @@ const AgentManagement = ({ agents, setAgents, agentTypes }) => {
     >
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-white">AI Agent Fleet</h2>
-        <button className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 rounded-2xl flex items-center gap-2">
+        <button className="bg-slate-900 hover:bg-black text-white font-bold px-4 py-2 rounded-2xl flex items-center gap-2">
           <span className="material-symbols-outlined">add</span>
           Create Agent
         </button>
@@ -268,7 +268,7 @@ const WorkflowBuilder = ({ workflows, setWorkflows }) => (
   >
     <div className="flex justify-between items-center">
       <h2 className="text-2xl font-bold text-white">Automation Workflows</h2>
-      <button className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 rounded-2xl flex items-center gap-2">
+      <button className="bg-slate-900 hover:bg-black text-white font-bold px-4 py-2 rounded-2xl flex items-center gap-2">
         <span className="material-symbols-outlined">add</span>
         New Workflow
       </button>
@@ -327,7 +327,7 @@ const WorkflowBuilder = ({ workflows, setWorkflows }) => (
             <span className="material-symbols-outlined text-white text-2xl">account_tree</span>
           </div>
           <p className="text-slate-300 mb-4">Drag and drop components to build your automation workflow</p>
-          <button className="bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-2xl">
+          <button className="bg-slate-900 hover:bg-black text-white font-bold px-6 py-3 rounded-2xl">
             Open Visual Editor
           </button>
         </div>
@@ -344,7 +344,7 @@ const PromptLibrary = () => (
   >
     <div className="flex justify-between items-center">
       <h2 className="text-2xl font-bold text-white">Prompt Engineering Library</h2>
-      <button className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 rounded-2xl flex items-center gap-2">
+      <button className="bg-slate-900 hover:bg-black text-white font-bold px-4 py-2 rounded-2xl flex items-center gap-2">
         <span className="material-symbols-outlined">add</span>
         New Prompt
       </button>

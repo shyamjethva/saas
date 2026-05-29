@@ -40,14 +40,14 @@ const LeadsSales = () => {
         title: `Total Leads (${leads.length})`,
         description: 'Current leads in your system',
         icon: 'groups',
-        color: 'from-blue-500 to-cyan-500'
+        color: 'from-blue-700 to-sky-500'
       }
     ] : [],
     {
       title: 'Lead Capture Integration',
       description: 'Seamlessly collect leads from website forms, ads, and landing pages',
       icon: 'webhook',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       title: 'Automated Lead Assignment',
@@ -99,7 +99,7 @@ const LeadsSales = () => {
       name: 'New Leads',
       count: leads.filter(lead => lead.leadStage === 'New Lead').length,
       percentage: leads.length > 0 ? 100 : 0,
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       name: 'Contacted',
@@ -123,7 +123,7 @@ const LeadsSales = () => {
       name: 'Negotiation',
       count: leads.filter(lead => lead.leadStage === 'Negotiation').length,
       percentage: leads.length > 0 ? Math.round((leads.filter(lead => lead.leadStage === 'Negotiation').length / leads.length) * 100) : 0,
-      color: 'from-indigo-500 to-blue-500'
+      color: 'from-blue-600 to-emerald-500'
     },
     {
       name: 'Closed Won',
@@ -145,7 +145,7 @@ const LeadsSales = () => {
       label: 'Avg. Deal Size',
       value: '₹2.4L',
       change: '+15%',
-      color: 'text-blue-400'
+      color: 'text-blue-emerald'
     },
     {
       label: 'Sales Cycle',
@@ -162,9 +162,9 @@ const LeadsSales = () => {
   ];
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -177,9 +177,9 @@ const LeadsSales = () => {
               <span className="text-green-600 font-black tracking-widest uppercase text-[10px]">LEADS & SALES</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active pb-2">
               Intelligent Lead &
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 py-4">
+              <span className="block text-premium-gradient py-4">
                 Sales Management
               </span>
             </h1>
@@ -192,7 +192,7 @@ const LeadsSales = () => {
       </div>
 
       {/* Pipeline Visualization */}
-      <div className="px-6 pb-20">
+      <div className="px-6 pb-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
@@ -200,12 +200,12 @@ const LeadsSales = () => {
             viewport={{ once: true }}
             className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] mb-16"
           >
-            <h2 className="text-3xl font-black text-slate-900 mb-12 text-center tracking-tighter uppercase tracking-widest text-xs font-black">Sales Pipeline Visualization</h2>
+            <h2 className="text-3xl font-black text-slate-900 mb-12 text-center tracking-tighter uppercase tracking-widest text-xs heading-underline active inline-block">Sales Pipeline Visualization</h2>
 
             {/* Pipeline Flow */}
             <div className="relative">
               {/* Connecting Lines */}
-              <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 via-purple-500 via-indigo-500 to-teal-500 transform -translate-y-1/2 z-0"></div>
+              <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-blue-600 to-emerald-500 transform -translate-y-1/2 z-0"></div>
 
               <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {pipelineStages.map((stage, index) => (
@@ -233,7 +233,7 @@ const LeadsSales = () => {
                 <div key={index} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 text-center group hover:border-green-200 transition-all">
                   <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{metric.label}</div>
                   <div className="text-3xl font-black text-slate-900 mb-1 tracking-tight">{metric.value}</div>
-                  <div className={`text-xs font-black uppercase tracking-tighter ${metric.color === 'text-green-400' ? 'text-green-600' : metric.color === 'text-blue-400' ? 'text-blue-600' : 'text-purple-600'}`}>{metric.change}</div>
+                  <div className={`text-xs font-black uppercase tracking-tighter ${metric.color === 'text-green-400' ? 'text-green-600' : metric.color === 'text-blue-emerald' ? 'text-blue-600' : 'text-purple-600'}`}>{metric.change}</div>
                 </div>
               ))}
             </div>
@@ -250,7 +250,7 @@ const LeadsSales = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.3] py-4 overflow-visible">Sales Management Suite</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active inline-block">Sales Management Suite</h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Everything needed to optimize your conversion pipeline and boost performance.</p>
           </motion.div>
 
@@ -278,7 +278,7 @@ const LeadsSales = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="px-6 py-24">
+      <div className="px-6 py-12">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -288,7 +288,7 @@ const LeadsSales = () => {
           >
             <div className="absolute top-0 right-0 w-96 h-96 bg-green-50 rounded-full blur-[100px] -mr-48 -mt-48 group-hover:bg-green-100 transition-colors"></div>
 
-            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active inline-block">
               Ready to
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 py-2">
                 Optimize My Sales?
@@ -302,7 +302,7 @@ const LeadsSales = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-10 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-green-500/25 flex items-center gap-4 text-xl mx-auto"
+              className="relative z-10 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-black px-12 py-6 rounded-3xl transition-all shadow-2xl shadow-blue-600/25 flex items-center gap-4 text-xl mx-auto"
             >
               <span className="material-symbols-outlined text-2xl font-black">rocket_launch</span>
               Boost My Sales Performance

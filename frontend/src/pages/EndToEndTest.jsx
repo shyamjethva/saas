@@ -269,7 +269,7 @@ const EndToEndTest = () => {
           </div>
           
           <div className="flex-1 mx-4">
-            <div className="h-px bg-gradient-to-r from-green-500 to-blue-500"></div>
+            <div className="h-px bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500"></div>
             <div className="text-xs text-slate-500 mt-1">API Calls</div>
           </div>
           

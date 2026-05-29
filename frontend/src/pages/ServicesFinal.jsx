@@ -6,7 +6,7 @@ const Services = () => {
   // Animated Background Particles
   const Particles = () => {
     const [particles, setParticles] = useState([]);
-    
+
     useEffect(() => {
       const generateParticles = () => {
         const newParticles = [];
@@ -22,16 +22,16 @@ const Services = () => {
         }
         setParticles(newParticles);
       };
-      
+
       generateParticles();
     }, []);
-    
+
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map(particle => (
           <motion.div
             key={particle.id}
-            className="absolute rounded-full bg-gradient-to-r from-blue-400/30 to-purple-400/30"
+            className="absolute rounded-full bg-slate-900/10"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -65,7 +65,7 @@ const Services = () => {
       subtitle: 'Complete End-to-End B2B & B2C Solutions',
       description: 'We provide complete end-to-end digital marketing solutions designed for both B2B (Business to Business) and B2C (Business to Customer) businesses. Our focus is not just simple marketing — but brand growth, lead generation, customer acquisition, and revenue increase.',
       icon: 'trending_up',
-      color: 'from-blue-500 to-cyan-500',
+       color: 'from-slate-900 to-slate-700',
       services: [
         {
           category: 'Core Digital Marketing Services',
@@ -338,13 +338,13 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black relative overflow-hidden pt-20">
+    <div className="min-h-screen bg-slate-50 relative overflow-hidden pt-20">
       {/* Animated Background */}
       <Particles />
-      
+
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5 animate-pulse"></div>
-      
+       <div className="absolute inset-0 bg-slate-50"></div>
+
       {/* Hero Section */}
       <div className="relative z-10 px-6 py-16">
         <div className="max-w-6xl mx-auto text-center">
@@ -353,19 +353,15 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-sm mb-8">
-              <span className="material-symbols-outlined text-blue-400">precision_manufacturing</span>
-              <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">COMPREHENSIVE IT SOLUTIONS</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Professional 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
+
+            <h1 className="text-5xl md:text-6xl font-bold text-black mb-6 heading-underline active pb-2">
+              Professional
+               <span className="block text-slate-400">
                 IT Services
               </span>
             </h1>
-            
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-12">
+
+             <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-12 font-bold italic">
               Comprehensive technology solutions for modern business growth
             </p>
           </motion.div>
@@ -381,11 +377,10 @@ const Services = () => {
               <button
                 key={section.id}
                 onClick={() => setActiveSection(section.id)}
-                className={`px-5 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 text-sm ${
-                  activeSection === section.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
-                    : 'bg-white/10 text-slate-300 hover:bg-white/20 hover:text-white'
-                }`}
+                className={`px-5 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 text-sm ${activeSection === section.id
+                   ? 'bg-slate-900 text-white shadow-lg'
+                  : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-900 hover:text-slate-900'
+                  }`}
               >
                 <span className="material-symbols-outlined text-base">{section.icon}</span>
                 {section.title}
@@ -408,13 +403,13 @@ const Services = () => {
                 className="space-y-12"
               >
                 {/* Section Header */}
-                <div className="text-center">
-                  <div className={`inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r ${section.color}/20 border ${section.color.split(' ')[1]}/30 backdrop-blur-sm mb-6`}>
-                    <span className="material-symbols-outlined text-blue-400">{section.icon}</span>
-                    <span className="text-blue-400 font-bold tracking-wider uppercase text-xs">{section.subtitle}</span>
+                 <div className="text-center">
+                  <div className={`inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-slate-900 text-white border border-slate-800 backdrop-blur-sm mb-6`}>
+                    <span className="material-symbols-outlined text-white text-sm">{section.icon}</span>
+                    <span className="text-white font-black tracking-widest uppercase text-[10px]">{section.subtitle}</span>
                   </div>
-                  <h2 className="text-4xl font-bold text-white mb-6">{section.title}</h2>
-                  <p className="text-lg text-slate-300 max-w-4xl mx-auto leading-relaxed">
+                  <h2 className="text-4xl font-black text-slate-900 mb-6 uppercase italic tracking-tighter">{section.title}</h2>
+                  <p className="text-lg text-slate-500 max-w-4xl mx-auto leading-relaxed font-bold italic">
                     {section.description}
                   </p>
                 </div>
@@ -422,22 +417,22 @@ const Services = () => {
                 {/* Services Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {section.services?.map((service, index) => (
-                    <motion.div
+                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10  transition-all duration-300"
+                      className="bg-white rounded-2xl p-8 border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-300 group"
                     >
-                      <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span className="material-symbols-outlined text-blue-400">check_circle</span>
+                      <h3 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-3 uppercase italic tracking-tight">
+                        <span className="material-symbols-outlined text-slate-900">check_circle</span>
                         {service.category}
                       </h3>
-                      <p className="text-slate-300 text-sm mb-4">{service.description}</p>
+                      <p className="text-slate-500 text-sm font-bold italic mb-6">"{service.description}"</p>
                       <ul className="space-y-2">
-                        {service.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start gap-2 text-slate-300 text-sm">
-                            <span className="material-symbols-outlined text-green-400 text-xs mt-1">arrow_right</span>
+                         {service.items.map((item, itemIndex) => (
+                          <li key={itemIndex} className="flex items-start gap-3 text-slate-600 text-sm font-bold italic">
+                            <span className="material-symbols-outlined text-slate-900 text-xs mt-1">arrow_right</span>
                             <span>{item}</span>
                           </li>
                         ))}
@@ -450,44 +445,44 @@ const Services = () => {
                 {(section.b2bServices || section.b2cServices) && (
                   <div className="grid md:grid-cols-2 gap-8">
                     {section.b2bServices && (
-                      <motion.div
+                       <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+                        className="bg-white rounded-2xl p-8 border border-slate-200 shadow-xl"
                       >
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                         <div className="flex items-center gap-4 mb-8">
+                          <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                             <span className="material-symbols-outlined text-white">business</span>
                           </div>
-                          <h3 className="text-xl font-bold text-white">B2B Solutions</h3>
+                          <h3 className="text-2xl font-black text-slate-900 uppercase italic tracking-tighter">B2B Solutions</h3>
                         </div>
                         <ul className="space-y-2">
-                          {section.b2bServices.map((item, index) => (
-                            <li key={index} className="flex items-center gap-2 text-slate-300">
-                              <span className="material-symbols-outlined text-green-400 text-sm">check</span>
+                           {section.b2bServices.map((item, index) => (
+                            <li key={index} className="flex items-center gap-3 text-slate-600 font-bold italic">
+                              <span className="material-symbols-outlined text-slate-900 text-sm">check</span>
                               <span>{item}</span>
                             </li>
                           ))}
                         </ul>
                       </motion.div>
                     )}
-                    
+
                     {section.b2cServices && (
-                      <motion.div
+                       <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+                        className="bg-white rounded-2xl p-8 border border-slate-200 shadow-xl"
                       >
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                            <span className="material-symbols-outlined text-white">storefront</span>
+                         <div className="flex items-center gap-4 mb-8">
+                          <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center">
+                            <span className="material-symbols-outlined text-slate-900">storefront</span>
                           </div>
-                          <h3 className="text-xl font-bold text-white">B2C Solutions</h3>
+                          <h3 className="text-2xl font-black text-slate-900 uppercase italic tracking-tighter">B2C Solutions</h3>
                         </div>
                         <ul className="space-y-2">
-                          {section.b2cServices.map((item, index) => (
-                            <li key={index} className="flex items-center gap-2 text-slate-300">
-                              <span className="material-symbols-outlined text-green-400 text-sm">check</span>
+                           {section.b2cServices.map((item, index) => (
+                            <li key={index} className="flex items-center gap-3 text-slate-600 font-bold italic">
+                              <span className="material-symbols-outlined text-slate-400 text-sm">check</span>
                               <span>{item}</span>
                             </li>
                           ))}
@@ -506,13 +501,13 @@ const Services = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 text-center relative overflow-hidden"
+                         className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg text-center relative overflow-hidden group hover:bg-slate-900 transition-all duration-500"
                       >
-                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
-                          <span className="text-white text-xs font-bold">{benefit.stat}</span>
+                        <div className="absolute -top-2 -right-2 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-slate-900 transition-colors border-2 border-white">
+                          <span className="text-[10px] font-black">{benefit.stat}</span>
                         </div>
-                        <div className="text-lg font-bold text-white mb-1">{benefit.title}</div>
-                        <div className="text-cyan-400 text-xs">{benefit.label}</div>
+                        <div className="text-lg font-black text-slate-900 mb-1 uppercase tracking-tight group-hover:text-white transition-colors">{benefit.title}</div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest group-hover:text-slate-400 transition-colors">{benefit.label}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -520,53 +515,51 @@ const Services = () => {
 
                 {/* Service Packages */}
                 <div className="space-y-8">
-                  <div className="text-center">
-                    <h2 className="text-3xl font-bold text-white mb-2">Service Packages</h2>
-                    <p className="text-slate-300">Choose the perfect solution for your business needs</p>
+                   <div className="text-center">
+                    <h2 className="text-3xl font-black text-slate-900 mb-2 uppercase italic tracking-tighter">Service Packages</h2>
+                    <p className="text-slate-500 font-bold italic">Provision your institutional solution tier</p>
                   </div>
-                  
+
                   <div className="grid md:grid-cols-3 gap-6">
                     {section.packages.map((packageItem, index) => (
-                      <motion.div
+                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.2 }}
-                        className={`bg-white/5 backdrop-blur-sm rounded-xl p-6 border-2 transition-all duration-300 relative ${
-                          packageItem.popular
-                            ? 'border-blue-500/50 bg-gradient-to-br from-blue-500/10 to-purple-500/10'
-                            : 'border-white/10 '
-                        }`}
+                        className={`bg-white rounded-[2.5rem] p-10 border-2 transition-all duration-500 relative group shadow-xl hover:shadow-2xl ${packageItem.popular
+                          ? 'border-slate-900 scale-105 z-20'
+                          : 'border-slate-100'
+                          }`}
                       >
                         {packageItem.popular && (
-                          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                            <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full text-xs">
+                           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span className="px-6 py-2 bg-slate-900 text-white font-black rounded-full text-[9px] uppercase tracking-[0.2em] shadow-2xl">
                               MOST POPULAR
                             </span>
                           </div>
                         )}
-                        
-                        <div className={`text-center mb-6 ${packageItem.popular ? 'pt-3' : ''}`}>
-                          <h3 className="text-xl font-bold text-white mb-1">{packageItem.name}</h3>
-                          <div className="text-2xl font-bold text-blue-400 mb-1">{packageItem.price}</div>
-                          <p className="text-slate-300 text-sm">{packageItem.description}</p>
+
+                         <div className={`text-center mb-10 ${packageItem.popular ? 'pt-4' : ''}`}>
+                          <h3 className="text-2xl font-black text-slate-900 mb-2 uppercase italic tracking-tight">{packageItem.name}</h3>
+                          <div className="text-3xl font-black text-slate-900 mb-3">{packageItem.price}</div>
+                          <p className="text-slate-500 text-sm font-bold italic leading-relaxed opacity-80">"{packageItem.description}"</p>
                         </div>
-                        
-                        <ul className="space-y-3 mb-6">
+
+                         <ul className="space-y-4 mb-10">
                           {packageItem.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-start gap-2 text-slate-300 text-sm">
-                              <span className="material-symbols-outlined text-green-400 text-sm mt-0.5">check</span>
+                            <li key={featureIndex} className="flex items-start gap-4 text-slate-600 text-sm font-bold italic">
+                              <span className="material-symbols-outlined text-slate-900 text-lg mt-0.5">check_circle</span>
                               <span>{feature}</span>
                             </li>
                           ))}
                         </ul>
-                        
-                        <button className={`w-full py-3 rounded-lg font-bold transition-all duration-300 text-sm ${
-                          packageItem.popular
-                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white'
-                            : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
-                        }`}>
-                          Get Started
+
+                         <button className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all duration-500 ${packageItem.popular
+                          ? 'bg-slate-900 text-white shadow-2xl hover:scale-[1.02]'
+                          : 'bg-slate-50 text-slate-900 border border-slate-200 hover:bg-slate-100'
+                          }`}>
+                          Initialize Project
                         </button>
                       </motion.div>
                     ))}
@@ -581,36 +574,37 @@ const Services = () => {
       {/* Final CTA */}
       <div className="relative z-10 px-6 py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
+           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-white/5 backdrop-blur-sm rounded-2xl p-12 border border-white/10"
+            className="bg-slate-900 rounded-[4rem] p-16 md:p-24 border border-slate-800 shadow-3xl text-center relative overflow-hidden group"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-slate-800 rounded-full blur-[120px] -mr-64 -mt-64 opacity-50 pointer-events-none transition-all duration-700 group-hover:bg-slate-700"></div>
+             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase italic tracking-tighter">
               Transform Your Business Today
             </h2>
-            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Partner with us for comprehensive digital transformation and cutting-edge technology solutions
+            <p className="text-xl text-slate-400 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
+              Partner with our architectural elite for comprehensive digital transformation and high-fidelity institutional technology solutions.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
+               <Link to="/contact">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold px-8 py-4 rounded-full transition-all flex items-center gap-2"
+                  className="bg-white text-slate-900 font-black px-10 py-5 rounded-full transition-all shadow-3xl flex items-center gap-3 uppercase tracking-widest text-[10px]"
                 >
-                  <span className="material-symbols-outlined">contact_support</span>
+                  <span className="material-symbols-outlined text-lg">contact_support</span>
                   Schedule Consultation
                 </motion.button>
               </Link>
-              <Link to="/portfolio">
+               <Link to="/portfolio">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-full border border-white/20 transition-all flex items-center gap-2"
+                  className="bg-slate-800 text-white font-black px-10 py-5 rounded-full border border-slate-700 transition-all flex items-center gap-3 uppercase tracking-widest text-[10px]"
                 >
-                  <span className="material-symbols-outlined">work</span>
+                  <span className="material-symbols-outlined text-lg">work</span>
                   View Our Work
                 </motion.button>
               </Link>

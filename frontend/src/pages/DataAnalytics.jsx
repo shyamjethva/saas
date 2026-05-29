@@ -6,7 +6,7 @@ const DataAnalytics = () => {
   const [loading, setLoading] = useState(false);
   const [kpiData, setKpiData] = useState([
     { label: 'Monthly Revenue', value: '₹4.2M', change: '+18.5%', color: 'text-green-400', trend: 'up' },
-    { label: 'Active Clients', value: '156', change: '+12', color: 'text-blue-400', trend: 'up' },
+    { label: 'Active Clients', value: '156', change: '+12', color: 'text-blue-emerald', trend: 'up' },
     { label: 'Conversion Rate', value: '32.7%', change: '+4.2%', color: 'text-purple-400', trend: 'up' },
     { label: 'Client Retention', value: '89%', change: '+3%', color: 'text-teal-400', trend: 'up' }
   ]);
@@ -22,7 +22,7 @@ const DataAnalytics = () => {
       title: 'Campaign Performance Analytics',
       description: 'Detailed analysis of marketing campaign effectiveness',
       icon: 'campaign',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-700 to-sky-500'
     },
     {
       title: 'Employee Performance Tracking',
@@ -107,7 +107,7 @@ const DataAnalytics = () => {
           label: 'Active Clients',
           value: activeClients.toString(),
           change: `+${Math.floor(Math.random() * 10) + 5}`,
-          color: 'text-blue-400',
+          color: 'text-blue-emerald',
           trend: 'up'
         },
         {
@@ -143,9 +143,9 @@ const DataAnalytics = () => {
   const monthlyGrowth = [65, 78, 85, 72, 90, 88, 95, 87, 92, 89, 94, 91];
 
   return (
-    <div className="min-h-screen premium-bg pt-20">
+    <div className="min-h-screen premium-bg pt-12">
       {/* Header Section */}
-      <div className="px-6 py-16">
+      <div className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -164,9 +164,9 @@ const DataAnalytics = () => {
               )}
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active pb-2">
               Real-Time Business
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 py-4">
+              <span className="block text-premium-gradient py-4">
                 Intelligence Engine
               </span>
             </h1>
@@ -193,14 +193,14 @@ const DataAnalytics = () => {
                 className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-xl hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 text-center relative overflow-hidden group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${kpi.color === 'text-green-400' ? 'from-green-500/10 to-emerald-500/10' :
-                  kpi.color === 'text-blue-400' ? 'from-blue-500/10 to-cyan-500/10' :
+                  kpi.color === 'text-blue-emerald' ? 'from-emerald-500/10 to-blue-600/10' :
                     kpi.color === 'text-purple-400' ? 'from-purple-500/10 to-pink-500/10' :
                       'from-teal-500/10 to-cyan-500/10'
                   } opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none`}></div>
                 <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">{kpi.label}</div>
                 <div className="text-4xl font-black text-slate-900 mb-2 tracking-tight">{kpi.value}</div>
                 <div className={`flex items-center justify-center gap-2 font-black text-[11px] ${kpi.color === 'text-green-400' ? 'text-green-600' :
-                  kpi.color === 'text-blue-400' ? 'text-blue-600' :
+                  kpi.color === 'text-blue-emerald' ? 'text-blue-emerald' :
                     kpi.color === 'text-purple-400' ? 'text-purple-600' : 'text-teal-600'
                   }`}>
                   <span className="material-symbols-outlined text-sm font-black">
@@ -263,7 +263,7 @@ const DataAnalytics = () => {
               <h3 className="text-xl font-black text-slate-900 mb-6 uppercase tracking-tighter">Top Performing Segments</h3>
               <div className="space-y-4">
                 {[
-                  { name: 'Enterprise Clients', value: '42%', color: 'from-blue-500 to-cyan-500' },
+                  { name: 'Enterprise Clients', value: '42%', color: 'from-blue-700 to-sky-500' },
                   { name: 'Mid-Market', value: '31%', color: 'from-green-500 to-emerald-500' },
                   { name: 'SMB Sector', value: '27%', color: 'from-purple-500 to-pink-500' }
                 ].map((segment, index) => (
@@ -331,7 +331,9 @@ const DataAnalytics = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.3] py-4 overflow-visible">Advanced Analytics Engine</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-black mb-6 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active inline-block">
+              Advanced <span className="text-premium-gradient">Analytics Engine</span>
+            </h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Comprehensive business intelligence across every department.</p>
           </motion.div>
 
@@ -378,7 +380,7 @@ const DataAnalytics = () => {
           >
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[100px] -mr-64 -mt-64 group-hover:bg-teal-100/50 transition-colors"></div>
 
-            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible">
+            <h2 className="relative z-10 text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.3] py-4 overflow-visible heading-underline active inline-block">
               Ready for
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 py-4">
                 Strategic Insights?
