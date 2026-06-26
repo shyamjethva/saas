@@ -17,328 +17,236 @@ const Careers = () => {
     resume: null
   });
 
-  // AI-focused open positions
+  // Real open positions
   const openPositions = [
     {
       id: 1,
-      title: "AI Solutions Architect",
-      department: "AI/ML",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Business Development Executive (BDE)",
+      department: "Sales",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "5+ years",
-      salary: "₹15L - ₹25L PA",
+      experience: "1-3 years",
+      salary: "₹4.20L - ₹6L PA",
       responsibilities: [
-        "Design and architect end-to-end AI solutions for enterprise clients",
-        "Lead AI/ML project implementations from conception to deployment",
-        "Evaluate and select appropriate AI technologies and frameworks",
-        "Collaborate with cross-functional teams to integrate AI capabilities",
-        "Mentor team members on AI best practices and emerging technologies"
+        "Identify and develop new business opportunities (1 Opening)",
+        "Build and maintain strong client relationships",
+        "Achieve sales targets and organizational goals",
+        "Conduct market research to identify new trends",
+        "Collaborate with the technical team to deliver solutions"
       ],
       requirements: [
-        "Bachelor's/Master's degree in Computer Science, AI, or related field",
-        "5+ years of experience in AI/ML solution architecture",
-        "Expertise in TensorFlow, PyTorch, and OpenAI APIs",
-        "Experience with LLMs, NLP, and Generative AI technologies",
-        "Strong knowledge of cloud AI services (AWS SageMaker, Azure ML, GCP AI)"
+        "Proven experience as a Business Development Executive",
+        "Strong communication and negotiation skills",
+        "Ability to build rapport with clients",
+        "Time management and planning skills",
+        "Bachelor's degree in Business Administration or relevant field"
       ]
     },
     {
       id: 2,
-      title: "n8n Automation Engineer",
-      department: "AI Automation",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Sales Executive",
+      department: "Sales",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "3+ years",
-      salary: "₹8L - ₹15L PA",
+      experience: "1-3 years",
+      salary: "₹2.40L - ₹3.60L PA",
       responsibilities: [
-        "Design and build automated workflows using n8n and other automation tools",
-        "Integrate AI services into business process automations",
-        "Develop custom n8n nodes and workflows for client requirements",
-        "Optimize existing automation pipelines for performance and reliability",
-        "Train clients on automation best practices and self-service capabilities"
+        "Actively seek out new sales opportunities (4 Openings)",
+        "Conduct market research to identify selling possibilities",
+        "Set up meetings with potential clients",
+        "Prepare and deliver appropriate presentations on products and services",
+        "Ensure the availability of stock for sales and demonstrations"
       ],
       requirements: [
-        "Bachelor's degree in Computer Science or related field",
-        "3+ years of experience with workflow automation tools (n8n, Zapier, Make)",
-        "Strong JavaScript/TypeScript and Node.js skills",
-        "Experience integrating REST APIs and webhooks",
-        "Knowledge of AI/ML APIs (OpenAI, Anthropic, Google AI)"
+        "Proven experience as a Sales Executive or relevant role",
+        "Fast learner and passion for sales",
+        "Self-motivated with a results-driven approach",
+        "Aptitude in delivering attractive presentations",
+        "High school degree; BSc/BA is a plus"
       ]
     },
     {
       id: 3,
-      title: "AI Coding Specialist",
-      department: "AI Development",
-      location: "Rajkot, Gujarat / Remote",
+      title: "HR Executive",
+      department: "Human Resources",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "3+ years",
-      salary: "₹10L - ₹18L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹2.40L PA",
       responsibilities: [
-        "Develop AI-powered coding assistants and code generation tools",
-        "Implement AI pair programming solutions using GitHub Copilot, Cursor",
-        "Build custom AI code review and optimization systems",
-        "Create AI documentation and test generation tools",
-        "Research and implement latest AI coding technologies"
+        "Manage the full recruitment lifecycle (1 Opening)",
+        "Maintain employee records and update HR databases",
+        "Assist in performance management processes",
+        "Handle employee grievances and disciplinary issues",
+        "Ensure compliance with labor regulations"
       ],
       requirements: [
-        "Bachelor's degree in Computer Science or equivalent",
-        "3+ years of software development experience",
-        "Strong expertise in Python, JavaScript, and modern frameworks",
-        "Experience with AI coding tools (Copilot, CodeWhisperer, TabNine)",
-        "Knowledge of LLMs and prompt engineering for code generation"
+        "Proven experience as an HR Executive or similar role",
+        "Familiarity with Human Resources Management Systems",
+        "Understanding of labor laws and disciplinary procedures",
+        "Excellent communication and interpersonal skills",
+        "BSc/BA in HR, Business Administration or relevant field"
       ]
     },
     {
       id: 4,
-      title: "AI Tools Integration Specialist",
-      department: "AI Integration",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Digital Marketing Executive",
+      department: "Marketing",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "2+ years",
-      salary: "₹6L - ₹12L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹2.64L PA",
       responsibilities: [
-        "Integrate AI tools and platforms into client applications",
-        "Configure and customize AI SaaS products for business needs",
-        "Develop connectors between AI services and existing systems",
-        "Train clients on AI tool usage and optimization",
-        "Stay updated with latest AI tools and integration patterns"
+        "Assist in the formulation of strategies to build a lasting digital connection with consumers (1 Opening)",
+        "Launch optimized online adverts through Google Adwords, Facebook etc.",
+        "Be actively involved in SEO efforts (keyword, image optimization etc.)",
+        "Provide creative ideas for content marketing",
+        "Measure performance of digital marketing efforts"
       ],
       requirements: [
-        "Bachelor's degree in IT, Computer Science, or related field",
-        "2+ years of experience with API integrations",
-        "Hands-on experience with AI tools (ChatGPT, Claude, Midjourney, etc.)",
-        "Strong understanding of REST APIs and web services",
-        "Basic knowledge of AI/ML concepts and terminology"
+        "Proven experience as Digital Marketing Executive or similar role",
+        "Excellent understanding of digital marketing concepts",
+        "Experience with B2C social media, Google Adwords and SEO",
+        "Perfect knowledge of web analytics tools",
+        "Skills and experience in creative content writing"
       ]
     },
     {
       id: 5,
-      title: "AI Agent Frontend Developer",
-      department: "AI Development",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Physical Marketing Executive",
+      department: "Marketing",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "3+ years",
-      salary: "₹10L - ₹18L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹2.64L PA",
       responsibilities: [
-        "Build intuitive user interfaces for AI agents and chatbots",
-        "Integrate AI APIs and streaming responses into frontend applications",
-        "Develop real-time conversation interfaces with WebSocket",
-        "Optimize UI performance for AI-powered features",
-        "Collaborate with AI/ML teams to implement agent capabilities"
+        "Plan and execute physical marketing campaigns and events (1 Opening)",
+        "Distribute promotional materials in target areas",
+        "Engage with potential customers in physical locations",
+        "Track and report on the success of physical marketing initiatives",
+        "Collaborate with the digital marketing team for integrated campaigns"
       ],
       requirements: [
-        "Bachelor's degree in Computer Science or related field",
-        "3+ years of React/Vue/Angular experience",
-        "Experience with AI integration (OpenAI, Anthropic APIs)",
-        "Strong TypeScript and modern JavaScript skills",
-        "Knowledge of real-time web technologies"
+        "Experience in physical or field marketing",
+        "Outgoing personality with excellent interpersonal skills",
+        "Ability to work independently and manage time effectively",
+        "Strong organizational and planning skills",
+        "Willingness to travel locally as required"
       ]
     },
     {
       id: 6,
-      title: "AI Agent Backend Developer",
-      department: "AI Development",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Developer",
+      department: "Engineering",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "3+ years",
-      salary: "₹12L - ₹20L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹3L PA",
       responsibilities: [
-        "Design and build scalable backend systems for AI agents",
-        "Develop AI agent orchestration and workflow engines",
-        "Implement LLM integrations and prompt management systems",
-        "Build APIs for agent-to-agent and agent-to-human communication",
-        "Optimize system performance for AI inference and responses"
+        "Produce clean, efficient code based on specifications (6 Openings)",
+        "Integrate software components and third-party programs",
+        "Verify and deploy programs and systems",
+        "Troubleshoot, debug and upgrade existing software",
+        "Gather and evaluate user feedback"
       ],
       requirements: [
-        "Bachelor's degree in Computer Science or related field",
-        "3+ years of Node.js/Python backend development",
-        "Experience with LLM APIs and AI frameworks",
-        "Knowledge of database design and message queues",
-        "Understanding of microservices architecture"
+        "Proven experience as a Software Developer",
+        "Familiarity with Agile development methodologies",
+        "Experience with software design and development",
+        "Knowledge of coding languages and frameworks",
+        "BSc/BA in Computer Science, Engineering or a related field"
       ]
     },
     {
       id: 7,
-      title: "AI/ML Developer",
-      department: "AI/ML",
-      location: "Rajkot, Gujarat / Remote",
+      title: "QA Tester",
+      department: "Engineering",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "3+ years",
-      salary: "₹12L - ₹22L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹3L PA",
       responsibilities: [
-        "Develop and deploy machine learning models for production",
-        "Build AI-powered features using TensorFlow, PyTorch, or similar",
-        "Implement NLP solutions for text analysis and generation",
-        "Create computer vision applications for image processing",
-        "Optimize ML models for performance and accuracy"
+        "Review and analyze system specifications (1 Opening)",
+        "Execute test cases (manual or automated) and analyze results",
+        "Evaluate product code according to specifications",
+        "Create logs to document testing phases and defects",
+        "Report bugs and errors to development teams"
       ],
       requirements: [
-        "Bachelor's/Master's in Computer Science or AI/ML",
-        "3+ years of AI/ML development experience",
-        "Proficiency in Python and ML frameworks",
-        "Experience with cloud ML platforms (AWS SageMaker, etc.)",
-        "Strong mathematics and statistics background"
+        "Proven experience as a Quality Assurance Tester or similar role",
+        "Experience in project management and QA methodology",
+        "Familiarity with Agile frameworks and regression testing",
+        "Ability to document and troubleshoot errors",
+        "BSc/BA in Computer Science, Engineering or a related field"
       ]
     },
     {
       id: 8,
-      title: "Full Stack Developer",
-      department: "Engineering",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Data Analytics",
+      department: "Data Analytics",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "3+ years",
-      salary: "₹10L - ₹20L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹3L PA",
       responsibilities: [
-        "Build end-to-end web applications with AI integration",
-        "Develop RESTful APIs and database architectures",
-        "Implement frontend interfaces with React/Vue/Angular",
-        "Deploy and manage applications on cloud platforms",
-        "Collaborate across teams to deliver complete solutions"
+        "Interpret data, analyze results using statistical techniques (1 Opening)",
+        "Develop and implement data analyses, data collection systems",
+        "Acquire data from primary or secondary data sources",
+        "Identify, analyze, and interpret trends or patterns in complex data sets",
+        "Work with management to prioritize business and information needs"
       ],
       requirements: [
-        "Bachelor's degree in Computer Science or equivalent",
-        "3+ years of full stack development experience",
-        "Strong JavaScript/TypeScript and Node.js skills",
-        "Experience with databases (SQL and NoSQL)",
-        "Knowledge of cloud deployment and DevOps"
+        "Proven working experience as a Data Analyst or Business Data Analyst",
+        "Technical expertise regarding data models, database design development",
+        "Strong knowledge of and experience with reporting packages",
+        "Knowledge of statistics and experience using statistical packages",
+        "BS in Mathematics, Economics, Computer Science, Information Management or Statistics"
       ]
     },
     {
       id: 9,
-      title: "AI Agent Copywriter",
-      department: "Content",
-      location: "Rajkot, Gujarat / Remote",
+      title: "Digital Marketing",
+      department: "Marketing",
+      location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "2+ years",
-      salary: "₹5L - ₹10L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹3L PA",
       responsibilities: [
-        "Create compelling content for AI products and services",
-        "Write conversational scripts for AI agents and chatbots",
-        "Develop brand voice guidelines for AI interactions",
-        "Craft user-facing content that explains AI capabilities",
-        "Collaborate with AI teams to improve agent responses"
+        "Design and oversee all aspects of our digital marketing department (3 Openings)",
+        "Develop and monitor campaign budgets",
+        "Plan and manage our social media platforms",
+        "Prepare accurate reports on our marketing campaign's overall performance",
+        "Identify the latest trends and technologies affecting our industry"
       ],
       requirements: [
-        "Bachelor's degree in English, Journalism, or related field",
-        "2+ years of copywriting or content creation experience",
-        "Understanding of AI/ML concepts and terminology",
-        "Excellent writing and communication skills",
-        "Experience with conversational UI writing preferred"
+        "Bachelor's degree in Marketing or relevant field",
+        "A minimum of 2 years experience in a digital marketing or advertising position",
+        "In-depth knowledge of various social media platforms, best practices, and website analytics",
+        "Highly creative with excellent analytical abilities",
+        "Outstanding communication and interpersonal skills"
       ]
     },
     {
       id: 10,
-      title: "AI Digital Marketing Specialist",
-      department: "Marketing",
-      location: "Rajkot, Gujarat / Remote",
-      type: "Full-time",
-      experience: "3+ years",
-      salary: "₹6L - ₹12L PA",
-      responsibilities: [
-        "Develop AI-powered marketing strategies and campaigns",
-        "Use AI tools for audience targeting and segmentation",
-        "Implement predictive analytics for marketing optimization",
-        "Leverage AI for content personalization and recommendations",
-        "Analyze marketing data using AI-driven insights"
-      ],
-      requirements: [
-        "Bachelor's degree in Marketing, Business, or related field",
-        "3+ years of digital marketing experience",
-        "Experience with AI marketing tools and platforms",
-        "Strong analytical and data interpretation skills",
-        "Knowledge of SEO, SEM, and social media marketing"
-      ]
-    },
-    {
-      id: 11,
-      title: "AI-Powered Social Media Manager",
-      department: "Marketing",
-      location: "Rajkot, Gujarat / Remote",
-      type: "Full-time",
-      experience: "2+ years",
-      salary: "₹5L - ₹10L PA",
-      responsibilities: [
-        "Manage social media presence using AI scheduling and analytics tools",
-        "Create AI-assisted content for multiple social platforms",
-        "Monitor social trends and engagement using AI insights",
-        "Implement chatbots for social media customer service",
-        "Analyze performance metrics and optimize strategies"
-      ],
-      requirements: [
-        "Bachelor's degree in Marketing, Communications, or related",
-        "2+ years of social media management experience",
-        "Experience with AI social media tools (Buffer AI, Hootsuite, etc.)",
-        "Strong creative and copywriting skills",
-        "Understanding of social media algorithms and trends"
-      ]
-    },
-    {
-      id: 12,
-      title: "AI Performance Marketer",
-      department: "Marketing",
-      location: "Rajkot, Gujarat / Remote",
-      type: "Full-time",
-      experience: "3+ years",
-      salary: "₹7L - ₹14L PA",
-      responsibilities: [
-        "Optimize paid campaigns using AI bidding and targeting tools",
-        "Implement AI-driven A/B testing and conversion optimization",
-        "Analyze campaign performance with AI analytics platforms",
-        "Manage programmatic advertising and AI ad platforms",
-        "Drive ROI through data-driven performance strategies"
-      ],
-      requirements: [
-        "Bachelor's degree in Marketing, Analytics, or related field",
-        "3+ years of performance marketing experience",
-        "Experience with AI advertising platforms (Google Smart Bidding, etc.)",
-        "Strong data analysis and Excel/spreadsheet skills",
-        "Knowledge of attribution modeling and marketing analytics"
-      ]
-    },
-    {
-      id: 13,
-      title: "AI Creative Designer",
+      title: "Graphics & Video Editing",
       department: "Design",
-      location: "Rajkot, Gujarat / Remote",
-      type: "Full-time",
-      experience: "3+ years",
-      salary: "₹8L - ₹15L PA",
-      responsibilities: [
-        "Create visual designs using AI-powered design tools",
-        "Develop brand assets and marketing materials with AI assistance",
-        "Design UI/UX for AI products and agent interfaces",
-        "Experiment with generative AI for creative concepts",
-        "Collaborate with AI teams on visual agent representations"
-      ],
-      requirements: [
-        "Bachelor's degree in Design, Fine Arts, or related field",
-        "3+ years of graphic/UI design experience",
-        "Proficiency in AI design tools (Midjourney, DALL-E, etc.)",
-        "Strong portfolio demonstrating creative skills",
-        "Experience with Figma, Adobe Creative Suite"
-      ]
-    },
-    {
-      id: 14,
-      title: "AI Product Manager",
-      department: "AI Product",
       location: "Rajkot, Gujarat",
       type: "Full-time",
-      experience: "5+ years",
-      salary: "₹18L - ₹30L PA",
+      experience: "1-3 years",
+      salary: "₹1.80L - ₹2.40L PA",
       responsibilities: [
-        "Define product strategy for AI-powered solutions",
-        "Lead AI product development from ideation to launch",
-        "Collaborate with engineering, design, and business teams",
-        "Analyze AI market trends and competitive landscape",
-        "Manage AI product roadmap and feature prioritization"
+        "Create engaging graphic designs and video content (2 Openings)",
+        "Edit and assemble recorded raw material into a suitable, finished product",
+        "Ensure logical sequencing and smooth running of videos",
+        "Design graphics, banners, and promotional materials",
+        "Collaborate with the marketing team to align with brand guidelines"
       ],
       requirements: [
-        "Bachelor's/Master's degree in Business, Engineering, or AI",
-        "5+ years of product management experience, 2+ in AI products",
-        "Strong understanding of AI/ML technologies and capabilities",
-        "Experience with Agile methodologies and product lifecycle management",
-        "Excellent communication skills to bridge technical and business teams"
+        "Proven experience as a Video Editor and Graphic Designer",
+        "Solid experience with digital technology and editing software packages (e.g. Premiere, After Effects, Photoshop)",
+        "Demonstrable video editing ability with a strong portfolio",
+        "Thorough knowledge of timing, motivation, and continuity",
+        "Creative mind and storytelling skills"
       ]
     }
   ];
@@ -461,27 +369,29 @@ const Careers = () => {
   const handleApplicationSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      Object.keys(applicationData).forEach(key => {
-        if (key === 'resume' && applicationData[key]) {
-          formData.append(key, applicationData[key]);
-        } else {
-          formData.append(key, applicationData[key]);
-        }
-      });
-      formData.append('positionId', selectedPosition.id);
-      formData.append('positionTitle', selectedPosition.title);
+      const payload = {
+        name: applicationData.fullName || 'Applicant',
+        email: applicationData.email || 'applicant@example.com',
+        phone: applicationData.phone || '0000000000',
+        service: 'Job Application',
+        message: `Job Application for ${selectedPosition?.title || 'Unknown Position'}\n\nPhone: ${applicationData.phone}\nCurrent Position: ${applicationData.currentPosition}\nLinkedIn: ${applicationData.linkedin}\nGitHub: ${applicationData.github}\nPortfolio: ${applicationData.portfolio}\nCover Letter: ${applicationData.coverLetter}`
+      };
 
-      const response = await fetch('http://localhost:5000/api/applications', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5006/api';
+      const response = await fetch(`${apiUrl}/contact`, {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
         alert('Application submitted successfully! Our HR team will review your application and contact you soon.');
         closeApplicationModal();
       } else {
-        alert('Error submitting application. Please try again.');
+        const errorData = await response.json().catch(() => ({}));
+        alert(`Error submitting application: ${errorData.error || 'Please try again.'}`);
       }
     } catch (error) {
       console.error('Error:', error);

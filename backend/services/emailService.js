@@ -34,15 +34,15 @@ const sendConsultationEmail = async (consultationData) => {
     const {
       name, email, phone, company, industry, companySize,
       website, projectType, budget, timeline, goals, challenges,
-      consultationType, preferredContact
+      consultationType, preferredContact, message, service
     } = consultationData;
 
     // Email content
     const emailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, #00c853, #2979ff); color: white; padding: 20px; text-align: center; border-radius: 10px;">
-          <h1 style="margin: 0; font-size: 28px;">🚨 New Consultation Request</h1>
-          <p style="margin: 10px 0 0; font-size: 16px;">High Priority - Free Consultation Lead</p>
+          <h1 style="margin: 0; font-size: 28px;">🚨 New ${service || 'Consultation'} Request</h1>
+          <p style="margin: 10px 0 0; font-size: 16px;">High Priority - New Lead</p>
         </div>
         
         <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 10px;">
@@ -106,13 +106,13 @@ const sendConsultationEmail = async (consultationData) => {
         </div>
 
         <div style="background: #fff3e0; padding: 20px; margin: 20px 0; border-radius: 10px;">
-          <h2 style="color: #f57c00; margin-top: 0;">💡 Business Goals</h2>
-          <p style="margin: 0; padding: 10px; background: white; border-radius: 5px; border-left: 4px solid #f57c00;">
-            ${goals || 'Not provided'}
+          <h2 style="color: #f57c00; margin-top: 0;">💡 Business Goals / Request Details</h2>
+          <p style="margin: 0; padding: 10px; background: white; border-radius: 5px; border-left: 4px solid #f57c00; white-space: pre-line;">
+            ${message || goals || 'Not provided'}
           </p>
         </div>
 
-        <div style="background: #ffebee; padding: 20px; margin: 20px 0; border-radius: 10px;">
+        <div style="background: #ffebee; padding: 20px; margin: 20px 0; border-radius: 10px; display: ${challenges ? 'block' : 'none'};">
           <h2 style="color: #d32f2f; margin-top: 0;">⚠️ Current Challenges</h2>
           <p style="margin: 0; padding: 10px; background: white; border-radius: 5px; border-left: 4px solid #d32f2f;">
             ${challenges || 'Not provided'}
@@ -146,16 +146,16 @@ const sendConsultationEmail = async (consultationData) => {
     // Send to HR
     const hrMailOptions = {
       from: process.env.EMAIL_USER || 'errorinfotech404@gmail.com',
-      to: 'hr@errorinfotech.com,errorinfotech404@gmail.com',
-      subject: `🚨 URGENT: New Consultation Request from ${name} - ${company || 'Individual Client'}`,
+      to: process.env.EMAIL_USER, // Changed to use the email in .env
+      subject: `🚨 URGENT: New ${service || 'Consultation'} Request from ${name} - ${company || 'Individual'}`,
       html: emailContent
     };
 
     // Send to BDE
     const bdeMailOptions = {
       from: process.env.EMAIL_USER || 'errorinfotech404@gmail.com',
-      to: 'bde@errorinfotech.com,errorinfotech404@gmail.com',
-      subject: `🎯 NEW LEAD: Consultation Request - ${name} (${company || 'Individual'})`,
+      to: process.env.EMAIL_USER, // Changed to use the email in .env
+      subject: `🎯 NEW LEAD: ${service || 'Consultation'} Request - ${name} (${company || 'Individual'})`,
       html: emailContent
     };
 
